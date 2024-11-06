@@ -1,4 +1,4 @@
-[WARN] 2024-11-06 13:58:13.282 +0800 o.s.cloud.kubernetes.commons.profile.AbstractKubernetesProfileEnvironmentPostProcessor:[258] - [WorkflowInstance-0][TaskInstance-0] - Not running inside kubernetes. Skipping 'kubernetes' profile activation.
+[000] 2024-11-06 13:58:13.282 +0800 o.s.cloud.kubernetes.commons.profile.AbstractKubernetesProfileEnvironmentPostProcessor:[258] - [WorkflowInstance-0][TaskInstance-0] - Not running inside kubernetes. Skipping 'kubernetes' profile activation.
 [WARN] 2024-11-06 13:58:13.904 +0800 o.s.cloud.kubernetes.commons.profile.AbstractKubernetesProfileEnvironmentPostProcessor:[258] - [WorkflowInstance-0][TaskInstance-0] - Not running inside kubernetes. Skipping 'kubernetes' profile activation.
 [INFO] 2024-11-06 13:58:13.905 +0800 org.apache.dolphinscheduler.server.master.MasterServer:[640] - [WorkflowInstance-0][TaskInstance-0] - The following 1 profile is active: "postgresql"
 [INFO] 2024-11-06 13:58:17.537 +0800 org.springframework.cloud.context.scope.GenericScope:[283] - [WorkflowInstance-0][TaskInstance-0] - BeanFactory id=168c71f8-4ed8-3b83-96cb-3f47a29a32ac
