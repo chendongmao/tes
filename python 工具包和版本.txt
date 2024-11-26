@@ -1,0 +1,87 @@
+2024-11-26 07:13:16.433  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: DROP TABLE IF EXISTS t_ds_process_definition_log; success
+2024-11-26 07:13:16.498  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE TABLE t_ds_process_definition_log (
+  id int NOT NULL  ,
+  code bigint NOT NULL,
+  name varchar(255) DEFAULT NULL ,
+  version int NOT NULL ,
+  description text ,
+  project_code bigint DEFAULT NULL ,
+  release_state int DEFAULT NULL ,
+  user_id int DEFAULT NULL ,
+  global_params text ,
+  locations text ,
+  warning_group_id int DEFAULT NULL ,
+  flag int DEFAULT NULL ,
+  timeout int DEFAULT '0' ,
+  execution_type int DEFAULT '0',
+  operator int DEFAULT NULL ,
+  operate_time timestamp DEFAULT NULL ,
+  create_time timestamp DEFAULT NULL ,
+  update_time timestamp DEFAULT NULL ,
+  PRIMARY KEY (id)
+) ; success
+2024-11-26 07:13:16.518  WARN 1308201 --- [           main] com.zaxxer.hikari.pool.ProxyConnection   : DolphinScheduler - Connection org.postgresql.jdbc.PgConnection@36068727 marked as broken because of SQLSTATE(0A000), ErrorCode(16622)
+
+org.postgresql.util.PSQLException: ERROR: Cannot create index whose evaluation cannot be enforced to remote nodes
+        at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2873) ~[gsjdbc4.jar:na]
+        at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2601) ~[gsjdbc4.jar:na]
+        at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:329) ~[gsjdbc4.jar:na]
+        at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:491) ~[gsjdbc4.jar:na]
+        at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:411) ~[gsjdbc4.jar:na]
+        at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:332) ~[gsjdbc4.jar:na]
+        at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:318) ~[gsjdbc4.jar:na]
+        at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:294) ~[gsjdbc4.jar:na]
+        at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:289) ~[gsjdbc4.jar:na]
+        at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-4.0.3.jar:na]
+        at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) [HikariCP-4.0.3.jar:na]
+        at org.apache.dolphinscheduler.common.sql.SqlScriptRunner.execute(SqlScriptRunner.java:58) [dolphinscheduler-common-3.2.0.jar:3.2.0]
+        at org.apache.dolphinscheduler.tools.datasource.dao.UpgradeDao.runInitSql(UpgradeDao.java:64) [dolphinscheduler-tools-3.2.0.jar:3.2.0]
+        at org.apache.dolphinscheduler.tools.datasource.dao.UpgradeDao.initSchema(UpgradeDao.java:52) [dolphinscheduler-tools-3.2.0.jar:3.2.0]
+        at org.apache.dolphinscheduler.tools.datasource.DolphinSchedulerManager.initDolphinSchedulerSchema(DolphinSchedulerManager.java:92) [dolphinscheduler-tools-3.2.0.jar:3.2.0]
+        at org.apache.dolphinscheduler.tools.datasource.DolphinSchedulerManager.initDolphinScheduler(DolphinSchedulerManager.java:72) [dolphinscheduler-tools-3.2.0.jar:3.2.0]
+        at org.apache.dolphinscheduler.tools.datasource.UpgradeDolphinScheduler$UpgradeRunner.run(UpgradeDolphinScheduler.java:56) [dolphinscheduler-tools-3.2.0.jar:3.2.0]
+        at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:771) [spring-boot-2.7.3.jar:2.7.3]
+        at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:755) [spring-boot-2.7.3.jar:2.7.3]
+        at org.springframework.boot.SpringApplication.run(SpringApplication.java:315) [spring-boot-2.7.3.jar:2.7.3]
+        at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306) [spring-boot-2.7.3.jar:2.7.3]
+        at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295) [spring-boot-2.7.3.jar:2.7.3]
+        at org.apache.dolphinscheduler.tools.datasource.UpgradeDolphinScheduler.main(UpgradeDolphinScheduler.java:36) [dolphinscheduler-tools-3.2.0.jar:3.2.0]
+
+2024-11-26 07:13:16.521  INFO 1308201 --- [           main] ConditionEvaluationReportLoggingListener :
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2024-11-26 07:13:16.540 ERROR 1308201 --- [           main] o.s.boot.SpringApplication               : Application run failed
+
+java.lang.IllegalStateException: Failed to execute CommandLineRunner
+        at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:774) [spring-boot-2.7.3.jar:2.7.3]
+        at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:755) [spring-boot-2.7.3.jar:2.7.3]
+        at org.springframework.boot.SpringApplication.run(SpringApplication.java:315) [spring-boot-2.7.3.jar:2.7.3]
+        at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306) [spring-boot-2.7.3.jar:2.7.3]
+        at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295) [spring-boot-2.7.3.jar:2.7.3]
+        at org.apache.dolphinscheduler.tools.datasource.UpgradeDolphinScheduler.main(UpgradeDolphinScheduler.java:36) [dolphinscheduler-tools-3.2.0.jar:3.2.0]
+Caused by: java.lang.RuntimeException: Execute initialize sql file: sql/dolphinscheduler_postgresql.sql error
+        at org.apache.dolphinscheduler.tools.datasource.dao.UpgradeDao.runInitSql(UpgradeDao.java:67) ~[dolphinscheduler-tools-3.2.0.jar:3.2.0]
+        at org.apache.dolphinscheduler.tools.datasource.dao.UpgradeDao.initSchema(UpgradeDao.java:52) ~[dolphinscheduler-tools-3.2.0.jar:3.2.0]
+        at org.apache.dolphinscheduler.tools.datasource.DolphinSchedulerManager.initDolphinSchedulerSchema(DolphinSchedulerManager.java:92) ~[dolphinscheduler-tools-3.2.0.jar:3.2.0]
+        at org.apache.dolphinscheduler.tools.datasource.DolphinSchedulerManager.initDolphinScheduler(DolphinSchedulerManager.java:72) ~[dolphinscheduler-tools-3.2.0.jar:3.2.0]
+        at org.apache.dolphinscheduler.tools.datasource.UpgradeDolphinScheduler$UpgradeRunner.run(UpgradeDolphinScheduler.java:56) ~[dolphinscheduler-tools-3.2.0.jar:3.2.0]
+        at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:771) [spring-boot-2.7.3.jar:2.7.3]
+        ... 5 common frames omitted
+Caused by: org.postgresql.util.PSQLException: ERROR: Cannot create index whose evaluation cannot be enforced to remote nodes
+        at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2873) ~[gsjdbc4.jar:na]
+        at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2601) ~[gsjdbc4.jar:na]
+        at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:329) ~[gsjdbc4.jar:na]
+        at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:491) ~[gsjdbc4.jar:na]
+        at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:411) ~[gsjdbc4.jar:na]
+        at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:332) ~[gsjdbc4.jar:na]
+        at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:318) ~[gsjdbc4.jar:na]
+        at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:294) ~[gsjdbc4.jar:na]
+        at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:289) ~[gsjdbc4.jar:na]
+        at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-4.0.3.jar:na]
+        at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-4.0.3.jar:na]
+        at org.apache.dolphinscheduler.common.sql.SqlScriptRunner.execute(SqlScriptRunner.java:58) ~[dolphinscheduler-common-3.2.0.jar:3.2.0]
+        at org.apache.dolphinscheduler.tools.datasource.dao.UpgradeDao.runInitSql(UpgradeDao.java:64) ~[dolphinscheduler-tools-3.2.0.jar:3.2.0]
+        ... 10 common frames omitted
+
+2024-11-26 07:13:16.544  INFO 1308201 --- [           main] com.zaxxer.hikari.HikariDataSource       : DolphinScheduler - Shutdown initiated...
+2024-11-26 07:13:16.566  INFO 1308201 --- [           main] com.zaxxer.hikari.HikariDataSource       : DolphinScheduler - Shutdown completed.
