@@ -85,3 +85,70 @@ Caused by: org.postgresql.util.PSQLException: ERROR: Cannot create index whose e
 
 2024-11-26 07:13:16.544  INFO 1308201 --- [           main] com.zaxxer.hikari.HikariDataSource       : DolphinScheduler - Shutdown initiated...
 2024-11-26 07:13:16.566  INFO 1308201 --- [           main] com.zaxxer.hikari.HikariDataSource       : DolphinScheduler - Shutdown completed.
+
+
+DROP TABLE IF EXISTS t_ds_process_definition_log;
+CREATE TABLE t_ds_process_definition_log (
+  id int NOT NULL  ,
+  code bigint NOT NULL,
+  name varchar(255) DEFAULT NULL ,
+  version int NOT NULL ,
+  description text ,
+  project_code bigint DEFAULT NULL ,
+  release_state int DEFAULT NULL ,
+  user_id int DEFAULT NULL ,
+  global_params text ,
+  locations text ,
+  warning_group_id int DEFAULT NULL ,
+  flag int DEFAULT NULL ,
+  timeout int DEFAULT '0' ,
+  execution_type int DEFAULT '0',
+  operator int DEFAULT NULL ,
+  operate_time timestamp DEFAULT NULL ,
+  create_time timestamp DEFAULT NULL ,
+  update_time timestamp DEFAULT NULL ,
+  PRIMARY KEY (id)
+) ;
+
+create UNIQUE index uniq_idx_code_version on t_ds_process_definition_log (code,version);
+
+--
+-- Table structure for table t_ds_task_definition
+--
+
+DROP TABLE IF EXISTS t_ds_task_definition;
+CREATE TABLE t_ds_task_definition (
+  id int NOT NULL  ,
+  code bigint NOT NULL,
+  name varchar(255) DEFAULT NULL ,
+  version int NOT NULL ,
+  description text ,
+  project_code bigint DEFAULT NULL ,
+  user_id int DEFAULT NULL ,
+  task_type varchar(50) DEFAULT NULL ,
+  task_execute_type int DEFAULT '0',
+  task_params text ,
+  flag int DEFAULT NULL ,
+  is_cache int DEFAULT '0',
+  task_priority int DEFAULT '2' ,
+  worker_group varchar(255) DEFAULT NULL ,
+  environment_code bigint DEFAULT '-1',
+  fail_retry_times int DEFAULT NULL ,
+  fail_retry_interval int DEFAULT NULL ,
+  timeout_flag int DEFAULT NULL ,
+  timeout_notify_strategy int DEFAULT NULL ,
+  timeout int DEFAULT '0' ,
+  delay_time int DEFAULT '0' ,
+  task_group_id int DEFAULT NULL,
+  task_group_priority int DEFAULT '0',
+  resource_ids text ,
+  cpu_quota int DEFAULT '-1' NOT NULL,
+  memory_max int DEFAULT '-1' NOT NULL,
+  create_time timestamp DEFAULT NULL ,
+  update_time timestamp DEFAULT NULL ,
+  PRIMARY KEY (id)
+) ;
+
+create index task_definition_index on t_ds_task_definition (project_code,id);
+
+--
