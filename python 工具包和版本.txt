@@ -1,3 +1,278 @@
+2024-11-26 07:13:11.407  INFO 1308201 --- [           main] com.zaxxer.hikari.HikariDataSource       : DolphinScheduler - Starting...
+2024-11-26 07:13:11.627  INFO 1308201 --- [           main] com.zaxxer.hikari.HikariDataSource       : DolphinScheduler - Start completed.
+2024-11-26 07:13:13.483  INFO 1308201 --- [           main] o.a.d.t.d.UpgradeDolphinScheduler        : Started UpgradeDolphinScheduler in 5.019 seconds (JVM running for 5.446)
+2024-11-26 07:13:13.528  INFO 1308201 --- [           main] o.a.d.t.d.DolphinSchedulerManager        : Start initializing the DolphinScheduler manager table structure
+2024-11-26 07:13:13.556  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: DROP TABLE IF EXISTS QRTZ_FIRED_TRIGGERS; success
+2024-11-26 07:13:13.563  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: DROP TABLE IF EXISTS QRTZ_PAUSED_TRIGGER_GRPS; success
+2024-11-26 07:13:13.569  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: DROP TABLE IF EXISTS QRTZ_SCHEDULER_STATE; success
+2024-11-26 07:13:13.575  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: DROP TABLE IF EXISTS QRTZ_LOCKS; success
+2024-11-26 07:13:13.582  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: DROP TABLE IF EXISTS QRTZ_SIMPLE_TRIGGERS; success
+2024-11-26 07:13:13.589  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: DROP TABLE IF EXISTS QRTZ_SIMPROP_TRIGGERS; success
+2024-11-26 07:13:13.596  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: DROP TABLE IF EXISTS QRTZ_CRON_TRIGGERS; success
+2024-11-26 07:13:13.603  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: DROP TABLE IF EXISTS QRTZ_BLOB_TRIGGERS; success
+2024-11-26 07:13:13.610  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: DROP TABLE IF EXISTS QRTZ_TRIGGERS; success
+2024-11-26 07:13:13.616  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: DROP TABLE IF EXISTS QRTZ_JOB_DETAILS; success
+2024-11-26 07:13:13.623  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: DROP TABLE IF EXISTS QRTZ_CALENDARS; success
+2024-11-26 07:13:13.790  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE TABLE QRTZ_JOB_DETAILS (
+  SCHED_NAME character varying(120) NOT NULL,
+  JOB_NAME character varying(200) NOT NULL,
+  JOB_GROUP character varying(200) NOT NULL,
+  DESCRIPTION character varying(250) NULL,
+  JOB_CLASS_NAME character varying(250) NOT NULL,
+  IS_DURABLE boolean NOT NULL,
+  IS_NONCONCURRENT boolean NOT NULL,
+  IS_UPDATE_DATA boolean NOT NULL,
+  REQUESTS_RECOVERY boolean NOT NULL,
+  JOB_DATA bytea NULL
+); success
+2024-11-26 07:13:13.874  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: alter table QRTZ_JOB_DETAILS add primary key(SCHED_NAME,JOB_NAME,JOB_GROUP); success
+2024-11-26 07:13:13.923  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE TABLE QRTZ_TRIGGERS (
+  SCHED_NAME character varying(120) NOT NULL,
+  TRIGGER_NAME character varying(200) NOT NULL,
+  TRIGGER_GROUP character varying(200) NOT NULL,
+  JOB_NAME character varying(200) NOT NULL,
+  JOB_GROUP character varying(200) NOT NULL,
+  DESCRIPTION character varying(250) NULL,
+  NEXT_FIRE_TIME BIGINT NULL,
+  PREV_FIRE_TIME BIGINT NULL,
+  PRIORITY INTEGER NULL,
+  TRIGGER_STATE character varying(16) NOT NULL,
+  TRIGGER_TYPE character varying(8) NOT NULL,
+  START_TIME BIGINT NOT NULL,
+  END_TIME BIGINT NULL,
+  CALENDAR_NAME character varying(200) NULL,
+  MISFIRE_INSTR SMALLINT NULL,
+  JOB_DATA bytea NULL
+) ; success
+2024-11-26 07:13:13.970  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: alter table QRTZ_TRIGGERS add primary key(SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP); success
+2024-11-26 07:13:14.011  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE TABLE QRTZ_SIMPLE_TRIGGERS (
+    SCHED_NAME character varying(120) NOT NULL,
+    TRIGGER_NAME character varying(200) NOT NULL,
+    TRIGGER_GROUP character varying(200) NOT NULL,
+    REPEAT_COUNT BIGINT NOT NULL,
+    REPEAT_INTERVAL BIGINT NOT NULL,
+    TIMES_TRIGGERED BIGINT NOT NULL
+) ; success
+2024-11-26 07:13:14.060  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: alter table QRTZ_SIMPLE_TRIGGERS add primary key(SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP); success
+2024-11-26 07:13:14.098  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE TABLE QRTZ_CRON_TRIGGERS (
+    SCHED_NAME character varying(120) NOT NULL,
+    TRIGGER_NAME character varying(200) NOT NULL,
+    TRIGGER_GROUP character varying(200) NOT NULL,
+    CRON_EXPRESSION character varying(120) NOT NULL,
+    TIME_ZONE_ID character varying(80)
+) ; success
+2024-11-26 07:13:14.136  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: alter table QRTZ_CRON_TRIGGERS add primary key(SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP); success
+2024-11-26 07:13:14.185  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE TABLE QRTZ_SIMPROP_TRIGGERS (
+    SCHED_NAME character varying(120) NOT NULL,
+    TRIGGER_NAME character varying(200) NOT NULL,
+    TRIGGER_GROUP character varying(200) NOT NULL,
+    STR_PROP_1 character varying(512) NULL,
+    STR_PROP_2 character varying(512) NULL,
+    STR_PROP_3 character varying(512) NULL,
+    INT_PROP_1 INT NULL,
+    INT_PROP_2 INT NULL,
+    LONG_PROP_1 BIGINT NULL,
+    LONG_PROP_2 BIGINT NULL,
+    DEC_PROP_1 NUMERIC(13,4) NULL,
+    DEC_PROP_2 NUMERIC(13,4) NULL,
+    BOOL_PROP_1 boolean NULL,
+    BOOL_PROP_2 boolean NULL
+) ; success
+2024-11-26 07:13:14.230  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: alter table QRTZ_SIMPROP_TRIGGERS add primary key(SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP); success
+2024-11-26 07:13:14.271  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE TABLE QRTZ_BLOB_TRIGGERS (
+    SCHED_NAME character varying(120) NOT NULL,
+    TRIGGER_NAME character varying(200) NOT NULL,
+    TRIGGER_GROUP character varying(200) NOT NULL,
+    BLOB_DATA bytea NULL
+) ; success
+2024-11-26 07:13:14.320  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: alter table QRTZ_BLOB_TRIGGERS add primary key(SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP); success
+2024-11-26 07:13:14.360  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE TABLE QRTZ_CALENDARS (
+    SCHED_NAME character varying(120) NOT NULL,
+    CALENDAR_NAME character varying(200) NOT NULL,
+    CALENDAR bytea NOT NULL
+) ; success
+2024-11-26 07:13:14.410  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: alter table QRTZ_CALENDARS add primary key(SCHED_NAME,CALENDAR_NAME); success
+2024-11-26 07:13:14.444  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE TABLE QRTZ_PAUSED_TRIGGER_GRPS (
+    SCHED_NAME character varying(120) NOT NULL,
+    TRIGGER_GROUP character varying(200) NOT NULL
+) ; success
+2024-11-26 07:13:14.491  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: alter table QRTZ_PAUSED_TRIGGER_GRPS add primary key(SCHED_NAME,TRIGGER_GROUP); success
+2024-11-26 07:13:14.537  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE TABLE QRTZ_FIRED_TRIGGERS (
+    SCHED_NAME character varying(120) NOT NULL,
+    ENTRY_ID character varying(200) NOT NULL,
+    TRIGGER_NAME character varying(200) NOT NULL,
+    TRIGGER_GROUP character varying(200) NOT NULL,
+    INSTANCE_NAME character varying(200) NOT NULL,
+    FIRED_TIME BIGINT NOT NULL,
+    SCHED_TIME BIGINT NOT NULL,
+    PRIORITY INTEGER NOT NULL,
+    STATE character varying(16) NOT NULL,
+    JOB_NAME character varying(200) NULL,
+    JOB_GROUP character varying(200) NULL,
+    IS_NONCONCURRENT boolean NULL,
+    REQUESTS_RECOVERY boolean NULL
+) ; success
+2024-11-26 07:13:14.581  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: alter table QRTZ_FIRED_TRIGGERS add primary key(SCHED_NAME,ENTRY_ID); success
+2024-11-26 07:13:14.606  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE TABLE QRTZ_SCHEDULER_STATE (
+    SCHED_NAME character varying(120) NOT NULL,
+    INSTANCE_NAME character varying(200) NOT NULL,
+    LAST_CHECKIN_TIME BIGINT NOT NULL,
+    CHECKIN_INTERVAL BIGINT NOT NULL
+) ; success
+2024-11-26 07:13:14.650  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: alter table QRTZ_SCHEDULER_STATE add primary key(SCHED_NAME,INSTANCE_NAME); success
+2024-11-26 07:13:14.682  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE TABLE QRTZ_LOCKS (
+    SCHED_NAME character varying(120) NOT NULL,
+    LOCK_NAME character varying(40) NOT NULL
+) ; success
+2024-11-26 07:13:14.740  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: alter table QRTZ_LOCKS add primary key(SCHED_NAME,LOCK_NAME); success
+2024-11-26 07:13:14.780  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE INDEX IDX_QRTZ_J_REQ_RECOVERY ON QRTZ_JOB_DETAILS(SCHED_NAME,REQUESTS_RECOVERY); success
+2024-11-26 07:13:14.813  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE INDEX IDX_QRTZ_J_GRP ON QRTZ_JOB_DETAILS(SCHED_NAME,JOB_GROUP); success
+2024-11-26 07:13:14.859  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE INDEX IDX_QRTZ_T_J ON QRTZ_TRIGGERS(SCHED_NAME,JOB_NAME,JOB_GROUP); success
+2024-11-26 07:13:14.948  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE INDEX IDX_QRTZ_T_JG ON QRTZ_TRIGGERS(SCHED_NAME,JOB_GROUP); success
+2024-11-26 07:13:15.003  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE INDEX IDX_QRTZ_T_C ON QRTZ_TRIGGERS(SCHED_NAME,CALENDAR_NAME); success
+2024-11-26 07:13:15.044  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE INDEX IDX_QRTZ_T_G ON QRTZ_TRIGGERS(SCHED_NAME,TRIGGER_GROUP); success
+2024-11-26 07:13:15.079  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE INDEX IDX_QRTZ_T_STATE ON QRTZ_TRIGGERS(SCHED_NAME,TRIGGER_STATE); success
+2024-11-26 07:13:15.118  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE INDEX IDX_QRTZ_T_N_STATE ON QRTZ_TRIGGERS(SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP,TRIGGER_STATE); success
+2024-11-26 07:13:15.153  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE INDEX IDX_QRTZ_T_N_G_STATE ON QRTZ_TRIGGERS(SCHED_NAME,TRIGGER_GROUP,TRIGGER_STATE); success
+2024-11-26 07:13:15.195  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE INDEX IDX_QRTZ_T_NEXT_FIRE_TIME ON QRTZ_TRIGGERS(SCHED_NAME,NEXT_FIRE_TIME); success
+2024-11-26 07:13:15.232  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE INDEX IDX_QRTZ_T_NFT_ST ON QRTZ_TRIGGERS(SCHED_NAME,TRIGGER_STATE,NEXT_FIRE_TIME); success
+2024-11-26 07:13:15.277  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE INDEX IDX_QRTZ_T_NFT_MISFIRE ON QRTZ_TRIGGERS(SCHED_NAME,MISFIRE_INSTR,NEXT_FIRE_TIME); success
+2024-11-26 07:13:15.329  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE INDEX IDX_QRTZ_T_NFT_ST_MISFIRE ON QRTZ_TRIGGERS(SCHED_NAME,MISFIRE_INSTR,NEXT_FIRE_TIME,TRIGGER_STATE); success
+2024-11-26 07:13:15.375  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE INDEX IDX_QRTZ_T_NFT_ST_MISFIRE_GRP ON QRTZ_TRIGGERS(SCHED_NAME,MISFIRE_INSTR,NEXT_FIRE_TIME,TRIGGER_GROUP,TRIGGER_STATE); success
+2024-11-26 07:13:15.413  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE INDEX IDX_QRTZ_FT_TRIG_INST_NAME ON QRTZ_FIRED_TRIGGERS(SCHED_NAME,INSTANCE_NAME); success
+2024-11-26 07:13:15.449  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE INDEX IDX_QRTZ_FT_INST_JOB_REQ_RCVRY ON QRTZ_FIRED_TRIGGERS(SCHED_NAME,INSTANCE_NAME,REQUESTS_RECOVERY); success
+2024-11-26 07:13:15.482  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE INDEX IDX_QRTZ_FT_J_G ON QRTZ_FIRED_TRIGGERS(SCHED_NAME,JOB_NAME,JOB_GROUP); success
+2024-11-26 07:13:15.514  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE INDEX IDX_QRTZ_FT_JG ON QRTZ_FIRED_TRIGGERS(SCHED_NAME,JOB_GROUP); success
+2024-11-26 07:13:15.552  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE INDEX IDX_QRTZ_FT_T_G ON QRTZ_FIRED_TRIGGERS(SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP); success
+2024-11-26 07:13:15.592  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE INDEX IDX_QRTZ_FT_TG ON QRTZ_FIRED_TRIGGERS(SCHED_NAME,TRIGGER_GROUP); success
+2024-11-26 07:13:15.599  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: DROP TABLE IF EXISTS t_ds_access_token; success
+2024-11-26 07:13:15.662  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE TABLE t_ds_access_token (
+  id int NOT NULL  ,
+  user_id int DEFAULT NULL ,
+  token varchar(64) DEFAULT NULL ,
+  expire_time timestamp DEFAULT NULL ,
+  create_time timestamp DEFAULT NULL ,
+  update_time timestamp DEFAULT NULL ,
+  PRIMARY KEY (id)
+) ; success
+2024-11-26 07:13:15.670  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: DROP TABLE IF EXISTS t_ds_alert; success
+2024-11-26 07:13:15.725  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE TABLE t_ds_alert (
+  id int NOT NULL  ,
+  title varchar(512) DEFAULT NULL ,
+  sign varchar(40) NOT NULL DEFAULT '',
+  content text ,
+  alert_status int DEFAULT '0' ,
+  warning_type int DEFAULT '2' ,
+  log text ,
+  alertgroup_id int DEFAULT NULL ,
+  create_time timestamp DEFAULT NULL ,
+  update_time timestamp DEFAULT NULL ,
+  project_code bigint DEFAULT NULL,
+  process_definition_code bigint DEFAULT NULL,
+  process_instance_id int DEFAULT NULL ,
+  alert_type int DEFAULT NULL ,
+  PRIMARY KEY (id)
+); success
+2024-11-26 07:13:15.745  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: comment on column t_ds_alert.sign is 'sign=sha1(content)'; success
+2024-11-26 07:13:15.774  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: create index idx_status on t_ds_alert (alert_status); success
+2024-11-26 07:13:15.805  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: create index idx_sign on t_ds_alert (sign); success
+2024-11-26 07:13:15.813  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: DROP TABLE IF EXISTS t_ds_alertgroup; success
+2024-11-26 07:13:15.957  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE TABLE t_ds_alertgroup(
+  id             int NOT NULL,
+  alert_instance_ids varchar (255) DEFAULT NULL,
+  create_user_id int4         DEFAULT NULL,
+  group_name     varchar(255) DEFAULT NULL,
+  description    varchar(255) DEFAULT NULL,
+  create_time    timestamp    DEFAULT NULL,
+  update_time    timestamp    DEFAULT NULL,
+  PRIMARY KEY (id),
+  CONSTRAINT t_ds_alertgroup_name_un UNIQUE (group_name)
+) ; success
+2024-11-26 07:13:15.966  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: DROP TABLE IF EXISTS t_ds_command; success
+2024-11-26 07:13:16.073  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE TABLE t_ds_command (
+  id int NOT NULL  ,
+  command_type              int DEFAULT NULL ,
+  process_definition_code   bigint NOT NULL ,
+  command_param             text ,
+  task_depend_type          int DEFAULT NULL ,
+  failure_strategy          int DEFAULT '0' ,
+  warning_type              int DEFAULT '0' ,
+  warning_group_id          int DEFAULT NULL ,
+  schedule_time             timestamp DEFAULT NULL ,
+  start_time                timestamp DEFAULT NULL ,
+  executor_id               int DEFAULT NULL ,
+  update_time               timestamp DEFAULT NULL ,
+  process_instance_priority int DEFAULT '2' ,
+  worker_group              varchar(255),
+  tenant_code               varchar(64) DEFAULT 'default',
+  environment_code          bigint DEFAULT '-1',
+  dry_run                   int DEFAULT '0' ,
+  process_instance_id       int DEFAULT 0,
+  process_definition_version int DEFAULT 0,
+  test_flag                 int DEFAULT NULL ,
+  PRIMARY KEY (id)
+) ; success
+2024-11-26 07:13:16.112  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: create index priority_id_index on t_ds_command (process_instance_priority,id); success
+2024-11-26 07:13:16.120  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: DROP TABLE IF EXISTS t_ds_datasource; success
+2024-11-26 07:13:16.210  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE TABLE t_ds_datasource (
+  id int NOT NULL  ,
+  name varchar(64) NOT NULL ,
+  note varchar(255) DEFAULT NULL ,
+  type int NOT NULL ,
+  user_id int NOT NULL ,
+  connection_params text NOT NULL ,
+  create_time timestamp NOT NULL ,
+  update_time timestamp DEFAULT NULL ,
+  PRIMARY KEY (id),
+  CONSTRAINT t_ds_datasource_name_un UNIQUE (name, type)
+) ; success
+2024-11-26 07:13:16.219  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: DROP TABLE IF EXISTS t_ds_error_command; success
+2024-11-26 07:13:16.284  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE TABLE t_ds_error_command (
+  id int NOT NULL  ,
+  command_type              int DEFAULT NULL ,
+  process_definition_code   bigint NOT NULL ,
+  command_param             text ,
+  task_depend_type          int DEFAULT NULL ,
+  failure_strategy          int DEFAULT '0' ,
+  warning_type              int DEFAULT '0' ,
+  warning_group_id          int DEFAULT NULL ,
+  schedule_time             timestamp DEFAULT NULL ,
+  start_time                timestamp DEFAULT NULL ,
+  executor_id               int DEFAULT NULL ,
+  update_time               timestamp DEFAULT NULL ,
+  process_instance_priority int DEFAULT '2' ,
+  worker_group              varchar(255),
+  tenant_code               varchar(64) DEFAULT 'default',
+  environment_code          bigint DEFAULT '-1',
+  dry_run                   int DEFAULT '0' ,
+  message                   text ,
+  process_instance_id       int DEFAULT 0,
+  process_definition_version int DEFAULT 0,
+  test_flag                 int DEFAULT NULL ,
+  PRIMARY KEY (id)
+); success
+2024-11-26 07:13:16.292  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: DROP TABLE IF EXISTS t_ds_process_definition; success
+2024-11-26 07:13:16.385  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE TABLE t_ds_process_definition (
+  id int NOT NULL  ,
+  code bigint NOT NULL,
+  name varchar(255) DEFAULT NULL ,
+  version int NOT NULL ,
+  description text ,
+  project_code bigint DEFAULT NULL ,
+  release_state int DEFAULT NULL ,
+  user_id int DEFAULT NULL ,
+  global_params text ,
+  locations text ,
+  warning_group_id int DEFAULT NULL ,
+  flag int DEFAULT NULL ,
+  timeout int DEFAULT '0' ,
+  execution_type int DEFAULT '0',
+  create_time timestamp DEFAULT NULL ,
+  update_time timestamp DEFAULT NULL ,
+  PRIMARY KEY (id) ,
+  CONSTRAINT process_definition_unique UNIQUE (name, project_code)
+) ; success
+2024-11-26 07:13:16.420  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: create index process_definition_index on t_ds_process_definition (code,id); success
 2024-11-26 07:13:16.433  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: DROP TABLE IF EXISTS t_ds_process_definition_log; success
 2024-11-26 07:13:16.498  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE TABLE t_ds_process_definition_log (
   id int NOT NULL  ,
@@ -85,70 +360,3 @@ Caused by: org.postgresql.util.PSQLException: ERROR: Cannot create index whose e
 
 2024-11-26 07:13:16.544  INFO 1308201 --- [           main] com.zaxxer.hikari.HikariDataSource       : DolphinScheduler - Shutdown initiated...
 2024-11-26 07:13:16.566  INFO 1308201 --- [           main] com.zaxxer.hikari.HikariDataSource       : DolphinScheduler - Shutdown completed.
-
-
-DROP TABLE IF EXISTS t_ds_process_definition_log;
-CREATE TABLE t_ds_process_definition_log (
-  id int NOT NULL  ,
-  code bigint NOT NULL,
-  name varchar(255) DEFAULT NULL ,
-  version int NOT NULL ,
-  description text ,
-  project_code bigint DEFAULT NULL ,
-  release_state int DEFAULT NULL ,
-  user_id int DEFAULT NULL ,
-  global_params text ,
-  locations text ,
-  warning_group_id int DEFAULT NULL ,
-  flag int DEFAULT NULL ,
-  timeout int DEFAULT '0' ,
-  execution_type int DEFAULT '0',
-  operator int DEFAULT NULL ,
-  operate_time timestamp DEFAULT NULL ,
-  create_time timestamp DEFAULT NULL ,
-  update_time timestamp DEFAULT NULL ,
-  PRIMARY KEY (id)
-) ;
-
-create UNIQUE index uniq_idx_code_version on t_ds_process_definition_log (code,version);
-
---
--- Table structure for table t_ds_task_definition
---
-
-DROP TABLE IF EXISTS t_ds_task_definition;
-CREATE TABLE t_ds_task_definition (
-  id int NOT NULL  ,
-  code bigint NOT NULL,
-  name varchar(255) DEFAULT NULL ,
-  version int NOT NULL ,
-  description text ,
-  project_code bigint DEFAULT NULL ,
-  user_id int DEFAULT NULL ,
-  task_type varchar(50) DEFAULT NULL ,
-  task_execute_type int DEFAULT '0',
-  task_params text ,
-  flag int DEFAULT NULL ,
-  is_cache int DEFAULT '0',
-  task_priority int DEFAULT '2' ,
-  worker_group varchar(255) DEFAULT NULL ,
-  environment_code bigint DEFAULT '-1',
-  fail_retry_times int DEFAULT NULL ,
-  fail_retry_interval int DEFAULT NULL ,
-  timeout_flag int DEFAULT NULL ,
-  timeout_notify_strategy int DEFAULT NULL ,
-  timeout int DEFAULT '0' ,
-  delay_time int DEFAULT '0' ,
-  task_group_id int DEFAULT NULL,
-  task_group_priority int DEFAULT '0',
-  resource_ids text ,
-  cpu_quota int DEFAULT '-1' NOT NULL,
-  memory_max int DEFAULT '-1' NOT NULL,
-  create_time timestamp DEFAULT NULL ,
-  update_time timestamp DEFAULT NULL ,
-  PRIMARY KEY (id)
-) ;
-
-create index task_definition_index on t_ds_task_definition (project_code,id);
-
---
