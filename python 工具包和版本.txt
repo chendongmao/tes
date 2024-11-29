@@ -1,362 +1,264 @@
-2024-11-26 07:13:11.407  INFO 1308201 --- [           main] com.zaxxer.hikari.HikariDataSource       : DolphinScheduler - Starting...
-2024-11-26 07:13:11.627  INFO 1308201 --- [           main] com.zaxxer.hikari.HikariDataSource       : DolphinScheduler - Start completed.
-2024-11-26 07:13:13.483  INFO 1308201 --- [           main] o.a.d.t.d.UpgradeDolphinScheduler        : Started UpgradeDolphinScheduler in 5.019 seconds (JVM running for 5.446)
-2024-11-26 07:13:13.528  INFO 1308201 --- [           main] o.a.d.t.d.DolphinSchedulerManager        : Start initializing the DolphinScheduler manager table structure
-2024-11-26 07:13:13.556  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: DROP TABLE IF EXISTS QRTZ_FIRED_TRIGGERS; success
-2024-11-26 07:13:13.563  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: DROP TABLE IF EXISTS QRTZ_PAUSED_TRIGGER_GRPS; success
-2024-11-26 07:13:13.569  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: DROP TABLE IF EXISTS QRTZ_SCHEDULER_STATE; success
-2024-11-26 07:13:13.575  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: DROP TABLE IF EXISTS QRTZ_LOCKS; success
-2024-11-26 07:13:13.582  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: DROP TABLE IF EXISTS QRTZ_SIMPLE_TRIGGERS; success
-2024-11-26 07:13:13.589  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: DROP TABLE IF EXISTS QRTZ_SIMPROP_TRIGGERS; success
-2024-11-26 07:13:13.596  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: DROP TABLE IF EXISTS QRTZ_CRON_TRIGGERS; success
-2024-11-26 07:13:13.603  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: DROP TABLE IF EXISTS QRTZ_BLOB_TRIGGERS; success
-2024-11-26 07:13:13.610  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: DROP TABLE IF EXISTS QRTZ_TRIGGERS; success
-2024-11-26 07:13:13.616  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: DROP TABLE IF EXISTS QRTZ_JOB_DETAILS; success
-2024-11-26 07:13:13.623  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: DROP TABLE IF EXISTS QRTZ_CALENDARS; success
-2024-11-26 07:13:13.790  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE TABLE QRTZ_JOB_DETAILS (
-  SCHED_NAME character varying(120) NOT NULL,
-  JOB_NAME character varying(200) NOT NULL,
-  JOB_GROUP character varying(200) NOT NULL,
-  DESCRIPTION character varying(250) NULL,
-  JOB_CLASS_NAME character varying(250) NOT NULL,
-  IS_DURABLE boolean NOT NULL,
-  IS_NONCONCURRENT boolean NOT NULL,
-  IS_UPDATE_DATA boolean NOT NULL,
-  REQUESTS_RECOVERY boolean NOT NULL,
-  JOB_DATA bytea NULL
-); success
-2024-11-26 07:13:13.874  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: alter table QRTZ_JOB_DETAILS add primary key(SCHED_NAME,JOB_NAME,JOB_GROUP); success
-2024-11-26 07:13:13.923  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE TABLE QRTZ_TRIGGERS (
-  SCHED_NAME character varying(120) NOT NULL,
-  TRIGGER_NAME character varying(200) NOT NULL,
-  TRIGGER_GROUP character varying(200) NOT NULL,
-  JOB_NAME character varying(200) NOT NULL,
-  JOB_GROUP character varying(200) NOT NULL,
-  DESCRIPTION character varying(250) NULL,
-  NEXT_FIRE_TIME BIGINT NULL,
-  PREV_FIRE_TIME BIGINT NULL,
-  PRIORITY INTEGER NULL,
-  TRIGGER_STATE character varying(16) NOT NULL,
-  TRIGGER_TYPE character varying(8) NOT NULL,
-  START_TIME BIGINT NOT NULL,
-  END_TIME BIGINT NULL,
-  CALENDAR_NAME character varying(200) NULL,
-  MISFIRE_INSTR SMALLINT NULL,
-  JOB_DATA bytea NULL
-) ; success
-2024-11-26 07:13:13.970  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: alter table QRTZ_TRIGGERS add primary key(SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP); success
-2024-11-26 07:13:14.011  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE TABLE QRTZ_SIMPLE_TRIGGERS (
-    SCHED_NAME character varying(120) NOT NULL,
-    TRIGGER_NAME character varying(200) NOT NULL,
-    TRIGGER_GROUP character varying(200) NOT NULL,
-    REPEAT_COUNT BIGINT NOT NULL,
-    REPEAT_INTERVAL BIGINT NOT NULL,
-    TIMES_TRIGGERED BIGINT NOT NULL
-) ; success
-2024-11-26 07:13:14.060  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: alter table QRTZ_SIMPLE_TRIGGERS add primary key(SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP); success
-2024-11-26 07:13:14.098  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE TABLE QRTZ_CRON_TRIGGERS (
-    SCHED_NAME character varying(120) NOT NULL,
-    TRIGGER_NAME character varying(200) NOT NULL,
-    TRIGGER_GROUP character varying(200) NOT NULL,
-    CRON_EXPRESSION character varying(120) NOT NULL,
-    TIME_ZONE_ID character varying(80)
-) ; success
-2024-11-26 07:13:14.136  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: alter table QRTZ_CRON_TRIGGERS add primary key(SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP); success
-2024-11-26 07:13:14.185  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE TABLE QRTZ_SIMPROP_TRIGGERS (
-    SCHED_NAME character varying(120) NOT NULL,
-    TRIGGER_NAME character varying(200) NOT NULL,
-    TRIGGER_GROUP character varying(200) NOT NULL,
-    STR_PROP_1 character varying(512) NULL,
-    STR_PROP_2 character varying(512) NULL,
-    STR_PROP_3 character varying(512) NULL,
-    INT_PROP_1 INT NULL,
-    INT_PROP_2 INT NULL,
-    LONG_PROP_1 BIGINT NULL,
-    LONG_PROP_2 BIGINT NULL,
-    DEC_PROP_1 NUMERIC(13,4) NULL,
-    DEC_PROP_2 NUMERIC(13,4) NULL,
-    BOOL_PROP_1 boolean NULL,
-    BOOL_PROP_2 boolean NULL
-) ; success
-2024-11-26 07:13:14.230  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: alter table QRTZ_SIMPROP_TRIGGERS add primary key(SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP); success
-2024-11-26 07:13:14.271  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE TABLE QRTZ_BLOB_TRIGGERS (
-    SCHED_NAME character varying(120) NOT NULL,
-    TRIGGER_NAME character varying(200) NOT NULL,
-    TRIGGER_GROUP character varying(200) NOT NULL,
-    BLOB_DATA bytea NULL
-) ; success
-2024-11-26 07:13:14.320  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: alter table QRTZ_BLOB_TRIGGERS add primary key(SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP); success
-2024-11-26 07:13:14.360  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE TABLE QRTZ_CALENDARS (
-    SCHED_NAME character varying(120) NOT NULL,
-    CALENDAR_NAME character varying(200) NOT NULL,
-    CALENDAR bytea NOT NULL
-) ; success
-2024-11-26 07:13:14.410  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: alter table QRTZ_CALENDARS add primary key(SCHED_NAME,CALENDAR_NAME); success
-2024-11-26 07:13:14.444  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE TABLE QRTZ_PAUSED_TRIGGER_GRPS (
-    SCHED_NAME character varying(120) NOT NULL,
-    TRIGGER_GROUP character varying(200) NOT NULL
-) ; success
-2024-11-26 07:13:14.491  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: alter table QRTZ_PAUSED_TRIGGER_GRPS add primary key(SCHED_NAME,TRIGGER_GROUP); success
-2024-11-26 07:13:14.537  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE TABLE QRTZ_FIRED_TRIGGERS (
-    SCHED_NAME character varying(120) NOT NULL,
-    ENTRY_ID character varying(200) NOT NULL,
-    TRIGGER_NAME character varying(200) NOT NULL,
-    TRIGGER_GROUP character varying(200) NOT NULL,
-    INSTANCE_NAME character varying(200) NOT NULL,
-    FIRED_TIME BIGINT NOT NULL,
-    SCHED_TIME BIGINT NOT NULL,
-    PRIORITY INTEGER NOT NULL,
-    STATE character varying(16) NOT NULL,
-    JOB_NAME character varying(200) NULL,
-    JOB_GROUP character varying(200) NULL,
-    IS_NONCONCURRENT boolean NULL,
-    REQUESTS_RECOVERY boolean NULL
-) ; success
-2024-11-26 07:13:14.581  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: alter table QRTZ_FIRED_TRIGGERS add primary key(SCHED_NAME,ENTRY_ID); success
-2024-11-26 07:13:14.606  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE TABLE QRTZ_SCHEDULER_STATE (
-    SCHED_NAME character varying(120) NOT NULL,
-    INSTANCE_NAME character varying(200) NOT NULL,
-    LAST_CHECKIN_TIME BIGINT NOT NULL,
-    CHECKIN_INTERVAL BIGINT NOT NULL
-) ; success
-2024-11-26 07:13:14.650  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: alter table QRTZ_SCHEDULER_STATE add primary key(SCHED_NAME,INSTANCE_NAME); success
-2024-11-26 07:13:14.682  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE TABLE QRTZ_LOCKS (
-    SCHED_NAME character varying(120) NOT NULL,
-    LOCK_NAME character varying(40) NOT NULL
-) ; success
-2024-11-26 07:13:14.740  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: alter table QRTZ_LOCKS add primary key(SCHED_NAME,LOCK_NAME); success
-2024-11-26 07:13:14.780  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE INDEX IDX_QRTZ_J_REQ_RECOVERY ON QRTZ_JOB_DETAILS(SCHED_NAME,REQUESTS_RECOVERY); success
-2024-11-26 07:13:14.813  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE INDEX IDX_QRTZ_J_GRP ON QRTZ_JOB_DETAILS(SCHED_NAME,JOB_GROUP); success
-2024-11-26 07:13:14.859  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE INDEX IDX_QRTZ_T_J ON QRTZ_TRIGGERS(SCHED_NAME,JOB_NAME,JOB_GROUP); success
-2024-11-26 07:13:14.948  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE INDEX IDX_QRTZ_T_JG ON QRTZ_TRIGGERS(SCHED_NAME,JOB_GROUP); success
-2024-11-26 07:13:15.003  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE INDEX IDX_QRTZ_T_C ON QRTZ_TRIGGERS(SCHED_NAME,CALENDAR_NAME); success
-2024-11-26 07:13:15.044  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE INDEX IDX_QRTZ_T_G ON QRTZ_TRIGGERS(SCHED_NAME,TRIGGER_GROUP); success
-2024-11-26 07:13:15.079  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE INDEX IDX_QRTZ_T_STATE ON QRTZ_TRIGGERS(SCHED_NAME,TRIGGER_STATE); success
-2024-11-26 07:13:15.118  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE INDEX IDX_QRTZ_T_N_STATE ON QRTZ_TRIGGERS(SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP,TRIGGER_STATE); success
-2024-11-26 07:13:15.153  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE INDEX IDX_QRTZ_T_N_G_STATE ON QRTZ_TRIGGERS(SCHED_NAME,TRIGGER_GROUP,TRIGGER_STATE); success
-2024-11-26 07:13:15.195  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE INDEX IDX_QRTZ_T_NEXT_FIRE_TIME ON QRTZ_TRIGGERS(SCHED_NAME,NEXT_FIRE_TIME); success
-2024-11-26 07:13:15.232  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE INDEX IDX_QRTZ_T_NFT_ST ON QRTZ_TRIGGERS(SCHED_NAME,TRIGGER_STATE,NEXT_FIRE_TIME); success
-2024-11-26 07:13:15.277  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE INDEX IDX_QRTZ_T_NFT_MISFIRE ON QRTZ_TRIGGERS(SCHED_NAME,MISFIRE_INSTR,NEXT_FIRE_TIME); success
-2024-11-26 07:13:15.329  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE INDEX IDX_QRTZ_T_NFT_ST_MISFIRE ON QRTZ_TRIGGERS(SCHED_NAME,MISFIRE_INSTR,NEXT_FIRE_TIME,TRIGGER_STATE); success
-2024-11-26 07:13:15.375  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE INDEX IDX_QRTZ_T_NFT_ST_MISFIRE_GRP ON QRTZ_TRIGGERS(SCHED_NAME,MISFIRE_INSTR,NEXT_FIRE_TIME,TRIGGER_GROUP,TRIGGER_STATE); success
-2024-11-26 07:13:15.413  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE INDEX IDX_QRTZ_FT_TRIG_INST_NAME ON QRTZ_FIRED_TRIGGERS(SCHED_NAME,INSTANCE_NAME); success
-2024-11-26 07:13:15.449  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE INDEX IDX_QRTZ_FT_INST_JOB_REQ_RCVRY ON QRTZ_FIRED_TRIGGERS(SCHED_NAME,INSTANCE_NAME,REQUESTS_RECOVERY); success
-2024-11-26 07:13:15.482  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE INDEX IDX_QRTZ_FT_J_G ON QRTZ_FIRED_TRIGGERS(SCHED_NAME,JOB_NAME,JOB_GROUP); success
-2024-11-26 07:13:15.514  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE INDEX IDX_QRTZ_FT_JG ON QRTZ_FIRED_TRIGGERS(SCHED_NAME,JOB_GROUP); success
-2024-11-26 07:13:15.552  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE INDEX IDX_QRTZ_FT_T_G ON QRTZ_FIRED_TRIGGERS(SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP); success
-2024-11-26 07:13:15.592  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE INDEX IDX_QRTZ_FT_TG ON QRTZ_FIRED_TRIGGERS(SCHED_NAME,TRIGGER_GROUP); success
-2024-11-26 07:13:15.599  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: DROP TABLE IF EXISTS t_ds_access_token; success
-2024-11-26 07:13:15.662  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE TABLE t_ds_access_token (
-  id int NOT NULL  ,
-  user_id int DEFAULT NULL ,
-  token varchar(64) DEFAULT NULL ,
-  expire_time timestamp DEFAULT NULL ,
-  create_time timestamp DEFAULT NULL ,
-  update_time timestamp DEFAULT NULL ,
-  PRIMARY KEY (id)
-) ; success
-2024-11-26 07:13:15.670  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: DROP TABLE IF EXISTS t_ds_alert; success
-2024-11-26 07:13:15.725  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE TABLE t_ds_alert (
-  id int NOT NULL  ,
-  title varchar(512) DEFAULT NULL ,
-  sign varchar(40) NOT NULL DEFAULT '',
-  content text ,
-  alert_status int DEFAULT '0' ,
-  warning_type int DEFAULT '2' ,
-  log text ,
-  alertgroup_id int DEFAULT NULL ,
-  create_time timestamp DEFAULT NULL ,
-  update_time timestamp DEFAULT NULL ,
-  project_code bigint DEFAULT NULL,
-  process_definition_code bigint DEFAULT NULL,
-  process_instance_id int DEFAULT NULL ,
-  alert_type int DEFAULT NULL ,
-  PRIMARY KEY (id)
-); success
-2024-11-26 07:13:15.745  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: comment on column t_ds_alert.sign is 'sign=sha1(content)'; success
-2024-11-26 07:13:15.774  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: create index idx_status on t_ds_alert (alert_status); success
-2024-11-26 07:13:15.805  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: create index idx_sign on t_ds_alert (sign); success
-2024-11-26 07:13:15.813  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: DROP TABLE IF EXISTS t_ds_alertgroup; success
-2024-11-26 07:13:15.957  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE TABLE t_ds_alertgroup(
-  id             int NOT NULL,
-  alert_instance_ids varchar (255) DEFAULT NULL,
-  create_user_id int4         DEFAULT NULL,
-  group_name     varchar(255) DEFAULT NULL,
-  description    varchar(255) DEFAULT NULL,
-  create_time    timestamp    DEFAULT NULL,
-  update_time    timestamp    DEFAULT NULL,
-  PRIMARY KEY (id),
-  CONSTRAINT t_ds_alertgroup_name_un UNIQUE (group_name)
-) ; success
-2024-11-26 07:13:15.966  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: DROP TABLE IF EXISTS t_ds_command; success
-2024-11-26 07:13:16.073  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE TABLE t_ds_command (
-  id int NOT NULL  ,
-  command_type              int DEFAULT NULL ,
-  process_definition_code   bigint NOT NULL ,
-  command_param             text ,
-  task_depend_type          int DEFAULT NULL ,
-  failure_strategy          int DEFAULT '0' ,
-  warning_type              int DEFAULT '0' ,
-  warning_group_id          int DEFAULT NULL ,
-  schedule_time             timestamp DEFAULT NULL ,
-  start_time                timestamp DEFAULT NULL ,
-  executor_id               int DEFAULT NULL ,
-  update_time               timestamp DEFAULT NULL ,
-  process_instance_priority int DEFAULT '2' ,
-  worker_group              varchar(255),
-  tenant_code               varchar(64) DEFAULT 'default',
-  environment_code          bigint DEFAULT '-1',
-  dry_run                   int DEFAULT '0' ,
-  process_instance_id       int DEFAULT 0,
-  process_definition_version int DEFAULT 0,
-  test_flag                 int DEFAULT NULL ,
-  PRIMARY KEY (id)
-) ; success
-2024-11-26 07:13:16.112  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: create index priority_id_index on t_ds_command (process_instance_priority,id); success
-2024-11-26 07:13:16.120  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: DROP TABLE IF EXISTS t_ds_datasource; success
-2024-11-26 07:13:16.210  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE TABLE t_ds_datasource (
-  id int NOT NULL  ,
-  name varchar(64) NOT NULL ,
-  note varchar(255) DEFAULT NULL ,
-  type int NOT NULL ,
-  user_id int NOT NULL ,
-  connection_params text NOT NULL ,
-  create_time timestamp NOT NULL ,
-  update_time timestamp DEFAULT NULL ,
-  PRIMARY KEY (id),
-  CONSTRAINT t_ds_datasource_name_un UNIQUE (name, type)
-) ; success
-2024-11-26 07:13:16.219  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: DROP TABLE IF EXISTS t_ds_error_command; success
-2024-11-26 07:13:16.284  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE TABLE t_ds_error_command (
-  id int NOT NULL  ,
-  command_type              int DEFAULT NULL ,
-  process_definition_code   bigint NOT NULL ,
-  command_param             text ,
-  task_depend_type          int DEFAULT NULL ,
-  failure_strategy          int DEFAULT '0' ,
-  warning_type              int DEFAULT '0' ,
-  warning_group_id          int DEFAULT NULL ,
-  schedule_time             timestamp DEFAULT NULL ,
-  start_time                timestamp DEFAULT NULL ,
-  executor_id               int DEFAULT NULL ,
-  update_time               timestamp DEFAULT NULL ,
-  process_instance_priority int DEFAULT '2' ,
-  worker_group              varchar(255),
-  tenant_code               varchar(64) DEFAULT 'default',
-  environment_code          bigint DEFAULT '-1',
-  dry_run                   int DEFAULT '0' ,
-  message                   text ,
-  process_instance_id       int DEFAULT 0,
-  process_definition_version int DEFAULT 0,
-  test_flag                 int DEFAULT NULL ,
-  PRIMARY KEY (id)
-); success
-2024-11-26 07:13:16.292  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: DROP TABLE IF EXISTS t_ds_process_definition; success
-2024-11-26 07:13:16.385  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE TABLE t_ds_process_definition (
-  id int NOT NULL  ,
-  code bigint NOT NULL,
-  name varchar(255) DEFAULT NULL ,
-  version int NOT NULL ,
-  description text ,
-  project_code bigint DEFAULT NULL ,
-  release_state int DEFAULT NULL ,
-  user_id int DEFAULT NULL ,
-  global_params text ,
-  locations text ,
-  warning_group_id int DEFAULT NULL ,
-  flag int DEFAULT NULL ,
-  timeout int DEFAULT '0' ,
-  execution_type int DEFAULT '0',
-  create_time timestamp DEFAULT NULL ,
-  update_time timestamp DEFAULT NULL ,
-  PRIMARY KEY (id) ,
-  CONSTRAINT process_definition_unique UNIQUE (name, project_code)
-) ; success
-2024-11-26 07:13:16.420  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: create index process_definition_index on t_ds_process_definition (code,id); success
-2024-11-26 07:13:16.433  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: DROP TABLE IF EXISTS t_ds_process_definition_log; success
-2024-11-26 07:13:16.498  INFO 1308201 --- [           main] o.a.d.common.sql.SqlScriptRunner         : Execute sql: CREATE TABLE t_ds_process_definition_log (
-  id int NOT NULL  ,
-  code bigint NOT NULL,
-  name varchar(255) DEFAULT NULL ,
-  version int NOT NULL ,
-  description text ,
-  project_code bigint DEFAULT NULL ,
-  release_state int DEFAULT NULL ,
-  user_id int DEFAULT NULL ,
-  global_params text ,
-  locations text ,
-  warning_group_id int DEFAULT NULL ,
-  flag int DEFAULT NULL ,
-  timeout int DEFAULT '0' ,
-  execution_type int DEFAULT '0',
-  operator int DEFAULT NULL ,
-  operate_time timestamp DEFAULT NULL ,
-  create_time timestamp DEFAULT NULL ,
-  update_time timestamp DEFAULT NULL ,
-  PRIMARY KEY (id)
-) ; success
-2024-11-26 07:13:16.518  WARN 1308201 --- [           main] com.zaxxer.hikari.pool.ProxyConnection   : DolphinScheduler - Connection org.postgresql.jdbc.PgConnection@36068727 marked as broken because of SQLSTATE(0A000), ErrorCode(16622)
-
-org.postgresql.util.PSQLException: ERROR: Cannot create index whose evaluation cannot be enforced to remote nodes
-        at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2873) ~[gsjdbc4.jar:na]
-        at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2601) ~[gsjdbc4.jar:na]
-        at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:329) ~[gsjdbc4.jar:na]
-        at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:491) ~[gsjdbc4.jar:na]
-        at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:411) ~[gsjdbc4.jar:na]
-        at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:332) ~[gsjdbc4.jar:na]
-        at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:318) ~[gsjdbc4.jar:na]
-        at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:294) ~[gsjdbc4.jar:na]
-        at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:289) ~[gsjdbc4.jar:na]
-        at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-4.0.3.jar:na]
-        at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) [HikariCP-4.0.3.jar:na]
-        at org.apache.dolphinscheduler.common.sql.SqlScriptRunner.execute(SqlScriptRunner.java:58) [dolphinscheduler-common-3.2.0.jar:3.2.0]
-        at org.apache.dolphinscheduler.tools.datasource.dao.UpgradeDao.runInitSql(UpgradeDao.java:64) [dolphinscheduler-tools-3.2.0.jar:3.2.0]
-        at org.apache.dolphinscheduler.tools.datasource.dao.UpgradeDao.initSchema(UpgradeDao.java:52) [dolphinscheduler-tools-3.2.0.jar:3.2.0]
-        at org.apache.dolphinscheduler.tools.datasource.DolphinSchedulerManager.initDolphinSchedulerSchema(DolphinSchedulerManager.java:92) [dolphinscheduler-tools-3.2.0.jar:3.2.0]
-        at org.apache.dolphinscheduler.tools.datasource.DolphinSchedulerManager.initDolphinScheduler(DolphinSchedulerManager.java:72) [dolphinscheduler-tools-3.2.0.jar:3.2.0]
-        at org.apache.dolphinscheduler.tools.datasource.UpgradeDolphinScheduler$UpgradeRunner.run(UpgradeDolphinScheduler.java:56) [dolphinscheduler-tools-3.2.0.jar:3.2.0]
-        at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:771) [spring-boot-2.7.3.jar:2.7.3]
-        at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:755) [spring-boot-2.7.3.jar:2.7.3]
-        at org.springframework.boot.SpringApplication.run(SpringApplication.java:315) [spring-boot-2.7.3.jar:2.7.3]
-        at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306) [spring-boot-2.7.3.jar:2.7.3]
-        at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295) [spring-boot-2.7.3.jar:2.7.3]
-        at org.apache.dolphinscheduler.tools.datasource.UpgradeDolphinScheduler.main(UpgradeDolphinScheduler.java:36) [dolphinscheduler-tools-3.2.0.jar:3.2.0]
-
-2024-11-26 07:13:16.521  INFO 1308201 --- [           main] ConditionEvaluationReportLoggingListener :
-
-Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2024-11-26 07:13:16.540 ERROR 1308201 --- [           main] o.s.boot.SpringApplication               : Application run failed
-
-java.lang.IllegalStateException: Failed to execute CommandLineRunner
-        at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:774) [spring-boot-2.7.3.jar:2.7.3]
-        at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:755) [spring-boot-2.7.3.jar:2.7.3]
-        at org.springframework.boot.SpringApplication.run(SpringApplication.java:315) [spring-boot-2.7.3.jar:2.7.3]
-        at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306) [spring-boot-2.7.3.jar:2.7.3]
-        at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295) [spring-boot-2.7.3.jar:2.7.3]
-        at org.apache.dolphinscheduler.tools.datasource.UpgradeDolphinScheduler.main(UpgradeDolphinScheduler.java:36) [dolphinscheduler-tools-3.2.0.jar:3.2.0]
-Caused by: java.lang.RuntimeException: Execute initialize sql file: sql/dolphinscheduler_postgresql.sql error
-        at org.apache.dolphinscheduler.tools.datasource.dao.UpgradeDao.runInitSql(UpgradeDao.java:67) ~[dolphinscheduler-tools-3.2.0.jar:3.2.0]
-        at org.apache.dolphinscheduler.tools.datasource.dao.UpgradeDao.initSchema(UpgradeDao.java:52) ~[dolphinscheduler-tools-3.2.0.jar:3.2.0]
-        at org.apache.dolphinscheduler.tools.datasource.DolphinSchedulerManager.initDolphinSchedulerSchema(DolphinSchedulerManager.java:92) ~[dolphinscheduler-tools-3.2.0.jar:3.2.0]
-        at org.apache.dolphinscheduler.tools.datasource.DolphinSchedulerManager.initDolphinScheduler(DolphinSchedulerManager.java:72) ~[dolphinscheduler-tools-3.2.0.jar:3.2.0]
-        at org.apache.dolphinscheduler.tools.datasource.UpgradeDolphinScheduler$UpgradeRunner.run(UpgradeDolphinScheduler.java:56) ~[dolphinscheduler-tools-3.2.0.jar:3.2.0]
-        at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:771) [spring-boot-2.7.3.jar:2.7.3]
-        ... 5 common frames omitted
-Caused by: org.postgresql.util.PSQLException: ERROR: Cannot create index whose evaluation cannot be enforced to remote nodes
-        at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2873) ~[gsjdbc4.jar:na]
-        at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2601) ~[gsjdbc4.jar:na]
-        at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:329) ~[gsjdbc4.jar:na]
-        at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:491) ~[gsjdbc4.jar:na]
-        at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:411) ~[gsjdbc4.jar:na]
-        at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:332) ~[gsjdbc4.jar:na]
-        at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:318) ~[gsjdbc4.jar:na]
-        at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:294) ~[gsjdbc4.jar:na]
-        at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:289) ~[gsjdbc4.jar:na]
-        at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-4.0.3.jar:na]
-        at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-4.0.3.jar:na]
-        at org.apache.dolphinscheduler.common.sql.SqlScriptRunner.execute(SqlScriptRunner.java:58) ~[dolphinscheduler-common-3.2.0.jar:3.2.0]
-        at org.apache.dolphinscheduler.tools.datasource.dao.UpgradeDao.runInitSql(UpgradeDao.java:64) ~[dolphinscheduler-tools-3.2.0.jar:3.2.0]
-        ... 10 common frames omitted
-
-2024-11-26 07:13:16.544  INFO 1308201 --- [           main] com.zaxxer.hikari.HikariDataSource       : DolphinScheduler - Shutdown initiated...
-2024-11-26 07:13:16.566  INFO 1308201 --- [           main] com.zaxxer.hikari.HikariDataSource       : DolphinScheduler - Shutdown completed.
+[INFO] 2024-11-29 16:09:18.201 +0800 org.apache.zookeeper.ZooKeeper:[98] - Client environment:os.memory.max=995MB
+[INFO] 2024-11-29 16:09:18.201 +0800 org.apache.zookeeper.ZooKeeper:[98] - Client environment:os.memory.total=995MB
+[INFO] 2024-11-29 16:09:18.206 +0800 org.apache.zookeeper.ZooKeeper:[637] - Initiating client connection, connectString=localhost:2181 sessionTimeout=30000 watcher=org.apache.curator.ConnectionState@22604c7e
+[INFO] 2024-11-29 16:09:18.212 +0800 org.apache.zookeeper.common.X509Util:[77] - Setting -D jdk.tls.rejectClientInitiatedRenegotiation=true to disable client-initiated TLS renegotiation
+[INFO] 2024-11-29 16:09:18.218 +0800 org.apache.zookeeper.ClientCnxnSocket:[239] - jute.maxbuffer value is 1048575 Bytes
+[INFO] 2024-11-29 16:09:18.229 +0800 org.apache.zookeeper.ClientCnxn:[1732] - zookeeper.request.timeout value is 0. feature enabled=false
+[INFO] 2024-11-29 16:09:18.307 +0800 org.apache.zookeeper.ClientCnxn:[1171] - Opening socket connection to server localhost/127.0.0.1:2181.
+[INFO] 2024-11-29 16:09:18.307 +0800 org.apache.zookeeper.ClientCnxn:[1173] - SASL config status: Will not attempt to authenticate using SASL (unknown error)
+[INFO] 2024-11-29 16:09:18.311 +0800 org.apache.zookeeper.ClientCnxn:[1005] - Socket connection established, initiating session, client: /127.0.0.1:41406, server: localhost/127.0.0.1:2181
+[INFO] 2024-11-29 16:09:18.330 +0800 org.apache.curator.framework.imps.CuratorFrameworkImpl:[386] - Default schema
+[INFO] 2024-11-29 16:09:18.335 +0800 org.apache.zookeeper.ClientCnxn:[1444] - Session establishment complete on server localhost/127.0.0.1:2181, session id = 0x100010b8ec90020, negotiated timeout = 30000
+[INFO] 2024-11-29 16:09:18.343 +0800 org.apache.curator.framework.state.ConnectionStateManager:[252] - State change: CONNECTED
+[INFO] 2024-11-29 16:09:18.398 +0800 org.apache.curator.framework.imps.EnsembleTracker:[201] - New config event received: {}
+[INFO] 2024-11-29 16:09:18.398 +0800 org.apache.curator.framework.imps.EnsembleTracker:[201] - New config event received: {}
+[INFO] 2024-11-29 16:09:22.721 +0800 org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver:[58] - Exposing 3 endpoint(s) beneath base path '/actuator'
+[INFO] 2024-11-29 16:09:23.019 +0800 org.eclipse.jetty.server.handler.ContextHandler.application:[2368] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO] 2024-11-29 16:09:23.019 +0800 org.springframework.web.servlet.DispatcherServlet:[525] - Initializing Servlet 'dispatcherServlet'
+[INFO] 2024-11-29 16:09:23.021 +0800 org.springframework.web.servlet.DispatcherServlet:[547] - Completed initialization in 2 ms
+[INFO] 2024-11-29 16:09:23.044 +0800 org.eclipse.jetty.server.AbstractConnector:[333] - Started ServerConnector@5384ce66{HTTP/1.1, (http/1.1)}{0.0.0.0:50053}
+[INFO] 2024-11-29 16:09:23.045 +0800 org.springframework.boot.web.embedded.jetty.JettyWebServer:[172] - Jetty started on port(s) 50053 (http/1.1) with context path '/'
+[INFO] 2024-11-29 16:09:23.087 +0800 org.apache.dolphinscheduler.alert.AlertServer:[61] - Started AlertServer in 17.114 seconds (JVM running for 17.644)
+[INFO] 2024-11-29 16:09:23.100 +0800 org.apache.dolphinscheduler.alert.AlertServer:[60] - Alert server is staring ...
+[INFO] 2024-11-29 16:09:23.100 +0800 org.apache.dolphinscheduler.alert.plugin.AlertPluginManager:[57] - AlertPluginManager start ...
+[INFO] 2024-11-29 16:09:23.248 +0800 org.apache.dolphinscheduler.alert.plugin.AlertPluginManager:[87] - Registering alert plugin: Script - class org.apache.dolphinscheduler.plugin.alert.script.ScriptAlertChannelFactory
+[INFO] 2024-11-29 16:09:23.248 +0800 org.apache.dolphinscheduler.alert.plugin.AlertPluginManager:[91] - Registered alert plugin: Script - class org.apache.dolphinscheduler.plugin.alert.script.ScriptAlertChannelFactory
+[INFO] 2024-11-29 16:09:23.255 +0800 org.apache.dolphinscheduler.common.utils.JSONUtils:[71] - init timezone: sun.util.calendar.ZoneInfo[id="Asia/Hong_Kong",offset=28800000,dstSavings=0,useDaylight=false,transitions=71,lastRule=null]
+[WARN] 2024-11-29 16:09:23.495 +0800 com.zaxxer.hikari.pool.ProxyConnection:[182] - DolphinScheduler - Connection org.postgresql.jdbc.PgConnection@69c0bae6 marked as broken because of SQLSTATE(0A000), ErrorCode(33004)
+org.postgresql.util.PSQLException: [192.168.47.20:40830/172.168.3.179:8000] ERROR: Fail to generate plan with GSI.
+  Detail: GSI modifications does not support RETURNING.
+        at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:3149)
+        at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2853)
+        at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:394)
+        at org.postgresql.jdbc.PgStatement.runQueryExecutor(PgStatement.java:611)
+        at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:567)
+        at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:411)
+        at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:161)
+        at org.postgresql.jdbc.PgPreparedStatement.execute(PgPreparedStatement.java:143)
+        at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+        at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+        at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:47)
+        at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:74)
+        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.lang.reflect.Method.invoke(Method.java:483)
+        at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:64)
+        at com.sun.proxy.$Proxy173.update(Unknown Source)
+        at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+        at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.lang.reflect.Method.invoke(Method.java:483)
+        at org.apache.ibatis.plugin.Invocation.proceed(Invocation.java:49)
+        at com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor.intercept(MybatisPlusInterceptor.java:106)
+        at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:62)
+        at com.sun.proxy.$Proxy172.update(Unknown Source)
+        at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:194)
+        at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:181)
+        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.lang.reflect.Method.invoke(Method.java:483)
+        at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427)
+        at com.sun.proxy.$Proxy127.insert(Unknown Source)
+        at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:272)
+        at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.execute(MybatisMapperMethod.java:59)
+        at com.baomidou.mybatisplus.core.override.MybatisMapperProxy$PlainMethodInvoker.invoke(MybatisMapperProxy.java:148)
+        at com.baomidou.mybatisplus.core.override.MybatisMapperProxy.invoke(MybatisMapperProxy.java:89)
+        at com.sun.proxy.$Proxy132.insert(Unknown Source)
+        at org.apache.dolphinscheduler.dao.PluginDao.addOrUpdatePluginDefine(PluginDao.java:64)
+        at org.apache.dolphinscheduler.alert.plugin.AlertPluginManager.installAlertPlugin(AlertPluginManager.java:99)
+        at org.apache.dolphinscheduler.alert.plugin.AlertPluginManager.start(AlertPluginManager.java:59)
+        at org.apache.dolphinscheduler.alert.AlertServer.run(AlertServer.java:61)
+        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.lang.reflect.Method.invoke(Method.java:483)
+        at org.springframework.context.event.ApplicationListenerMethodAdapter.doInvoke(ApplicationListenerMethodAdapter.java:344)
+        at org.springframework.context.event.ApplicationListenerMethodAdapter.processEvent(ApplicationListenerMethodAdapter.java:229)
+        at org.springframework.context.event.ApplicationListenerMethodAdapter.onApplicationEvent(ApplicationListenerMethodAdapter.java:166)
+        at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176)
+        at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169)
+        at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143)
+        at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:421)
+        at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:378)
+        at org.springframework.boot.context.event.EventPublishingRunListener.ready(EventPublishingRunListener.java:114)
+        at org.springframework.boot.SpringApplicationRunListeners.lambda$ready$6(SpringApplicationRunListeners.java:82)
+        at org.springframework.boot.SpringApplicationRunListeners$$Lambda$304/465152579.accept(Unknown Source)
+        at java.util.ArrayList.forEach(ArrayList.java:1234)
+        at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:120)
+        at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:114)
+        at org.springframework.boot.SpringApplicationRunListeners.ready(SpringApplicationRunListeners.java:82)
+        at org.springframework.boot.SpringApplication.run(SpringApplication.java:323)
+        at org.springframework.boot.builder.SpringApplicationBuilder.run(SpringApplicationBuilder.java:164)
+        at org.apache.dolphinscheduler.alert.AlertServer.main(AlertServer.java:55)
+[INFO] 2024-11-29 16:09:23.563 +0800 org.postgresql.core.v3.ConnectionFactoryImpl:[135] - [92e0dfdd-7fa5-4714-9845-bca3c71feb49] Try to connect. IP: 172.168.3.179:8000
+[ERROR] 2024-11-29 16:09:23.636 +0800 org.apache.dolphinscheduler.dao.PluginDao:[73] - Insert plugin definition error, there may already exist a plugin
+org.springframework.jdbc.UncategorizedSQLException:
+### Error updating database.  Cause: org.postgresql.util.PSQLException: [192.168.47.20:40830/172.168.3.179:8000] ERROR: Fail to generate plan with GSI.
+  Detail: GSI modifications does not support RETURNING.
+### The error may exist in org/apache/dolphinscheduler/dao/mapper/PluginDefineMapper.java (best guess)
+### The error may involve org.apache.dolphinscheduler.dao.mapper.PluginDefineMapper.insert-Inline
+### The error occurred while setting parameters
+### SQL: INSERT INTO t_ds_plugin_define  ( plugin_name, plugin_type, plugin_params, create_time, update_time )  VALUES  ( ?, ?, ?, ?, ? )
+### Cause: org.postgresql.util.PSQLException: [192.168.47.20:40830/172.168.3.179:8000] ERROR: Fail to generate plan with GSI.
+  Detail: GSI modifications does not support RETURNING.
+; uncategorized SQLException; SQL state [0A000]; error code [33004]; [192.168.47.20:40830/172.168.3.179:8000] ERROR: Fail to generate plan with GSI.
+  Detail: GSI modifications does not support RETURNING.; nested exception is org.postgresql.util.PSQLException: [192.168.47.20:40830/172.168.3.179:8000] ERROR: Fail to generate plan with GSI.
+  Detail: GSI modifications does not support RETURNING.
+        at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:92)
+        at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:441)
+        at com.sun.proxy.$Proxy127.insert(Unknown Source)
+        at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:272)
+        at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.execute(MybatisMapperMethod.java:59)
+        at com.baomidou.mybatisplus.core.override.MybatisMapperProxy$PlainMethodInvoker.invoke(MybatisMapperProxy.java:148)
+        at com.baomidou.mybatisplus.core.override.MybatisMapperProxy.invoke(MybatisMapperProxy.java:89)
+        at com.sun.proxy.$Proxy132.insert(Unknown Source)
+        at org.apache.dolphinscheduler.dao.PluginDao.addOrUpdatePluginDefine(PluginDao.java:64)
+        at org.apache.dolphinscheduler.alert.plugin.AlertPluginManager.installAlertPlugin(AlertPluginManager.java:99)
+        at org.apache.dolphinscheduler.alert.plugin.AlertPluginManager.start(AlertPluginManager.java:59)
+        at org.apache.dolphinscheduler.alert.AlertServer.run(AlertServer.java:61)
+        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.lang.reflect.Method.invoke(Method.java:483)
+        at org.springframework.context.event.ApplicationListenerMethodAdapter.doInvoke(ApplicationListenerMethodAdapter.java:344)
+        at org.springframework.context.event.ApplicationListenerMethodAdapter.processEvent(ApplicationListenerMethodAdapter.java:229)
+        at org.springframework.context.event.ApplicationListenerMethodAdapter.onApplicationEvent(ApplicationListenerMethodAdapter.java:166)
+        at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176)
+        at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169)
+        at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143)
+        at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:421)
+        at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:378)
+        at org.springframework.boot.context.event.EventPublishingRunListener.ready(EventPublishingRunListener.java:114)
+        at org.springframework.boot.SpringApplicationRunListeners.lambda$ready$6(SpringApplicationRunListeners.java:82)
+        at org.springframework.boot.SpringApplicationRunListeners$$Lambda$304/465152579.accept(Unknown Source)
+        at java.util.ArrayList.forEach(ArrayList.java:1234)
+        at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:120)
+        at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:114)
+        at org.springframework.boot.SpringApplicationRunListeners.ready(SpringApplicationRunListeners.java:82)
+        at org.springframework.boot.SpringApplication.run(SpringApplication.java:323)
+        at org.springframework.boot.builder.SpringApplicationBuilder.run(SpringApplicationBuilder.java:164)
+        at org.apache.dolphinscheduler.alert.AlertServer.main(AlertServer.java:55)
+Caused by: org.postgresql.util.PSQLException: [192.168.47.20:40830/172.168.3.179:8000] ERROR: Fail to generate plan with GSI.
+  Detail: GSI modifications does not support RETURNING.
+        at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:3149)
+        at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2853)
+        at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:394)
+        at org.postgresql.jdbc.PgStatement.runQueryExecutor(PgStatement.java:611)
+        at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:567)
+        at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:411)
+        at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:161)
+        at org.postgresql.jdbc.PgPreparedStatement.execute(PgPreparedStatement.java:143)
+        at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+        at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+        at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:47)
+        at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:74)
+        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.lang.reflect.Method.invoke(Method.java:483)
+        at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:64)
+        at com.sun.proxy.$Proxy173.update(Unknown Source)
+        at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+        at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.lang.reflect.Method.invoke(Method.java:483)
+        at org.apache.ibatis.plugin.Invocation.proceed(Invocation.java:49)
+        at com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor.intercept(MybatisPlusInterceptor.java:106)
+        at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:62)
+        at com.sun.proxy.$Proxy172.update(Unknown Source)
+        at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:194)
+        at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:181)
+        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.lang.reflect.Method.invoke(Method.java:483)
+        at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427)
+        ... 32 common frames omitted
+[INFO] 2024-11-29 16:09:23.650 +0800 org.postgresql.core.v3.ConnectionFactoryImpl:[135] - [192.168.47.20:55116/172.168.3.179:8000] Connection is established. ID: 92e0dfdd-7fa5-4714-9845-bca3c71feb49
+[INFO] 2024-11-29 16:09:23.654 +0800 org.postgresql.core.v3.ConnectionFactoryImpl:[135] - Connect complete. ID: 92e0dfdd-7fa5-4714-9845-bca3c71feb49
+[ERROR] 2024-11-29 16:09:23.686 +0800 org.springframework.boot.SpringApplication:[824] - Application run failed
+org.apache.dolphinscheduler.plugin.task.api.TaskPluginException: Failed to insert plugin definition, pluginName: Script, pluginType: alert
+        at org.apache.dolphinscheduler.dao.PluginDao.addOrUpdatePluginDefine(PluginDao.java:78)
+        at org.apache.dolphinscheduler.alert.plugin.AlertPluginManager.installAlertPlugin(AlertPluginManager.java:99)
+        at org.apache.dolphinscheduler.alert.plugin.AlertPluginManager.start(AlertPluginManager.java:59)
+        at org.apache.dolphinscheduler.alert.AlertServer.run(AlertServer.java:61)
+        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.lang.reflect.Method.invoke(Method.java:483)
+        at org.springframework.context.event.ApplicationListenerMethodAdapter.doInvoke(ApplicationListenerMethodAdapter.java:344)
+        at org.springframework.context.event.ApplicationListenerMethodAdapter.processEvent(ApplicationListenerMethodAdapter.java:229)
+        at org.springframework.context.event.ApplicationListenerMethodAdapter.onApplicationEvent(ApplicationListenerMethodAdapter.java:166)
+        at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176)
+        at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169)
+        at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143)
+        at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:421)
+        at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:378)
+        at org.springframework.boot.context.event.EventPublishingRunListener.ready(EventPublishingRunListener.java:114)
+        at org.springframework.boot.SpringApplicationRunListeners.lambda$ready$6(SpringApplicationRunListeners.java:82)
+        at org.springframework.boot.SpringApplicationRunListeners$$Lambda$304/465152579.accept(Unknown Source)
+        at java.util.ArrayList.forEach(ArrayList.java:1234)
+        at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:120)
+        at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:114)
+        at org.springframework.boot.SpringApplicationRunListeners.ready(SpringApplicationRunListeners.java:82)
+        at org.springframework.boot.SpringApplication.run(SpringApplication.java:323)
+        at org.springframework.boot.builder.SpringApplicationBuilder.run(SpringApplicationBuilder.java:164)
+        at org.apache.dolphinscheduler.alert.AlertServer.main(AlertServer.java:55)
+[INFO] 2024-11-29 16:09:23.709 +0800 org.eclipse.jetty.server.AbstractConnector:[383] - Stopped ServerConnector@5384ce66{HTTP/1.1, (http/1.1)}{0.0.0.0:50053}
+[INFO] 2024-11-29 16:09:23.710 +0800 org.eclipse.jetty.server.session:[149] - node0 Stopped scavenging
+[INFO] 2024-11-29 16:09:23.711 +0800 org.eclipse.jetty.server.handler.ContextHandler.application:[2368] - Destroying Spring FrameworkServlet 'dispatcherServlet'
+[INFO] 2024-11-29 16:09:23.712 +0800 org.eclipse.jetty.server.handler.ContextHandler:[1159] - Stopped o.s.b.w.e.j.JettyEmbeddedWebAppContext@6775c0d1{application,/,[file:///tmp/jetty-docbase.50053.6324278305082382309/],STOPPED}
+[INFO] 2024-11-29 16:09:23.726 +0800 org.apache.dolphinscheduler.alert.AlertServer:[87] - Alert server is stopping, cause: alert server destroy
+[INFO] 2024-11-29 16:09:23.726 +0800 org.apache.dolphinscheduler.alert.registry.AlertRegistryClient:[52] - AlertRegistryClient closing...
+[INFO] 2024-11-29 16:09:23.726 +0800 org.apache.dolphinscheduler.alert.service.AlertBootstrapService:[307] - Closed AlertBootstrapService...
+[INFO] 2024-11-29 16:09:23.727 +0800 org.apache.dolphinscheduler.alert.rpc.AlertRpcServer:[56] - Closing alert rpc server...
+[ERROR] 2024-11-29 16:09:23.727 +0800 org.apache.dolphinscheduler.alert.AlertServer:[98] - Alert server stop failed, cause: alert server destroy
+java.lang.NullPointerException: null
+        at org.apache.dolphinscheduler.alert.registry.AlertRegistryClient.close(AlertRegistryClient.java:53)
+        at org.apache.dolphinscheduler.alert.AlertServer.destroy(AlertServer.java:93)
+        at org.apache.dolphinscheduler.alert.AlertServer.close(AlertServer.java:70)
+        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.lang.reflect.Method.invoke(Method.java:483)
+        at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:389)
+        at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeDestroyMethods(InitDestroyAnnotationBeanPostProcessor.java:347)
+        at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeDestruction(InitDestroyAnnotationBeanPostProcessor.java:177)
+        at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:197)
+        at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroyBean(DefaultSingletonBeanRegistry.java:587)
+        at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingleton(DefaultSingletonBeanRegistry.java:559)
+        at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingleton(DefaultListableBeanFactory.java:1163)
+        at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingletons(DefaultSingletonBeanRegistry.java:520)
+        at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingletons(DefaultListableBeanFactory.java:1156)
+        at org.springframework.context.support.AbstractApplicationContext.destroyBeans(AbstractApplicationContext.java:1106)
+        at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1075)
+        at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.doClose(ServletWebServerApplicationContext.java:174)
+        at org.springframework.context.support.AbstractApplicationContext.close(AbstractApplicationContext.java:1021)
+        at org.springframework.boot.SpringApplication.handleRunFailure(SpringApplication.java:790)
+        at org.springframework.boot.SpringApplication.run(SpringApplication.java:326)
+        at org.springframework.boot.builder.SpringApplicationBuilder.run(SpringApplicationBuilder.java:164)
+        at org.apache.dolphinscheduler.alert.AlertServer.main(AlertServer.java:55)
+        Suppressed: java.lang.NullPointerException: null
+                at org.apache.dolphinscheduler.alert.rpc.AlertRpcServer.close(AlertRpcServer.java:57)
+                ... 23 common frames omitted
+[INFO] 2024-11-29 16:09:23.727 +0800 org.apache.dolphinscheduler.alert.registry.AlertRegistryClient:[52] - AlertRegistryClient closing...
+[WARN] 2024-11-29 16:09:23.727 +0800 org.springframework.beans.factory.support.DisposableBeanAdapter:[248] - Invocation of close method failed on bean with name 'alertRegistryClient': java.lang.NullPointerException
+[INFO] 2024-11-29 16:09:23.729 +0800 org.apache.curator.framework.imps.CuratorFrameworkImpl:[998] - backgroundOperationsLoop exiting
+[WARN] 2024-11-29 16:09:23.751 +0800 org.apache.zookeeper.ClientCnxn:[1286] - An exception was thrown while closing send thread for session 0x100010b8ec90020.
+org.apache.zookeeper.ClientCnxn$EndOfStreamException: Unable to read additional data from server sessionid 0x100010b8ec90020, likely server has closed socket
+        at org.apache.zookeeper.ClientCnxnSocketNIO.doIO(ClientCnxnSocketNIO.java:77)
+        at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:350)
+        at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1282)
+[INFO] 2024-11-29 16:09:23.853 +0800 org.apache.zookeeper.ClientCnxn:[568] - EventThread shut down for session: 0x100010b8ec90020
+[INFO] 2024-11-29 16:09:23.853 +0800 org.apache.zookeeper.ZooKeeper:[1232] - Session: 0x100010b8ec90020 closed
+[INFO] 2024-11-29 16:09:23.854 +0800 org.apache.dolphinscheduler.alert.rpc.AlertRpcServer:[56] - Closing alert rpc server...
+[WARN] 2024-11-29 16:09:23.854 +0800 org.springframework.beans.factory.support.DisposableBeanAdapter:[248] - Invocation of close method failed on bean with name 'alertRpcServer': java.lang.NullPointerException
+[INFO] 2024-11-29 16:09:23.854 +0800 org.apache.dolphinscheduler.alert.service.AlertBootstrapService:[307] - Closed AlertBootstrapService...
+[INFO] 2024-11-29 16:09:23.859 +0800 com.zaxxer.hikari.HikariDataSource:[350] - DolphinScheduler - Shutdown initiated...
+[INFO] 2024-11-29 16:09:23.861 +0800 com.zaxxer.hikari.HikariDataSource:[352] - DolphinScheduler - Shutdown completed.
