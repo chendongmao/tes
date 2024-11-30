@@ -287,3 +287,8 @@ WITH (
 ALTER TABLE coss_dolphin.t_ds_plugin_define OWNER TO coss_dolphin;
 GRANT ALL ON TABLE coss_dolphin.t_ds_plugin_define TO coss_dolphin;
 
+
+
+
+gaussdb (GaussDB Kernel 505.0.0.SPC0100 build 04237cc7) compiled at 2023-10-25 22:33:00 commit 6771 last mr 13618 release
+
