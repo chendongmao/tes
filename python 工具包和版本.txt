@@ -57,3 +57,16 @@ select count(*) from coss_dm.dm_all_kpi_month_dip
 ;select count(*) from coss_dm.dm_water_supply_operation_day_dip
 ;select count(*) from coss_dm.dm_water_supply_operation_month_dip
 ;select count(*) from coss_dm.dm_work_order_dip
+
+no data 
+;select count(*) from coss_dm.dm_leakage_dip
+
+;select count(*) from coss_dm.dm_treatment_works_dip_temp
+;select count(*) from coss_dm.dm_temp_treatment_works_dip
+;select count(*) from coss_dm.dm_rw_reservoir_level_detail_dip
+;select count(*) from coss_dm.dm_rawwater_day_dip
+;select count(*) from coss_dm.dm_energy_all_dip
+;select count(*) from coss_dm.dm_energy_region_dip
+
+
+
