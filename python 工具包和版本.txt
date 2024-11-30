@@ -1,316 +1,59 @@
-[INFO] 2024-11-29 16:09:18.201 +0800 org.apache.zookeeper.ZooKeeper:[98] - Client environment:os.memory.max=995MB
-[INFO] 2024-11-29 16:09:18.201 +0800 org.apache.zookeeper.ZooKeeper:[98] - Client environment:os.memory.total=995MB
-[INFO] 2024-11-29 16:09:18.206 +0800 org.apache.zookeeper.ZooKeeper:[637] - Initiating client connection, connectString=localhost:2181 sessionTimeout=30000 watcher=org.apache.curator.ConnectionState@22604c7e
-[INFO] 2024-11-29 16:09:18.212 +0800 org.apache.zookeeper.common.X509Util:[77] - Setting -D jdk.tls.rejectClientInitiatedRenegotiation=true to disable client-initiated TLS renegotiation
-[INFO] 2024-11-29 16:09:18.218 +0800 org.apache.zookeeper.ClientCnxnSocket:[239] - jute.maxbuffer value is 1048575 Bytes
-[INFO] 2024-11-29 16:09:18.229 +0800 org.apache.zookeeper.ClientCnxn:[1732] - zookeeper.request.timeout value is 0. feature enabled=false
-[INFO] 2024-11-29 16:09:18.307 +0800 org.apache.zookeeper.ClientCnxn:[1171] - Opening socket connection to server localhost/127.0.0.1:2181.
-[INFO] 2024-11-29 16:09:18.307 +0800 org.apache.zookeeper.ClientCnxn:[1173] - SASL config status: Will not attempt to authenticate using SASL (unknown error)
-[INFO] 2024-11-29 16:09:18.311 +0800 org.apache.zookeeper.ClientCnxn:[1005] - Socket connection established, initiating session, client: /127.0.0.1:41406, server: localhost/127.0.0.1:2181
-[INFO] 2024-11-29 16:09:18.330 +0800 org.apache.curator.framework.imps.CuratorFrameworkImpl:[386] - Default schema
-[INFO] 2024-11-29 16:09:18.335 +0800 org.apache.zookeeper.ClientCnxn:[1444] - Session establishment complete on server localhost/127.0.0.1:2181, session id = 0x100010b8ec90020, negotiated timeout = 30000
-[INFO] 2024-11-29 16:09:18.343 +0800 org.apache.curator.framework.state.ConnectionStateManager:[252] - State change: CONNECTED
-[INFO] 2024-11-29 16:09:18.398 +0800 org.apache.curator.framework.imps.EnsembleTracker:[201] - New config event received: {}
-[INFO] 2024-11-29 16:09:18.398 +0800 org.apache.curator.framework.imps.EnsembleTracker:[201] - New config event received: {}
-[INFO] 2024-11-29 16:09:22.721 +0800 org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver:[58] - Exposing 3 endpoint(s) beneath base path '/actuator'
-[INFO] 2024-11-29 16:09:23.019 +0800 org.eclipse.jetty.server.handler.ContextHandler.application:[2368] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-[INFO] 2024-11-29 16:09:23.019 +0800 org.springframework.web.servlet.DispatcherServlet:[525] - Initializing Servlet 'dispatcherServlet'
-[INFO] 2024-11-29 16:09:23.021 +0800 org.springframework.web.servlet.DispatcherServlet:[547] - Completed initialization in 2 ms
-[INFO] 2024-11-29 16:09:23.044 +0800 org.eclipse.jetty.server.AbstractConnector:[333] - Started ServerConnector@5384ce66{HTTP/1.1, (http/1.1)}{0.0.0.0:50053}
-[INFO] 2024-11-29 16:09:23.045 +0800 org.springframework.boot.web.embedded.jetty.JettyWebServer:[172] - Jetty started on port(s) 50053 (http/1.1) with context path '/'
-[INFO] 2024-11-29 16:09:23.087 +0800 org.apache.dolphinscheduler.alert.AlertServer:[61] - Started AlertServer in 17.114 seconds (JVM running for 17.644)
-[INFO] 2024-11-29 16:09:23.100 +0800 org.apache.dolphinscheduler.alert.AlertServer:[60] - Alert server is staring ...
-[INFO] 2024-11-29 16:09:23.100 +0800 org.apache.dolphinscheduler.alert.plugin.AlertPluginManager:[57] - AlertPluginManager start ...
-[INFO] 2024-11-29 16:09:23.248 +0800 org.apache.dolphinscheduler.alert.plugin.AlertPluginManager:[87] - Registering alert plugin: Script - class org.apache.dolphinscheduler.plugin.alert.script.ScriptAlertChannelFactory
-[INFO] 2024-11-29 16:09:23.248 +0800 org.apache.dolphinscheduler.alert.plugin.AlertPluginManager:[91] - Registered alert plugin: Script - class org.apache.dolphinscheduler.plugin.alert.script.ScriptAlertChannelFactory
-[INFO] 2024-11-29 16:09:23.255 +0800 org.apache.dolphinscheduler.common.utils.JSONUtils:[71] - init timezone: sun.util.calendar.ZoneInfo[id="Asia/Hong_Kong",offset=28800000,dstSavings=0,useDaylight=false,transitions=71,lastRule=null]
-[WARN] 2024-11-29 16:09:23.495 +0800 com.zaxxer.hikari.pool.ProxyConnection:[182] - DolphinScheduler - Connection org.postgresql.jdbc.PgConnection@69c0bae6 marked as broken because of SQLSTATE(0A000), ErrorCode(33004)
-org.postgresql.util.PSQLException: [192.168.47.20:40830/172.168.3.179:8000] ERROR: Fail to generate plan with GSI.
-  Detail: GSI modifications does not support RETURNING.
-        at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:3149)
-        at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2853)
-        at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:394)
-        at org.postgresql.jdbc.PgStatement.runQueryExecutor(PgStatement.java:611)
-        at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:567)
-        at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:411)
-        at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:161)
-        at org.postgresql.jdbc.PgPreparedStatement.execute(PgPreparedStatement.java:143)
-        at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
-        at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
-        at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:47)
-        at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:74)
-        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-        at java.lang.reflect.Method.invoke(Method.java:483)
-        at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:64)
-        at com.sun.proxy.$Proxy173.update(Unknown Source)
-        at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
-        at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
-        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-        at java.lang.reflect.Method.invoke(Method.java:483)
-        at org.apache.ibatis.plugin.Invocation.proceed(Invocation.java:49)
-        at com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor.intercept(MybatisPlusInterceptor.java:106)
-        at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:62)
-        at com.sun.proxy.$Proxy172.update(Unknown Source)
-        at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:194)
-        at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:181)
-        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-        at java.lang.reflect.Method.invoke(Method.java:483)
-        at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427)
-        at com.sun.proxy.$Proxy127.insert(Unknown Source)
-        at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:272)
-        at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.execute(MybatisMapperMethod.java:59)
-        at com.baomidou.mybatisplus.core.override.MybatisMapperProxy$PlainMethodInvoker.invoke(MybatisMapperProxy.java:148)
-        at com.baomidou.mybatisplus.core.override.MybatisMapperProxy.invoke(MybatisMapperProxy.java:89)
-        at com.sun.proxy.$Proxy132.insert(Unknown Source)
-        at org.apache.dolphinscheduler.dao.PluginDao.addOrUpdatePluginDefine(PluginDao.java:64)
-        at org.apache.dolphinscheduler.alert.plugin.AlertPluginManager.installAlertPlugin(AlertPluginManager.java:99)
-        at org.apache.dolphinscheduler.alert.plugin.AlertPluginManager.start(AlertPluginManager.java:59)
-        at org.apache.dolphinscheduler.alert.AlertServer.run(AlertServer.java:61)
-        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-        at java.lang.reflect.Method.invoke(Method.java:483)
-        at org.springframework.context.event.ApplicationListenerMethodAdapter.doInvoke(ApplicationListenerMethodAdapter.java:344)
-        at org.springframework.context.event.ApplicationListenerMethodAdapter.processEvent(ApplicationListenerMethodAdapter.java:229)
-        at org.springframework.context.event.ApplicationListenerMethodAdapter.onApplicationEvent(ApplicationListenerMethodAdapter.java:166)
-        at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176)
-        at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169)
-        at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143)
-        at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:421)
-        at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:378)
-        at org.springframework.boot.context.event.EventPublishingRunListener.ready(EventPublishingRunListener.java:114)
-        at org.springframework.boot.SpringApplicationRunListeners.lambda$ready$6(SpringApplicationRunListeners.java:82)
-        at org.springframework.boot.SpringApplicationRunListeners$$Lambda$304/465152579.accept(Unknown Source)
-        at java.util.ArrayList.forEach(ArrayList.java:1234)
-        at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:120)
-        at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:114)
-        at org.springframework.boot.SpringApplicationRunListeners.ready(SpringApplicationRunListeners.java:82)
-        at org.springframework.boot.SpringApplication.run(SpringApplication.java:323)
-        at org.springframework.boot.builder.SpringApplicationBuilder.run(SpringApplicationBuilder.java:164)
-        at org.apache.dolphinscheduler.alert.AlertServer.main(AlertServer.java:55)
-[INFO] 2024-11-29 16:09:23.563 +0800 org.postgresql.core.v3.ConnectionFactoryImpl:[135] - [92e0dfdd-7fa5-4714-9845-bca3c71feb49] Try to connect. IP: 172.168.3.179:8000
-[ERROR] 2024-11-29 16:09:23.636 +0800 org.apache.dolphinscheduler.dao.PluginDao:[73] - Insert plugin definition error, there may already exist a plugin
-org.springframework.jdbc.UncategorizedSQLException:
-### Error updating database.  Cause: org.postgresql.util.PSQLException: [192.168.47.20:40830/172.168.3.179:8000] ERROR: Fail to generate plan with GSI.
-  Detail: GSI modifications does not support RETURNING.
-### The error may exist in org/apache/dolphinscheduler/dao/mapper/PluginDefineMapper.java (best guess)
-### The error may involve org.apache.dolphinscheduler.dao.mapper.PluginDefineMapper.insert-Inline
-### The error occurred while setting parameters
-### SQL: INSERT INTO t_ds_plugin_define  ( plugin_name, plugin_type, plugin_params, create_time, update_time )  VALUES  ( ?, ?, ?, ?, ? )
-### Cause: org.postgresql.util.PSQLException: [192.168.47.20:40830/172.168.3.179:8000] ERROR: Fail to generate plan with GSI.
-  Detail: GSI modifications does not support RETURNING.
-; uncategorized SQLException; SQL state [0A000]; error code [33004]; [192.168.47.20:40830/172.168.3.179:8000] ERROR: Fail to generate plan with GSI.
-  Detail: GSI modifications does not support RETURNING.; nested exception is org.postgresql.util.PSQLException: [192.168.47.20:40830/172.168.3.179:8000] ERROR: Fail to generate plan with GSI.
-  Detail: GSI modifications does not support RETURNING.
-        at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:92)
-        at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:441)
-        at com.sun.proxy.$Proxy127.insert(Unknown Source)
-        at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:272)
-        at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.execute(MybatisMapperMethod.java:59)
-        at com.baomidou.mybatisplus.core.override.MybatisMapperProxy$PlainMethodInvoker.invoke(MybatisMapperProxy.java:148)
-        at com.baomidou.mybatisplus.core.override.MybatisMapperProxy.invoke(MybatisMapperProxy.java:89)
-        at com.sun.proxy.$Proxy132.insert(Unknown Source)
-        at org.apache.dolphinscheduler.dao.PluginDao.addOrUpdatePluginDefine(PluginDao.java:64)
-        at org.apache.dolphinscheduler.alert.plugin.AlertPluginManager.installAlertPlugin(AlertPluginManager.java:99)
-        at org.apache.dolphinscheduler.alert.plugin.AlertPluginManager.start(AlertPluginManager.java:59)
-        at org.apache.dolphinscheduler.alert.AlertServer.run(AlertServer.java:61)
-        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-        at java.lang.reflect.Method.invoke(Method.java:483)
-        at org.springframework.context.event.ApplicationListenerMethodAdapter.doInvoke(ApplicationListenerMethodAdapter.java:344)
-        at org.springframework.context.event.ApplicationListenerMethodAdapter.processEvent(ApplicationListenerMethodAdapter.java:229)
-        at org.springframework.context.event.ApplicationListenerMethodAdapter.onApplicationEvent(ApplicationListenerMethodAdapter.java:166)
-        at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176)
-        at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169)
-        at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143)
-        at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:421)
-        at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:378)
-        at org.springframework.boot.context.event.EventPublishingRunListener.ready(EventPublishingRunListener.java:114)
-        at org.springframework.boot.SpringApplicationRunListeners.lambda$ready$6(SpringApplicationRunListeners.java:82)
-        at org.springframework.boot.SpringApplicationRunListeners$$Lambda$304/465152579.accept(Unknown Source)
-        at java.util.ArrayList.forEach(ArrayList.java:1234)
-        at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:120)
-        at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:114)
-        at org.springframework.boot.SpringApplicationRunListeners.ready(SpringApplicationRunListeners.java:82)
-        at org.springframework.boot.SpringApplication.run(SpringApplication.java:323)
-        at org.springframework.boot.builder.SpringApplicationBuilder.run(SpringApplicationBuilder.java:164)
-        at org.apache.dolphinscheduler.alert.AlertServer.main(AlertServer.java:55)
-Caused by: org.postgresql.util.PSQLException: [192.168.47.20:40830/172.168.3.179:8000] ERROR: Fail to generate plan with GSI.
-  Detail: GSI modifications does not support RETURNING.
-        at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:3149)
-        at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2853)
-        at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:394)
-        at org.postgresql.jdbc.PgStatement.runQueryExecutor(PgStatement.java:611)
-        at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:567)
-        at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:411)
-        at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:161)
-        at org.postgresql.jdbc.PgPreparedStatement.execute(PgPreparedStatement.java:143)
-        at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
-        at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
-        at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:47)
-        at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:74)
-        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-        at java.lang.reflect.Method.invoke(Method.java:483)
-        at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:64)
-        at com.sun.proxy.$Proxy173.update(Unknown Source)
-        at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
-        at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
-        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-        at java.lang.reflect.Method.invoke(Method.java:483)
-        at org.apache.ibatis.plugin.Invocation.proceed(Invocation.java:49)
-        at com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor.intercept(MybatisPlusInterceptor.java:106)
-        at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:62)
-        at com.sun.proxy.$Proxy172.update(Unknown Source)
-        at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:194)
-        at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:181)
-        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-        at java.lang.reflect.Method.invoke(Method.java:483)
-        at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427)
-        ... 32 common frames omitted
-[INFO] 2024-11-29 16:09:23.650 +0800 org.postgresql.core.v3.ConnectionFactoryImpl:[135] - [192.168.47.20:55116/172.168.3.179:8000] Connection is established. ID: 92e0dfdd-7fa5-4714-9845-bca3c71feb49
-[INFO] 2024-11-29 16:09:23.654 +0800 org.postgresql.core.v3.ConnectionFactoryImpl:[135] - Connect complete. ID: 92e0dfdd-7fa5-4714-9845-bca3c71feb49
-[ERROR] 2024-11-29 16:09:23.686 +0800 org.springframework.boot.SpringApplication:[824] - Application run failed
-org.apache.dolphinscheduler.plugin.task.api.TaskPluginException: Failed to insert plugin definition, pluginName: Script, pluginType: alert
-        at org.apache.dolphinscheduler.dao.PluginDao.addOrUpdatePluginDefine(PluginDao.java:78)
-        at org.apache.dolphinscheduler.alert.plugin.AlertPluginManager.installAlertPlugin(AlertPluginManager.java:99)
-        at org.apache.dolphinscheduler.alert.plugin.AlertPluginManager.start(AlertPluginManager.java:59)
-        at org.apache.dolphinscheduler.alert.AlertServer.run(AlertServer.java:61)
-        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-        at java.lang.reflect.Method.invoke(Method.java:483)
-        at org.springframework.context.event.ApplicationListenerMethodAdapter.doInvoke(ApplicationListenerMethodAdapter.java:344)
-        at org.springframework.context.event.ApplicationListenerMethodAdapter.processEvent(ApplicationListenerMethodAdapter.java:229)
-        at org.springframework.context.event.ApplicationListenerMethodAdapter.onApplicationEvent(ApplicationListenerMethodAdapter.java:166)
-        at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176)
-        at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169)
-        at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143)
-        at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:421)
-        at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:378)
-        at org.springframework.boot.context.event.EventPublishingRunListener.ready(EventPublishingRunListener.java:114)
-        at org.springframework.boot.SpringApplicationRunListeners.lambda$ready$6(SpringApplicationRunListeners.java:82)
-        at org.springframework.boot.SpringApplicationRunListeners$$Lambda$304/465152579.accept(Unknown Source)
-        at java.util.ArrayList.forEach(ArrayList.java:1234)
-        at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:120)
-        at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:114)
-        at org.springframework.boot.SpringApplicationRunListeners.ready(SpringApplicationRunListeners.java:82)
-        at org.springframework.boot.SpringApplication.run(SpringApplication.java:323)
-        at org.springframework.boot.builder.SpringApplicationBuilder.run(SpringApplicationBuilder.java:164)
-        at org.apache.dolphinscheduler.alert.AlertServer.main(AlertServer.java:55)
-[INFO] 2024-11-29 16:09:23.709 +0800 org.eclipse.jetty.server.AbstractConnector:[383] - Stopped ServerConnector@5384ce66{HTTP/1.1, (http/1.1)}{0.0.0.0:50053}
-[INFO] 2024-11-29 16:09:23.710 +0800 org.eclipse.jetty.server.session:[149] - node0 Stopped scavenging
-[INFO] 2024-11-29 16:09:23.711 +0800 org.eclipse.jetty.server.handler.ContextHandler.application:[2368] - Destroying Spring FrameworkServlet 'dispatcherServlet'
-[INFO] 2024-11-29 16:09:23.712 +0800 org.eclipse.jetty.server.handler.ContextHandler:[1159] - Stopped o.s.b.w.e.j.JettyEmbeddedWebAppContext@6775c0d1{application,/,[file:///tmp/jetty-docbase.50053.6324278305082382309/],STOPPED}
-[INFO] 2024-11-29 16:09:23.726 +0800 org.apache.dolphinscheduler.alert.AlertServer:[87] - Alert server is stopping, cause: alert server destroy
-[INFO] 2024-11-29 16:09:23.726 +0800 org.apache.dolphinscheduler.alert.registry.AlertRegistryClient:[52] - AlertRegistryClient closing...
-[INFO] 2024-11-29 16:09:23.726 +0800 org.apache.dolphinscheduler.alert.service.AlertBootstrapService:[307] - Closed AlertBootstrapService...
-[INFO] 2024-11-29 16:09:23.727 +0800 org.apache.dolphinscheduler.alert.rpc.AlertRpcServer:[56] - Closing alert rpc server...
-[ERROR] 2024-11-29 16:09:23.727 +0800 org.apache.dolphinscheduler.alert.AlertServer:[98] - Alert server stop failed, cause: alert server destroy
-java.lang.NullPointerException: null
-        at org.apache.dolphinscheduler.alert.registry.AlertRegistryClient.close(AlertRegistryClient.java:53)
-        at org.apache.dolphinscheduler.alert.AlertServer.destroy(AlertServer.java:93)
-        at org.apache.dolphinscheduler.alert.AlertServer.close(AlertServer.java:70)
-        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-        at java.lang.reflect.Method.invoke(Method.java:483)
-        at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:389)
-        at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeDestroyMethods(InitDestroyAnnotationBeanPostProcessor.java:347)
-        at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeDestruction(InitDestroyAnnotationBeanPostProcessor.java:177)
-        at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:197)
-        at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroyBean(DefaultSingletonBeanRegistry.java:587)
-        at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingleton(DefaultSingletonBeanRegistry.java:559)
-        at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingleton(DefaultListableBeanFactory.java:1163)
-        at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingletons(DefaultSingletonBeanRegistry.java:520)
-        at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingletons(DefaultListableBeanFactory.java:1156)
-        at org.springframework.context.support.AbstractApplicationContext.destroyBeans(AbstractApplicationContext.java:1106)
-        at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1075)
-        at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.doClose(ServletWebServerApplicationContext.java:174)
-        at org.springframework.context.support.AbstractApplicationContext.close(AbstractApplicationContext.java:1021)
-        at org.springframework.boot.SpringApplication.handleRunFailure(SpringApplication.java:790)
-        at org.springframework.boot.SpringApplication.run(SpringApplication.java:326)
-        at org.springframework.boot.builder.SpringApplicationBuilder.run(SpringApplicationBuilder.java:164)
-        at org.apache.dolphinscheduler.alert.AlertServer.main(AlertServer.java:55)
-        Suppressed: java.lang.NullPointerException: null
-                at org.apache.dolphinscheduler.alert.rpc.AlertRpcServer.close(AlertRpcServer.java:57)
-                ... 23 common frames omitted
-[INFO] 2024-11-29 16:09:23.727 +0800 org.apache.dolphinscheduler.alert.registry.AlertRegistryClient:[52] - AlertRegistryClient closing...
-[WARN] 2024-11-29 16:09:23.727 +0800 org.springframework.beans.factory.support.DisposableBeanAdapter:[248] - Invocation of close method failed on bean with name 'alertRegistryClient': java.lang.NullPointerException
-[INFO] 2024-11-29 16:09:23.729 +0800 org.apache.curator.framework.imps.CuratorFrameworkImpl:[998] - backgroundOperationsLoop exiting
-[WARN] 2024-11-29 16:09:23.751 +0800 org.apache.zookeeper.ClientCnxn:[1286] - An exception was thrown while closing send thread for session 0x100010b8ec90020.
-org.apache.zookeeper.ClientCnxn$EndOfStreamException: Unable to read additional data from server sessionid 0x100010b8ec90020, likely server has closed socket
-        at org.apache.zookeeper.ClientCnxnSocketNIO.doIO(ClientCnxnSocketNIO.java:77)
-        at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:350)
-        at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1282)
-[INFO] 2024-11-29 16:09:23.853 +0800 org.apache.zookeeper.ClientCnxn:[568] - EventThread shut down for session: 0x100010b8ec90020
-[INFO] 2024-11-29 16:09:23.853 +0800 org.apache.zookeeper.ZooKeeper:[1232] - Session: 0x100010b8ec90020 closed
-[INFO] 2024-11-29 16:09:23.854 +0800 org.apache.dolphinscheduler.alert.rpc.AlertRpcServer:[56] - Closing alert rpc server...
-[WARN] 2024-11-29 16:09:23.854 +0800 org.springframework.beans.factory.support.DisposableBeanAdapter:[248] - Invocation of close method failed on bean with name 'alertRpcServer': java.lang.NullPointerException
-[INFO] 2024-11-29 16:09:23.854 +0800 org.apache.dolphinscheduler.alert.service.AlertBootstrapService:[307] - Closed AlertBootstrapService...
-[INFO] 2024-11-29 16:09:23.859 +0800 com.zaxxer.hikari.HikariDataSource:[350] - DolphinScheduler - Shutdown initiated...
-[INFO] 2024-11-29 16:09:23.861 +0800 com.zaxxer.hikari.HikariDataSource:[352] - DolphinScheduler - Shutdown completed.
-修改见表语句
--- Drop table coss_dolphin.t_ds_plugin_define
-
--- DROP TABLE coss_dolphin.t_ds_plugin_define;
-
-CREATE TABLE coss_dolphin.t_ds_plugin_define (
-	id serial4 NOT NULL,
-	plugin_name varchar(255) NOT NULL,
-	plugin_type varchar(63) NOT NULL,
-	plugin_params text NULL,
-	create_time timestamp NULL,
-	update_time timestamp NULL,
-	CONSTRAINT t_ds_plugin_define_pk PRIMARY KEY (id),
-	CONSTRAINT t_ds_plugin_define_un UNIQUE (plugin_name, plugin_type, id) BY GLOBAL INDEX
-)
-WITH (
-	orientation=row,
-	compression=no
-);
-
--- Permissions
-
-ALTER TABLE coss_dolphin.t_ds_plugin_define OWNER TO coss_dolphin;
-GRANT ALL ON TABLE coss_dolphin.t_ds_plugin_define TO coss_dolphin;
-
-
-
-
-gaussdb (GaussDB Kernel 505.0.0.SPC0100 build 04237cc7) compiled at 2023-10-25 22:33:00 commit 6771 last mr 13618 release
-
-
-
-
-DROP TABLE IF EXISTS t_ds_project_parameter;
-CREATE TABLE t_ds_project_parameter (
-  id int NOT NULL  ,
-  param_name varchar(255) NOT NULL ,
-  param_value varchar(255) NOT NULL ,
-  code bigint NOT NULL,
-  project_code bigint NOT NULL,
-  user_id int DEFAULT NULL ,
-  create_time timestamp DEFAULT CURRENT_TIMESTAMP ,
-  update_time timestamp DEFAULT CURRENT_TIMESTAMP ,
-  PRIMARY KEY (id)
-) ;
-
-CREATE UNIQUE INDEX unique_project_parameter_name on t_ds_project_parameter (project_code, param_name,id);
-
-
-
-
-SQL 错误 [16622] [0A000]: [172.168.3.151:65429/172.168.3.179:8000] ERROR: Cannot create index whose evaluation cannot be enforced to remote nodes
+select count(*) from coss_dm.dm_all_kpi_month_dip
+;select count(*) from coss_dm.dm_burst_leak_reason_kpi_dip
+;select count(*) from coss_dm.dm_case_investigation_dip
+;select count(*) from coss_dm.dm_customer_service_dip
+;select count(*) from coss_dm.dm_customer_service_seats_dip
+;select count(*) from coss_dm.dm_data_list_dip
+;select count(*) from coss_dm.dm_dma_mnf_kpi_dip
+;select count(*) from coss_dm.dm_energy_all_dip
+;select count(*) from coss_dm.dm_energy_region_dip
+;select count(*) from coss_dm.dm_engineering_contract_dip
+;select count(*) from coss_dm.dm_engineering_information_dip
+;select count(*) from coss_dm.dm_fault_report_dip
+;select count(*) from coss_dm.dm_flow_pressure_monitoring_dip
+;select count(*) from coss_dm.dm_flushing_water_dip
+;select count(*) from coss_dm.dm_flushing_water_sample__dip
+;select count(*) from coss_dm.dm_leakage_dip
+;select count(*) from coss_dm.dm_maintenance_records_dip
+;select count(*) from coss_dm.dm_operation_monitor_dip
+;select count(*) from coss_dm.dm_pipe_network_dip
+;select count(*) from coss_dm.dm_pipe_network_monitor_dip
+;select count(*) from coss_dm.dm_pipe_network_theme_dip
+;select count(*) from coss_dm.dm_pn_all_dip
+;select count(*) from coss_dm.dm_pn_dma_dip
+;select count(*) from coss_dm.dm_pn_region_dip
+;select count(*) from coss_dm.dm_project_progress_dip
+;select count(*) from coss_dm.dm_pumping_station_classify_dip
+;select count(*) from coss_dm.dm_pumping_station_dip
+;select count(*) from coss_dm.dm_pumping_station_monitor_dip
+;select count(*) from coss_dm.dm_rawwater_capacity_dip
+;select count(*) from coss_dm.dm_rawwater_day_dip
+;select count(*) from coss_dm.dm_rawwater_dip
+;select count(*) from coss_dm.dm_rawwater_monitor_dip
+;select count(*) from coss_dm.dm_rawwater_monitoring_dip
+;select count(*) from coss_dm.dm_region_nrr_kpi_dip
+;select count(*) from coss_dm.dm_rw_reservoir_level_detail_dip
+;select count(*) from coss_dm.dm_service_reservoir_dip
+;select count(*) from coss_dm.dm_service_reservoir_monitor_dip
+;select count(*) from coss_dm.dm_service_reservoir_stored_dip
+;select count(*) from coss_dm.dm_temp_treatment_works_dip
+;select count(*) from coss_dm.dm_treatment_works_dip
+;select count(*) from coss_dm.dm_treatment_works_dip_temp
+;select count(*) from coss_dm.dm_treatment_works_medicine_dip
+;select count(*) from coss_dm.dm_treatment_works_monitor_dip
+;select count(*) from coss_dm.dm_user_dip
+;select count(*) from coss_dm.dm_user_terminal_monitor_dip
+;select count(*) from coss_dm.dm_wa_all_dip
+;select count(*) from coss_dm.dm_wa_region_dip
+;select count(*) from coss_dm.dm_water_assert_dip
+;select count(*) from coss_dm.dm_water_parameter_dip
+;select count(*) from coss_dm.dm_water_quality_day_dip
+;select count(*) from coss_dm.dm_water_quality_month_dip
+;select count(*) from coss_dm.dm_water_sample_dip
+;select count(*) from coss_dm.dm_water_supply_application_dip
+;select count(*) from coss_dm.dm_water_supply_cockpit_dip
+;select count(*) from coss_dm.dm_water_supply_complaints_dip
+;select count(*) from coss_dm.dm_water_supply_monitor_dip
+;select count(*) from coss_dm.dm_water_supply_operation_day_dip
+;select count(*) from coss_dm.dm_water_supply_operation_month_dip
+;select count(*) from coss_dm.dm_work_order_dip
