@@ -310,3 +310,7 @@ CREATE TABLE t_ds_project_parameter (
 
 CREATE UNIQUE INDEX unique_project_parameter_name on t_ds_project_parameter (project_code, param_name,id);
 
+
+
+
+SQL 错误 [16622] [0A000]: [172.168.3.151:65429/172.168.3.179:8000] ERROR: Cannot create index whose evaluation cannot be enforced to remote nodes
