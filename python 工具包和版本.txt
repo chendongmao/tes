@@ -292,3 +292,21 @@ GRANT ALL ON TABLE coss_dolphin.t_ds_plugin_define TO coss_dolphin;
 
 gaussdb (GaussDB Kernel 505.0.0.SPC0100 build 04237cc7) compiled at 2023-10-25 22:33:00 commit 6771 last mr 13618 release
 
+
+
+
+DROP TABLE IF EXISTS t_ds_project_parameter;
+CREATE TABLE t_ds_project_parameter (
+  id int NOT NULL  ,
+  param_name varchar(255) NOT NULL ,
+  param_value varchar(255) NOT NULL ,
+  code bigint NOT NULL,
+  project_code bigint NOT NULL,
+  user_id int DEFAULT NULL ,
+  create_time timestamp DEFAULT CURRENT_TIMESTAMP ,
+  update_time timestamp DEFAULT CURRENT_TIMESTAMP ,
+  PRIMARY KEY (id)
+) ;
+
+CREATE UNIQUE INDEX unique_project_parameter_name on t_ds_project_parameter (project_code, param_name,id);
+
