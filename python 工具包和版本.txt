@@ -1,72 +1,38 @@
-select count(*) from coss_dm.dm_all_kpi_month_dip
-;select count(*) from coss_dm.dm_burst_leak_reason_kpi_dip
-;select count(*) from coss_dm.dm_case_investigation_dip
-;select count(*) from coss_dm.dm_customer_service_dip
-;select count(*) from coss_dm.dm_customer_service_seats_dip
-;select count(*) from coss_dm.dm_data_list_dip
-;select count(*) from coss_dm.dm_dma_mnf_kpi_dip
-;select count(*) from coss_dm.dm_energy_all_dip
-;select count(*) from coss_dm.dm_energy_region_dip
-;select count(*) from coss_dm.dm_engineering_contract_dip
-;select count(*) from coss_dm.dm_engineering_information_dip
-;select count(*) from coss_dm.dm_fault_report_dip
-;select count(*) from coss_dm.dm_flow_pressure_monitoring_dip
-;select count(*) from coss_dm.dm_flushing_water_dip
-;select count(*) from coss_dm.dm_flushing_water_sample__dip
-;select count(*) from coss_dm.dm_leakage_dip
-;select count(*) from coss_dm.dm_maintenance_records_dip
-;select count(*) from coss_dm.dm_operation_monitor_dip
-;select count(*) from coss_dm.dm_pipe_network_dip
-;select count(*) from coss_dm.dm_pipe_network_monitor_dip
-;select count(*) from coss_dm.dm_pipe_network_theme_dip
-;select count(*) from coss_dm.dm_pn_all_dip
-;select count(*) from coss_dm.dm_pn_dma_dip
-;select count(*) from coss_dm.dm_pn_region_dip
-;select count(*) from coss_dm.dm_project_progress_dip
-;select count(*) from coss_dm.dm_pumping_station_classify_dip
-;select count(*) from coss_dm.dm_pumping_station_dip
-;select count(*) from coss_dm.dm_pumping_station_monitor_dip
-;select count(*) from coss_dm.dm_rawwater_capacity_dip
-;select count(*) from coss_dm.dm_rawwater_day_dip
-;select count(*) from coss_dm.dm_rawwater_dip
-;select count(*) from coss_dm.dm_rawwater_monitor_dip
-;select count(*) from coss_dm.dm_rawwater_monitoring_dip
-;select count(*) from coss_dm.dm_region_nrr_kpi_dip
-;select count(*) from coss_dm.dm_rw_reservoir_level_detail_dip
-;select count(*) from coss_dm.dm_service_reservoir_dip
-;select count(*) from coss_dm.dm_service_reservoir_monitor_dip
-;select count(*) from coss_dm.dm_service_reservoir_stored_dip
-;select count(*) from coss_dm.dm_temp_treatment_works_dip
-;select count(*) from coss_dm.dm_treatment_works_dip
-;select count(*) from coss_dm.dm_treatment_works_dip_temp
-;select count(*) from coss_dm.dm_treatment_works_medicine_dip
-;select count(*) from coss_dm.dm_treatment_works_monitor_dip
-;select count(*) from coss_dm.dm_user_dip
-;select count(*) from coss_dm.dm_user_terminal_monitor_dip
-;select count(*) from coss_dm.dm_wa_all_dip
-;select count(*) from coss_dm.dm_wa_region_dip
-;select count(*) from coss_dm.dm_water_assert_dip
-;select count(*) from coss_dm.dm_water_parameter_dip
-;select count(*) from coss_dm.dm_water_quality_day_dip
-;select count(*) from coss_dm.dm_water_quality_month_dip
-;select count(*) from coss_dm.dm_water_sample_dip
-;select count(*) from coss_dm.dm_water_supply_application_dip
-;select count(*) from coss_dm.dm_water_supply_cockpit_dip
-;select count(*) from coss_dm.dm_water_supply_complaints_dip
-;select count(*) from coss_dm.dm_water_supply_monitor_dip
-;select count(*) from coss_dm.dm_water_supply_operation_day_dip
-;select count(*) from coss_dm.dm_water_supply_operation_month_dip
-;select count(*) from coss_dm.dm_work_order_dip
-
-no data 
-;select count(*) from coss_dm.dm_leakage_dip
-
-;select count(*) from coss_dm.dm_treatment_works_dip_temp
-;select count(*) from coss_dm.dm_temp_treatment_works_dip
-;select count(*) from coss_dm.dm_rw_reservoir_level_detail_dip
-;select count(*) from coss_dm.dm_rawwater_day_dip
-;select count(*) from coss_dm.dm_energy_all_dip
-;select count(*) from coss_dm.dm_energy_region_dip
-
-
-
+coss_dim.dim_admin_division_info
+coss_dim.dim_ass_channels_df
+coss_dim.dim_ass_energy_cons_installation_df
+coss_dim.dim_ass_ir_df
+coss_dim.dim_ass_ps_df
+coss_dim.dim_ass_rw_src_df
+coss_dim.dim_ass_sr_df
+coss_dim.dim_ass_wtw_df
+coss_dim.dim_ass_wtw_info
+coss_dim.dim_asset_installation_ref
+coss_dim.dim_asset_param_name_info
+coss_dim.dim_burst_event_related_dict
+coss_dim.dim_cus_dic_actionregion_df
+coss_dim.dim_cus_dic_bigclass_df
+coss_dim.dim_cus_dic_concern_distric_df
+coss_dim.dim_item_dict_info
+coss_dim.dim_monitoring_device_related_dict
+coss_dim.dim_pipe_asset_related_dict
+coss_dim.dim_pipe_network_related_dict
+coss_dim.dim_ps_installation_info
+coss_dim.dim_region_info
+coss_dim.dim_sis_tag_data_type_info
+coss_dim.dim_sis_tag_device_type_info
+coss_dim.dim_sis_tag_list_info
+coss_dim.dim_sis_tag_monitor_point_info
+coss_dim.dim_sub_region_info
+coss_dim.dim_tmu_meter_info
+coss_dim.dim_water_quality_parameters
+coss_dim.dim_water_quality_sample_point_info
+coss_dim.dim_water_type
+coss_dim.dim_wo_biz_type_info
+coss_dim.dim_wo_dict_info
+coss_dim.dim_wo_stage_info
+coss_dim.dim_wo_status_info
+coss_dim.dim_wqm_loclist_info
+coss_dim.dim_wtw_installation_info
+coss_dim.dim_wtw_tag_info
+coss_dim.dim_wtw_water_quality_paramaters
