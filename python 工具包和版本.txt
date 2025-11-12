@@ -1,6 +1,309 @@
-coss_dim.dim_ass_energy_cons_installation_df
-coss_dim.dim_cus_dic_actionregion_df
-coss_dim.dim_cus_dic_bigclass_df
-coss_dim.dim_cus_dic_concern_distric_df
-coss_dim.dim_tmu_meter_info
-coss_dim.dim_wtw_water_quality_paramaters
+-- coss_dim.dim_cus_dic_actionregion_df definition
+
+-- Drop table
+
+-- DROP TABLE coss_dim.dim_cus_dic_actionregion_df;
+
+CREATE TABLE coss_dim.dim_cus_dic_actionregion_df (
+	id numeric(15) NOT NULL --, --
+	name_tc varchar(300) NULL --, --
+	name_cn varchar(300) NULL --, --
+	name_en varchar(300) NULL --, --
+	isvalid numeric(15) NULL --, --
+	dim_load_time timestamp(6) NULL DEFAULT pg_systimestamp(),
+	CONSTRAINT dim_cus_dic_actionregion_df_pkey PRIMARY KEY (id)
+)
+WITH (
+	orientation=row,
+	compression=no,
+	storage_type=ustore,
+	segment=off
+);
+COMMENT ON TABLE coss_dim.dim_cus_dic_actionregion_df IS 'action region';
+
+-- Column comments
+
+COMMENT ON COLUMN coss_dim.dim_cus_dic_actionregion_df.id IS '--';
+COMMENT ON COLUMN coss_dim.dim_cus_dic_actionregion_df.name_tc IS '--';
+COMMENT ON COLUMN coss_dim.dim_cus_dic_actionregion_df.name_cn IS '--';
+COMMENT ON COLUMN coss_dim.dim_cus_dic_actionregion_df.name_en IS '--';
+COMMENT ON COLUMN coss_dim.dim_cus_dic_actionregion_df.isvalid IS '--';
+
+
+-- coss_dim.dim_cus_dic_bigclass_df definition
+
+-- Drop table
+
+-- DROP TABLE coss_dim.dim_cus_dic_bigclass_df;
+
+CREATE TABLE coss_dim.dim_cus_dic_bigclass_df (
+	id numeric(20) NOT NULL --, --
+	center varchar(60) NULL --, --
+	name_cn varchar(300) NULL --, --
+	name_tc varchar(300) NULL --, --
+	name_en varchar(300) NULL --, --
+	parentid numeric(20) NULL --, --
+	"level" numeric(15) NULL --, --
+	isregionorder numeric(15) NULL --, --
+	dim_load_time timestamp(6) NULL DEFAULT pg_systimestamp(),
+	CONSTRAINT dim_cus_dic_bigclass_df_pkey PRIMARY KEY (id)
+)
+WITH (
+	orientation=row,
+	compression=no,
+	storage_type=ustore,
+	segment=off
+);
+COMMENT ON TABLE coss_dim.dim_cus_dic_bigclass_df IS 'dictionary big class';
+
+-- Column comments
+
+COMMENT ON COLUMN coss_dim.dim_cus_dic_bigclass_df.id IS '--';
+COMMENT ON COLUMN coss_dim.dim_cus_dic_bigclass_df.center IS '--';
+COMMENT ON COLUMN coss_dim.dim_cus_dic_bigclass_df.name_cn IS '--';
+COMMENT ON COLUMN coss_dim.dim_cus_dic_bigclass_df.name_tc IS '--';
+COMMENT ON COLUMN coss_dim.dim_cus_dic_bigclass_df.name_en IS '--';
+COMMENT ON COLUMN coss_dim.dim_cus_dic_bigclass_df.parentid IS '--';
+COMMENT ON COLUMN coss_dim.dim_cus_dic_bigclass_df."level" IS '--';
+COMMENT ON COLUMN coss_dim.dim_cus_dic_bigclass_df.isregionorder IS '--';
+
+
+-- coss_dim.dim_cus_dic_concern_distric_df definition
+
+-- Drop table
+
+-- DROP TABLE coss_dim.dim_cus_dic_concern_distric_df;
+
+CREATE TABLE coss_dim.dim_cus_dic_concern_distric_df (
+	id numeric(20) NOT NULL --, --
+	name_cn varchar(300) NULL --, --
+	name_tc varchar(300) NULL --, --
+	name_en varchar(300) NULL --, --
+	isvalid numeric(15) NULL --, --
+	code varchar(90) NULL, -- Code
+	dtmf numeric(15) NULL, -- Corresponding ivr button
+	sort numeric(15) NULL, -- Region sort value under ivr button
+	dim_load_time timestamp(6) NULL DEFAULT pg_systimestamp(),
+	CONSTRAINT dim_cus_dic_concern_distric_df_pkey PRIMARY KEY (id)
+)
+WITH (
+	orientation=row,
+	compression=no,
+	storage_type=ustore,
+	segment=off
+);
+COMMENT ON TABLE coss_dim.dim_cus_dic_concern_distric_df IS 'dictionary concern distric';
+
+-- Column comments
+
+COMMENT ON COLUMN coss_dim.dim_cus_dic_concern_distric_df.id IS '--';
+COMMENT ON COLUMN coss_dim.dim_cus_dic_concern_distric_df.name_cn IS '--';
+COMMENT ON COLUMN coss_dim.dim_cus_dic_concern_distric_df.name_tc IS '--';
+COMMENT ON COLUMN coss_dim.dim_cus_dic_concern_distric_df.name_en IS '--';
+COMMENT ON COLUMN coss_dim.dim_cus_dic_concern_distric_df.isvalid IS '--';
+COMMENT ON COLUMN coss_dim.dim_cus_dic_concern_distric_df.code IS 'Code';
+COMMENT ON COLUMN coss_dim.dim_cus_dic_concern_distric_df.dtmf IS 'Corresponding ivr button';
+COMMENT ON COLUMN coss_dim.dim_cus_dic_concern_distric_df.sort IS 'Region sort value under ivr button';
+
+
+-- coss_dim.dim_tmu_meter_info definition
+
+-- Drop table
+
+-- DROP TABLE coss_dim.dim_tmu_meter_info;
+
+CREATE TABLE coss_dim.dim_tmu_meter_info (
+	meter_id bpchar(10) NULL, -- Meter ID
+	meter_no bpchar(8) NULL, -- Meter number
+	meter_type_code varchar(15) NULL, -- Meter type code
+	meter_sts_ind bpchar(1) NULL, -- Meter status
+	serial_no varchar(16) NULL, -- Serial number
+	rcv_date timestamp(6) NULL, -- Received date
+	retire_date timestamp(6) NULL, -- Retired date
+	"comments" varchar(254) NULL, -- Remarks
+	retire_rsn_code varchar(10) NULL, -- Retired reason code
+	recond_date timestamp(6) NULL, -- Registered date
+	created_date timestamp(6) NULL, -- Created time
+	modified_date timestamp(6) NULL, -- Modified time
+	premise_id bpchar(10) NULL, -- Foreign key, PREMISE
+	hsic_code varchar(8) NULL, -- Industry classification HSIC code
+	hsic_desc varchar(60) NULL, -- Classification Description
+	hsic_desc_tc varchar(60) NULL, -- Classification Description (Traditional Chinese)
+	desc_on_bill varchar(60) NULL, -- Description on Bill
+	desc_on_bill_tc varchar(60) NULL, -- Description on Bill (Traditional Chinese)
+	sic_bcode varchar(40) NULL, -- sic bcode
+	mcategory_code varchar(40) NULL, -- mcategory code
+	dim_load_time timestamp(6) NULL -- Data load time
+)
+WITH (
+	orientation=row,
+	compression=no,
+	storage_type=ustore,
+	segment=off
+);
+COMMENT ON TABLE coss_dim.dim_tmu_meter_info IS 'Meter info';
+
+-- Column comments
+
+COMMENT ON COLUMN coss_dim.dim_tmu_meter_info.meter_id IS 'Meter ID';
+COMMENT ON COLUMN coss_dim.dim_tmu_meter_info.meter_no IS 'Meter number';
+COMMENT ON COLUMN coss_dim.dim_tmu_meter_info.meter_type_code IS 'Meter type code';
+COMMENT ON COLUMN coss_dim.dim_tmu_meter_info.meter_sts_ind IS 'Meter status';
+COMMENT ON COLUMN coss_dim.dim_tmu_meter_info.serial_no IS 'Serial number';
+COMMENT ON COLUMN coss_dim.dim_tmu_meter_info.rcv_date IS 'Received date';
+COMMENT ON COLUMN coss_dim.dim_tmu_meter_info.retire_date IS 'Retired date';
+COMMENT ON COLUMN coss_dim.dim_tmu_meter_info."comments" IS 'Remarks';
+COMMENT ON COLUMN coss_dim.dim_tmu_meter_info.retire_rsn_code IS 'Retired reason code';
+COMMENT ON COLUMN coss_dim.dim_tmu_meter_info.recond_date IS 'Registered date';
+COMMENT ON COLUMN coss_dim.dim_tmu_meter_info.created_date IS 'Created time';
+COMMENT ON COLUMN coss_dim.dim_tmu_meter_info.modified_date IS 'Modified time';
+COMMENT ON COLUMN coss_dim.dim_tmu_meter_info.premise_id IS 'Foreign key, PREMISE';
+COMMENT ON COLUMN coss_dim.dim_tmu_meter_info.hsic_code IS 'Industry classification HSIC code';
+COMMENT ON COLUMN coss_dim.dim_tmu_meter_info.hsic_desc IS 'Classification Description';
+COMMENT ON COLUMN coss_dim.dim_tmu_meter_info.hsic_desc_tc IS 'Classification Description (Traditional Chinese)';
+COMMENT ON COLUMN coss_dim.dim_tmu_meter_info.desc_on_bill IS 'Description on Bill';
+COMMENT ON COLUMN coss_dim.dim_tmu_meter_info.desc_on_bill_tc IS 'Description on Bill (Traditional Chinese)';
+COMMENT ON COLUMN coss_dim.dim_tmu_meter_info.sic_bcode IS 'sic bcode';
+COMMENT ON COLUMN coss_dim.dim_tmu_meter_info.mcategory_code IS 'mcategory code';
+COMMENT ON COLUMN coss_dim.dim_tmu_meter_info.dim_load_time IS 'Data load time';
+
+CREATE TABLE coss_dim.dim_wtw_water_quality_paramaters (
+ config_id                            int4
+ ,wtw_id                              int4
+ ,i_code                              text
+ ,config_type                         int2
+ ,effective_date                      timestamp
+ ,verification_interval_hr            int2
+ ,jar_test_interval_hr                int2
+ ,jar_measure_type                    int2
+ ,require_to_test                     bool
+ ,parameter_limit_id                  int4
+ ,loc_id                              int4
+ ,target_type                         int2
+ ,ph_compare                          text
+ ,ph_min_value                        numeric(8, 3)
+ ,ph_max_value                        numeric(8, 3)
+ ,turb_compare                        text
+ ,turb_min_value                      numeric(8, 3)
+ ,turb_max_value                      numeric(8, 3)
+ ,rcl2_compare                        text
+ ,rcl2_min_value                      numeric(8, 3)
+ ,rcl2_max_value                      numeric(8, 3)
+ ,uv_compare                          text
+ ,uv_min_value                        numeric(8, 3)
+ ,uv_max_value                        numeric(8, 3)
+ ,fluoride_compare                    text
+ ,fluoride_min_value                  numeric(8, 3)
+ ,fluoride_max_value                  numeric(8, 3)
+ ,mn_compare                          text
+ ,mn_min_value                        numeric(8, 3)
+ ,mn_max_value                        numeric(8, 3)
+ ,nh3_compare                         text
+ ,nh3_min_value                       numeric(8, 3)
+ ,nh3_max_value                       numeric(8, 3)
+ ,loc_full_name                       text
+ ,loc_name                            text
+ ,loc_suffix                          text
+ ,loc_name_chi                        text
+ ,dim_update_time                     timestamptz
+ ,dim_load_time                       timestamptz
+ ,primary key(wtw_id, loc_id)
+)
+WITH (
+	orientation=row,
+	compression=no,
+	storage_type=USTORE,
+	segment=off
+);
+comment on table  coss_dim.dim_wtw_water_quality_paramaters is 'The water quality parameter table for the water treatment process is not yet available; the data dictionary is not yet available, and the table fields have not yet been annotated.';
+
+
+
+-- coss_dim.dim_ass_energy_cons_installation_df definition
+
+-- Drop table
+
+-- DROP TABLE coss_dim.dim_ass_energy_cons_installation_df;
+
+CREATE TABLE coss_dim.dim_ass_energy_cons_installation_df (
+	asset_id numeric(11) NOT NULL, -- asset id
+	asset_name varchar(120) NULL, -- asset name
+	asset_desc varchar(120) NULL, -- asset description
+	loca_code varchar(15) NULL, -- location code
+	acc_no varchar(120) NULL, -- account no
+	region_id numeric(11) NULL, -- region id
+	region_code varchar(150) NULL, -- region code
+	region_desc varchar(800) NULL, -- region description
+	i_type_id numeric(11) NULL, -- installation type id
+	i_type_code varchar(150) NULL, -- installation type code
+	i_type_desc varchar(150) NULL, -- installation type  description
+	fw_portion numeric(20, 5) NULL, -- fresh portion
+	sw_portion numeric(20, 5) NULL, -- salt water portion
+	rw_portion numeric(20, 5) NULL, -- raw water portion
+	tw_portion numeric(20, 5) NULL, -- treatment works portion
+	remarks varchar(120) NULL, -- remarks
+	is_active numeric(5) NULL, -- is active
+	official_name varchar(120) NULL, -- official name
+	station_code varchar(120) NULL, -- station code
+	is_billing numeric(5) NULL, -- billing is active
+	is_ps numeric(5) NULL, -- pump station is active
+	is_ecw numeric(5) NULL, -- ecw is active
+	region_rpt varchar(150) NULL, -- region report
+	is_hkp numeric(5) NULL, -- hkp is active
+	is_fy numeric(5) NULL, -- fy is active
+	is_water_eff numeric(5) NULL, -- water efficiency is active
+	water_eff_type_id numeric(11) NULL, -- installation type id for water efficiency
+	i_num varchar(30) NULL, -- installation number
+	dim_update_time timestamp(6) NULL DEFAULT pg_systimestamp(), -- Data Update Time
+	dim_load_time timestamp(6) NULL DEFAULT pg_systimestamp(), -- Data Loading Time
+	dt numeric(10) NULL, -- daily partitions
+	CONSTRAINT dim_ass_energy_cons_installation_df_pkey PRIMARY KEY (asset_id)
+)
+WITH (
+	orientation=row,
+	compression=no,
+	storage_type=USTORE,
+	segment=off
+);
+COMMENT ON TABLE coss_dim.dim_ass_energy_cons_installation_df IS 'energy consumption installations';
+
+-- Column comments
+
+COMMENT ON COLUMN coss_dim.dim_ass_energy_cons_installation_df.asset_id IS 'asset id';
+COMMENT ON COLUMN coss_dim.dim_ass_energy_cons_installation_df.asset_name IS 'asset name';
+COMMENT ON COLUMN coss_dim.dim_ass_energy_cons_installation_df.asset_desc IS 'asset description';
+COMMENT ON COLUMN coss_dim.dim_ass_energy_cons_installation_df.loca_code IS 'location code';
+COMMENT ON COLUMN coss_dim.dim_ass_energy_cons_installation_df.acc_no IS 'account no';
+COMMENT ON COLUMN coss_dim.dim_ass_energy_cons_installation_df.region_id IS 'region id';
+COMMENT ON COLUMN coss_dim.dim_ass_energy_cons_installation_df.region_code IS 'region code';
+COMMENT ON COLUMN coss_dim.dim_ass_energy_cons_installation_df.region_desc IS 'region description';
+COMMENT ON COLUMN coss_dim.dim_ass_energy_cons_installation_df.i_type_id IS 'installation type id';
+COMMENT ON COLUMN coss_dim.dim_ass_energy_cons_installation_df.i_type_code IS 'installation type code';
+COMMENT ON COLUMN coss_dim.dim_ass_energy_cons_installation_df.i_type_desc IS 'installation type  description';
+COMMENT ON COLUMN coss_dim.dim_ass_energy_cons_installation_df.fw_portion IS 'fresh portion';
+COMMENT ON COLUMN coss_dim.dim_ass_energy_cons_installation_df.sw_portion IS 'salt water portion';
+COMMENT ON COLUMN coss_dim.dim_ass_energy_cons_installation_df.rw_portion IS 'raw water portion';
+COMMENT ON COLUMN coss_dim.dim_ass_energy_cons_installation_df.tw_portion IS 'treatment works portion';
+COMMENT ON COLUMN coss_dim.dim_ass_energy_cons_installation_df.remarks IS 'remarks';
+COMMENT ON COLUMN coss_dim.dim_ass_energy_cons_installation_df.is_active IS 'is active';
+COMMENT ON COLUMN coss_dim.dim_ass_energy_cons_installation_df.official_name IS 'official name';
+COMMENT ON COLUMN coss_dim.dim_ass_energy_cons_installation_df.station_code IS 'station code';
+COMMENT ON COLUMN coss_dim.dim_ass_energy_cons_installation_df.is_billing IS 'billing is active';
+COMMENT ON COLUMN coss_dim.dim_ass_energy_cons_installation_df.is_ps IS 'pump station is active';
+COMMENT ON COLUMN coss_dim.dim_ass_energy_cons_installation_df.is_ecw IS 'ecw is active';
+COMMENT ON COLUMN coss_dim.dim_ass_energy_cons_installation_df.region_rpt IS 'region report';
+COMMENT ON COLUMN coss_dim.dim_ass_energy_cons_installation_df.is_hkp IS 'hkp is active';
+COMMENT ON COLUMN coss_dim.dim_ass_energy_cons_installation_df.is_fy IS 'fy is active';
+COMMENT ON COLUMN coss_dim.dim_ass_energy_cons_installation_df.is_water_eff IS 'water efficiency is active';
+COMMENT ON COLUMN coss_dim.dim_ass_energy_cons_installation_df.water_eff_type_id IS 'installation type id for water efficiency';
+COMMENT ON COLUMN coss_dim.dim_ass_energy_cons_installation_df.i_num IS 'installation number';
+COMMENT ON COLUMN coss_dim.dim_ass_energy_cons_installation_df.dim_update_time IS 'Data Update Time';
+COMMENT ON COLUMN coss_dim.dim_ass_energy_cons_installation_df.dim_load_time IS 'Data Loading Time';
+COMMENT ON COLUMN coss_dim.dim_ass_energy_cons_installation_df.dt IS 'daily partitions';
+
+
+
+
+
+
+
