@@ -1,1 +1,2 @@
-jdbc:postgresql://10.66.110.64:8000,10.66.110.151:8000,10.66.110.194:8000,10.66.110.235:8000
+coss_dm.dm_rws_impounding_reservoir_group_day_kpi_dip
+coss_dm.dm_rws_daily_ir_storage_yield_di
