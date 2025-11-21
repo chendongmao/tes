@@ -1,2 +1,3 @@
-coss_dm.dm_rws_impounding_reservoir_group_day_kpi_dip
-coss_dm.dm_rws_daily_ir_storage_yield_di
+http://10.66.80:8805/focallmedia-agent-cloud-hk/focallmedia-agent-page/#/Index?vdnId=1&Lang=CN
+
+zhurc1/123456/1
