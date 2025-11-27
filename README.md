@@ -208,3 +208,48 @@ comment on column coss_dm.dm_rws_annual_sr_pool_stoped_di.dm_load_time       is 
 
 
 
+-- 按需启用：删除水库设施信息表（若存在）
+-- drop table if exists coss_dim.dim_sr_installation_info;
+
+-- 创建DIM层水库设施信息表
+create table coss_dim.dim_sr_installation_info (
+    sr_id            varchar(50) not null,
+    i_code           varchar(50) null,
+    sr_name          varchar(200) null,
+    sr_cname         varchar(300) null,
+    rpt_label        varchar(100) null,
+    region_code      varchar(50) null,
+    sub_region       varchar(50) null,
+    region_name      varchar(50) null,
+    region_cname     varchar(50) null,
+    region_ind       varchar(50) null,
+    w_type           varchar(50) null,
+    w_type_desc      varchar(50) null,
+    dim_update_time  timestamp(6) null default pg_systimestamp(),
+    dim_load_time    timestamp(6) null default pg_systimestamp()
+) with (
+    orientation=row,
+    compression=no
+);
+
+-- 表注释：明确表业务用途
+comment on table coss_dim.dim_sr_installation_info is 'Service Reservoir Installation Information';
+
+-- 字段注释：保留原始业务说明（含旧表关联备注），首字母大写
+comment on column coss_dim.dim_sr_installation_info.sr_id           is 'Sr Id ';
+comment on column coss_dim.dim_sr_installation_info.i_code          is 'Installation Code ';
+comment on column coss_dim.dim_sr_installation_info.sr_name         is 'Sr Name ';
+comment on column coss_dim.dim_sr_installation_info.sr_cname        is 'Sr Name Tc';
+comment on column coss_dim.dim_sr_installation_info.rpt_label       is 'Report Label';
+comment on column coss_dim.dim_sr_installation_info.region_code     is 'Region Abbr(注：这张旧版本的数据表，region_code字段是关联dim_region_info.region_abbr字段，后续可能会修改字段名)';
+comment on column coss_dim.dim_sr_installation_info.sub_region      is 'Sub Region ';
+comment on column coss_dim.dim_sr_installation_info.region_name     is 'Region Name En';
+comment on column coss_dim.dim_sr_installation_info.region_cname    is 'Region Name Tc';
+comment on column coss_dim.dim_sr_installation_info.region_ind      is 'Region Index';
+comment on column coss_dim.dim_sr_installation_info.w_type          is 'Water_type';
+comment on column coss_dim.dim_sr_installation_info.w_type_desc     is 'Water Type Desc';
+comment on column coss_dim.dim_sr_installation_info.dim_update_time is 'Dim Update Time';
+comment on column coss_dim.dim_sr_installation_info.dim_load_time   is 'Dim Load Time ';
+
+
+
