@@ -144,43 +144,34 @@ comment on column coss_dim.dim_sr_installation_qty_info.dim_load_time   is 'Dim 
 
 
 
+-- drop table if exists coss_dm.dm_rws_monthly_sr_qty_di;
+create if not exists table coss_dm.dm_rws_monthly_sr_qty_di (
+    statistical_month    varchar(7),
+    sr_id                varchar(50),
+    i_code               varchar(50),
+    sr_name_en           varchar(200),
+    sr_name_tc           varchar(300),
+    rpt_label            varchar(100),
+    region_abbr          varchar(50),
+    sub_region           varchar(50),
+    qty_del              decimal(20, 5),
+    dm_update_time       timestamp(6) null default pg_systimestamp(),
+    dm_load_time         timestamp(6) null default pg_systimestamp(),
+    primary key (sr_id, statistical_month)
+);
 
-
-(
-'SR00000346',
-'SR00000147',
-'SR00000191',
-'SR00000026',
-'SR00000040',
-'SR00000022',
-'SR00000172',
-'SR00000035',
-'SR00000196',
-'SR00000180',
-'SR00000023',
-'SR00000298',
-'SR00000093',
-'SR00000210',
-'SR00000175',
-'SR00000154',
-'SR00000294',
-'SR00000020',
-'SR00000395',
-'SR00000329',
-'SR00000062',
-'SR00000369',
-'SR00000017',
-'SR00000061',
-'SR00000080',
-'SR00000396',
-'SR00000053',
-'SR00000378',
-'SR00000047',
-'SR00000052',
-'SR00000332',
-'SR00000108'
-)
-
+comment on table coss_dm.dm_rws_monthly_sr_qty_di is 'Service Reservoir Quantity Delivery';
+comment on column coss_dm.dm_rws_monthly_sr_qty_di.statistical_month  is 'Statistical Month';
+comment on column coss_dm.dm_rws_monthly_sr_qty_di.sr_id              is 'Service Reservoir Id';
+comment on column coss_dm.dm_rws_monthly_sr_qty_di.i_code             is 'Installation Code';
+comment on column coss_dm.dm_rws_monthly_sr_qty_di.sr_name_en         is 'Service Reservoir Name';
+comment on column coss_dm.dm_rws_monthly_sr_qty_di.sr_name_tc         is 'Service Reservoir Name Tc';
+comment on column coss_dm.dm_rws_monthly_sr_qty_di.rpt_label          is 'Report Label';
+comment on column coss_dm.dm_rws_monthly_sr_qty_di.region_abbr        is 'Region Abbr';
+comment on column coss_dm.dm_rws_monthly_sr_qty_di.sub_region         is 'Sub Region ';
+comment on column coss_dm.dm_rws_monthly_sr_qty_di.qty_del            is 'Quantity Deliver';
+comment on column coss_dm.dm_rws_monthly_sr_qty_di.dm_update_time     is 'Dm Update Time';
+comment on column coss_dm.dm_rws_monthly_sr_qty_di.dm_load_time       is 'Dm Load Time ';
 
 
 
