@@ -174,7 +174,37 @@ comment on column coss_dm.dm_rws_monthly_sr_qty_di.dm_update_time     is 'Dm Upd
 comment on column coss_dm.dm_rws_monthly_sr_qty_di.dm_load_time       is 'Dm Load Time ';
 
 
+-- drop table if exists coss_dm.dm_rws_annual_sr_pool_stoped_di;
 
+create table if not exists coss_dm.dm_rws_annual_sr_pool_stoped_di (
+    statistical_year    varchar(7),
+    sr_id               varchar(50),
+    i_code              varchar(50),
+    sr_name_en          varchar(200),
+    sr_name_tc          varchar(300),
+    rpt_label           varchar(100),
+    region_abbr         varchar(50),
+    sub_region          varchar(50),
+    a_stoped            decimal(20, 5),
+    b_stoped            decimal(20, 5),
+    dm_update_time      timestamp(6) null default pg_systimestamp(),
+    dm_load_time        timestamp(6) null default pg_systimestamp(),
+    primary key (sr_id, statistical_year)
+);
+
+comment on table coss_dm.dm_rws_annual_sr_pool_stoped_di is 'Service Reservoir Annual Pool Stoped Situation';
+comment on column coss_dm.dm_rws_annual_sr_pool_stoped_di.statistical_year  is 'Statistical Year';
+comment on column coss_dm.dm_rws_annual_sr_pool_stoped_di.sr_id              is 'Service Reservoir Id';
+comment on column coss_dm.dm_rws_annual_sr_pool_stoped_di.i_code             is 'Installation Code';
+comment on column coss_dm.dm_rws_annual_sr_pool_stoped_di.sr_name_en         is 'Service Reservoir Name EN';
+comment on column coss_dm.dm_rws_annual_sr_pool_stoped_di.sr_name_tc         is 'Service Reservoir Name Tc';
+comment on column coss_dm.dm_rws_annual_sr_pool_stoped_di.rpt_label          is 'Report Label';
+comment on column coss_dm.dm_rws_annual_sr_pool_stoped_di.region_abbr        is 'Region Abbr';
+comment on column coss_dm.dm_rws_annual_sr_pool_stoped_di.sub_region         is 'Sub Region ';
+comment on column coss_dm.dm_rws_annual_sr_pool_stoped_di.a_stoped           is 'Number of Days When Pool A Is Stopped';
+comment on column coss_dm.dm_rws_annual_sr_pool_stoped_di.b_stoped           is 'Number of Days When Pool B Is Stopped';
+comment on column coss_dm.dm_rws_annual_sr_pool_stoped_di.dm_update_time     is 'Dm Update Time';
+comment on column coss_dm.dm_rws_annual_sr_pool_stoped_di.dm_load_time       is 'Dm Load Time ';
 
 
 
