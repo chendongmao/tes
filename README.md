@@ -107,3 +107,44 @@ coss_tmp.dm_srs_daily_sr_wl_qty_item_di_arch_251127
 
 
 
+create table coss_dim.dim_sr_installation_qty_info (
+    sr_id            varchar(50) not null,
+    i_code           varchar(50) null,
+    sr_name_en       varchar(200) null,
+    sr_name_tc       varchar(300) null,
+    rpt_label        varchar(100) null,
+    region_abbr      varchar(50) null,
+    sub_region       varchar(50) null,
+    region_ind       varchar(50) null,
+    w_type           varchar(50) null,
+    w_type_desc      varchar(50) null,
+    dim_update_time  timestamp(6) null default pg_systimestamp(),
+    dim_load_time    timestamp(6) null default pg_systimestamp(),
+    primary key (sr_id)
+) with (
+    orientation=row,
+    compression=no
+);
+
+comment on table coss_dim.dim_sr_installation_qty_info 
+is 'Service Reservoir Installation Output Quantity Information';
+
+comment on column coss_dim.dim_sr_installation_qty_info.sr_id           is 'Service Reservoir Id';
+comment on column coss_dim.dim_sr_installation_qty_info.i_code          is 'Installation Code';
+comment on column coss_dim.dim_sr_installation_qty_info.sr_name_en      is 'Service Reservoir Name';
+comment on column coss_dim.dim_sr_installation_qty_info.sr_name_tc      is 'Service Reservoir Name Tc';
+comment on column coss_dim.dim_sr_installation_qty_info.rpt_label       is 'Report Label';
+comment on column coss_dim.dim_sr_installation_qty_info.region_abbr     is 'Region Abbr';
+comment on column coss_dim.dim_sr_installation_qty_info.sub_region      is 'Sub Region ';
+comment on column coss_dim.dim_sr_installation_qty_info.region_ind      is 'Region Index';
+comment on column coss_dim.dim_sr_installation_qty_info.w_type          is 'Water_type';
+comment on column coss_dim.dim_sr_installation_qty_info.w_type_desc     is 'Water Type Desc';
+comment on column coss_dim.dim_sr_installation_qty_info.dim_update_time is 'Dim Update Time';
+comment on column coss_dim.dim_sr_installation_qty_info.dim_load_time   is 'Dim Load Time ';
+
+
+
+
+
+
+
