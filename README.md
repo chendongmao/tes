@@ -77,3 +77,33 @@ comment on column coss_dm.dm_srs_daily_sr_wl_qty_item_di.qty_del         is 'Qty
 comment on column coss_dm.dm_srs_daily_sr_wl_qty_item_di.rec_dt          is 'Rec Date';
 comment on column coss_dm.dm_srs_daily_sr_wl_qty_item_di.dm_update_time  is 'Dm Update Time';
 comment on column coss_dm.dm_srs_daily_sr_wl_qty_item_di.dm_load_time    is 'Dm Load Time';
+
+
+
+insert into coss_dm.dm_srs_daily_sr_wl_qty_item_di
+select 
+sr_id
+,i_code
+,sr_name
+,sr_cname
+,rpt_label
+,region_code
+,sub_region
+,region_name
+,region_cname
+,region_ind
+,w_type
+,w_type_desc
+,div_height
+,capacity
+,w_lim
+,num_of_storage
+,a_wl
+,b_wl
+,qty_del
+,rec_dt
+from 
+coss_tmp.dm_srs_daily_sr_wl_qty_item_di_arch_251127
+
+
+
