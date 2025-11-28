@@ -1,3 +1,17 @@
+ods_emis_extract_report_bills_day
+dwd_psr_report_bill_etl_day
+dws_psr_report_bill_etl_day
+dws_wtw_report_bill_etl_day
+dm_psr_report_bill_etl_day
+dm_wtw_report_bill_etl_day
+<img width="346" height="133" alt="image" src="https://github.com/user-attachments/assets/cb3cde09-ce61-43e7-91ea-3b59a3fd64d8" />
+
+
+
+
+
+
+
 
 -- coss_dm.dm_srs_daily_sr_wl_qty_item_di
 -- update subregion code 
