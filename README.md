@@ -1,10 +1,10 @@
-ods_emis_extract_report_bills_day
-dwd_psr_report_bill_etl_day
-dws_psr_report_bill_etl_day
-dws_wtw_report_bill_etl_day
-dm_psr_report_bill_etl_day
-dm_wtw_report_bill_etl_day
-<img width="346" height="133" alt="image" src="https://github.com/user-attachments/assets/cb3cde09-ce61-43e7-91ea-3b59a3fd64d8" />
+ods_sttss_extract_raw_water_supply_day
+dwd_rws_etl_raw_water_supply_day
+dim_rws_etl_raw_water_supply_day
+dws_rws_etl_raw_water_supply_day
+dm_rws_etl_raw_water_supply_day
+<img width="346" height="111" alt="image" src="https://github.com/user-attachments/assets/73ae0a2b-5195-4555-ba71-3ee943a1198b" />
+
 
 
 
