@@ -1,3 +1,11 @@
+wcdms
+wmams
+abpms
+dwsams
+isms
+ohap
+pems
+
 ods_sttss_extract_raw_water_supply_day
 dwd_rws_etl_raw_water_supply_day
 dim_rws_etl_raw_water_supply_day
