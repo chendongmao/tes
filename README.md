@@ -1,10 +1,16 @@
-wcdms
-wmams
+amd
+cmsdms
+dip
+imjrms
+imwms
+
 abpms
 dwsams
 isms
 ohap
 pems
+wcdms
+wmams
 
 ods_sttss_extract_raw_water_supply_day
 dwd_rws_etl_raw_water_supply_day
