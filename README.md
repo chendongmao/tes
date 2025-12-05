@@ -1,3 +1,16 @@
+select count(*) from coss_dm.dm_cus_monthly_skill_hotline_item_di
+union all select count(*) from coss_dm.dm_cus_monthly_water_quality_cpt_di
+union all select count(*) from coss_dm.dm_cus_monthly_skill_hotline_wo_item_di
+union all select count(*) from coss_dim.dim_cus_skill_info
+
+352
+160
+352
+11
+
+
+
+
 amd
 cmsdms
 dip
