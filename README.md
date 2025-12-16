@@ -1,7 +1,4 @@
 
-jdbc:postgresql://192.168.138.107:8000,192.168.138.98:8000,192.168.138.25:8000,192.168.138.120:8000/wsd_isit?autoBalance=true&refreshCNIpListTime=3
-
-jdbc:postgresql://10.66.110.64:8000,10.66.110.151:8000,10.66.110.194:8000,10.66.110.235:8000/wsd_isit?loadBalanceHosts=true&refreshCNIpListTime=3
 
  
 
