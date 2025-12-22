@@ -1,3 +1,68 @@
+-- coss_dim.dim_sr_installation_info definition
+
+-- Drop table
+
+-- DROP TABLE coss_dim.dim_sr_installation_info;
+
+CREATE TABLE coss_dim.dim_sr_installation_info (
+	sr_id varchar(50) NOT NULL, -- Sr Id 
+	i_code varchar(50) NULL, -- Installation Code 
+	sr_name varchar(200) NULL, -- Sr Name 
+	sr_cname varchar(300) NULL, -- Sr Name Tc
+	rpt_label varchar(100) NULL, -- Report Label
+	region_code varchar(50) NULL, -- Region Abbr(注：这张旧版本的数据表，region_code字段是关联dim_region_info.region_abbr字段，后续可能会修改字段名)
+	sub_region varchar(50) NULL, -- Sub Region 
+	region_name varchar(50) NULL, -- Region Name En
+	region_cname varchar(50) NULL, -- Region Name Tc
+	region_ind varchar(50) NULL, -- Region Index
+	w_type varchar(50) NULL, -- Water_type
+	w_type_desc varchar(50) NULL, -- Water Type Desc
+	is_qty int4 NULL, -- Is Water Output Quantity 1 Is True 0 Is False
+	dim_update_time timestamp(6) NULL DEFAULT pg_systimestamp(), -- Dim Update Time
+	dim_load_time timestamp(6) NULL DEFAULT pg_systimestamp(), -- Dim Load Time 
+	CONSTRAINT dim_sr_installation_info_pkey PRIMARY KEY (sr_id)
+)
+WITH (
+	orientation=row,
+	compression=no
+);
+COMMENT ON TABLE coss_dim.dim_sr_installation_info IS 'Service Reservoir Installation Information';
+
+-- Column comments
+
+COMMENT ON COLUMN coss_dim.dim_sr_installation_info.sr_id IS 'Sr Id ';
+COMMENT ON COLUMN coss_dim.dim_sr_installation_info.i_code IS 'Installation Code ';
+COMMENT ON COLUMN coss_dim.dim_sr_installation_info.sr_name IS 'Sr Name ';
+COMMENT ON COLUMN coss_dim.dim_sr_installation_info.sr_cname IS 'Sr Name Tc';
+COMMENT ON COLUMN coss_dim.dim_sr_installation_info.rpt_label IS 'Report Label';
+COMMENT ON COLUMN coss_dim.dim_sr_installation_info.region_code IS 'Region Abbr(注：这张旧版本的数据表，region_code字段是关联dim_region_info.region_abbr字段，后续可能会修改字段名)';
+COMMENT ON COLUMN coss_dim.dim_sr_installation_info.sub_region IS 'Sub Region ';
+COMMENT ON COLUMN coss_dim.dim_sr_installation_info.region_name IS 'Region Name En';
+COMMENT ON COLUMN coss_dim.dim_sr_installation_info.region_cname IS 'Region Name Tc';
+COMMENT ON COLUMN coss_dim.dim_sr_installation_info.region_ind IS 'Region Index';
+COMMENT ON COLUMN coss_dim.dim_sr_installation_info.w_type IS 'Water_type';
+COMMENT ON COLUMN coss_dim.dim_sr_installation_info.w_type_desc IS 'Water Type Desc';
+COMMENT ON COLUMN coss_dim.dim_sr_installation_info.is_qty IS 'Is Water Output Quantity 1 Is True 0 Is False';
+COMMENT ON COLUMN coss_dim.dim_sr_installation_info.dim_update_time IS 'Dim Update Time';
+COMMENT ON COLUMN coss_dim.dim_sr_installation_info.dim_load_time IS 'Dim Load Time ';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 https://docs.qq.com/sheet/DUGdOTE9rdnJwb2xI?no_promotion=1&tab=959o1o
 
  
