@@ -1,0 +1,185 @@
+"sr_id","i_code","sr_name","sr_cname","rpt_label","region_code","sub_region","region_name","region_cname","region_ind","w_type","w_type_desc","is_qty","dim_update_time","dim_load_time"
+SR00000371,TC009,Tan Kwai Tsuen South Fresh Water Service Reservoir Stage II,丹桂村南(2)食水配水庫,Tan Kwai Tsuen South FW SR II,NTW,,New Territories West,新界西,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000366,TC006,Ho Man Tin East Fresh Water Service Reservoir Extension,何文田東(擴建)食水配水庫,Ho Man Tin East FW SR Ext,K,,Kowloon,九龍,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000202,SR202,Kwu Tung Fresh Water Service Reservoir,古洞食水配水庫,Kwu Tung FW SR,NTE,NTE(D2),New Territories East,新界東,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000136,SR114,To Shek Fresh Water Service Reservoir,多石食水配水庫,To Shek FW SR,NTE,NTE(D1),New Territories East,新界東,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000100,SR098,Anderson Road Fresh Water Service Reservoir,安達臣道食水配水庫,Anderson Road FW SR,NTE,NTE(D3),New Territories East,新界東,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000112,SR112,Fei Ngo Shan Fresh Water Service Reservoir,飛鵝山食水配水庫,Fei Ngo Shan FW SR,NTE,NTE(D3),New Territories East,新界東,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000015,SR014,Ma Tau Wai Fresh Water Service Reservoir,馬頭圍食水配水庫,Ma Tau Wai FW SR,K,K(D1),Kowloon,九龍,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000150,SR145,Tseung Kwan O West High Level Fresh Water Service Reservoir,將軍澳西高地食水配水庫,Tseung Kwan O West H/L FW SR,NTE,NTE(D3),New Territories East,新界東,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000283,SR204,Ho Man Tin West Fresh Water Service Reservoir,何文田西食水配水庫,Ho Man Tin West FW SR,K,K(D1),Kowloon,九龍,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000130,SR132,Ha Wo Che Fresh Water Service Reservoir,下禾輋食水配水庫,Ha Wo Che FW SR,NTE,NTE(D1),New Territories East,新界東,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000074,SR074,Lam Tin Low Level Fresh Water Service Reservoir,藍田低地食水配水庫,Lam Tin L/L FW SR,K,K(D4),Kowloon,九龍,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000141,SR139,Ngau Chi Wan Fresh Water Service Reservoir,牛池灣食水配水庫,Ngau Chi Wan FW SR,K,K(D3),Kowloon,九龍,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000095,SR095,Sai Kung Fresh Water Service Reservoir,西貢食水配水庫,Sai Kung FW SR,NTE,NTE(D3),New Territories East,新界東,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000377,TC012,Tuen Mun West (Old) Fresh Water Service Reservoir,屯門西食水配水庫(舊),Tuen Mun West (Old) FW SR,NTW,,New Territories West,新界西,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000113,SR113,Ha Hang Fresh Water Service Reservoir,下坑食水配水庫,Ha Hang FW SR,NTE,NTE(D2),New Territories East,新界東,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000123,SR124,Beacon Hill Intermediate Level Fresh Water Service Reservoir,筆架山半高地食水配水庫,Beacon Hill INT/L FW SR,K,K(D3),Kowloon,九龍,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000137,SR143,Tsing Yi South Fresh Water Service Reservoir,青衣南食水配水庫,Tsing Yi South FW SR,NTW,NTW(D4),New Territories West,新界西,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000173,SR175,Tsing Yi North High Level Fresh Water Service Reservoir,青衣北高地食水配水庫,Tsing Yi North H/L FW SR,NTW,NTW(D4),New Territories West,新界西,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000327,SR231,Lung Kwu Sheung Tan Fresh Water Service Reservoir,龍鼓上灘食水配水庫,Lung Kwu Sheung Tan FW SR,NTW,NTW(D2),New Territories West,新界西,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000151,SR153,Tsing Yi North Low Level Fresh Water Service Reservoir,青衣北低地食水配水庫,Tsing Yi North L/L FW SR,NTW,NTW(D4),New Territories West,新界西,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000165,SR166,Sha Tin South Fresh Water Service Reservoir,沙田南食水配水庫,Sha Tin South FW SR,NTE,NTE(D1),New Territories East,新界東,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000083,SR085,Ho Man Tin East Fresh Water Service Reservoir,何文田東食水配水庫,Ho Man Tin East FW SR,K,K(D1),Kowloon,九龍,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000163,SR161,Ma Chai Hang Fresh Water Service Reservoir,馬仔坑食水配水庫,Ma Chai Hang FW SR,K,K(D3),Kowloon,九龍,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000010,SR062,Piper's Hill High Level Fresh Water Service Reservoir,琵琶山高地食水配水庫,Piper's Hill H/L FW SR,K,K(D2),Kowloon,九龍,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000148,SR151,Sha Tin West Fresh Water Service Reservoir,沙田西食水配水庫,Sha Tin West FW SR,NTE,NTE(D1),New Territories East,新界東,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000353,SR237,Ma On Shan No.2 Fresh Water Service Reservoir,馬鞍山二號食水配水庫,Ma On Shan No.2 FW SR,NTE,NTE(D3),New Territories East,新界東,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000370,TC008,Tsing Yi East Fresh Water Service Reservoir Extension,青衣東(擴建)食水配水庫,Tsing Yi East FW SR Ext,NTW,,New Territories West,新界西,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000182,SR172,Tai Po East High Level Fresh Water Service Reservoir,大埔東高地食水配水庫,Tai Po East H/L FW SR,NTE,NTE(D2),New Territories East,新界東,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000126,SR105,Tong Hang Fresh Water Service Reservoir,塘坑食水配水庫,Tong Hang FW SR,NTE,NTE(D2),New Territories East,新界東,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000181,SR181,Ngau Chi Wan High Level Fresh Water Service Reservoir,牛池灣高地食水配水庫,Ngau Chi Wan H/L FW SR,K,K(D3),Kowloon,九龍,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000070,SR068,Yau Tong Fresh Water Service Reservoir,油塘食水配水庫,Yau Tong FW SR,K,K(D4),Kowloon,九龍,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000379,SR232,Sheung Wong Yi Au No.2 Fresh Water Service Reservoir,上黃宜凹二號食水配水庫,Sheung Wong Yi Au No.2 FW SR,NTE,NTE(D1),New Territories East,新界東,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000138,SR144,A Kung Kok Fresh Water Service Reservoir,亞公角食水配水庫,A Kung Kok FW SR,NTE,NTE(D1),New Territories East,新界東,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000401,SR234,Shui Chuen O Fresh Water Service Reservoir,水泉澳食水配水庫,Shui Chuen O FW SR,NTE,NTE(D1),New Territories East,新界東,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000201,SR201,Tai Po East Low Level Fresh Water Service Reservoir,大埔東低地食水配水庫,Tai Po East L/L FW SR,NTE,NTE(D2),New Territories East,新界東,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000373,TC010,Yau Tong No.2 Fresh Water Service Reservoir - Northern Compartment,油塘二號(北)食水配水庫,Yau Tong No.2 FW SR North,K,,Kowloon,九龍,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000183,SR162,Tuen Mun West Fresh Water Service Reservoir,屯門西食水配水庫,Tuen Mun West FW SR,NTW,NTW(D2),New Territories West,新界西,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000301,SR211,Shek Kip Mei No.2 Fresh Water Service Reservoir,石硤尾二號食水配水庫,Shek Kip Mei No.2 FW SR,K,K(D2),Kowloon,九龍,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000046,SR045,Fung Wong Fresh Water Service Reservoir,鳳凰食水配水庫,Fung Wong FW SR,K,K(D3),Kowloon,九龍,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000087,SR082,Tsuen Wan West Low Level Fresh Water Service Reservoir,荃灣西低地食水配水庫,Tsuen Wan West L/L FW SR,NTW,NTW(D1),New Territories West,新界西,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000082,SR081,Shek Kip Mei Fresh Water Service Reservoir,石硤尾食水配水庫,Shek Kip Mei FW SR,K,K(D2),Kowloon,九龍,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000133,SR134,Lam Tin High Level Fresh Water Service Reservoir,藍田高地食水配水庫,Lam Tin H/L FW SR,K,K(D4),Kowloon,九龍,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000037,SR034,Ngau Tau Kok Fresh Water Service Reservoir,牛頭角食水配水庫,Ngau Tau Kok FW SR,K,K(D4),Kowloon,九龍,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000197,SR197,Tai Po Tsai Fresh Water Service Reservoir,大埔仔食水配水庫,Tai Po Tsai FW SR,NTE,NTE(D3),New Territories East,新界東,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000098,SR096,Lai King Headland Fresh Water Service Reservoir,荔景山食水配水庫,Lai King Headland FW SR via LCKFWPS,NTW,NTW(D4),New Territories West,新界西,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000319,SR216,Tan Kwai Tsuen South Fresh Water Service Reservoir,丹桂村南食水配水庫,Tan Kwai Tsuen South FW SR,NTW,NTW(D3),New Territories West,新界西,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000059,SR058,Kwun Tong High Level Fresh Water Service Reservoir,觀塘高地食水配水庫,Kwun Tong H/L FW SR,K,K(D3),Kowloon,九龍,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000127,SR128,Tong Hang No.2 Fresh Water Service Reservoir,塘坑二號食水配水庫,Tong Hang No.2 FW SR,NTE,NTE(D2),New Territories East,新界東,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000337,SR222,Pak Shek Kok Fresh Water Service Reservoir,白石角食水配水庫,Pak Shek Kok FW SR,NTE,NTE(D1),New Territories East,新界東,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000203,SR203,Tseung Kwan O East Low Level Fresh Water Service Reservoir,將軍澳東低地食水配水庫,Tseung Kwan O East L/L FW SR,NTE,NTE(D3),New Territories East,新界東,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000085,SR089,Tsuen Wan West High Level Fresh Water Service Reservoir,荃灣西高地食水配水庫,Tsuen Wan West H/L FW SR,NTW,NTW(D1),New Territories West,新界西,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000341,SR223,Ma Wan No.2 Fresh Water Service Reservoir,馬灣二號食水配水庫,Ma Wan No.2 FW SR,NTW,NTW(D1),New Territories West,新界西,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000188,SR183,Tuen Mun East No.2 Fresh Water Service Reservoir,屯門東二號食水配水庫,Tuen Mun East No.2 FW SR,NTW,NTW(D2),New Territories West,新界西,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000153,SR155,Tsuen Wan West Ultra High Level Fresh Water Service Reservoir,荃灣西超高地食水配水庫,Tsuen Wan West Ultra H/L FW SR,NTW,NTW(D1),New Territories West,新界西,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000334,SR229,Shek Kip Mei No.3 Fresh Water Service Reservoir,石硤尾三號食水配水庫,Shek Kip Mei No.3 FW SR,K,K(D2),Kowloon,九龍,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000375,SR224,Siu Lam No.2 Fresh Water Service Reservoir,小欖二號食水配水庫,Siu Lam No. 2 FWSR,NTW,NTW(D2),New Territories West,新界西,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000335,SR227,Anderson Road No.2 Fresh Water Service Reservoir,安達臣道二號食水配水庫,Anderson Road No.2 FW SR,NTE,NTE(D3),New Territories East,新界東,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000128,SR131,Tuen Mun North Fresh Water Service Reservoir,屯門北食水配水庫,Tuen Mun North FW SR,NTW,NTW(D2),New Territories West,新界西,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000384,SR247,Choi Wan Road Fresh Water Service Reservoir,彩雲道食水配水庫,Choi Wan Road FW SR,K,K(D3),Kowloon,九龍,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000067,SR072,Kwai Chung North Fresh Water Service Reservoir,葵涌北食水配水庫,Kwai Chung North FW SR via TWFWPS,NTW,NTW(D4),New Territories West,新界西,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000120,SR121,Tai Wo Tsuen Fresh Water Service Reservoir,大窩村食水配水庫,Tai Wo Tsuen FW SR,NTW,NTW(D4),New Territories West,新界西,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000178,SR180,Tai Tung Shan Fresh Water Service Reservoir,大東山食水配水庫,Tai Tung Shan FW SR,HKI,,Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000333,SR226,Tan Kwai Tsuen North Fresh Water Service Reservoir,丹桂村北食水配水庫,Tan Kwai Tsuen North FW SR,NTW,NTW(D3),New Territories West,新界西,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000135,SR136,Pai Tau Hang Fresh Water Service Reservoir,排頭坑食水配水庫,Pai Tau Hang FW SR,NTE,NTE(D1),New Territories East,新界東,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000325,SR217,Tiu Keng Leng Fresh Water Service Reservoir,調景嶺食水配水庫,Tiu Keng Leng FW SR,NTE,NTE(D3),New Territories East,新界東,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000194,SR189,Tuen Mun West No.2 Fresh Water Service Reservoir,屯門西二號食水配水庫,Tuen Mun West No.2 FW SR,NTW,NTW(D2),New Territories West,新界西,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000143,SR125,Wang Chau Fresh Water Service Reservoir,橫洲食水配水庫,Wang Chau FW SR,NTW,NTW(D3),New Territories West,新界西,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000104,SR103,Tuen Mun East Fresh Water Service Reservoir,屯門東食水配水庫,Tuen Mun East FW SR,NTW,NTW(D2),New Territories West,新界西,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000159,SR179,Tseung Kwan O West Low Level Fresh Water Service Reservoir,將軍澳西低地食水配水庫,Tseung Kwan O West L/L FW SR,NTE,NTE(D3),New Territories East,新界東,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000308,SR215,Tsing Yi East No.2 Fresh Water Service Reservoir,青衣東二號食水配水庫,Tsing Yi East No.2 FW SR,NTW,NTW(D4),New Territories West,新界西,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000054,SR056,Ho Man Tin High Level Fresh Water Service Reservoir,何文田高地食水配水庫,Ho Man Tin H/L FW SR,K,K(D1),Kowloon,九龍,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000388,SR241,Ping Che Fresh Water Service Reservoir,坪輋食水配水庫,Ping Che FW SR,NTE,NTE(D2),New Territories East,新界東,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000043,SR044,Beacon Hill High Level Fresh Water Service Reservoir,筆架山高地食水配水庫,Beacon Hill H/L FW SR,K,K(D2),Kowloon,九龍,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000021,SR023,Lai Chi Kok Fresh Water Service Reservoir,荔枝角食水配水庫,Lai Chi Kok FW SR,NTW,NTW(D4),New Territories West,新界西,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000186,SR182,Siu Lam Fresh Water Service Reservoir,小欖食水配水庫,Siu Lam FW SR,NTW,NTW(D2),New Territories West,新界西,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000142,SR140,Table Hill Fresh Water Service Reservoir,桌山食水配水庫,Table Hill FW SR,NTE,NTE(D2),New Territories East,新界東,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000176,SR177,Ma On Shan Fresh Water Service Reservoir,馬鞍山食水配水庫,Ma On Shan FW SR,NTE,NTE(D3),New Territories East,新界東,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000177,SR186,Pak Kong Au Fresh Water Service Reservoir,北港凹食水配水庫,Pak Kong Au FW SR,NTE,NTE(D3),New Territories East,新界東,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000065,SR054,Tsz Wan Shan Fresh Water Service Reservoir,慈雲山食水配水庫,Tsz Wan Shan FW SR,K,K(D3),Kowloon,九龍,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000386,SR214,Diamond Hill No.2 Fresh Water Service Reservoir,鑽石山二號食水配水庫,Diamond Hill No.2 FW SR,K,K(D3),Kowloon,九龍,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000096,SR110,Tai O Fresh Water Service Reservoir,大澳食水配水庫,Tai O FW SR,HKI,HKI(D4),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000041,SR043,Yuen Long Fresh Water Service Reservoir,元朗食水配水庫,Yuen Long FW SR,NTW,NTW(D2),New Territories West,新界西,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000336,SR228,Yau Tong No.2 Fresh Water Service Reservoir,油塘二號食水配水庫,Yau Tong No.2 FW SR,K,K(D4),Kowloon,九龍,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000170,SR174,Siu Lek Yuen Fresh Water Service Reservoir,小瀝源食水配水庫,Siu Lek Yuen FW SR,NTE,NTE(D1),New Territories East,新界東,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000078,SR039,King's Park Fresh Water Service Reservoir,京士柏食水配水庫,King's Park FW SR,K,K(D1),Kowloon,九龍,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000018,SR020,Diamond Hill Fresh Water Service Reservoir,鑽石山食水配水庫,Diamond Hill FW SR,K,K(D3),Kowloon,九龍,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000089,SR108,Tui Min Hoi Fresh Water Service Reservoir,對面海食水配水庫,Tui Min Hoi FW SR,NTE,NTE(D3),New Territories East,新界東,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000110,SR109,Tsing Yi East Fresh Water Service Reservoir,青衣東食水配水庫,Tsing Yi East FW SR,NTW,NTW(D4),New Territories West,新界西,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000168,SR169,Sheung Wong Yi Au Fresh Water Service Reservoir,上黃宜凹食水配水庫,Sheung Wong Yi Au FW SR,NTE,NTE(D1),New Territories East,新界東,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000009,SR011,Lok Fu Fresh Water Service Reservoir,樂富食水配水庫,Lok Fu FW SR,K,K(D3),Kowloon,九龍,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000131,SR106,Sha Tin North Fresh Water Service Reservoir,沙田北食水配水庫,Sha Tin North FW SR,NTE,NTE(D1),New Territories East,新界東,M,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000125,SR127,Lamma Island Fresh Water Service Reservoir,南丫島食水配水庫,Lamma Island FW SR,HKI,HKI(D4),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000007,WT099,Queen Mary Hospital Fresh Water Tank,瑪麗醫院食水缸,Queen Mary Hospital FW Tank,HKI,HKI(D3),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000158,SR156,Peng Chau No.2 Fresh Water Service Reservoir,坪洲二號食水配水庫,Peng Chau No.2 FW SR,HKI,HKI(D4),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000400,SR255,Hatton Road Fresh Water Service Reservoir,克頓道食水配水庫,Hatton Road FW SR (New),HKI,HKI(D2),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000254,WT054,Mount Collinson Fresh Water Tank,哥連臣山食水缸,Mount Collinson FW Tank,HKI,HKI(D3),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000331,SR221,Shau Kei Wan East High Level Fresh Water Service Reservoir,筲箕灣東高地食水配水庫,Shau Kei Wan East H/L FW SR,HKI,HKI(D1),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000090,SR060,Middle Gap Fresh Water Service Reservoir,中峽食水配水庫,Middle Gap FW SR,HKI,HKI(D1),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000134,SR142,North Point West Fresh Water Service Reservoir,北角西食水配水庫,North Point West FW SR,HKI,HKI(D1),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000344,SR219,Wah Fu Fresh Water Service Reservoir,華富食水配水庫,Wah Fu FW SR,HKI,HKI(D3),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000081,SR080,Shau Kei Wan Fresh Water Service Reservoir,筲箕灣食水配水庫,Shau Kei Wan FW SR,HKI,HKI(D1),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000005,SR006,Jardine's Lookout Fresh Water Service Reservoir,渣甸山食水配水庫,Jardine's Lookout FW SR,HKI,HKI(D1),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000049,SR038,Peak Fresh Water Service Reservoir,山頂食水配水庫,Peak FW SR,HKI,HKI(D2),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000038,SR041,Conduit Road Fresh Water Service Reservoir,干德道食水配水庫,Conduit Road FW SR,HKI,HKI(D2),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000144,SR147,Chung Hom Kok No.2 Fresh Water Service Reservoir,舂坎角二號食水配水庫,Chung Hom Kok No.2 FW SR,HKI,HKI(D3),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000200,SR200,Tung Chung Fresh Water Service Reservoir,東涌食水配水庫,Tung Chung FW SR,HKI,HKI(D4),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000027,SR028,North Point High Level Fresh Water Service Reservoir,北角高地食水配水庫,North Point H/L FW SR,HKI,HKI(D1),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000024,SR026,Aberdeen Fresh Water Service Reservoir,香港仔食水配水庫,Aberdeen FW SR,HKI,HKI(D3),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000404,SR257,Peak No.2 Fresh Water Service Reservoir,山頂二號食水配水庫,Peak No.2 FW SR,HKI,HKI(D2),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000117,SR118,Chai Wan North Fresh Water Service Reservoir,柴灣北食水配水庫,Chai Wan North FW SR,HKI,HKI(D1),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000072,SR073,Jardine's Lookout No.2 Fresh Water Service Reservoir,渣甸山二號食水配水庫,Jardine's Lookout No.2 FW SR,HKI,HKI(D1),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000042,SR079,Aberdeen Salt Water Service Reservoir,香港仔海水配水庫,Aberdeen SW SR,HKI,HKI(D3),Hong Kong,香港,I,S,Salt Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000167,SR168,Shek O North Fresh Water Service Reservoir,石澳北食水配水庫,Shek O North FW SR,HKI,HKI(D3),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000403,SR256,Hatton Road No.2 Fresh Water Service Reservoir,克頓道二號食水配水庫,Hatton Road No.2 FW SR,HKI,HKI(D2),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000162,SR164,Cheung Sha Fresh Water Service Reservoir,長沙食水配水庫,Cheung Sha FW SR,HKI,HKI(D4),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000064,SR067,Severn Road Fresh Water Service Reservoir,施勳道食水配水庫,Severn Road FW SR,HKI,HKI(D2),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000106,SR116,Cheung Chau No.2 Fresh Water Service Reservoir,長洲二號食水配水庫,Cheung Chau No.2 FW SR,HKI,HKI(D4),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000122,SR123,Wong Chuk Hang Fresh Water Service Reservoir,黃竹坑食水配水庫,Wong Chuk Hang FW SR,HKI,HKI(D3),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000079,SR040,Mount Nicholson Fresh Water Service Reservoir,聶高信山食水配水庫,Mount Nicholson FW SR,HKI,HKI(D1),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000184,SR190,Ap Lei Chau No.2 Fresh Water Service Reservoir,鴨脷洲二號食水配水庫,Ap Lei Chau No.2 FW SR,HKI,HKI(D3),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000032,SR031,North Point Fresh Water Service Reservoir,北角食水配水庫,North Point FW SR,HKI,HKI(D1),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000002,SR002,Eastern Fresh Water Service Reservoir,東區食水配水庫,Eastern FW SR,HKI,HKI(D1),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000045,SR064,Chung Hom Kok Fresh Water Service Reservoir,舂坎角食水配水庫,Chung Hom Kok FW SR,HKI,HKI(D3),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000205,WT002,Wong Nai Chung Fresh Water Tank,黃泥涌食水缸,Wong Nai Chung FW Tank,HKI,HKI(D3),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000118,SR119,Pok Fu Lam No.3 Fresh Water Service Reservoir,薄扶林三號食水配水庫,Pok Fu Lam No.3 FW SR,HKI,HKI(D3),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000076,SR077,Tai Hang Fresh Water Service Reservoir,大坑食水配水庫,Tai Hang FW SR,HKI,HKI(D1),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000103,SR102,Pok Fu Lam No.2 Fresh Water Service Reservoir,薄扶林二號食水配水庫,Pok Fu Lam No.2 FW SR,HKI,HKI(D3),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000050,SR015,Peak Road Fresh Water Service Reservoir,山頂道食水配水庫,Peak Road FW SR,HKI,HKI(D2),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000396,SR252,Western No.2  Fresh Water Service Reservoir,西區二號食水配水庫,Western No.2 FW SR,HKI,HKI(D2),Hong Kong,香港,I,F,Fresh Water,1,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000166,SR167,Shau Kei Wan No.2 Fresh Water Service Reservoir,筲箕灣二號食水配水庫,Shau Kei Wan No.2 FW SR,HKI,HKI(D1),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000094,WT091,Black's Link Fresh Water Tank,布力徑食水缸,Black's Link FW Tank,HKI,HKI(D3),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000036,SR141,Mount Gough Fresh Water Service Reservoir,歌賦山食水配水庫,Mount Gough FW SR,HKI,HKI(D2),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000342,SR218,Sunny Bay Fresh Water Service Reservoir,欣澳食水配水庫,Sunny Bay FW SR,HKI,HKI(D4),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000119,SR120,Shouson Hill Fresh Water Service Reservoir,壽臣山食水配水庫,Shouson Hill FW SR,HKI,HKI(D3),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000139,SR137,Ap Lei Chau Fresh Water Service Reservoir,鴨脷洲食水配水庫,Ap Lei Chau FW SR,HKI,HKI(D3),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000063,SR007,Pok Fu Lam Fresh Water Service Reservoir,薄扶林食水配水庫,Pok Fu Lam FW SR,HKI,HKI(D3),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000013,SR013,Bowen Road Fresh Water Service Reservoir,寶雲道食水配水庫,Bowen Road FW SR,HKI,HKI(D1),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000179,SR178,Victoria Road Fresh Water Service Reservoir,域多利道食水配水庫,Victoria Road FW SR,HKI,HKI(D3),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000214,WT011,Peak Fresh Water Tank,山頂食水缸,Peak Fresh WT,HKI,HKI(D2),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000156,SR159,Chai Wan North No.2 Fresh Water Service Reservoir,柴灣北二號食水配水庫,Chai Wan North No.2 FW SR,HKI,HKI(D1),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000171,SR185,Tai Hang No.2 Fresh Water Service Reservoir,大坑二號食水配水庫,Tai Hang No.2 FW SR,HKI,HKI(D1),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000077,SR078,Eastern No.2 Fresh Water Service Reservoir,東區二號食水配水庫,Eastern No.2 FW SR,HKI,HKI(D1),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000058,SR065,Kai Lung Wan Fresh Water Service Reservoir,雞籠灣食水配水庫,Kai Lung Wan FW SR,HKI,HKI(D3),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000069,SR055,Peng Chau Fresh Water Service Reservoir,坪洲食水配水庫,Peng Chau FW SR,HKI,HKI(D4),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000192,SR193,Shau Kei Wan High Level Fresh Water Service Reservoir,筲箕灣高地食水配水庫,Shau Kei Wan H/L FW SR,HKI,HKI(D1),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000116,SR117,Braemar Hill Fresh Water Service Reservoir,寶馬山食水配水庫,Braemar Hill FW SR,HKI,HKI(D1),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000161,SR163,Cheung Chau No.3 Fresh Water Service Reservoir,長洲三號食水配水庫,Cheung Chau No.3 FW SR,HKI,HKI(D4),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000169,SR173,Aberdeen No.2 Salt Water Service Reservoir,香港仔二號海水配水庫,Aberdeen No.2 SW SR,HKI,HKI(D3),Hong Kong,香港,I,S,Salt Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000198,SR198,Kotewall Road Fresh Water Service Reservoir,旭龢道食水配水庫,Kotewall Road FW SR,HKI,HKI(D2),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000187,SR187,Siu Sai Wan Fresh Water Service Reservoir,小西灣食水配水庫,Siu Sai Wan FW SR,HKI,HKI(D1),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000014,SR017,Albany Fresh Water Service Reservoir,雅賓利食水配水庫,Albany FW SR,HKI,HKI(D2),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000132,SR133,Tai Tam Reservoir Road Fresh Water Service Reservoir,大潭水塘道食水配水庫,Tai Tam Reservoir Road FW SR,HKI,HKI(D3),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000016,SR018,Sai Wan Fresh Water Service Reservoir,西灣食水配水庫,Sai Wan FW SR,HKI,HKI(D1),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000034,SR033,Gardens Fresh Water Service Reservoir,動植物公園食水配水庫,Gardens FW SR,HKI,HKI(D2),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000105,SR016,Cheung Chau Fresh Water Service Reservoir,長洲食水配水庫,Cheung Chau FW SR,HKI,HKI(D4),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000073,SR070,Kennedy Town Fresh Water Service Reservoir,堅尼地城食水配水庫,Kennedy Town FW SR,HKI,HKI(D2),Hong Kong,香港,I,F,Fresh Water,0,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000369,TC007,Sham Tseng West Fresh Water Service Reservoir (2nd Portion),深井西(2)食水配水庫,Sham Tseng West FW SR 2,NTW,,New Territories West,新界西,M,F,Fresh Water,1,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000017,SR019,Tai Po Road Fresh Water Service Reservoir,大埔道食水配水庫,Tai Po Road FW SR,K,K(D1),Kowloon,九龍,M,F,Fresh Water,1,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000154,SR146,Yau Kom Tau Fresh Water Primary Service Reservoir,油柑頭食水主配水庫,Yau Kom Tau FW SR,NTW,NTW(D1),New Territories West,新界西,M,F,Fresh Water,1,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000172,SR170,Tseung Kwan O Fresh Water Primary Service Reservoir,將軍澳食水主配水庫,Tseung Kwan O FW Primary SR,NTE,NTE(D3),New Territories East,新界東,M,F,Fresh Water,1,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000332,SR230,Butterfly Valley Fresh Water Primary Service Reservoir,蝴蝶谷食水主配水庫,Butterfly Valley FW Primary SR,K,K(D2),Kowloon,九龍,M,F,Fresh Water,1,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000191,SR188,Sham Tseng West Fresh Water Service Reservoir,深井西食水配水庫,Sham Tseng West FW SR,NTW,NTW(D1),New Territories West,新界西,M,F,Fresh Water,1,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000108,SR104,Lion Rock High Level No.2 Fresh Water Primary Service Reservoir,獅子山高地二號食水主配水庫,Lion Rock H/L No.2 FW Primary SR,K,K(D3),Kowloon,九龍,M,F,Fresh Water,1,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000180,SR184,Au Tau Fresh Water Primary Service Reservoir,凹頭食水主配水庫,Au Tau FW Primary SR,NTW,NTW(D5),New Territories West,新界西,M,F,Fresh Water,1,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000020,SR022,Kau Wa Keng Fresh Water Service Reservoir,九華徑食水配水庫,Kau Wa Keng FW SR,NTW,NTW(D4),New Territories West,新界西,M,F,Fresh Water,1,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000022,SR024,Tsuen Wan Fresh Water Service Reservoir,荃灣食水配水庫,Tsuen Wan FW SR,NTW,NTW(D1),New Territories West,新界西,M,F,Fresh Water,1,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000062,SR053,Lion Rock Low Level Fresh Water Primary Service Reservoir,獅子山低地食水主配水庫,Lion Rock L/L FW Primary SR,K,K(D3),Kowloon,九龍,M,F,Fresh Water,1,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000210,WT007,Sandy Bay Fresh Water Balance Tank,大口環食水調節缸,Sandy Bay FW BAL Tank,HKI,,Hong Kong,香港,I,F,Fresh Water,1,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000053,SR050,Tai Po Tau Fresh Water Primary Service Reservoir,大埔頭食水主配水庫,Tai Po Tau FW Primary SR,NTE,NTE(D1),New Territories East,新界東,M,F,Fresh Water,1,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000147,SR150,Pun Chun Yuen Fresh Water Service Reservoir,半春園食水配水庫,Pun Chun Yuen FW SR,NTE,NTE(D1),New Territories East,新界東,M,F,Fresh Water,1,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000294,SR207,Yau Kom Tau No.2 Fresh Water Primary Service Reservoir,油柑頭二號食水主配水庫,Yau Kom Tau No.2 FW Primary SR,NTW,NTW(D1),New Territories West,新界西,M,F,Fresh Water,1,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000175,SR171,Tsuen Wan No.2 Fresh Water Service Reservoir,荃灣二號食水配水庫,Tsuen Wan No.2 FW SR,NTW,NTW(D1),New Territories West,新界西,M,F,Fresh Water,1,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000093,SR093,Tuen Mun Fresh Water Primary Service Reservoir,屯門食水主配水庫,Tuen Mun FW Primary SR,NTW,NTW(D2),New Territories West,新界西,M,F,Fresh Water,1,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000329,SR225,Ngau Tam Mei Fresh Water Primary Service Reservoir,牛潭尾食水主配水庫,Ngau Tam Mei FW Primary SR,NTW,NTW(D5),New Territories West,新界西,M,F,Fresh Water,1,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000061,SR052,Lion Rock High Level Fresh Water Primary Service Reservoir,獅子山高地食水主配水庫,Lion Rock H/L FW Primary SR,K,K(D3),Kowloon,九龍,M,F,Fresh Water,1,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000035,SR037,Kau Wa Keng No.2 Fresh Water Service Reservoir,九華徑二號食水配水庫,Kau Wa Keng No.2 FW SR,NTW,NTW(D4),New Territories West,新界西,M,F,Fresh Water,1,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000298,SR210,Ma On Shan Fresh Water Primary Service Reservoir,馬鞍山食水主配水庫,Ma On Shan FW Primary SR,NTE,NTE(D3),New Territories East,新界東,M,F,Fresh Water,1,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000196,SR196,Repulse Bay Fresh Water Service Reservoir,淺水灣食水配水庫,Repulse Bay FW SR,HKI,HKI(D3),Hong Kong,香港,I,F,Fresh Water,1,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000026,SR088,Magazine Gap Road No.2 Fresh Water Service Reservoir,馬己仙峽道二號食水配水庫,Magazine Gap Road No.2 FW SR,HKI,HKI(D2),Hong Kong,香港,I,F,Fresh Water,1,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000052,SR048,Silver Mine Bay Fresh Water Service Reservoir,銀灣食水配水庫,Silver Mine Bay FW SR,HKI,HKI(D4),Hong Kong,香港,I,F,Fresh Water,1,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000040,SR063,Mount Davis Fresh Water Primary Service Reservoir,摩星嶺食水主配水庫,Mount Davis FW Primary SR,HKI,HKI(D3),Hong Kong,香港,I,F,Fresh Water,1,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000346,SR233,Magazine Gap Road No.3 Fresh Water Service Reservoir,馬己仙峽道三號食水配水庫,Magazine Gap Road No.3 FW SR,HKI,HKI(D2),Hong Kong,香港,I,F,Fresh Water,1,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000080,SR084,Red Hill Fresh Water Service Reservoir,紅山食水配水庫,Red Hill FW SR,HKI,HKI(D3),Hong Kong,香港,I,F,Fresh Water,1,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
+SR00000395,SR251,Western Fresh Water Service Reservoir,西區食水配水庫,Western FW SR,HKI,HKI(D2),Hong Kong,香港,I,F,Fresh Water,1,2025-12-16 10:41:20.791,2025-12-16 10:41:20.791
