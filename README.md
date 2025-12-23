@@ -1,3 +1,37 @@
+create table coss_tmp.dim_ass_wtw_info_arch251223 as 
+select * from coss_dim.dim_ass_wtw_info dawi 
+where 
+i_code in
+('TW010',
+'TW028',
+'TW008',
+'TW022');
+
+delete  from coss_dim.dim_ass_wtw_info dawi 
+where 
+i_code in
+('TW010',
+'TW028',
+'TW008',
+'TW022')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 drop table if exists coss_dm.dm_wtw_opc_data_mini_month;
 
 create table if not exists coss_dm.dm_wtw_opc_data_mini_month (
