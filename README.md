@@ -1,3 +1,135 @@
+drop table if exists coss_dm.dm_wtw_opc_data_mini_month;
+
+create table if not exists coss_dm.dm_wtw_opc_data_mini_month (
+    id              bigserial       not null,
+    i_code          varchar(50)     not null,
+    region_abbr     varchar(50)     null, 
+    wtw_name_en     varchar(128)    null,
+    wtw_name_cn     varchar(128)    null,
+    wtw_name_tc     varchar(128)    null,
+    tag_name_cn     varchar(128)    null,
+    tag_name_tc     varchar(128)    null,
+    units           varchar(128)    null,
+    tag_type        varchar(128)    null,  
+    tag_name        varchar(128)    null,
+    tag_value       varchar(128)    null,
+    quality         int             null,
+    tag_time        timestamp       not null,
+    dm_update_time  timestamp       not null,
+    dm_load_time    timestamp(6)    not null,
+    primary key (i_code, tag_name, tag_time)
+)
+with (
+    orientation = row,
+    compression = no,
+    storage_type = ustore,
+    segment = off
+)
+partition by range (tag_time)
+(
+    -- 2025 Monthly Partitions
+    partition mh_202501 values less than ('2025-02-01 00:00:00'),
+    partition mh_202503 values less than ('2025-04-01 00:00:00'),
+    partition mh_202505 values less than ('2025-06-01 00:00:00'),
+    partition mh_202507 values less than ('2025-08-01 00:00:00'),
+    partition mh_202509 values less than ('2025-10-01 00:00:00'),
+    partition mh_202511 values less than ('2025-12-01 00:00:00'),
+    
+    -- 2026 Monthly Partitions
+    partition mh_202601 values less than ('2026-02-01 00:00:00'),
+    partition mh_202603 values less than ('2026-04-01 00:00:00'),
+    partition mh_202605 values less than ('2026-06-01 00:00:00'),
+    partition mh_202607 values less than ('2026-08-01 00:00:00'),
+    partition mh_202609 values less than ('2026-10-01 00:00:00'),
+    partition mh_202611 values less than ('2026-12-01 00:00:00'),
+    
+    -- 2027 Monthly Partitions
+    partition mh_202701 values less than ('2027-02-01 00:00:00'),
+    partition mh_202703 values less than ('2027-04-01 00:00:00'),
+    partition mh_202705 values less than ('2027-06-01 00:00:00'),
+    partition mh_202707 values less than ('2027-08-01 00:00:00'),
+    partition mh_202709 values less than ('2027-10-01 00:00:00'),
+    partition mh_202711 values less than ('2027-12-01 00:00:00'),
+    
+    -- 2028 Monthly Partitions（修正年份错误：2027-12-01改为2028-12-01）
+    partition mh_202801 values less than ('2028-02-01 00:00:00'),
+    partition mh_202803 values less than ('2028-04-01 00:00:00'),
+    partition mh_202805 values less than ('2028-06-01 00:00:00'),
+    partition mh_202807 values less than ('2028-08-01 00:00:00'),
+    partition mh_202809 values less than ('2028-10-01 00:00:00'),
+    partition mh_202811 values less than ('2028-12-01 00:00:00'),
+    
+    -- Future Partition
+    partition mh_future values less than ('9999-01-01 00:00:00')
+);
+
+-- Comment on table
+comment on table coss_dm.dm_wtw_opc_data_mini_month 
+is 'Water Treatment Work Tag Poc Data Latest';
+
+-- Comments on columns
+comment on column coss_dm.dm_wtw_opc_data_mini_month.id 
+is 'Id';
+comment on column coss_dm.dm_wtw_opc_data_mini_month.i_code 
+is 'Install Code';
+comment on column coss_dm.dm_wtw_opc_data_mini_month.region_abbr 
+is 'Region Abbreviation';
+comment on column coss_dm.dm_wtw_opc_data_mini_month.wtw_name_en 
+is 'Water Treatments Work English Name';
+comment on column coss_dm.dm_wtw_opc_data_mini_month.wtw_name_cn 
+is 'Water Treatments Work Chinese Name';
+comment on column coss_dm.dm_wtw_opc_data_mini_month.wtw_name_tc 
+is 'Water Treatments Work Traditional Chinese Name';
+comment on column coss_dm.dm_wtw_opc_data_mini_month.tag_name_cn 
+is 'Tag Chinese Name';
+comment on column coss_dm.dm_wtw_opc_data_mini_month.tag_name_tc 
+is 'Tag Traditional Chinese Name';
+comment on column coss_dm.dm_wtw_opc_data_mini_month.units 
+is 'Tag Units';
+comment on column coss_dm.dm_wtw_opc_data_mini_month.tag_type
+is 'Tag Type';
+comment on column coss_dm.dm_wtw_opc_data_mini_month.tag_name 
+is 'Tag Name';
+comment on column coss_dm.dm_wtw_opc_data_mini_month.tag_value 
+is 'Tag Value';
+comment on column coss_dm.dm_wtw_opc_data_mini_month.quality 
+is 'Quality';
+comment on column coss_dm.dm_wtw_opc_data_mini_month.tag_time 
+is 'Tag Time';
+comment on column coss_dm.dm_wtw_opc_data_mini_month.dm_update_time 
+is 'Dm Update Time';
+comment on column coss_dm.dm_wtw_opc_data_mini_month.dm_load_time 
+is 'Dm Load Time';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 -- coss_dim.dim_sr_installation_info definition
 
 -- Drop table
