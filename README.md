@@ -1,3 +1,8 @@
+10.66.169.140
+lp.cups -d TASKaflfa5054ci wwol.pdf
+
+
+
 create table coss_tmp.dim_ass_wtw_info_arch251223 as 
 select * from coss_dim.dim_ass_wtw_info dawi 
 where 
