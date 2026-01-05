@@ -1,3 +1,76 @@
+drop table if exists coss_dm.dm_cus_annon_watersupplyinfo_di;
+
+create table if not exists coss_dm.dm_cus_annon_watersupplyinfo_di(
+    id int8,
+    recid int8,
+    updateid int8,
+    watersupplytype int4,
+    watersupplyaddressen varchar(1000),
+    watersupplyaddresscn varchar(1000),
+    watersupplyaddressgn varchar(1000),
+    watersupplytime timestamp,
+    opentime timestamp,
+    endtime timestamp,
+    quality int4,
+    watersupplyremark varchar(4000),
+    createtime timestamp,
+    creator int4,
+    location varchar(100),
+    leavingtime timestamp,
+    vechiclenumber varchar(100),
+    drivername varchar(50),
+    driverphone varchar(50),
+    workman1 varchar(50),
+    workman2 varchar(50),
+    workmanphone1 varchar(50),
+    workmanphone2 varchar(50),
+    locationx varchar(100),
+    locationy varchar(100),
+    isvalid int4,
+    lastupdatetime timestamp,
+    updater int4,
+    dm_load_time timestamp(6) default current_timestamp,
+    dm_update_time timestamp(6) default current_timestamp,
+    primary key (id)
+)
+with (
+    orientation = row,
+    compression = no
+);
+comment on table coss_dm.dm_cus_annon_watersupplyinfo_di is 'Customer Announcement Temporary Water Supply Information Fact Table (DI: Incremental Update Table)';
+comment on column coss_dm.dm_cus_annon_watersupplyinfo_di.id is 'Primary Key Id';
+comment on column coss_dm.dm_cus_annon_watersupplyinfo_di.recid is 'Announcement Id';
+comment on column coss_dm.dm_cus_annon_watersupplyinfo_di.updateid is 'Announcement Record Id';
+comment on column coss_dm.dm_cus_annon_watersupplyinfo_di.watersupplytype is 'Temporary Water Supply Method';
+comment on column coss_dm.dm_cus_annon_watersupplyinfo_di.watersupplyaddressen is 'Temporary Water Supply Address (English)';
+comment on column coss_dm.dm_cus_annon_watersupplyinfo_di.watersupplyaddresscn is 'Temporary Water Supply Address (Simplified Chinese)';
+comment on column coss_dm.dm_cus_annon_watersupplyinfo_di.watersupplyaddressgn is 'Temporary Water Supply Address (Traditional Chinese)';
+comment on column coss_dm.dm_cus_annon_watersupplyinfo_di.watersupplytime is 'Temporary Water Supply Application Time';
+comment on column coss_dm.dm_cus_annon_watersupplyinfo_di.opentime is 'Opening Time';
+comment on column coss_dm.dm_cus_annon_watersupplyinfo_di.endtime is 'Closing Time';
+comment on column coss_dm.dm_cus_annon_watersupplyinfo_di.quality is 'Quantity';
+comment on column coss_dm.dm_cus_annon_watersupplyinfo_di.watersupplyremark is 'Remarks';
+comment on column coss_dm.dm_cus_annon_watersupplyinfo_di.createtime is 'Creation Time';
+comment on column coss_dm.dm_cus_annon_watersupplyinfo_di.creator is 'Creator';
+comment on column coss_dm.dm_cus_annon_watersupplyinfo_di.location is 'Coordinates';
+comment on column coss_dm.dm_cus_annon_watersupplyinfo_di.leavingtime is 'Departure Time';
+comment on column coss_dm.dm_cus_annon_watersupplyinfo_di.vechiclenumber is 'License Plate Number';
+comment on column coss_dm.dm_cus_annon_watersupplyinfo_di.drivername is 'Driver Name';
+comment on column coss_dm.dm_cus_annon_watersupplyinfo_di.driverphone is 'Driver Contact Number';
+comment on column coss_dm.dm_cus_annon_watersupplyinfo_di.workman1 is 'Staff Member 1';
+comment on column coss_dm.dm_cus_annon_watersupplyinfo_di.workman2 is 'Staff Member 2';
+comment on column coss_dm.dm_cus_annon_watersupplyinfo_di.workmanphone1 is 'Staff Contact Number 1';
+comment on column coss_dm.dm_cus_annon_watersupplyinfo_di.workmanphone2 is 'Staff Contact Number 2';
+comment on column coss_dm.dm_cus_annon_watersupplyinfo_di.locationx is 'Coordinate X';
+comment on column coss_dm.dm_cus_annon_watersupplyinfo_di.locationy is 'Coordinate Y';
+comment on column coss_dm.dm_cus_annon_watersupplyinfo_di.isvalid is 'Validity (0: Invalid, 1: Valid)';
+comment on column coss_dm.dm_cus_annon_watersupplyinfo_di.lastupdatetime is 'Last Update Time';
+comment on column coss_dm.dm_cus_annon_watersupplyinfo_di.updater is 'Updater';
+comment on column coss_dm.dm_cus_annon_watersupplyinfo_di.dm_load_time is 'Dm Load Time';
+comment on column coss_dm.dm_cus_annon_watersupplyinfo_di.dm_update_time is 'Dm Update Time';
+
+
+
 10.66.169.140
 lp.cups -d TASKaflfa5054ci wwol.pdf
 
