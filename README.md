@@ -1,3 +1,246 @@
+-- 260106 水质专题模拟水质监测数据代码
+with t_a as (
+select 
+*
+from 
+(
+select 
+installation_id,
+scada_tag tag_name,
+comment,
+cast(value as decimal(15,5)) value,
+time,
+unit,
+water_biz_type,
+current_timestamp dm_update_time,
+current_timestamp dm_load_time
+from coss_dm.dm_pnw_service_reservoir_tag_monitored_hst_mini_month dpsrtmhmm 
+where installation_id = 'SR230' and water_biz_type = 'CHLORINE'
+union all
+select 
+installation_id,
+scada_tag tag_name,
+comment,
+cast(value as decimal(15,5)) value,
+time,
+unit,
+water_biz_type,
+current_timestamp dm_update_time,
+current_timestamp dm_load_time
+from coss_dm.dm_pnw_service_reservoir_tag_monitored_hst_mini_month dpsrtmhmm 
+where installation_id = 'SR230' and water_biz_type = 'CHLORINE'
+union all
+select 
+installation_id,
+scada_tag tag_name,
+comment,
+cast(value as decimal(15,5)) value,
+time,
+unit,
+water_biz_type,
+current_timestamp dm_update_time,
+current_timestamp dm_load_time
+from coss_dm.dm_pnw_service_reservoir_tag_monitored_hst_mini_month dpsrtmhmm 
+where installation_id = 'SR230' and water_biz_type = 'CHLORINE'
+union all
+select 
+installation_id,
+scada_tag tag_name,
+comment,
+cast(value as decimal(15,5)) value,
+time,
+unit,
+water_biz_type,
+current_timestamp dm_update_time,
+current_timestamp dm_load_time
+from coss_dm.dm_pnw_service_reservoir_tag_monitored_hst_mini_month dpsrtmhmm 
+where installation_id = 'SR230' and water_biz_type = 'CHLORINE'
+union all
+select 
+installation_id,
+scada_tag tag_name,
+comment,
+cast(value as decimal(15,5)) value,
+time,
+unit,
+water_biz_type,
+current_timestamp dm_update_time,
+current_timestamp dm_load_time
+from coss_dm.dm_pnw_service_reservoir_tag_monitored_hst_mini_month dpsrtmhmm 
+where installation_id = 'SR230' and water_biz_type = 'CHLORINE'
+) limit 192
+) ,t_b as 
+(
+select 
+half_hour_time,
+tag_name
+from 
+(
+SELECT 
+    
+    generate_series AS half_hour_time
+FROM generate_series(
+    -- 起始时间：近3天的00:00:00（如今天是2025-12-24，则起始为2025-12-21 00:00:00）
+    (CURRENT_DATE - INTERVAL '3 days')::timestamp,
+    -- 结束时间：当天的23:30:00
+    (CURRENT_DATE + INTERVAL '1 day - 30 minutes')::timestamp,
+    -- 步长：30分钟
+    INTERVAL '30 minutes'
+)
+) t 
+join (select 'realflex6/KLN/BUTERFLYV_SR/A/AISR0LCH01' tag_name) t1 on 1=1
+) 
+select 
+installation_id,
+t.tag_name,
+comment,
+value,
+half_hour_time as time,
+unit,
+water_biz_type,
+current_timestamp dm_update_time,
+current_timestamp dm_load_time
+from t_a t inner join t_b t1 on t.tag_name = t1.tag_name 
+
+、
+
+
+
+
+
+with t_a as(
+(select 
+  t.i_code as installation_id                     -- install code
+  ,t.tag_name                         -- tag name
+  ,t.tag_name_tc as comment               -- tag traditional chinese name
+  ,cast(t.tag_value as decimal(15,5)) as value               -- tag value
+  ,t.tag_time as time                    -- tag time
+  ,t.units  as unit                    -- tag units
+  ,CASE 
+        WHEN tag_name_cn LIKE '%余氯%' THEN 'CHLORINE'
+        WHEN tag_name_cn LIKE '%PH%' THEN 'PH'
+        WHEN tag_name_cn LIKE '%氟%' THEN 'FLUORIDE'
+        WHEN tag_name_cn LIKE '%浊度%' THEN 'TURBIDITY'
+        ELSE tag_name_cn
+    END AS  water_biz_type
+  ,current_timestamp dm_update_time
+  ,current_timestamp dm_load_time
+from coss_dm.dm_wtw_opc_data_mini_day t
+where i_code = 'TW009' and tag_type ='water_quality'
+and tag_name_cn = '出厂食水-余氯'
+and  tag_value !=0
+limit 1)
+union all 
+
+(select 
+  t.i_code as installation_id                     -- install code
+  ,t.tag_name                         -- tag name
+  ,t.tag_name_tc as comment               -- tag traditional chinese name
+  ,cast(t.tag_value as decimal(15,5)) as value               -- tag value
+  ,t.tag_time as time                    -- tag time
+  ,t.units  as unit                    -- tag units
+  ,CASE 
+        WHEN tag_name_cn LIKE '%余氯%' THEN 'CHLORINE'
+        WHEN tag_name_cn LIKE '%PH%' THEN 'PH'
+        WHEN tag_name_cn LIKE '%氟%' THEN 'FLUORIDE'
+        WHEN tag_name_cn LIKE '%浊度%' THEN 'TURBIDITY'
+        ELSE tag_name_cn
+    END AS  water_biz_type
+  ,current_timestamp dm_update_time
+  ,current_timestamp dm_load_time
+from coss_dm.dm_wtw_opc_data_mini_day t
+where i_code = 'TW009' and tag_type ='water_quality'
+and tag_name_cn = '出厂食水-PH'
+and  tag_value !=0
+limit 1)
+
+union all 
+(select 
+  t.i_code as installation_id                     -- install code
+  ,t.tag_name                         -- tag name
+  ,t.tag_name_tc as comment               -- tag traditional chinese name
+  ,cast(1.01 as decimal(15,5)) as value               -- tag value
+  ,t.tag_time as time                    -- tag time
+  ,t.units  as unit                    -- tag units
+  ,CASE 
+        WHEN tag_name_cn LIKE '%余氯%' THEN 'CHLORINE'
+        WHEN tag_name_cn LIKE '%PH%' THEN 'PH'
+        WHEN tag_name_cn LIKE '%氟%' THEN 'FLUORIDE'
+        WHEN tag_name_cn LIKE '%浊度%' THEN 'TURBIDITY'
+        ELSE tag_name_cn
+    END AS  water_biz_type
+  ,current_timestamp dm_update_time
+  ,current_timestamp dm_load_time
+from coss_dm.dm_wtw_opc_data_mini_day t
+where i_code = 'TW009' and tag_type ='water_quality'
+and tag_name_cn = '出厂食水-氟'
+limit 1)
+union all 
+(
+select 
+  t.i_code as installation_id                     -- install code
+  ,t.tag_name                         -- tag name
+  ,t.tag_name_tc as comment               -- tag traditional chinese name
+  ,cast(0.35 as decimal(15,5)) as value               -- tag value
+  ,t.tag_time as time                    -- tag time
+  ,t.units  as unit                    -- tag units
+  ,CASE 
+        WHEN tag_name_cn LIKE '%余氯%' THEN 'CHLORINE'
+        WHEN tag_name_cn LIKE '%PH%' THEN 'PH'
+        WHEN tag_name_cn LIKE '%氟%' THEN 'FLUORIDE'
+        WHEN tag_name_cn LIKE '%浊度%' THEN 'TURBIDITY'
+        ELSE tag_name_cn
+    END AS  water_biz_type
+  ,current_timestamp dm_update_time
+  ,current_timestamp dm_load_time
+from coss_dm.dm_wtw_opc_data_mini_day t
+where i_code = 'TW009' and tag_type ='water_quality'
+and tag_name_cn = '出厂食水-浊度'
+limit 1)
+), t_b as (
+select 
+half_hour_time,
+tag_name
+from 
+(
+SELECT 
+    
+    generate_series AS half_hour_time
+FROM generate_series(
+    -- 起始时间：近3天的00:00:00（如今天是2025-12-24，则起始为2025-12-21 00:00:00）
+    (CURRENT_DATE - INTERVAL '3 days')::timestamp,
+    -- 结束时间：当天的23:30:00
+    (CURRENT_DATE + INTERVAL '1 day - 30 minutes')::timestamp,
+    -- 步长：30分钟
+    INTERVAL '30 minutes'
+)
+) t 
+join (select 
+  distinct t.tag_name_cn as comment               -- tag traditional chinese name
+  ,tag_name
+from coss_dm.dm_wtw_opc_data_mini_day t
+where i_code = 'TW009' and tag_type ='water_quality'
+and tag_name_cn like '出厂食水%') t1 on 1=1
+)
+select 
+installation_id,
+t.tag_name,
+comment,
+value,
+half_hour_time as time,
+unit,
+water_biz_type,
+current_timestamp dm_update_time,
+current_timestamp dm_load_time
+from t_a t inner join t_b t1 on t.tag_name = t1.tag_name 
+
+
+
+
+
+
+
+
 
 select 
 installation_id,
