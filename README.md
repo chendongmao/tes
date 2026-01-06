@@ -1,3 +1,22 @@
+
+select 
+installation_id,
+scada_tag,
+comment,
+value,
+time,
+unit,
+water_biz_type,
+current_timestamp dm_update_time,
+current_timestamp dm_load_time
+from coss_dm.dm_pnw_pipe_tag_monitored_rt_mini 
+
+
+
+
+
+
+
 drop table if exists coss_dm.dm_cus_annon_watersupplyinfo_di;
 
 create table if not exists coss_dm.dm_cus_annon_watersupplyinfo_di(
