@@ -1,3 +1,7 @@
+wsd_coss_test_01	CosS@wsd.coss01
+
+
+
 -- 260106 水质专题模拟水质监测数据代码
 with t_a as (
 select 
