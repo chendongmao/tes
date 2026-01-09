@@ -1,3 +1,16 @@
+  COSS Dev 环境的访问地址：http://10.66.169.199/COSS/login
+正式账号：
+  coss_wds
+  CosS@wsd.123
+测试账号：
+  coss_wds_test
+  CosS@wsd.123
+
+
+
+  
+
+
 wsd_coss_test_01	CosS@wsd.coss01
 
 
