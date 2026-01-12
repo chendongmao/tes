@@ -1,3 +1,10 @@
+**id	namecn	nameen	namegn
+3	消防栓	Fire hydrant	消防栓
+4	水箱	Water tank	水箱
+2	水车	Water wheel	水車**
+
+
+
 Lai Huen House
 Lai Yeung House
 Vegetable Marketing Organization Cheung Sha Wan Wholesale Vegetable Market
