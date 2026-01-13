@@ -1,11 +1,26 @@
+select count(*)  from coss_dim.dim_water_quality_accident_sz_installation_info
+union all select count(*)  from coss_dim.dim_sz_info
+union all select count(*)  from coss_dm.dm_cus_water_quality_wo_details_mini
+union all select count(*)  from coss_dm.dm_cus_water_quality_impact_build_mini
+union all select count(*)  from coss_dm.dm_cus_water_quality_accident_impact_mini
+union all select count(*)  from coss_dm.dm_wqm_accident_tag_monitored_day_mini
+union all select count(*)  from coss_dm.dm_cus_annon_watersupplyinfo_di
+
+5
+2
+947
+13
+4
+1536
+10
+
+
+
 太古城案件ID
 202505178427287551519
 愉景湾
 202505178427287000000
 <img width="264" height="97" alt="image" src="https://github.com/user-attachments/assets/8a4ba547-03b8-41dc-9ac6-ab5a43f3f5a2" />
-
-
-
 
 
 DROP TABLE coss_dm.dm_cus_annon_watersupplyinfo_di;
@@ -82,30 +97,6 @@ COMMENT ON COLUMN coss_dm.dm_cus_annon_watersupplyinfo_di.lastupdatetime IS 'Las
 COMMENT ON COLUMN coss_dm.dm_cus_annon_watersupplyinfo_di.updater IS 'Updater';
 COMMENT ON COLUMN coss_dm.dm_cus_annon_watersupplyinfo_di.dm_load_time IS 'Dm Load Time';
 COMMENT ON COLUMN coss_dm.dm_cus_annon_watersupplyinfo_di.dm_update_time IS 'Dm Update Time';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 **id	namecn	nameen	namegn
 3	消防栓	Fire hydrant	消防栓
