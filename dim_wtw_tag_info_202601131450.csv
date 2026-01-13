@@ -1,0 +1,351 @@
+"i_code","region_abbr","wtw_name_en","wtw_name_cn","wtw_name_tc","tag_name_en","tag_name_cn","tag_name_tc","units","tag_type","dim_update_time","dim_load_time"
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_Delivery_Flow_REV_Yesterday_Flow,泵房总出水-昨天逆流量,泵房總出水 - 昨天逆流量,KL,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_CCR_InletFlow02_REV_AI_Flow,原水2号入口-瞬时逆流量,原水 2 號入口 - 瞬時逆流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_CCR_InletFlow01_REV_AI_Flow,原水1号入口-瞬时逆流量,原水 1 號入口 - 瞬時逆流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_Combined_FinalWater_Fluoride_AI_Fluoride,水厂出水水质-氟,水廠出水水質 - 氟,mg/L,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_RRT_InnerLevel_AI_Level,原水水缸-水位,原水水缸 - 水位,m,level,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_RRT_Turbidity_AI_Turbidity,原水水缸-浊度,原水水缸 - 濁度,NTU,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_CCR_InletFlow01_Total_Flow,原水1号入口-累计流量,原水 1 號入口 - 累計流量,KL,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_CCR_InletFlow02_Yesterday_Flow,原水2号入口-昨天流量,原水 2 號入口 - 昨天流量,KL,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_CWT1_Level_AI_Level,清水池1号-水位,清水池 1 號 - 水位,m,level,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_PS_Pressure_AI_Pressure,水厂出水压力-主管压力,水廠出水壓力 - 主管壓力,bar,pressure,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_CWT2_Turbidity_AI_Turbidity,清水池2号-浊度,清水池 2 號 - 濁度,NTU,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_CWT1_Turbidity_AI_Turbidity,清水池1号-浊度,清水池 1 號 - 濁度,NTU,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_Delivery_Flow_Today_Flow,泵房总出水-今天流量,泵房總出水 - 今天流量,KL,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_Combined_FinalWater_Turbidity_AI_Turbidity,水厂出水水质-浊度,水廠出水水質 - 濁度,NTU,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_CCR_InletFlow01_Yesterday_Flow,原水1号入口-昨天流量,原水 1 號入口 - 昨天流量,KL,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_CWT2_Fluoride_AI_Fluoride,清水池2-氟,清水池 2 - 氟,mg/L,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_CCR_InletFlow01_REV_Total_Flow,原水1号入口-累计逆流量,原水 1 號入口 - 累計逆流量,KL,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_CWT1_pH_AI_PH,清水池1号-PH,清水池 1 號 - PH,,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_CCR_InletFlow01_REV_Yesterday_Flow,原水1号入口-昨天逆流量,原水 1 號入口 - 昨天逆流量,KL,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_CWT2_pH_AI_PH,清水池2号-PH,清水池 2 號 - PH,,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_Combined_FinalWater_Chlorine_AI_ResidualChlorine,水厂出水水质-余氯,水廠出水水質 - 餘氯,mg/L,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_CWT2_Level_AI_Level,清水池2号-水位,清水池 2 號 - 水位,m,level,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_Delivery_Flow_AI_Flow,泵房总出水-瞬时流量,泵房總出水 - 瞬時流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_PS_Pump04_AI_RunningHour,泵机4号-运行时长,泵機 4 號 - 運行時長,hr,time,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_Combined_FinalWater_pH_AI_PH,水厂出水水质-PH,水廠出水水質 - PH,,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_RRT_Fluoride_AI_Fluoride,原水水缸-氟,原水水缸 - 氟,mg/L,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_CWT1_ResidualChlorine_AI_ResidualChlorine,清水池1号-余氯,清水池 1 號 - 餘氯,mg/L,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_CCR_InletFlow01_REV_Today_Flow,原水1号入口-当天逆流量,原水 1 號入口 - 當天逆流量,KL,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_CWT1_Fluoride_AI_Fluoride,清水池1号-氟,清水池 1 號 - 氟,mg/L,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_PS_Pump05_AI_RunningHour,泵机5号-运行时长,泵機 5 號 - 運行時長,hr,time,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_PS_Pump03_AI_RunningHour,泵机3号-运行时长,泵機 3 號 - 運行時長,hr,time,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_Delivery_Flow_REV_Today_Flow,泵房总出水-今天逆流量,泵房總出水 - 今天逆流量,KL,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_Delivery_Flow_Yesterday_Flow,泵房总出水-昨天流量,泵房總出水 - 昨天流量,KL,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_CCR_InletFlow02_REV_Today_Flow,原水2号入口-当天逆流量,原水 2 號入口 - 當天逆流量,KL,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_PS_Pump02_AI_RunningHour,泵机2号-运行时长,泵機 2 號 - 運行時長,hr,time,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_CCR_InletFlow02_REV_Total_Flow,原水2号入口-累计逆流量,原水 2 號入口 - 累計逆流量,KL,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_CWT2_ResidualChlorine_AI_ResidualChlorine,清水池2号-余氯,清水池 2 號 - 餘氯,mg/L,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_Delivery_Flow_REV_Total_Flow,泵房总出水-总逆流量,泵房總出水 - 總逆流量,KL,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_CCR_InletFlow02_Total_Flow,原水2号入口-累计流量,原水 2 號入口 - 累計流量,KL,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_RRT_pH_AI_PH,原水水缸-PH,原水水缸 - PH,,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_RRT_OuterLevel_AI_Level,原水水缸水位,原水水缸水位,m,level,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_CCR_InletFlow02_AI_Flow,原水2号入口-瞬时流量,原水 2 號入口 - 瞬時流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_CCR_InletFlow01_AI_Flow,原水1号入口-瞬时流量,原水 1 號入口 - 瞬時流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_Delivery_Flow_Total_Flow,泵房总出水-总流量,泵房總出水 - 總流量,KL,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_CCR_InletFlow01_Today_Flow,原水1号入口-当天流量,原水 1 號入口 - 當天流量,KL,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_CCR_InletFlow02_REV_Yesterday_Flow,原水2号入口-昨天逆流量,原水 2 號入口 - 昨天逆流量,KL,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_PS_Pump01_AI_RunningHour,泵机1号-运行时长,泵機 1 號 - 運行時長,hr,time,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_CCR_InletFlow02_Today_Flow,原水2号入口-当天流量,原水 2 號入口 - 當天流量,KL,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW017,,Sheung Shui Water Treatment Works,上水滤水厂,上水濾水廠,SS_Delivery_Flow_REV_AI_Flow,泵房总出水-瞬时逆流量,泵房總出水 - 瞬時逆流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW009,HKI,Silver Mine Bay WTW,银矿湾滤水厂,銀鑛灣濾水廠,FWTAV,出厂食水-浊度,出廠食水濁度,NTU,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW016,NTW,Tuen Mun Water Treatment Works,屯门滤水厂,屯門濾水廠,Clarified_Stage5_Turbidity_Turbidity,"5期澄清水浊度","5 期澄清水濁度",NTU,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW016,NTW,Tuen Mun Water Treatment Works,屯门滤水厂,屯門濾水廠,Clarified_Stage1_Turbidity_Turbidity,"1期澄清水浊度","1 期澄清水濁度",NTU,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW009,HKI,Silver Mine Bay WTW,银矿湾滤水厂,銀鑛灣濾水廠,V_FM1_Flow_Yesterday,出厂南塘-昨天流量,出廠南塘-昨天流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW016,NTW,Tuen Mun Water Treatment Works,屯门滤水厂,屯門濾水廠,ClearWaterTank_Level_Level,清水池液位5期-需确认2.73m,清水池液位 5 期 - 需確認 2.73m,m,water_level,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW021,NTW,Au Tau  Water Treatment Works,凹头滤水厂,凹頭濾水廠,Inlet_RawWater_Flow_Totalizer,进水累计流量,進水累計流量,,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW024,NTE,Ma On Shan Water Treatment Works,马鞍山滤水厂,馬鞍山濾水廠,CP1_AIR_155_TURBIDITY,水厂水质-浊度,水廠水質-濁度,,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW016,NTW,Tuen Mun Water Treatment Works,屯门滤水厂,屯門濾水廠,Clarified_Stage1_ChlorineRes_ChlorineResidual,"1期澄清水余氯","1 期澄清水餘氯",ppm,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW009,HKI,Silver Mine Bay WTW,银矿湾滤水厂,銀鑛灣濾水廠,LFP_RW_INLET_Hart_Today,入厂原水_当天流量,入廠原水_當天流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW016,NTW,Tuen Mun Water Treatment Works,屯门滤水厂,屯門濾水廠,Dosed_pH_pH,原水投药后PH,原水投藥後 PH,,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW009,HKI,Silver Mine Bay WTW,银矿湾滤水厂,銀鑛灣濾水廠,LFP_RW_INLET_Hart_total_re,入厂原水_总逆向流量,入廠原水_總逆向流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW021,NTW,Au Tau  Water Treatment Works,凹头滤水厂,凹頭濾水廠,OSCG_SG_Incoming_Supply_02_kWh,电解氯耗电量2号,電解氯耗電量2號,kWh,power,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW024,NTE,Ma On Shan Water Treatment Works,马鞍山滤水厂,馬鞍山濾水廠,CP1_FIR_150_FLOWRATE,水厂水-流量计,水廠水-流量計,,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW009,HKI,Silver Mine Bay WTW,银矿湾滤水厂,銀鑛灣濾水廠,RWTAV,入厂原水-浊度,入廠原水濁度,NTU,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW009,HKI,Silver Mine Bay WTW,银矿湾滤水厂,銀鑛灣濾水廠,V_FM2_Flow_Today_Re,出厂南塘-当天逆向流量,出廠南塘-當天逆向流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW009,HKI,Silver Mine Bay WTW,银矿湾滤水厂,銀鑛灣濾水廠,V_FM2_Flow_Today,出厂南塘-当天流量,出廠南塘-當天流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW021,NTW,Au Tau  Water Treatment Works,凹头滤水厂,凹頭濾水廠,TreatedWaterReservoir_Turbidity_Value,出水浊度,出水濁度,NTU,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW009,HKI,Silver Mine Bay WTW,银矿湾滤水厂,銀鑛灣濾水廠,LFP_RW_INLET_Hart_yesterday_re,入厂原水_昨天逆向流量,入廠原水_昨天逆向流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW009,HKI,Silver Mine Bay WTW,银矿湾滤水厂,銀鑛灣濾水廠,V_FM2_Flow_Yesterday,出厂南塘-昨天流量,出廠南塘-昨天流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW009,HKI,Silver Mine Bay WTW,银矿湾滤水厂,銀鑛灣濾水廠,V_FM2_Flow_Total_Re,出厂南塘-总逆向流量,出廠南塘-總逆向流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW016,NTW,Tuen Mun Water Treatment Works,屯门滤水厂,屯門濾水廠,Stage3_pH_pH,"3期过滤水PH","3 期過濾水 PH",,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW024,NTE,Ma On Shan Water Treatment Works,马鞍山滤水厂,馬鞍山濾水廠,CP2_AIR_501_FLUORIDE,水厂水质-氟,水廠水質-氟,,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW016,NTW,Tuen Mun Water Treatment Works,屯门滤水厂,屯門濾水廠,Clarified_Stage5_ChlorineRes_ChlorineResidual,"5期澄清水余氯","5 期澄清水餘氯",ppm,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW009,HKI,Silver Mine Bay WTW,银矿湾滤水厂,銀鑛灣濾水廠,V_FM2_Flow_Yesterday_Re,出厂南塘-昨天逆向流量,出廠南塘-昨天逆向流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW024,NTE,Ma On Shan Water Treatment Works,马鞍山滤水厂,馬鞍山濾水廠,CP1_TIR_153_TEMPERATURE,水厂水-温度,水廠水-溫度,,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW024,NTE,Ma On Shan Water Treatment Works,马鞍山滤水厂,馬鞍山濾水廠,CP2_AIR_504_TW_CHLORINE_RESIDUAL,水厂水质-余氯,水廠水質-餘氯,,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW021,NTW,Au Tau  Water Treatment Works,凹头滤水厂,凹頭濾水廠,Inlet_RawWater_Flow_Value,进水瞬时流量,進水瞬時流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW009,HKI,Silver Mine Bay WTW,银矿湾滤水厂,銀鑛灣濾水廠,V_FM1_Flow_Total_Re,出厂南塘-总逆向流量,出廠南塘-總逆向流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW021,NTW,Au Tau  Water Treatment Works,凹头滤水厂,凹頭濾水廠,OSCG_Essential_Supply_PM_kWh,电解氯耗电量重要供电,電解氯耗電量重要供電,kWh,power,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW016,NTW,Tuen Mun Water Treatment Works,屯门滤水厂,屯門濾水廠,DosingPump02_08_Speed,速度,速度,%,other,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW016,NTW,Tuen Mun Water Treatment Works,屯门滤水厂,屯門濾水廠,Stage1_pH_pH,"1期过滤水PH","1 期過濾水 PH",,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW021,NTW,Au Tau  Water Treatment Works,凹头滤水厂,凹頭濾水廠,FW_Flow_PV,出水瞬时流量,出水瞬時流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW016,NTW,Tuen Mun Water Treatment Works,屯门滤水厂,屯門濾水廠,Stage4_pH_pH,"4期过滤水PH","4 期過濾水 PH",,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW009,HKI,Silver Mine Bay WTW,银矿湾滤水厂,銀鑛灣濾水廠,V_FM1_Flow_Yesterday_Re,出厂南塘-昨天逆向流量,出廠南塘-昨天逆向流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW016,NTW,Tuen Mun Water Treatment Works,屯门滤水厂,屯門濾水廠,DosingPump02_08_TotalRunTime,总运行时间,總運行時間,hr,other,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW021,NTW,Au Tau  Water Treatment Works,凹头滤水厂,凹頭濾水廠,OSCG_TrainB_Auxiliary_PM_kWh,电解氯耗电量供应链B,電解氯耗電量供應鏈B,kWh,power,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW016,NTW,Tuen Mun Water Treatment Works,屯门滤水厂,屯門濾水廠,DosingPump02_08_SpeedSP,速度设定,速度設定,%,other,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW021,NTW,Au Tau  Water Treatment Works,凹头滤水厂,凹頭濾水廠,TreatedWaterReservoir_002_Value,"02清水池液位","02清水池液位",m,water_level,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW009,HKI,Silver Mine Bay WTW,银矿湾滤水厂,銀鑛灣濾水廠,V_FM1_Flowrate,出厂南塘-瞬时流量,出廠南塘-瞬時流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW021,NTW,Au Tau  Water Treatment Works,凹头滤水厂,凹頭濾水廠,FW_DeliveryPressure_PV,出厂水压力,出廠水壓力,m,pressure,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW009,HKI,Silver Mine Bay WTW,银矿湾滤水厂,銀鑛灣濾水廠,FWPHAV,出厂食水-PH,出廠食水-PH,,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW016,NTW,Tuen Mun Water Treatment Works,屯门滤水厂,屯門濾水廠,Clarified_Stage4_Turbidity_Turbidity,"4期澄清水浊度","4 期澄清水濁度",NTU,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW021,NTW,Au Tau  Water Treatment Works,凹头滤水厂,凹頭濾水廠,OSCG_TrainA_Auxiliary_PM_kWh,电解氯耗电量供应链A,電解氯耗電量供應鏈A,kWh,power,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW016,NTW,Tuen Mun Water Treatment Works,屯门滤水厂,屯門濾水廠,DosingPump02_08_SpeedSP_Auto,自动速度,自動速度,%,other,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW016,NTW,Tuen Mun Water Treatment Works,屯门滤水厂,屯門濾水廠,Stage5_pH_pH,"5期过滤水PH","5 期過濾水 PH",,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW016,NTW,Tuen Mun Water Treatment Works,屯门滤水厂,屯門濾水廠,Raw_pH_pH,原水PH,原水 PH,,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW016,NTW,Tuen Mun Water Treatment Works,屯门滤水厂,屯門濾水廠,Raw_Turbidity_Turbidity,原水浊度,原水濁度,NTU,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW024,NTE,Ma On Shan Water Treatment Works,马鞍山滤水厂,馬鞍山濾水廠,CP2_AIR_503_PH,水厂水质-PH,水廠水質-PH,,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW021,NTW,Au Tau  Water Treatment Works,凹头滤水厂,凹頭濾水廠,OSCG_TrainB_Rectifier_PM_kWh,电解氯耗电量供应链B,電解氯耗電量供應鏈B,kWh,power,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW009,HKI,Silver Mine Bay WTW,银矿湾滤水厂,銀鑛灣濾水廠,LFP_RW_INLET_Hart_yesterday,入厂原水_昨天流量,入廠原水_昨天流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW016,NTW,Tuen Mun Water Treatment Works,屯门滤水厂,屯門濾水廠,Clarified_Stage3_Turbidity_Turbidity,"3期澄清水浊度","3 期澄清水濁度",NTU,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW016,NTW,Tuen Mun Water Treatment Works,屯门滤水厂,屯門濾水廠,Clarified_Stage3_ChlorineRes_ChlorineResidual,"3期澄清水余氯","3 期澄清水餘氯",ppm,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW009,HKI,Silver Mine Bay WTW,银矿湾滤水厂,銀鑛灣濾水廠,V_FM2_Flow_Total,出厂南塘-总流量,出廠南塘-總流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW009,HKI,Silver Mine Bay WTW,银矿湾滤水厂,銀鑛灣濾水廠,LFP_SR_LVL_NORTH,出厂北塘-水位,出廠北塘-水位,m,water_level,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW009,HKI,Silver Mine Bay WTW,银矿湾滤水厂,銀鑛灣濾水廠,V_FM1_Flow_Today,出厂南塘-当天流量,出廠南塘-當天流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW009,HKI,Silver Mine Bay WTW,银矿湾滤水厂,銀鑛灣濾水廠,FWFRAV,出厂食水-氟,出廠食水-氟,ppm,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HF11Flow_FlowReverse,HF11进水渠反向瞬时流量,HF11進水渠反向瞬時流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW025,HKI,Siu Ho Wan WTW,小蚝湾滤水厂,小蠔灣濾水廠,AO15501AI,水厂原水水质-大榄涌浊度,水廠原水水質-大欖湧濁度,,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW018,NTW,Yau Kom Tau Water Treatment Works,油柑头滤水厂,油柑頭濾水廠,YKT_Final_Water_Turbidity_Turbidity,出厂水-水质浊度,出廠水 - 水質濁度,NTU,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,V02_Flow_LastMonthFlow,V02进水渠上个月正向流量,V02進水渠上個月正向流量,"0.01ML",flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW018,NTW,Yau Kom Tau Water Treatment Works,油柑头滤水厂,油柑頭濾水廠,YKT_Final_Water_pH_PH,出厂水-水质PH,出廠水 - 水質 PH,,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,V01_Flow_YesterdayFlow,V01进水渠累计正向流量(昨天9:00-今天9:00),V01進水渠累計正向流量(昨天9:00-今天9:00),,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,Raw_RawWater_SHT_Raw_Water_pH,万宜水库进水PH,萬宜水庫進水PH,,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW018,NTW,Yau Kom Tau Water Treatment Works,油柑头滤水厂,油柑頭濾水廠,YKT_TreatedWaterTankLevel_Level_Low_SP,清水池-最低,清水池 - 最低,,water_level,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HF1Flow_VolumeCountMonthlyReverse,HF1进水渠本月反向流量,HF1進水渠本月反向流量,,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,V01_Flow_MonthRevFlow,V01进水渠本月反向流量,V01進水渠本月反向流量,"0.01ML",flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW018,NTW,Yau Kom Tau Water Treatment Works,油柑头滤水厂,油柑頭濾水廠,YKT_DeliveryrFlow_Forward_TotalFlow,出厂水-流量,出廠水 - 流量,,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HF11Flow_VolumeCountTotalReverse,HF11进水渠累计反向流量(开厂-当前),HF11進水渠累計反向流量(開廠-當前),,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,SIPanel1_SHT_DeliveryPressureForPump12T14,出水管泵站12-14出水压力,出水管泵站12-14出水壓力,m,pressure,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW025,HKI,Siu Ho Wan WTW,小蚝湾滤水厂,小蠔灣濾水廠,MO55002YL1,出水泵房-2号泵的启停状态,出水泵房-2號泵的啟停狀態,,other,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,FlowKiosk4_SHT_VolumeCountLastDayS88,s88号管昨天出厂正向流量,s88號管昨天出廠正向流量,,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HF11Flow_VolumeCountTotal,HF11进水渠累计正向流量(开厂-当前),HF11進水渠累計正向流量(開廠-當前),,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,PowerSystem3_SHATIN_PS_P11_REAL5,泵11功率,泵11功率,kW,power_consumption,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HVPump11_Power,泵11功率,泵11功率,kW,power_consumption,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,Raw_RawWater_SHT_Raw_Water_Fl2,万宜水库进水氟化物,萬宜水庫進水氟化物,,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,PowerSystem3_SHATIN_PS_P13_REAL4,泵13电流,泵13電流,kA,power_consumption,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW025,HKI,Siu Ho Wan WTW,小蚝湾滤水厂,小蠔灣濾水廠,Hart_F570_Flow_counter1,水厂出水-累计流量,水廠出水-累計流量,,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,NW_SettleWater_SHT_N_Settled_Water_CL2,北厂沉淀池沉淀后残余氯,北廠沈澱池沈澱後殘余氯,mg/L,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HF11Flow_FLow,HF11进水渠正向瞬时流量,HF11進水渠正向瞬時流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HVPump10_Power,泵10功率,泵10功率,kW,power_consumption,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW025,HKI,Siu Ho Wan WTW,小蚝湾滤水厂,小蠔灣濾水廠,MO571PI,清水池-水位,清水池-水位,m,water_level,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,FlowKiosk5_SHT_DeliveryFlowKioskS89_Reverse,s89号管出厂瞬时反向流量,s89號管出廠瞬時反向流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,Inlet_Flow_F945_YesterdayRevFlow,F945进水累计反向流量(昨天9:00-今天9:00),F945進水累計反向流量(昨天9:00-今天9:00),"0.01ML",flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,V01_Flow_LastMonthFlow,V01进水渠上个月正向流量,V01進水渠上個月正向流量,"0.01ML",flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HV_Valve_Outlet_Pressure_11_Pressure,进水管泵站11泵后出水压力,進水管泵站11泵後出水壓力,m,pressure,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,PowerSystem3_SHATIN_PS_P12_REAL5,泵12功率,泵12功率,kW,power_consumption,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,PowerSystem3_SHATIN_PS_P11_REAL6,泵11电量,泵11電量,kWh,power_consumption,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,V01_Flow_TodayRevFlow,V01进水渠今天反向流量,V01進水渠今天反向流量,"0.01ML",flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW018,NTW,Yau Kom Tau Water Treatment Works,油柑头滤水厂,油柑頭濾水廠,YKT_TreatedWaterPump05_RunningHour,泵机-运行时常,泵機 - 運行時常,,time,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HF11Flow_VolumeCountTodayReverse,HF11进水渠今天反向流量,HF11進水渠今天反向流量,,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HVPump11_Current,泵11电流,泵11電流,A,power_consumption,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW025,HKI,Siu Ho Wan WTW,小蚝湾滤水厂,小蠔灣濾水廠,AO15402AI,水厂原水水质-石壁PH,水廠原水水質-石壁PH,,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,FlowKiosk5_SHT_AnalogCountTotalS89,s89号管出厂累计正向流量,s89號管出廠累計正向流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,FlowKiosk4_SHT_DeliveryFlowKioskS88_Reverse,s88号管出厂反向瞬时流量,s88號管出廠反向瞬時流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,V02_Flow_InletFlow,V02进水渠正向瞬时流量,V02進水渠正向瞬時流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW018,NTW,Yau Kom Tau Water Treatment Works,油柑头滤水厂,油柑頭濾水廠,YKT_FinalWater_ResCl2_ResidualChlorine,出厂水-水质氯,出廠水 - 水質氯,ppm,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,V02_Flow_LastMonthRevFlow,V02进水渠上个月反向流量,V02進水渠上個月反向流量,"0.01ML",flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW025,HKI,Siu Ho Wan WTW,小蚝湾滤水厂,小蠔灣濾水廠,Hart_F570_Flow,水厂出水-累计流量,水廠出水-累計流量,,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,V02_Flow_InletRevFlow,V02进水渠反向瞬时流量,V02進水渠反向瞬時流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW025,HKI,Siu Ho Wan WTW,小蚝湾滤水厂,小蠔灣濾水廠,Hart_F150_1_Flow_counter2,水厂入水-大榄涌累计流量,水廠入水-大欖涌累計流量,,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW018,NTW,Yau Kom Tau Water Treatment Works,油柑头滤水厂,油柑頭濾水廠,YKT_TreatedWaterPump03_RunningHour,泵机-运行时常,泵機 - 運行時常,,time,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HF1Flow_VolumeCountYesterdayReverse,HF1进水渠累计反向流量(昨天9:00-今天9:00),HF1進水渠累計反向流量(昨天9:00-今天9:00),,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,Inlet_Flow_F945_TodayRevFlow,F945进水今天反向流量,F945進水今天反向流量,"0.01ML",flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW018,NTW,Yau Kom Tau Water Treatment Works,油柑头滤水厂,油柑頭濾水廠,YKT_InletFlow_Forward_Flow_Total,原水-进水流量,原水 - 進水流量,,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,FlowKiosk4_SHT_VolumeCountMonthlyS88,s88号管出厂正向流量(本月1号-当前),s88號管出廠正向流量(本月1號-當前),,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,FlowKiosk5_SHT_AnalogCountMonthlyS89,s89号管出厂正向流量(本月1号-当前),s89號管出廠正向流量(本月1號-當前),MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,Inlet_Flow_F945_TotalRevFlow,F945进水累计反向流量(开厂-当前),F945進水累計反向流量(開廠-當前),"0.01ML",flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW027,NTW,Ngau Tam Mei WTW,牛潭尾滤水厂,牛潭尾濾水廠,PowerAlarmNaOCl_PM_V_L3,NaOCL漂水相关,NaOCL漂水相關,V,,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW027,NTW,Ngau Tam Mei WTW,牛潭尾滤水厂,牛潭尾濾水廠,SHSD_TankLevel_1TimerInstantTime,SHSD漂水池相关,SHSD漂水池相關,,,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW027,NTW,Ngau Tam Mei WTW,牛潭尾滤水厂,牛潭尾濾水廠,SHSD_TankLevel_1Level,SHSD漂水池相关,SHSD漂水池相關,m,water_level,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW027,NTW,Ngau Tam Mei WTW,牛潭尾滤水厂,牛潭尾濾水廠,PowerAlarmNaOCl_PM_PF,NaOCL漂水相关,NaOCL漂水相關,,,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW027,NTW,Ngau Tam Mei WTW,牛潭尾滤水厂,牛潭尾濾水廠,SHSD_TankLevel_2TimerInstantTime,SHSD漂水池相关,SHSD漂水池相關,,,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW027,NTW,Ngau Tam Mei WTW,牛潭尾滤水厂,牛潭尾濾水廠,PowerAlarmNaOCl_PM_A_AVG,NaOCL漂水相关,NaOCL漂水相關,,,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW027,NTW,Ngau Tam Mei WTW,牛潭尾滤水厂,牛潭尾濾水廠,Filtered_Treated_ChlorineChlorine,过滤水余氯,過濾水餘氯,,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW027,NTW,Ngau Tam Mei WTW,牛潭尾滤水厂,牛潭尾濾水廠,PowerAlarmNaOCl_PM_V_L1,NaOCL漂水相关,NaOCL漂水相關,V,,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW027,NTW,Ngau Tam Mei WTW,牛潭尾滤水厂,牛潭尾濾水廠,PowerAlarmNaOCl_PM_V_L2,NaOCL漂水相关,NaOCL漂水相關,V,,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW027,NTW,Ngau Tam Mei WTW,牛潭尾滤水厂,牛潭尾濾水廠,SHSD_TankLevel_1InletFlow,SHSD漂水池相关,SHSD漂水池相關,,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW027,NTW,Ngau Tam Mei WTW,牛潭尾滤水厂,牛潭尾濾水廠,SHSD_WasteTankLevelLevel,SHSD漂水池相关,SHSD漂水池相關,m,water_level,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW027,NTW,Ngau Tam Mei WTW,牛潭尾滤水厂,牛潭尾濾水廠,SHSD_TankLevel_2Level,SHSD漂水池相关,SHSD漂水池相關,m,water_level,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW027,NTW,Ngau Tam Mei WTW,牛潭尾滤水厂,牛潭尾濾水廠,SHSD_TankLevel_2InletFlow,SHSD漂水池相关,SHSD漂水池相關,,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW027,NTW,Ngau Tam Mei WTW,牛潭尾滤水厂,牛潭尾濾水廠,PowerAlarmNaOCl_PM_kWh,NaOCL漂水相关,NaOCL漂水相關,kWh,power,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW027,NTW,Ngau Tam Mei WTW,牛潭尾滤水厂,牛潭尾濾水廠,PowerAlarmNaOCl_PM_kW,NaOCL漂水相关,NaOCL漂水相關,kW,,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW027,NTW,Ngau Tam Mei WTW,牛潭尾滤水厂,牛潭尾濾水廠,PowerAlarmNaOCl_PM_A_L1,NaOCL漂水相关,NaOCL漂水相關,A,,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW027,NTW,Ngau Tam Mei WTW,牛潭尾滤水厂,牛潭尾濾水廠,PowerAlarmNaOCl_PM_A_L3,NaOCL漂水相关,NaOCL漂水相關,A,,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW027,NTW,Ngau Tam Mei WTW,牛潭尾滤水厂,牛潭尾濾水廠,TreatedWater_DeliveryPressure1Pressure,出厂水压力暂时未启用,出廠水壓力暫時未啟用,m,pressure,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW027,NTW,Ngau Tam Mei WTW,牛潭尾滤水厂,牛潭尾濾水廠,TreatedWater_DeliveryPressure2Pressure,出厂水压力,出廠水壓力,m,pressure,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW027,NTW,Ngau Tam Mei WTW,牛潭尾滤水厂,牛潭尾濾水廠,PowerAlarmNaOCl_PM_V_AVG,NaOCL漂水相关,NaOCL漂水相關,V,,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW027,NTW,Ngau Tam Mei WTW,牛潭尾滤水厂,牛潭尾濾水廠,SHSD_WasteTankLevelInletFlow,SHSD漂水池相关,SHSD漂水池相關,,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW027,NTW,Ngau Tam Mei WTW,牛潭尾滤水厂,牛潭尾濾水廠,Electro_Chlorinator_AI_03XAI_8,Electro_Chlorinator是OICG相关,Electro_Chlorinator是OICG相關,,,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW027,NTW,Ngau Tam Mei WTW,牛潭尾滤水厂,牛潭尾濾水廠,Treated_Water_ChlorineChlorine,出厂水余氯,出廠水餘氯,mg/L,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW027,NTW,Ngau Tam Mei WTW,牛潭尾滤水厂,牛潭尾濾水廠,PowerAlarmNaOCl_PM_kVA,NaOCL漂水相关,NaOCL漂水相關,kVA,,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW027,NTW,Ngau Tam Mei WTW,牛潭尾滤水厂,牛潭尾濾水廠,Treated_Water_pHpH,出厂水水质PH,出廠水水質PH,,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW027,NTW,Ngau Tam Mei WTW,牛潭尾滤水厂,牛潭尾濾水廠,RawWaterFlowMLD,原水实时流量,原水即時流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW027,NTW,Ngau Tam Mei WTW,牛潭尾滤水厂,牛潭尾濾水廠,PowerAlarmNaOCl_PM_Hz,NaOCL漂水相关,NaOCL漂水相關,Hz,,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW027,NTW,Ngau Tam Mei WTW,牛潭尾滤水厂,牛潭尾濾水廠,PowerAlarmNaOCl_PM_A_L2,NaOCL漂水相关,NaOCL漂水相關,A,,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,V01_Flow_InletFlow,V01进水渠正向瞬时流量,V01進水渠正向瞬時流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,V02_Flow_TodayFlow,V02进水渠今天正向流量,V02進水渠今天正向流量,"0.01ML",flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,NW_SettleWater_SHT_N_Settled_Water_pH,北厂沉淀池沉淀后PH,北廠沈澱池沈澱後PH,,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,PowerSystem3_SHATIN_PS_P12_REAL6,泵12电量,泵12電量,kWh,power_consumption,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,FlowKiosk4_SHT_VolumeCountTotalS88,s88号管出厂累计正流量,s88號管出廠累計正流量,,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HF11Flow_VolumeCountLastMonthReverse,HF11进水渠上个月反向流量,HF11進水渠上個月反向流量,,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HV_Valve_Inlet_Pressure_10_Pressure,进水管泵站10泵前入水压力,進水管泵站10泵前入水壓力,m,pressure,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,NW_FinalWater_SHT_N_Final_Water_Fl2,北厂出水泵后氟化物,北廠出水泵後氟化物,,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,V01_Flow_TotalRevFlow,V01进水渠累计反向流量(开厂-当前),V01進水渠累計反向流量(開廠-當前),"0.01ML",flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,FlowKiosk4_SHT_VolumeCountTodayS88_Reverse,s88号管今天出厂反向流量,s88號管今天出廠反向流量,,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW025,HKI,Siu Ho Wan WTW,小蚝湾滤水厂,小蠔灣濾水廠,AO15403AI,水厂原水水质-综合PH,水廠原水水質-綜合PH,,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,Inlet_Flow_F945_MonthRevFlow,F945进水本月反向流量,F945進水本月反向流量,"0.01ML",flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW025,HKI,Siu Ho Wan WTW,小蚝湾滤水厂,小蠔灣濾水廠,MO55001YL1,出水泵房-1号泵的启停状态,出水泵房-1號泵的啟停狀態,,other,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,V01_Flow_TotalFlow,V01进水渠累计正向流量(开厂-当前),V01進水渠累計正向流量(開廠-當前),"0.01ML",flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,Inlet_Flow_F945_LastMonthFlow,F945进水上个月正向流量,F945進水上個月正向流量,"0.01ML",flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,NW_FinalWater_SHT_N_Final_Water_Turbidity,北厂出水泵后浊度,北廠出水泵後濁度,,power_consumption,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW025,HKI,Siu Ho Wan WTW,小蚝湾滤水厂,小蠔灣濾水廠,AO15401AI,水厂原水水质-大榄涌PH,水廠原水水質-大欖湧PH,,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,FlowKiosk4_SHT_VolumeCountTotalS88_Reverse,s88号管出厂累计反向流量,s88號管出廠累計反向流量,,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HV_Valve_Inlet_Pressure_Pressure,泵房进水管泵前入水压力,泵房進水管泵前入水壓力,m,pressure,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,NW_FilteredWater_CL2,北厂过滤后残余氯,北廠過濾後殘余氯,,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,PowerSystem3_SHATIN_PS_P13_REAL5,泵13功率,泵13功率,kW,power_consumption,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HF1Flow_FLow,HF1进水渠正向瞬时流量,HF1進水渠正向瞬時流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,V01_Flow_YesterdayRevFlow,V01进水渠累计反向流量(昨天9:00-今天9:00),V01進水渠累計反向流量(昨天9:00-今天9:00),"0.01ML",flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,FlowKiosk5_SHT_VolumeCountLastMonthS89,s89号管上个月出厂正向流量,s89號管上個月出廠正向流量,,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW018,NTW,Yau Kom Tau Water Treatment Works,油柑头滤水厂,油柑頭濾水廠,YKT_TreatedWaterTankLevel_Level_High_SP,清水池-最高,清水池 - 最高,,water_level,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,FlowKiosk4_SHT_VolumeCountTodayS88,s88号管今天出厂正向流量,s88號管今天出廠正向流量,,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,Inlet_Flow_F945_TodayFlow,F945进水今天正向流量,F945進水今天正向流量,"0.01ML",flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,FlowKiosk4_SHT_AnalogCountLastDayS88,s88号管昨天出厂正向流量,s88號管昨天出廠正向流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,PowerSystem3_SHATIN_PS_P13_REAL6,泵13电量,泵13電量,kWh,power_consumption,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW018,NTW,Yau Kom Tau Water Treatment Works,油柑头滤水厂,油柑頭濾水廠,YKT_Final_Fluoride_Fluoride,出厂水-水质氟,出廠水 - 水質氟,mg/L,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,FlowKiosk5_SHT_VolumeCountLastDayS89_Reverse,s89号管昨天出厂反向流量,s89號管昨天出廠反向流量,,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HF1Flow_VolumeCountTodayReverse,HF1进水渠今天反向流量,HF1進水渠今天反向流量,,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HV_Valve_Outlet_Pressure_Pressure,泵房进水管泵后出水压力,泵房進水管泵後出水壓力,m,pressure,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HV_Pump_10_YesterdayRunTime,泵10昨天运行时间,泵10昨天運行時間,hr,time,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HVPump14_Voltage,泵14泵14电压,泵14泵14電壓,kV,power_consumption,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HF1Flow_VolumeCountLastMonthReverse,HF1进水渠上个月反向流量,HF1進水渠上個月反向流量,,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW025,HKI,Siu Ho Wan WTW,小蚝湾滤水厂,小蠔灣濾水廠,AO15002FI1_SP_inFlow,水厂入水-石壁入水,水廠入水-石壁入水,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HV_Pump_TodayRunTime,泵今日运行时间,泵今日運行時間,hr,time,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW018,NTW,Yau Kom Tau Water Treatment Works,油柑头滤水厂,油柑頭濾水廠,YKT_InletPress_Press,原水-进水压力,原水 - 進水壓力,kPa,pressure,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,FlowKiosk5_SHT_AnalogCountLastMonthS89,s89号管上个月出厂正向流量,s89號管上個月出廠正向流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,NW_DosedWater_SHT_N_Dosed_Water_pH,北厂沉淀后PH,北廠沈澱後PH,,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW018,NTW,Yau Kom Tau Water Treatment Works,油柑头滤水厂,油柑頭濾水廠,YKT_Raw_Water_pH_PH,原水-水质PH,原水 - 水質 PH,,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW025,HKI,Siu Ho Wan WTW,小蚝湾滤水厂,小蠔灣濾水廠,MO501AI,出厂水质-氟,出廠水質-氟,mg/L,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,FlowKiosk5_SHT_VolumeCountLastDayS89,s89号管昨天出厂正向流量,s89號管昨天出廠正向流量,,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HVPump11_Voltage,泵11电压,泵11電壓,kV,power_consumption,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,NW_SettleWater_SHT_N_Settled_Water_Turbidity,北厂沉淀池沉淀后浊度,北廠沈澱池沈澱後濁度,NTU,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,Raw_RawWater_SHT_Raw_Water_Turbidity,万宜水库进水浊度,萬宜水庫進水濁度,,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW025,HKI,Siu Ho Wan WTW,小蚝湾滤水厂,小蠔灣濾水廠,MO55003YL1,出水泵房-3号泵的启停状态,出水泵房-3號泵的啟停狀態,,other,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HV_Pump_YesterdayRunTime,泵昨天运行时间,泵昨天運行時間,hr,time,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,FlowKiosk5_SHT_VolumeCountTotalS89_Reverse,s89号管出厂累计反向流量,s89號管出廠累計反向流量,,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HV_Valve_Outlet_Pressure_10_Pressure,进水管泵站10泵后出水压力,進水管泵站10泵後出水壓力,m,pressure,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,Inlet_Flow_F945_LastMonthRevFlow,F945进水上个月反向流量,F945進水上個月反向流量,"0.01ML",flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HF1Flow_VolumeCountMonthly,HF1进水渠本月正向流量,HF1進水渠本月正向流量,,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW018,NTW,Yau Kom Tau Water Treatment Works,油柑头滤水厂,油柑頭濾水廠,YKT_TreatedWaterPump02_RunningHour,泵机-运行时常,泵機 - 運行時常,,time,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,Inlet_Flow_F945_TotalFlow,F945进水累计正向流量(开厂-当前),F945進水累計正向流量(開廠-當前),"0.01ML",flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,V02_Flow_TotalRevFlow,V02进水渠累计反向流量(开厂-当前),V02進水渠累計反向流量(開廠-當前),"0.01ML",flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW025,HKI,Siu Ho Wan WTW,小蚝湾滤水厂,小蠔灣濾水廠,AO15001FI_TLC_inFlow,水厂入水-大榄涌入水,水廠入水-大欖湧入水,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,FlowKiosk5_SHT_VolumeCountMonthlyS89_Reverse,s89号管出厂反向流量(本月1号-当前),s89號管出廠反向流量(本月1號-當前),,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HV_Pump_10_TotalRunTime,泵10运行总时间,泵10運行總時間,hr,time,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HF11Flow_VolumeCountYesterdayReverse,HF11进水渠累计反向流量(昨天9:00-今天9:00),HF11進水渠累計反向流量(昨天9:00-今天9:00),,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW025,HKI,Siu Ho Wan WTW,小蚝湾滤水厂,小蠔灣濾水廠,MO503AI_Final_pH,出厂水质-PH,出廠水質-PH,,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,V02_Flow_TodayRevFlow,V02进水渠今天反向流量,V02進水渠今天反向流量,"0.01ML",flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW024,NTE,Ma On Shan Water Treatment Works,马鞍山滤水厂,馬鞍山濾水廠,CP2_AIR_502_TURBIDITY,水厂水质-浊度,水廠水質-濁度,,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW016,NTW,Tuen Mun Water Treatment Works,屯门滤水厂,屯門濾水廠,Clarified_Stage2_Turbidity_Turbidity,"2期澄清水浊度","2 期澄清水濁度",NTU,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW024,NTE,Ma On Shan Water Treatment Works,马鞍山滤水厂,馬鞍山濾水廠,CP1_AIR_154_PH,水厂水质-PH,水廠水質-PH,,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW009,HKI,Silver Mine Bay WTW,银矿湾滤水厂,銀鑛灣濾水廠,LFP_RW_INLET_Hart_total,入厂原水_总流量,入廠原水_總流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW021,NTW,Au Tau  Water Treatment Works,凹头滤水厂,凹頭濾水廠,TreatedWaterReservoir_001_Value,"01清水池液位","01清水池液位",m,water_level,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW021,NTW,Au Tau  Water Treatment Works,凹头滤水厂,凹頭濾水廠,TreatedWaterReservoir_Fluoride_Value,出水氟化物,出水氟化物,mg/L,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW021,NTW,Au Tau  Water Treatment Works,凹头滤水厂,凹頭濾水廠,TreatedWaterReservoir_CL_Value,出水余氯,出水餘氯,ppm,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW021,NTW,Au Tau  Water Treatment Works,凹头滤水厂,凹頭濾水廠,OSCG_SG_Incoming_Supply_01_kWh,电解氯耗电量1号,電解氯耗電量1號,kWh,power,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW009,HKI,Silver Mine Bay WTW,银矿湾滤水厂,銀鑛灣濾水廠,RWPHAV,入厂原水-PH,入廠原水-PH,,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW009,HKI,Silver Mine Bay WTW,银矿湾滤水厂,銀鑛灣濾水廠,LFP_RW_INLET_Hart_Today_re,入厂原水_当天逆向流量,入廠原水_當天逆向流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW009,HKI,Silver Mine Bay WTW,银矿湾滤水厂,銀鑛灣濾水廠,LFP_SR_LVL_SOUTH,出厂南塘-水位,出廠南塘-水位,m,water_level,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW021,NTW,Au Tau  Water Treatment Works,凹头滤水厂,凹頭濾水廠,TreatedWaterReservoir_pH_Value,出水PH,出水PH,,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW009,HKI,Silver Mine Bay WTW,银矿湾滤水厂,銀鑛灣濾水廠,V_FM1_Flow_Today_Re,出厂南塘-当天逆向流量,出廠南塘-當天逆向流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW021,NTW,Au Tau  Water Treatment Works,凹头滤水厂,凹頭濾水廠,OSCG_TrainA_Rectifier_PM_kWh,电解氯耗电量供应链A,電解氯耗電量供應鏈A,kWh,power,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW009,HKI,Silver Mine Bay WTW,银矿湾滤水厂,銀鑛灣濾水廠,FWCRAV,出厂食水-余氯,出廠食水-餘氯,mg/L,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW016,NTW,Tuen Mun Water Treatment Works,屯门滤水厂,屯門濾水廠,Clarified_Stage2_ChlorineRes_ChlorineResidual,"2期澄清水余氯","2 期澄清水餘氯",ppm,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW016,NTW,Tuen Mun Water Treatment Works,屯门滤水厂,屯門濾水廠,Clarified_Stage4_ChlorineRes_ChlorineResidual,"4期澄清水余氯","4 期澄清水餘氯",ppm,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW016,NTW,Tuen Mun Water Treatment Works,屯门滤水厂,屯門濾水廠,Stage2_pH_pH,"2期过滤水PH","2 期過濾水 PH",,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW009,HKI,Silver Mine Bay WTW,银矿湾滤水厂,銀鑛灣濾水廠,V_FM2_Flowrate,出厂南塘-瞬时流量,出廠南塘-瞬時流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW009,HKI,Silver Mine Bay WTW,银矿湾滤水厂,銀鑛灣濾水廠,V_FM1_Flow_Total,出厂南塘-总流量,出廠南塘-總流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW025,HKI,Siu Ho Wan WTW,小蚝湾滤水厂,小蠔灣濾水廠,MO504AI,出厂水质-余氯,出廠水質-余氯,mg/L,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW025,HKI,Siu Ho Wan WTW,小蚝湾滤水厂,小蠔灣濾水廠,MO55005YL1,出水泵房-5号泵的启停状态,出水泵房-5號泵的啟停狀態,,other,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,NW_FilterednDosedWater_SHT_N_FilteredDosed_Water_pH,出水管出厂前投药后PH,出水管出廠前投藥後PH,,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW018,NTW,Yau Kom Tau Water Treatment Works,油柑头滤水厂,油柑頭濾水廠,YKT_TreatedWaterPump01_RunningHour,泵机-运行时常,泵機 - 運行時常,,time,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HF11Flow_VolumeCountYesterday,HF11进水渠累计正向流量(昨天9:00-今天9:00),HF11進水渠累計正向流量(昨天9:00-今天9:00),,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,NW_RawWater_SHT_Raw_Water2_Turbidity,下城门水库入水浊度,下城門水庫入水濁度,NTU,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,FlowKiosk5_SHT_VolumeCountMonthlyS89,s89号管出厂正向流量(本月1号-当前),s89號管出廠正向流量(本月1號-當前),,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW025,HKI,Siu Ho Wan WTW,小蚝湾滤水厂,小蠔灣濾水廠,AO15503AI,水厂原水水质-综合浊度,水廠原水水質-綜合濁度,NTU,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,FlowKiosk4_SHT_AnalogCountLastMonthS88,s88号管上月出厂正向流量,s88號管上月出廠正向流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,FlowKiosk4_SHT_VolumeCountMonthlyS88_Reverse,s88号管出厂反向流量(本月1号-当前),s88號管出廠反向流量(本月1號-當前),,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,PowerSystem2_SHATIN_PS_P10_REAL5,泵10功率,泵10功率,kW,power_consumption,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,PowerSystem3_SHATIN_PS_P12_REAL4,泵12电流,泵12電流,kA,power_consumption,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HF1Flow_VolumeCountYesterday,HF1进水渠累计正向流量(昨天9:00-今天9:00),HF1進水渠累計正向流量(昨天9:00-今天9:00),,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,PowerSystem2_SHATIN_PS_P9_REAL4,泵9电流,泵9電流,kA,power_consumption,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HF11Flow_VolumeCountMonthlyReverse,HF11进水渠本月反向流量,HF11進水渠本月反向流量,,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,PowerSystem2_SHATIN_PS_P10_REAL6,泵10电量,泵10電量,kWh,power_consumption,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,SIPanel1_SHT_DeliveryPressureForPump9To11,出水管泵站9-11出水压力,出水管泵站9-11出水壓力,m,pressure,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,V01_Flow_MonthFlow,V01进水渠本月正向流量,V01進水渠本月正向流量,"0.01ML",flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,V02_Flow_MonthFlow,V02进水渠本月正向流量,V02進水渠本月正向流量,"0.01ML",flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW025,HKI,Siu Ho Wan WTW,小蚝湾滤水厂,小蠔灣濾水廠,MO55004YL1,出水泵房-4号泵的启停状态,出水泵房-4號泵的啟停狀態,,other,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HF11Flow_VolumeCountLastMonth,HF11进水渠上个月正向流量,HF11進水渠上個月正向流量,,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,NW_FilteredWater_SHT_N_Filtered_Water_Turbidity,北厂过滤后浊度,北廠過濾後濁度,NTU,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW025,HKI,Siu Ho Wan WTW,小蚝湾滤水厂,小蠔灣濾水廠,MO502AI_FinalTurb,出厂水质-浊度,出廠水質-濁度,NTU,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW025,HKI,Siu Ho Wan WTW,小蚝湾滤水厂,小蠔灣濾水廠,Hart_F150_1_Flow_counter1,水厂入水-大榄涌累计流量,水廠入水-大欖涌累計流量,,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HF11Flow_VolumeCountToday,HF11进水渠今天正向流量,HF11進水渠今天正向流量,,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,Inlet_Flow_F945_InletRevFlow,F945进水反向瞬时流量,F945進水反向瞬時流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,FlowKiosk5_SHT_AnalogCountTodayS89,s89号管今天出厂正向流量,s89號管今天出廠正向流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,Station_revenue_panel_Station_kW,备用发电机自发电功率,備用發電機自發電功率,KW,power_consumption,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,FlowKiosk4_SHT_AnalogCountMonthlyS88,s88号管出厂正向流量(本月1号-当前),s88號管出廠正向流量(本月1號-當前),MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,FlowKiosk5_SHT_VolumeCountTodayS89_Reverse,s89号管今天出厂反向流量,s89號管今天出廠反向流量,,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HVPump14_Power,泵14泵14功率,泵14泵14功率,kW,power_consumption,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,V01_Flow_TodayFlow,V01进水渠今天正向流量,V01進水渠今天正向流量,"0.01ML",flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,FlowKiosk5_SHT_DeliveryFlowKioskS89,s89号管北厂沉淀后浊度,s89號管北廠沈澱後濁度,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,NW_FilterednDosedWater_SHT_N_FilteredDosed_Water_CL2,出水管出厂前投药后氯气值,出水管出廠前投藥後氯氣值,mg/L,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,V02_Flow_YesterdayFlow,V02进水渠累计正向流量(昨天9:00-今天9:00),V02進水渠累計正向流量(昨天9:00-今天9:00),,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HVPump14_Current,泵14泵14电流,泵14泵14電流,A,power_consumption,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,FlowKiosk5_SHT_VolumeCountLastMonthS89_Reverse,s89号管上个月出厂反向流量,s89號管上個月出廠反向流量,,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HF1Flow_FlowReverse,HF1进水渠反向瞬时流量,HF1進水渠反向瞬時流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HV_Pump_10_TodayRunTime,泵10今天运行时间,泵10今天運行時間,hr,time,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,V01_Flow_LastMonthRevFlow,V01进水渠上个月反向流量,V01進水渠上個月反向流量,"0.01ML",flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,FlowKiosk4_SHT_AnalogCountTotalS88,s88号管出厂累计正流量,s88號管出廠累計正流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,FlowKiosk4_SHT_VolumeCountLastMonthS88,s88号管上个月出厂正向流量,s88號管上個月出廠正向流量,,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,FlowKiosk4_SHT_VolumeCountLastMonthS88_Reverse,s88号管上个月出厂反向流量,s88號管上個月出廠反向流量,,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW018,NTW,Yau Kom Tau Water Treatment Works,油柑头滤水厂,油柑頭濾水廠,YKT_RawWater_Turbidity_Turbidity,原水-水质浊度,原水 - 水質濁度,NTU,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW018,NTW,Yau Kom Tau Water Treatment Works,油柑头滤水厂,油柑頭濾水廠,YKT_TreatedWaterPump04_RunningHour,泵机-运行时常,泵機 - 運行時常,,time,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW018,NTW,Yau Kom Tau Water Treatment Works,油柑头滤水厂,油柑頭濾水廠,YKT_TreatedWaterTankLevel_Level,清水池-液位,清水池 - 液位,m,water_level,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,NW_FinalWater_SHT_N_Final_Water_pH,北厂出水泵后PH,北廠出水泵後PH,,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,FlowKiosk4_SHT_AnalogCountTodayS88,s88号管今天出厂正向流量,s88號管今天出廠正向流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HVPump11_PowerFactor,泵11实际功率/表面功率，低于0.85电力公司不供电,泵11實際功率/表面功率，低於0.85電力公司不供電,,power_consumption,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,FlowKiosk4_SHT_DeliveryFlowKioskS88,s88号管出厂正向瞬时流量,s88號管出廠正向瞬時流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,Inlet_Flow_F945_MonthFlow,F945进水本月正向流量,F945進水本月正向流量,"0.01ML",flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HF1Flow_VolumeCountTotalReverse,HF1进水渠累计反向流量(开厂-当前),HF1進水渠累計反向流量(開廠-當前),,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HVPump10_Current,泵10电流,泵10電流,A,power_consumption,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,FlowKiosk4_SHT_VolumeCountLastDayS88_Reverse,s88号管昨天出厂反向流量,s88號管昨天出廠反向流量,,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,NW_FinalWater_SHT_N_Final_Water_CL2,北厂出水泵后残余氯,北廠出水泵後殘余氯,mg/L,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HV_Pump_TotalRunTime,泵运行总时间,泵運行總時間,hr,time,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,Inlet_Flow_F945_InletFlow,F945进水正向瞬时流量,F945進水正向瞬時流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HF1Flow_VolumeCountToday,HF1进水渠今天正向流量,HF1進水渠今天正向流量,,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,NW_FilteredWater_SHT_N_Filtered_Water_pH,北厂过滤后的PH,北廠過濾後的PH,,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,PowerSystem2_SHATIN_PS_P9_REAL6,泵9电量,泵9電量,kWh,power_consumption,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,FlowKiosk5_SHT_VolumeCountTotalS89,s89号管出厂累计正向流量,s89號管出廠累計正向流量,,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,NW_RawWater_SHT_Raw_Water2_Fl2,下城门水库入水氟化物,下城門水庫入水氟化物,mg/L,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW025,HKI,Siu Ho Wan WTW,小蚝湾滤水厂,小蠔灣濾水廠,Hart_F150_1_Flow,水厂入水-大榄涌累计流量,水廠入水-大欖涌累計流量,,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HF1Flow_VolumeCountLastMonth,HF1进水渠上个月正向流量,HF1進水渠上個月正向流量,,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HV_Valve_Inlet_Pressure_11_Pressure,进水管泵站11泵前入水压力,進水管泵站11泵前入水壓力,m,pressure,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,Inlet_Flow_F945_YesterdayFlow,F945进水累计正向流量(昨天9:00-今天9:00),F945進水累計正向流量(昨天9:00-今天9:00),"0.01ML",flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,PowerSystem3_SHATIN_PS_P11_REAL4,泵11电流,泵11電流,kA,power_consumption,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,V02_Flow_YesterdayRevFlow,V02进水渠累计反向流量(昨天9:00-今天9:00),V02進水渠累計反向流量(昨天9:00-今天9:00),"0.01ML",flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,PowerSystem2_SHATIN_PS_P10_REAL4,泵10电流,泵10電流,kA,power_consumption,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,FlowKiosk5_SHT_VolumeCountTodayS89,s89号管今天出厂正向流量,s89號管今天出廠正向流量,,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HF11Flow_VolumeCountMonthly,HF11进水渠本月正向流量,HF11進水渠本月正向流量,,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HF1Flow_VolumeCountTotal,HF1进水渠累计正向流量(开厂-当前),HF1進水渠累計正向流量(開廠-當前),,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,V01_Flow_InletRevFlow,V01进水渠反向瞬时流量,V01進水渠反向瞬時流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW025,HKI,Siu Ho Wan WTW,小蚝湾滤水厂,小蠔灣濾水廠,MO55006YL1,出水泵房-6号泵的启停状态,出水泵房-6號泵的啟停狀態,,other,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,HVPump10_Voltage,泵10电压,泵10電壓,kV,power_consumption,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW025,HKI,Siu Ho Wan WTW,小蚝湾滤水厂,小蠔灣濾水廠,MO570FI,出厂流量-瞬时流量,出廠流量-暫態流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,V02_Flow_MonthRevFlow,V02进水渠本月反向流量,V02進水渠本月反向流量,"0.01ML",flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW025,HKI,Siu Ho Wan WTW,小蚝湾滤水厂,小蠔灣濾水廠,AO15502AI,水厂原水水质-石壁浊度,水廠原水水質-石壁濁度,NTU,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW025,HKI,Siu Ho Wan WTW,小蚝湾滤水厂,小蠔灣濾水廠,Hart_F570_Flow_counter2,水厂出水-累计流量,水廠出水-累計流量,,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW025,HKI,Siu Ho Wan WTW,小蚝湾滤水厂,小蠔灣濾水廠,MO572PI,出厂水-压力,出廠水-壓力,m,pressure,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,FlowKiosk5_SHT_AnalogCountLastDayS89,s89号管昨天出厂正向流量,s89號管昨天出廠正向流量,MLD,flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,V02_Flow_TotalFlow,V02进水渠累计正向流量(开厂-当前),V02進水渠累計正向流量(開廠-當前),"0.01ML",flows,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,PowerSystem2_SHATIN_PS_P9_REAL5,泵9功率,泵9功率,KW,power_consumption,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
+TW013,NTE,Sha Tin Water Treatment Works,沙田滤水厂,沙田濾水廠,NW_RawWater_SHT_Raw_Water2_pH,下城门水库入水PH,下城門水庫入水PH,,water_quality,2025-11-19 11:42:34.606,2025-11-19 11:42:34.606
