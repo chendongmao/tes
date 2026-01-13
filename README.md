@@ -1,3 +1,13 @@
+太古城案件ID
+202505178427287551519
+愉景湾
+202505178427287000000
+<img width="264" height="97" alt="image" src="https://github.com/user-attachments/assets/8a4ba547-03b8-41dc-9ac6-ab5a43f3f5a2" />
+
+
+
+
+
 DROP TABLE coss_dm.dm_cus_annon_watersupplyinfo_di;
 CREATE TABLE coss_dm.dm_cus_annon_watersupplyinfo_di (
 	id int8 NOT NULL, -- Primary Key Id
