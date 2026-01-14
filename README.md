@@ -1,3 +1,7 @@
+SELECT ordernum,region_abbr,admin_division_code,cpt_type_code,urgency_code,water_type_code,wo_status_code,org_type_code,wq_cpt_type_code,dma_code,street,wutun,term,village,affect_building_no,building_tc,building_en AS buildingEc,floor,isrepeatedcomplaint,relateorder,service_content,post,functionary,phone,coordinate_x,coordinate_y,region_receiving_date,finishtime,create_time,dm_load_time,dm_update_time FROM coss_dm.dm_cus_water_quality_wo_details_mini WHERE (region_receiving_date BETWEEN '2025-01-01' AND '2025-12-31')
+
+
+
 select count(*)  from coss_dim.dim_water_quality_accident_sz_installation_info
 union all select count(*)  from coss_dim.dim_sz_info
 union all select count(*)  from coss_dm.dm_cus_water_quality_wo_details_mini
