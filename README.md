@@ -1,3 +1,53 @@
+-- coss_dm.dm_wqm_accident_logger_info_mini definition
+
+-- Drop table
+
+-- DROP TABLE coss_dm.dm_wqm_accident_logger_info_mini;
+
+CREATE TABLE coss_dm.dm_wqm_accident_logger_info_mini (
+	ordernum varchar(60) NOT NULL, -- Order Num
+	logger_id varchar(40) NOT NULL, -- Logger Id
+	logger_ref varchar(64) NOT NULL, -- Logger Feference
+	supply_zone varchar(64) NOT NULL, -- Supply Zone
+	coordinate_x numeric(17, 10) NULL, -- X Coordinate
+	coordinate_y numeric(17, 10) NULL, -- Y Coordinate
+	dm_load_time timestamp(6) NULL DEFAULT pg_systimestamp(), -- Data Loading Time
+	dm_update_time timestamp(6) NULL DEFAULT pg_systimestamp(), -- Data Update Time
+	CONSTRAINT dm_wqm_accident_logger_info_mini_pkey PRIMARY KEY (ordernum, supply_zone, logger_id, logger_ref)
+)
+WITH (
+	orientation=row,
+	compression=no
+);
+COMMENT ON TABLE coss_dm.dm_wqm_accident_logger_info_mini IS 'Logger related to pipe burst incidents';
+
+-- Column comments
+
+COMMENT ON COLUMN coss_dm.dm_wqm_accident_logger_info_mini.ordernum IS 'Order Num';
+COMMENT ON COLUMN coss_dm.dm_wqm_accident_logger_info_mini.logger_id IS 'Logger Id';
+COMMENT ON COLUMN coss_dm.dm_wqm_accident_logger_info_mini.logger_ref IS 'Logger Feference';
+COMMENT ON COLUMN coss_dm.dm_wqm_accident_logger_info_mini.supply_zone IS 'Supply Zone';
+COMMENT ON COLUMN coss_dm.dm_wqm_accident_logger_info_mini.coordinate_x IS 'X Coordinate';
+COMMENT ON COLUMN coss_dm.dm_wqm_accident_logger_info_mini.coordinate_y IS 'Y Coordinate';
+COMMENT ON COLUMN coss_dm.dm_wqm_accident_logger_info_mini.dm_load_time IS 'Data Loading Time';
+COMMENT ON COLUMN coss_dm.dm_wqm_accident_logger_info_mini.dm_update_time IS 'Data Update Time';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 SELECT ordernum,region_abbr,admin_division_code,cpt_type_code,urgency_code,water_type_code,wo_status_code,org_type_code,wq_cpt_type_code,dma_code,street,wutun,term,village,affect_building_no,building_tc,building_en AS buildingEc,floor,isrepeatedcomplaint,relateorder,service_content,post,functionary,phone,coordinate_x,coordinate_y,region_receiving_date,finishtime,create_time,dm_load_time,dm_update_time FROM coss_dm.dm_cus_water_quality_wo_details_mini WHERE (region_receiving_date BETWEEN '2025-01-01' AND '2025-12-31')
 
 
