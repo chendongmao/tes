@@ -4,6 +4,91 @@
 
 
 
+DROP TABLE coss_dm.dm_cus_water_quality_wo_details_mini;
+
+CREATE TABLE coss_dm.dm_cus_water_quality_wo_details_mini (
+	ordernum varchar(150) NULL, -- The Ticket Number
+	region_abbr varchar(200) NULL, -- Region
+	admin_division_code varchar(100) NULL, -- Administrative Area Code
+	cpt_type_code varchar(100) NULL, -- Complaint Code
+	urgency_code varchar(100) NULL, -- Urgency Code
+	water_type_code varchar(100) NULL, -- Water Supply Type Code
+	wo_status_code varchar(100) NULL, -- Ticket Status Code
+	org_type_code varchar(100) NULL, -- Channel Status Code
+	wq_cpt_type_code varchar(100) NULL, -- Water Quality Type Code
+	dma_code varchar(100) NULL, -- Dma Code
+	street varchar(200) NULL, -- Street
+	wutun varchar(200) NULL, -- Houses
+	term varchar(200) NULL, -- Term
+	village varchar(200) NULL, -- Village
+	affect_building_no varchar(200) NULL, -- Number of Affect Building
+	building_tc varchar(100) NULL, -- Building Tc
+	building_en varchar(100) NULL, -- Building En
+	floor varchar(200) NULL, -- Floor
+	isrepeatedcomplaint int4 NULL, -- Is Repeated Complaint
+	relateorder varchar(150) NULL, -- Relate Order
+	service_content varchar(500) NULL, -- Service Content
+	post varchar(100) NULL, -- Position Of Responsible Person
+	functionary varchar(100) NULL, -- Functionary Of Responsible Person
+	phone varchar(100) NULL, -- Phone Of Responsible Person
+	coordinate_x numeric(20, 6) NULL, -- X-Axis Coordinate
+	coordinate_y numeric(20, 6) NULL, -- Y-Axis Coordinate
+	region_receiving_date timestamp(6) NULL, -- Region Receiving Date
+	create_time timestamp(6) NULL, -- Create Time
+	finishtime timestamp(6) NULL, -- Create Time
+	dm_update_time timestamp(6) default pg_systimestamp(), -- Work Order Completion Time
+	dm_load_time timestamp(6) default pg_systimestamp(), -- Data Loading Time
+	primary key(ordernum)
+)
+WITH (
+	orientation=row,
+	compression=no
+);
+COMMENT ON TABLE coss_dm.dm_cus_water_quality_wo_details_mini IS 'Customer Service Water Quality Ticket Details';
+
+-- Column comments
+
+COMMENT ON COLUMN coss_dm.dm_cus_water_quality_wo_details_mini.ordernum IS 'The Ticket Number';
+COMMENT ON COLUMN coss_dm.dm_cus_water_quality_wo_details_mini.region_abbr IS 'Region';
+COMMENT ON COLUMN coss_dm.dm_cus_water_quality_wo_details_mini.admin_division_code IS 'Administrative Area Code';
+COMMENT ON COLUMN coss_dm.dm_cus_water_quality_wo_details_mini.cpt_type_code IS 'Complaint Code';
+COMMENT ON COLUMN coss_dm.dm_cus_water_quality_wo_details_mini.urgency_code IS 'Urgency Code';
+COMMENT ON COLUMN coss_dm.dm_cus_water_quality_wo_details_mini.water_type_code IS 'Water Supply Type Code';
+COMMENT ON COLUMN coss_dm.dm_cus_water_quality_wo_details_mini.wo_status_code IS 'Ticket Status Code';
+COMMENT ON COLUMN coss_dm.dm_cus_water_quality_wo_details_mini.org_type_code IS 'Channel Status Code';
+COMMENT ON COLUMN coss_dm.dm_cus_water_quality_wo_details_mini.wq_cpt_type_code IS 'Water Quality Type Code';
+COMMENT ON COLUMN coss_dm.dm_cus_water_quality_wo_details_mini.dma_code IS 'Dma Code';
+COMMENT ON COLUMN coss_dm.dm_cus_water_quality_wo_details_mini.street IS 'Street';
+COMMENT ON COLUMN coss_dm.dm_cus_water_quality_wo_details_mini.wutun IS 'Houses';
+COMMENT ON COLUMN coss_dm.dm_cus_water_quality_wo_details_mini.term IS 'Term';
+COMMENT ON COLUMN coss_dm.dm_cus_water_quality_wo_details_mini.village IS 'Village';
+COMMENT ON COLUMN coss_dm.dm_cus_water_quality_wo_details_mini.affect_building_no IS 'Number of Affect Building';
+COMMENT ON COLUMN coss_dm.dm_cus_water_quality_wo_details_mini.building_tc IS 'Building Tc';
+COMMENT ON COLUMN coss_dm.dm_cus_water_quality_wo_details_mini.building_en IS 'Building En';
+COMMENT ON COLUMN coss_dm.dm_cus_water_quality_wo_details_mini.floor IS 'Floor';
+COMMENT ON COLUMN coss_dm.dm_cus_water_quality_wo_details_mini.isrepeatedcomplaint IS 'Is Repeated Complaint';
+COMMENT ON COLUMN coss_dm.dm_cus_water_quality_wo_details_mini.relateorder IS 'Relate Order';
+COMMENT ON COLUMN coss_dm.dm_cus_water_quality_wo_details_mini.service_content IS 'Service Content';
+COMMENT ON COLUMN coss_dm.dm_cus_water_quality_wo_details_mini.post IS 'Position Of Responsible Person';
+COMMENT ON COLUMN coss_dm.dm_cus_water_quality_wo_details_mini.functionary IS 'Functionary Of Responsible Person';
+COMMENT ON COLUMN coss_dm.dm_cus_water_quality_wo_details_mini.phone IS 'Phone Of Responsible Person';
+COMMENT ON COLUMN coss_dm.dm_cus_water_quality_wo_details_mini.coordinate_x IS 'X-Axis Coordinate';
+COMMENT ON COLUMN coss_dm.dm_cus_water_quality_wo_details_mini.coordinate_y IS 'Y-Axis Coordinate';
+COMMENT ON COLUMN coss_dm.dm_cus_water_quality_wo_details_mini.region_receiving_date IS 'Region Receiving Date';
+COMMENT ON COLUMN coss_dm.dm_cus_water_quality_wo_details_mini.create_time IS 'Create Time';
+COMMENT ON COLUMN coss_dm.dm_cus_water_quality_wo_details_mini.finishtime IS 'Create Time';
+COMMENT ON COLUMN coss_dm.dm_cus_water_quality_wo_details_mini.dm_update_time IS 'Work Order Completion Time';
+COMMENT ON COLUMN coss_dm.dm_cus_water_quality_wo_details_mini.dm_load_time IS 'Data Loading Time';
+
+
+
+delete from coss_dm.dm_cus_water_quality_wo_details_mini
+;delete from coss_dm.dm_cus_water_quality_impact_build_mini
+;delete from coss_dm.dm_cus_water_quality_accident_impact_mini
+;delete from coss_dm.dm_wqm_accident_tag_monitored_day_mini
+;delete from coss_dm.dm_cus_annon_watersupplyinfo_di
+
+
 
 -- coss_dm.dm_wqm_accident_logger_info_mini definition
 
