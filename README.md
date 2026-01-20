@@ -1,3 +1,10 @@
+账号：DWO1 密码：Pass123456
+账号：DWO2密码：Pass123456
+账号：DWO3 密码：Pass123456
+
+
+
+
 -- coss_dm.dm_wqm_accident_logger_info_mini definition
 
 -- Drop table
