@@ -1,3 +1,24 @@
+SELECT
+    n.nspname AS schema_name,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    format_type(a.atttypid, a.atttypmod) AS data_type  -- 自动处理 varchar(50), numeric(10,2) 等
+FROM
+    pg_class c
+JOIN pg_namespace n ON n.oid = c.relnamespace
+JOIN pg_attribute a ON a.attrelid = c.oid
+WHERE
+    c.relkind = 'r'                     -- 只查普通表（relation）
+    AND n.nspname = 'your_schema_name'  -- ← 替换为你的 schema 名，例如 'public'
+    AND a.attnum > 0                    -- 排除系统列（如 ctid, xmin 等）
+    AND NOT a.attisdropped              -- 排除已删除的列
+ORDER BY
+    c.relname,
+    a.attnum;
+
+
+
+
 delete from coss_dm.dm_cus_water_quality_wo_details_mini
 delete from coss_dm.dm_cus_annon_watersupplyinfo_di 
 delete from coss_dm.dm_cus_water_quality_accident_impact_mini
