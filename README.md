@@ -1,3 +1,11 @@
+delete from coss_dm.dm_cus_water_quality_wo_details_mini
+delete from coss_dm.dm_cus_annon_watersupplyinfo_di 
+delete from coss_dm.dm_cus_water_quality_accident_impact_mini
+delete from coss_dm.dm_wqm_accident_tag_monitored_day_mini
+
+
+
+
 账号：DWO1 密码：Pass123456
 账号：DWO2密码：Pass123456
 账号：DWO3 密码：Pass123456
