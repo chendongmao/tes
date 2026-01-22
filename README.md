@@ -1,3 +1,17 @@
+select * from coss_dm.dm_cus_water_quality_wo_details_mini
+select * from coss_dm.dm_cus_water_quality_impact_build_mini
+select * from coss_dm.dm_cus_water_quality_accident_impact_mini
+select * from coss_dm.dm_wqm_accident_tag_monitored_day_mini
+select * from coss_dm.dm_cus_annon_watersupplyinfo_di
+select * from coss_dim.dim_wo_biz_type_info 
+
+
+
+
+
+
+
+
 SELECT
     n.nspname AS schema_name,
     c.relname AS table_name,
