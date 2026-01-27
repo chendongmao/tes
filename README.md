@@ -1,3 +1,88 @@
+-- coss_dm.dm_cus_annon_watersupplyinfo_di definition
+
+-- Drop table
+
+-- DROP TABLE coss_dm.dm_cus_annon_watersupplyinfo_di;
+
+CREATE TABLE coss_dm.dm_cus_annon_watersupplyinfo_di (
+	id int8 NOT NULL, -- Primary Key Id
+	recid int8 NULL, -- Announcement Id
+	updateid int8 NULL, -- Announcement Record Id
+	watersupplytype int4 NULL, -- Temporary Water Supply Method
+	watersupplytype_code varchar(20) NULL, -- Temporary Water Supply Code
+	watersupplyaddressen varchar(1000) NULL, -- Temporary Water Supply Address (English)
+	watersupplyaddresscn varchar(1000) NULL, -- Temporary Water Supply Address (Simplified Chinese)
+	watersupplyaddressgn varchar(1000) NULL, -- Temporary Water Supply Address (Traditional Chinese)
+	watersupplytime timestamp NULL, -- Temporary Water Supply Application Time
+	opentime timestamp NULL, -- Opening Time
+	endtime timestamp NULL, -- Closing Time
+	quality int4 NULL, -- Quantity
+	watersupplyremark varchar(4000) NULL, -- Remarks
+	createtime timestamp NULL, -- Creation Time
+	creator int4 NULL, -- Creator
+	"location" varchar(100) NULL, -- Coordinates
+	leavingtime timestamp NULL, -- Departure Time
+	vechiclenumber varchar(100) NULL, -- License Plate Number
+	drivername varchar(50) NULL, -- Driver Name
+	driverphone varchar(50) NULL, -- Driver Contact Number
+	workman1 varchar(50) NULL, -- Staff Member 1
+	workman2 varchar(50) NULL, -- Staff Member 2
+	workmanphone1 varchar(50) NULL, -- Staff Contact Number 1
+	workmanphone2 varchar(50) NULL, -- Staff Contact Number 2
+	locationx varchar(100) NULL, -- Coordinate X
+	locationy varchar(100) NULL, -- Coordinate Y
+	isvalid int4 NULL, -- Validity (0: Invalid, 1: Valid)
+	lastupdatetime timestamp NULL, -- Last Update Time
+	updater int4 NULL, -- Updater
+	dm_load_time timestamp(6) NULL DEFAULT pg_systimestamp(), -- Dm Load Time
+	dm_update_time timestamp(6) NULL DEFAULT pg_systimestamp(), -- Dm Update Time
+	CONSTRAINT dm_cus_annon_watersupplyinfo_di_pkey PRIMARY KEY (id)
+)
+WITH (
+	orientation=row,
+	compression=no
+);
+COMMENT ON TABLE coss_dm.dm_cus_annon_watersupplyinfo_di IS 'Customer Announcement Temporary Water Supply Information Fact Table (DI: Incremental Update Table)';
+
+-- Column comments
+
+COMMENT ON COLUMN coss_dm.dm_cus_annon_watersupplyinfo_di.id IS 'Primary Key Id';
+COMMENT ON COLUMN coss_dm.dm_cus_annon_watersupplyinfo_di.recid IS 'Announcement Id';
+COMMENT ON COLUMN coss_dm.dm_cus_annon_watersupplyinfo_di.updateid IS 'Announcement Record Id';
+COMMENT ON COLUMN coss_dm.dm_cus_annon_watersupplyinfo_di.watersupplytype IS 'Temporary Water Supply Method';
+COMMENT ON COLUMN coss_dm.dm_cus_annon_watersupplyinfo_di.watersupplytype_code IS 'Temporary Water Supply Code';
+COMMENT ON COLUMN coss_dm.dm_cus_annon_watersupplyinfo_di.watersupplyaddressen IS 'Temporary Water Supply Address (English)';
+COMMENT ON COLUMN coss_dm.dm_cus_annon_watersupplyinfo_di.watersupplyaddresscn IS 'Temporary Water Supply Address (Simplified Chinese)';
+COMMENT ON COLUMN coss_dm.dm_cus_annon_watersupplyinfo_di.watersupplyaddressgn IS 'Temporary Water Supply Address (Traditional Chinese)';
+COMMENT ON COLUMN coss_dm.dm_cus_annon_watersupplyinfo_di.watersupplytime IS 'Temporary Water Supply Application Time';
+COMMENT ON COLUMN coss_dm.dm_cus_annon_watersupplyinfo_di.opentime IS 'Opening Time';
+COMMENT ON COLUMN coss_dm.dm_cus_annon_watersupplyinfo_di.endtime IS 'Closing Time';
+COMMENT ON COLUMN coss_dm.dm_cus_annon_watersupplyinfo_di.quality IS 'Quantity';
+COMMENT ON COLUMN coss_dm.dm_cus_annon_watersupplyinfo_di.watersupplyremark IS 'Remarks';
+COMMENT ON COLUMN coss_dm.dm_cus_annon_watersupplyinfo_di.createtime IS 'Creation Time';
+COMMENT ON COLUMN coss_dm.dm_cus_annon_watersupplyinfo_di.creator IS 'Creator';
+COMMENT ON COLUMN coss_dm.dm_cus_annon_watersupplyinfo_di."location" IS 'Coordinates';
+COMMENT ON COLUMN coss_dm.dm_cus_annon_watersupplyinfo_di.leavingtime IS 'Departure Time';
+COMMENT ON COLUMN coss_dm.dm_cus_annon_watersupplyinfo_di.vechiclenumber IS 'License Plate Number';
+COMMENT ON COLUMN coss_dm.dm_cus_annon_watersupplyinfo_di.drivername IS 'Driver Name';
+COMMENT ON COLUMN coss_dm.dm_cus_annon_watersupplyinfo_di.driverphone IS 'Driver Contact Number';
+COMMENT ON COLUMN coss_dm.dm_cus_annon_watersupplyinfo_di.workman1 IS 'Staff Member 1';
+COMMENT ON COLUMN coss_dm.dm_cus_annon_watersupplyinfo_di.workman2 IS 'Staff Member 2';
+COMMENT ON COLUMN coss_dm.dm_cus_annon_watersupplyinfo_di.workmanphone1 IS 'Staff Contact Number 1';
+COMMENT ON COLUMN coss_dm.dm_cus_annon_watersupplyinfo_di.workmanphone2 IS 'Staff Contact Number 2';
+COMMENT ON COLUMN coss_dm.dm_cus_annon_watersupplyinfo_di.locationx IS 'Coordinate X';
+COMMENT ON COLUMN coss_dm.dm_cus_annon_watersupplyinfo_di.locationy IS 'Coordinate Y';
+COMMENT ON COLUMN coss_dm.dm_cus_annon_watersupplyinfo_di.isvalid IS 'Validity (0: Invalid, 1: Valid)';
+COMMENT ON COLUMN coss_dm.dm_cus_annon_watersupplyinfo_di.lastupdatetime IS 'Last Update Time';
+COMMENT ON COLUMN coss_dm.dm_cus_annon_watersupplyinfo_di.updater IS 'Updater';
+COMMENT ON COLUMN coss_dm.dm_cus_annon_watersupplyinfo_di.dm_load_time IS 'Dm Load Time';
+COMMENT ON COLUMN coss_dm.dm_cus_annon_watersupplyinfo_di.dm_update_time IS 'Dm Update Time';
+
+
+
+
+
+
 
 create table coss_tmp.dm_cus_water_quality_wo_details_mini_arch_260117 as  
 select * from coss_dm.dm_cus_water_quality_wo_details_mini 
