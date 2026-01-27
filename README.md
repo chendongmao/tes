@@ -1,3 +1,78 @@
+select 
+ordernum
+,region_abbr
+,admin_division_code
+,cpt_type_code
+,biz_type_cn cpt_type_cn
+,biz_type_tc cpt_type_tc
+,biz_type_en cpt_type_en
+,urgency_code
+,t.water_type_code
+,water_type_cn
+,water_type_tc
+,water_type_en
+,t.wo_status_code
+,wo_status_cn
+,wo_status_tc
+,wo_status_en
+,org_type_code
+,name_cn org_type_name_cn
+,name_tc org_type_name_tc
+,name_en org_type_name_en
+,street
+,wutun
+,term
+,village
+,buildingno
+,service_content
+,post
+,functionary
+,phone
+,coordinate_x
+,coordinate_y
+,create_time
+,dm_update_time
+,dm_load_time
+from 
+coss_dm.dm_cus_customer_service_wo_detail_info_di t
+inner join (select 
+wo_biz_type_code 
+,biz_type_cn 
+,biz_type_tc 
+,biz_type_en 
+from 
+coss_dim.dim_wo_biz_type_info
+where topic_type = 'COMPLAINTS') t1 on  t.cpt_type_code = wo_biz_type_code
+inner join (select 
+water_type_code
+,water_type_cn
+,water_type_tc
+,water_type_en
+from 
+coss_dim.dim_water_type 
+) t2 on t.water_type_code = t2.water_type_code 
+inner join (select 
+wo_status_code
+,wo_status_cn
+,wo_status_tc
+,wo_status_en
+from 
+coss_dim.dim_wo_status_info) t3 on t.wo_status_code =t3.wo_status_code 
+inner join (select 
+code
+,name_cn
+,name_tc
+,name_en
+from 
+coss_dim.dim_wo_dict_info) t4 on t.org_type_code = t4.code 
+
+
+
+
+
+
+
+
 coss_dm.dm_cus_water_quality_wo_details_mini
 coss_dm.dm_cus_water_quality_impact_build_mini
 coss_dm.dm_cus_water_quality_accident_impact_mini
