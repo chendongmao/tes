@@ -1,3 +1,37 @@
+
+create table coss_tmp.dm_cus_water_quality_wo_details_mini_arch_260117 as  
+select * from coss_dm.dm_cus_water_quality_wo_details_mini 
+where ordernum = '202505161427283354720'
+
+delete from coss_dm.dm_cus_water_quality_wo_details_mini 
+where ordernum = '202505161427283354720'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 select 
 ordernum
 ,region_abbr
