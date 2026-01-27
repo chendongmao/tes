@@ -1,3 +1,15 @@
+coss_dm.dm_cus_water_quality_wo_details_mini
+coss_dm.dm_cus_water_quality_impact_build_mini
+coss_dm.dm_cus_water_quality_accident_impact_mini
+coss_dm.dm_wqm_accident_tag_monitored_day_mini
+coss_dm.dm_cus_annon_watersupplyinfo_di
+coss_dm.dm_pnw_sr_burst_tag_monitored_day_mini -- dm_pnw_service_reservoir_tag_monitored_day_mini
+coss_dm.dm_wqm_accident_logger_info_mini
+coss_dim.dim_water_quality_accident_sz_installation_info
+coss_dim.dim_sz_info
+
+
+
 12589
 Asdfg.456
 
