@@ -1,3 +1,63 @@
+DROP TABLE if exists coss_dm.dm_tmu_device_alarm_minf;
+
+CREATE TABLE if not exists coss_dm.dm_tmu_device_alarm_minf (
+	region_abbr varchar(20) NOT NULL, -- Regional Abbreviation
+	device_code varchar(60) NOT NULL, -- Device Name
+	alarm_type varchar(60) NULL, -- Alarm Type
+	alarm_start_time timestamp(6) NOT NULL, -- Alarm Start Time
+	alarm_duration int4 NULL, -- Alarm Duration
+	dm_update_time timestamp(6) NULL DEFAULT pg_systimestamp(), -- Update Time
+	dm_load_time timestamp(6) NULL DEFAULT pg_systimestamp(), -- Load Time
+	PRIMARY KEY (region_abbr, device_code, alarm_start_time)
+)
+WITH (
+	orientation=row,
+	compression=no
+);
+COMMENT ON TABLE coss_dm.dm_tmu_device_alarm_minf IS 'Real-time Device Alarm Table';
+
+-- Column comments
+
+COMMENT ON COLUMN coss_dm.dm_tmu_device_alarm_minf.region_abbr IS 'Regional Abbreviation';
+COMMENT ON COLUMN coss_dm.dm_tmu_device_alarm_minf.device_code IS 'Device Name';
+COMMENT ON COLUMN coss_dm.dm_tmu_device_alarm_minf.alarm_type IS 'Alarm Type';
+COMMENT ON COLUMN coss_dm.dm_tmu_device_alarm_minf.alarm_start_time IS 'Alarm Start Time';
+COMMENT ON COLUMN coss_dm.dm_tmu_device_alarm_minf.alarm_duration IS 'Alarm Duration';
+COMMENT ON COLUMN coss_dm.dm_tmu_device_alarm_minf.dm_update_time IS 'Update Time';
+COMMENT ON COLUMN coss_dm.dm_tmu_device_alarm_minf.dm_load_time IS 'Load Time';
+
+
+
+DROP TABLE if exists  coss_dm.dm_tmu_device_abnormal_alarm_minf;
+
+CREATE TABLE if not exists  coss_dm.dm_tmu_device_abnormal_alarm_minf (
+	region_abbr varchar(20) NOT NULL, -- Regional Abbreviation
+	normal_num int4 NULL DEFAULT 0, -- Normal Num
+	abnormal_num int4 NULL DEFAULT 0, -- Abnormal Num
+	alarm_time timestamp(6) NOT NULL, -- Alarm Time
+	dm_update_time timestamp(6) NOT NULL DEFAULT pg_systimestamp(), -- Update Time
+	dm_load_time timestamp(6) NOT NULL DEFAULT pg_systimestamp(), -- Load Time
+	PRIMARY KEY (region_abbr, alarm_time)
+)
+WITH (
+	orientation=row,
+	compression=no
+);
+COMMENT ON TABLE coss_dm.dm_tmu_device_abnormal_alarm_minf IS 'Device Abnormal Alarm Table';
+
+COMMENT ON COLUMN coss_dm.dm_tmu_device_abnormal_alarm_minf.region_abbr IS 'Regional Abbreviation';
+COMMENT ON COLUMN coss_dm.dm_tmu_device_abnormal_alarm_minf.normal_num IS 'Normal Num';
+COMMENT ON COLUMN coss_dm.dm_tmu_device_abnormal_alarm_minf.abnormal_num IS 'Abnormal Num';
+COMMENT ON COLUMN coss_dm.dm_tmu_device_abnormal_alarm_minf.alarm_time IS 'Alarm Time';
+COMMENT ON COLUMN coss_dm.dm_tmu_device_abnormal_alarm_minf.dm_update_time IS 'Update Time';
+COMMENT ON COLUMN coss_dm.dm_tmu_device_abnormal_alarm_minf.dm_load_time IS 'Load Time';
+
+
+
+
+
+
+
 Manipulation
 WeakBattery
 Leakage
