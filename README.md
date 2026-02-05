@@ -1,75 +1,7 @@
--- 切换到默认模式（如public，也可指定其他模式）
-SET search_path = coss_dm;
-
--- 创建存储过程 coss_arch(tb)，入参为待归档表名（varchar类型）
-CREATE OR REPLACE PROCEDURE coss_arch(tb VARCHAR)
-LANGUAGE plpgsql
-SECURITY DEFINER  -- 以存储过程创建者权限执行（避免调用用户权限不足）
-AS $$
-DECLARE
-    v_origin_schema VARCHAR;  -- 原表所属模式
-    v_origin_table  VARCHAR;  -- 原表名（纯表名，不含模式）
-    v_arch_table    VARCHAR;  -- 归档表名（含coss_tmp模式，如coss_tmp.tb_arch_2602051928）
-    v_time_suffix   VARCHAR;  -- 10位数字时间后缀（DDMMHH24MI，示例2602051928）
-    v_split_pos     INT;      -- 表名中模式与表名的分隔符位置（.的索引）
-BEGIN
-    -- ************************ 步骤1：处理入参，拆分原表的模式和表名 ************************
-    -- 查找分隔符.的位置，判断入参是否带模式（如ods.tb1 带模式，tb1 不带模式）
-    v_split_pos = POSITION('.' IN tb);
-    IF v_split_pos > 0 THEN
-        -- 带模式：拆分模式名和表名（如ods.tb1 → 模式ods，表名tb1）
-        v_origin_schema = SUBSTRING(tb FROM 1 FOR v_split_pos - 1);
-        v_origin_table = SUBSTRING(tb FROM v_split_pos + 1);
-    ELSE
-        -- 不带模式：默认使用当前会话的search_path第一个模式（如public）
-        v_origin_schema = CURRENT_SCHEMA();
-        v_origin_table = tb;
-    END IF;
-
-    -- 校验原表是否存在，不存在则抛异常
-    PERFORM 1 FROM information_schema.tables 
-    WHERE table_schema = v_origin_schema AND table_name = v_origin_table;
-    IF NOT FOUND THEN
-        RAISE EXCEPTION '错误：待归档表 %.% 不存在', v_origin_schema, v_origin_table;
-    END IF;
-
-    -- ************************ 步骤2：生成10位数字时间后缀 ************************
-    -- 格式：DDMMHH24MI（日+月+24小时制时+分），示例2026-02-05 19:28 → 05021928（补0为10位？示例2602051928为10位，对应MMDDHH24MI：02051928→补为10位，此处按示例严格实现）
-    -- 严格匹配示例后缀规则：2602051928 = 年份后2位(26)+月份(02)+日期(05)+小时(19)+分钟(28)，重新实现时间后缀生成
-    v_time_suffix = TO_CHAR(NOW(), 'YYMMDDHH24MI');  -- 核心：生成10位数字后缀，与示例完全一致
-    -- 验证：NOW()为2026-02-05 19:28:xx → TO_CHAR结果为2602051928，完美匹配需求
-
-    -- ************************ 步骤3：拼接归档表名（coss_tmp.原表名_arch_时间后缀） ************************
-    v_arch_table = 'coss_tmp.' || v_origin_table || '_arch_' || v_time_suffix;
-
-    -- ************************ 步骤4：核心归档逻辑 - 复制表结构+迁移数据 ************************
-    -- 4.1 复制原表完整结构（字段、类型、约束、索引、注释），创建归档表（GaussDB原生语法）
-    EXECUTE format(
-        'CREATE TABLE %I (LIKE %I.%I INCLUDING ALL)',  -- INCLUDING ALL：复制所有属性（约束/索引/默认值/注释）
-        v_arch_table,
-        v_origin_schema,
-        v_origin_table
-    );
-
-    -- 4.2 迁移原表所有数据至归档表（批量插入，效率高于逐条插入）
-    EXECUTE format(
-        'INSERT INTO %I SELECT * FROM %I.%I',
-        v_arch_table,
-        v_origin_schema,
-        v_origin_table
-    );
-
-    -- ************************ 步骤5：归档成功提示 ************************
-    RAISE NOTICE '归档成功！原表：%.% → 归档表：%，归档时间后缀：%',
-        v_origin_schema, v_origin_table, v_arch_table, v_time_suffix;
-
--- 异常处理：捕获所有错误，抛明确提示
-EXCEPTION
-    WHEN OTHERS THEN
-        RAISE EXCEPTION '归档失败！错误原因：%，错误行号：%', SQLERRM, SQLSTATE;
-$$;
--- 给存储过程添加注释
-COMMENT ON PROCEDURE coss_arch(VARCHAR) IS 'GaussDB表归档存储过程：将指定表归档至coss_tmp模式，归档表名格式coss_tmp.原表名_arch_10位时间后缀(YYMMDDHH24MI)';
+创建一个存储过程：coss_arch(tb)
+归档tb,把tb归档到coss_tmp schema下
+例如归档表的命名规范coss_tmp.tbn_arch_2602051928
+2602051928是时间后缀
 
 
 
