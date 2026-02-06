@@ -1,3 +1,65 @@
+
+
+
+select count(*) from coss_dm.dm_cus_monthly_skill_hotline_item_di
+union all select count(*) from coss_dm.dm_cus_monthly_water_quality_cpt_di
+union all select count(*) from coss_dm.dm_cus_monthly_skill_hotline_wo_item_di
+union all select count(*) from coss_dm.dm_rws_daily_rw_yield_di
+union all select count(*) from coss_dm.dm_rws_monthly_rw_yield_di
+union all select count(*) from coss_dm.dm_rws_annual_rw_yield_di
+union all select count(*) from coss_dm.dm_rws_daily_ir_storage_yield_di
+union all select count(*) from coss_dm.dm_rws_daily_ir_level_storage_di
+union all select count(*) from coss_dm.dm_rws_region_day_kpi_dip
+union all select count(*) from coss_dm.dm_rws_region_month_kpi_dip
+union all select count(*) from coss_dm.dm_rws_region_year_kpi_dip
+union all select count(*) from coss_dm.dm_srs_daily_sr_wl_qty_item_di
+union all select count(*) from coss_dm.dm_srs_monthly_sr_qty_di
+union all select count(*) from coss_dm.dm_srs_annual_sr_pool_stopped_di
+union all select count(*) from coss_dm.dm_tmu_water_consumption_di
+union all select count(*) from coss_dm.dm_tmu_customer_meter_number_di
+union all select count(*) from coss_dm.dm_psr_annual_pump_station_item_di
+union all select count(*) from coss_dm.dm_psr_monthly_pump_station_item_di
+union all select count(*) from coss_dm.dm_wtw_annual_water_treatment_works_item_di
+union all select count(*) from coss_dm.dm_wtw_monthly_water_treatment_works_item_di
+union all select count(*) from coss_dm.dm_psr_daily_ps_running_item_di
+union all select count(*) from coss_dm.dm_psr_monthly_ps_running_item_di
+union all select count(*) from coss_dm.dm_wtw_monthly_eng_cons_billing_hist_di
+union all select count(*) from coss_dm.dm_wtw_water_quality_qualification_rate_di
+union all select count(*) from coss_dm.dm_wtw_water_quality_verification_item_di
+
+418
+190
+418
+7576
+251
+22
+75666
+128657
+121712
+4036
+360
+1196019
+4213
+2073
+40
+45
+1072
+16161
+144
+796
+19309
+18232
+3697
+1154
+57763
+
+
+
+
+
+
+
+
 创建一个存储过程：coss_arch(tb)
 归档tb,把tb归档到coss_tmp schema下
 例如归档表的命名规范coss_tmp.tbn_arch_2602051928
