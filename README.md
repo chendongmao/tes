@@ -1,3 +1,6 @@
+jdbc:postgresql://10.66.110.64:8000,10.66.110.151:8000,10.66.110.194:8000,10.66.110.235:8000/wsd_dm?loadBalanceHosts=true&refreshCNIpListTime=3	coss	COSS@wsd2nd
+pems	cms_complaint	
+<img width="1103" height="45" alt="image" src="https://github.com/user-attachments/assets/1bd349ca-8409-4daf-a760-6c9978d28fbb" />
 
 
 
