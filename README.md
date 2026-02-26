@@ -1,3 +1,7 @@
+
+jdbc:postgresql://10.66.168.36:8000,10.66.168.52:8000,10.66.168.235:8000/isms
+
+
 1. ISIT 环境为COSS开通可读权限
 
    数据库链接： jdbc:postgresql://10.66.110.64:8000,10.66.110.151:8000,10.66.110.194:8000,10.66.110.235:8000/wsd_dm?loadBalanceHosts=true&refreshCNIpListTime=3
