@@ -5,12 +5,8 @@
    数据库schema: db_mid_ctccbs_0926
 
 2. PrePro 环境为COSS开通可读权限
-
    数据库链接： jdbc:postgresql://10.66.110.64:8000,10.66.110.151:8000,10.66.110.194:8000,10.66.110.235:8000/wsd
-
    数据库schema:  wcdms
-
-
 
 
 jdbc:postgresql://10.66.110.64:8000,10.66.110.151:8000,10.66.110.194:8000,10.66.110.235:8000/wsd_dm?loadBalanceHosts=true&refreshCNIpListTime=3	coss	COSS@wsd2nd
