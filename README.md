@@ -1,30 +1,10 @@
-jdbc:postgresql://10.66.110.64:8000,10.66.110.151:8000,10.66.110.194:8000,10.66.110.235:8000/wsd_dm?loadBalanceHosts=true&refreshCNIpListTime=3
 
-
-db_mid_arcadm_0926
-db_mid_batchadm_0926
-db_mid_ccbsder_0926
-db_mid_cdsadm_0926
-db_mid_ctaws_0926
-db_mid_ctccbs_0926
-db_mid_dsg_0926
-db_mid_edmsradm_0926
-db_mid_esdadm_0926
-db_mid_kbadm_0926
-db_mid_patchadm_0926
-db_mid_ppctaws_0926
-db_mid_ppctccbs_0926
-db_mid_updba_0926
-db_mid_wfmadm_0926
-db_mid_wsmsadm_0926
-isms
 
 
 
 
 
 jdbc:postgresql://10.66.168.36:8000,10.66.168.52:8000,10.66.168.235:8000/isms
-
 
 1. ISIT 环境为COSS开通可读权限
 
@@ -35,7 +15,6 @@ jdbc:postgresql://10.66.168.36:8000,10.66.168.52:8000,10.66.168.235:8000/isms
 2. PrePro 环境为COSS开通可读权限
    数据库链接： jdbc:postgresql://10.66.110.64:8000,10.66.110.151:8000,10.66.110.194:8000,10.66.110.235:8000/wsd
    数据库schema:  wcdms
-
 
 jdbc:postgresql://10.66.110.64:8000,10.66.110.151:8000,10.66.110.194:8000,10.66.110.235:8000/wsd_dm?loadBalanceHosts=true&refreshCNIpListTime=3	coss	COSS@wsd2nd
 pems	cms_complaint	
