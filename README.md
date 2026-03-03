@@ -1,3 +1,22 @@
+新的码值
+discoloured water
+excessive chlorine
+unknown odour other than solvent smell and excessive chlorine
+bitumen particles in water
+unknown particles other than bitumen and sand in water
+sand in water
+water gathering ground
+odour with solvent smell
+
+Diarrhea Pot Quality Complaint
+TMF / Flushing Water Quality Complaint
+Potable Water Quality Complaint
+Other Technical Complaint
+Salinity Quality Complaint
+Odor/Taste Quality Comp
+Worm Quality Complaint
+Water Quality Sample Collection
+<img width="73" height="350" alt="image" src="https://github.com/user-attachments/assets/d453bb47-b045-4901-9e42-724dad29988b" />
 
 
 
