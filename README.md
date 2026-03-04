@@ -1,3 +1,17 @@
+SIS：
+FLUORIDE
+FLOW
+ALARM
+PH
+CHLORINE
+LEVEL
+PRESSURE
+TURBIDITY
+
+
+
+
+
 新的码值
 discoloured water
 excessive chlorine
