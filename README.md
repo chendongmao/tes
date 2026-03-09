@@ -1,3 +1,13 @@
+select min(completion_date) 
+from 
+coss_dwd.dwd_ass_water_mains_di a
+inner join 
+coss_ods.ods_dms_ass_bitumen_priority_jn_di b
+on a.facility_id = b.facility_i
+
+
+
+
 insert into coss_dm.dm_ass_annual_pipe_asset_region_item_di
 select 
 2024 as statistical_year,
