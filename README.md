@@ -1,3 +1,44 @@
+insert into coss_dm.dm_ass_annual_pipe_asset_region_item_di
+select 
+2024 as statistical_year,
+region_abbr,
+inter_item_code,
+item_value,
+dm_load_time,
+dm_update_time
+from coss_dm.dm_ass_annual_pipe_asset_region_item_di where statistical_year = 2025
+on duplicate key update nothing;
+
+insert into coss_dm.dm_ass_annual_pipe_asset_main_type_item_di
+select 
+2024 as statistical_year,
+region_abbr,
+main_type_code,
+inter_item_code,
+item_value,
+dm_load_time,
+dm_update_time
+from coss_dm.dm_ass_annual_pipe_asset_main_type_item_di where statistical_year = 2025
+on duplicate key update nothing;
+
+insert into coss_dm.dm_ass_annual_pipe_asset_water_type_item_di
+select 
+2024 as statistical_year,
+region_abbr,
+water_type_code,
+inter_item_code,
+item_value,
+dm_load_time,
+dm_update_time
+from coss_dm.dm_ass_annual_pipe_asset_water_type_item_di where statistical_year = 2025
+on duplicate key update nothing;
+
+
+
+
+
+
+
 SIS：
 FLUORIDE
 FLOW
