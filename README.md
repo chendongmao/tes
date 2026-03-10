@@ -1,3 +1,24 @@
+
+create table coss_tmp.dm_ass_annual_pipe_asset_region_item_di_arch_260310 as 
+select * from coss_dm.dm_ass_annual_pipe_asset_region_item_di
+
+update coss_dm.dm_ass_annual_pipe_asset_region_item_di
+set item_value = 0
+where inter_item_code in(
+'PN_AS_000004',
+'PN_AS_000005',
+'PN_AS_000006',
+'PN_AS_000059',
+'PN_AS_000060'
+)
+
+
+
+
+
+
+
+
 select min(completion_date) 
 from 
 coss_dwd.dwd_ass_water_mains_di a
