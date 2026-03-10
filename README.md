@@ -1,4 +1,32 @@
 
+drop table coss_dm.dm_rws_rw_supply_hist_dip;
+CREATE TABLE coss_dm.dm_rws_rw_supply_hist_dip (
+	rw_id varchar(20) NULL,
+	rw_name varchar(200) NULL,
+	rw_cname varchar(300) NULL,
+	region_code varchar(10) NULL,
+	source_rw varchar(2) NULL,
+	p_qty numeric(12, 4) NULL,
+	qty_del numeric(12, 4) NULL,
+	present_storage numeric(16, 8) NULL,
+	capacity numeric(12, 4) NULL,
+	min_storage numeric(12, 4) NULL,
+	rec_dt timestamp(6) NULL,
+	dt numeric(10) null,
+	primary key(rw_id,rec_dt)
+)
+WITH (
+	orientation=row,
+	compression=no
+);
+
+
+
+
+
+
+
+
 create table coss_tmp.dm_ass_annual_pipe_asset_region_item_di_arch_260310 as 
 select * from coss_dm.dm_ass_annual_pipe_asset_region_item_di
 
