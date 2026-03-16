@@ -1,3 +1,8 @@
+jdbc:postgresql://10.66.110.64:8000,10.66.110.151:8000,10.66.110.194:8000,10.66.110.235:8000/wsd_isit?loadBalanceHosts=true&refreshCNIpListTime=3
+
+
+
+
 import http.client
 import json
 
