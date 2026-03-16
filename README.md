@@ -1,3 +1,50 @@
+level2 
+--泵房机房运行情况
+select offical_eng_name ,offical_chi_name ,running_pumps ,total_pumps ,mh  from coss_dm.dm_psr_daily_ps_running_item_di
+where 
+mh>= 202501 and mh <= 202512
+and offical_eng_name  != ''
+
+
+--泵房千吨电耗量
+select offical_eng_name ,offical_chi_name ,kwh_ml ,mh   from coss_dm.dm_psr_daily_ps_running_item_di
+where 
+mh>= 202501 and mh <= 202512
+and offical_eng_name  != ''
+
+--泵张抽水量
+select * from coss_dm.dm_psr_monthly_pump_station_item_di 
+where 
+statistical_month >= 202501 and statistical_month <= 202512
+
+
+--泵张电耗量
+select * from coss_dm.dm_psr_monthly_pump_station_item_di 
+where 
+statistical_month >= 202501 and statistical_month <= 202512
+
+
+--泵张电账单
+select * from coss_dm.dm_psr_monthly_pump_station_item_di 
+where 
+statistical_month >= 202501 and statistical_month <= 202512
+
+
+
+
+
+
+level3 
+--水厂制水量
+select asset_name ,pump_qty, statistical_month  from coss_dm.dm_wtw_monthly_eng_cons_billing_hist_di dwmecbhd 
+where 
+statistical_month >= 202501 and statistical_month <= 202512
+and pump_qty is not null 
+
+
+
+
+
 jdbc:postgresql://10.66.110.64:8000,10.66.110.151:8000,10.66.110.194:8000,10.66.110.235:8000/wsd_isit?loadBalanceHosts=true&refreshCNIpListTime=3
 
 
