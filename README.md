@@ -1,3 +1,25 @@
+import http.client
+import json
+
+conn = http.client.HTTPSConnection("10.11.0.82", 8330)
+payload = json.dumps({
+   "deviceCodes": [
+      "14537005",
+      "14537007",
+      "14537010"
+   ]
+})
+headers = {
+   'Content-Type': 'application/json'
+}
+conn.request("POST", "/share/data/sensor/moreDevRealtime", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
+
+
+
+
 
 drop table coss_dm.dm_rws_rw_supply_hist_dip;
 CREATE TABLE coss_dm.dm_rws_rw_supply_hist_dip (
