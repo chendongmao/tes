@@ -1,3 +1,13 @@
+
+select * from coss_dim.dim_water_quality_accident_sz_installation_info  where ordernum = '202505178427287551519'
+
+select * from coss_dim.dim_sz_info where 
+supply_id = 133 and supply_code = '1.35&1.55'
+
+
+
+
+
 接口响应状态码： 200
 接口响应内容： {
   "code": 9999,
