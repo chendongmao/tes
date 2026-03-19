@@ -1,3 +1,8 @@
+http://10.66.169.58:9878
+
+
+
+
 level2 
 --泵房机房运行情况
 select offical_eng_name ,offical_chi_name ,running_pumps ,total_pumps ,mh  from coss_dm.dm_psr_daily_ps_running_item_di
