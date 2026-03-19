@@ -1,3 +1,11 @@
+接口响应状态码： 200
+接口响应内容： {
+  "code": 9999,
+  "message": "could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet"
+}
+
+
+
 http://10.66.169.58:9878
 
 
