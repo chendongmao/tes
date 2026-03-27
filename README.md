@@ -1,10 +1,5 @@
-11SE07B
-11SE08A
-11SE07B
+<img width="1899" height="841" alt="image" src="https://github.com/user-attachments/assets/c1aec7a7-fd27-4bdc-882e-8338a6feb562" />
 
-840428.8125 816276.5
-840554.875 816368.6875
-840200.39940000046044588 816490.68280000053346157
 
 
 
