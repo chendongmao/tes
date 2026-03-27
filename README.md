@@ -1,3 +1,12 @@
+11SE07B
+11SE08A
+11SE07B
+
+840428.8125 816276.5
+840554.875 816368.6875
+840200.39940000046044588 816490.68280000053346157
+
+
 
 drop table if exists coss_dim.dim_sz_device_info;
 create table if not exists coss_dim.dim_sz_device_info(
