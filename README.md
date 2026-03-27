@@ -1,3 +1,15 @@
+Column Name	#	Data type	Identity	Collation	Not Null	Default	Comment
+id	1	varchar(100)	[NULL]	default	true	[NULL]	[NULL]
+created	2	int8	[NULL]	[NULL]	false	[NULL]	[NULL]
+changed	3	int8	[NULL]	[NULL]	false	[NULL]	[NULL]
+code	4	varchar(100)	[NULL]	default	false	[NULL]	[NULL]
+time	5	int8	[NULL]	[NULL]	false	[NULL]	[NULL]
+value	6	float8	[NULL]	[NULL]	false	[NULL]	[NULL]
+
+
+
+
+
 
 840527.734740000218153 816342.75913999974727631 0
 840527.79779999982565641 816350.60683000087738037 0
