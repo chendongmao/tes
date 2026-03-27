@@ -1,4 +1,44 @@
-partition by range (tag_time)
+
+drop table if exists coss_dim.dim_sz_device_info;
+create table if not exists coss_dim.dim_sz_device_info(
+    supply_id        varchar(100),
+    supply_code      varchar(100),
+    device_code      varchar(100),
+    device_name      varchar(100),
+    sensor_code      varchar(100),
+    sensor_name      varchar(100),
+    unit             varchar(100),
+    coordinate_x     decimal(20,6),
+    coordinate_y     decimal(20,6),
+    dim_update_time  timestamp(6) default current_timestamp,
+    dim_load_time    timestamp(6) default current_timestamp,
+    primary key(supply_id, device_code, sensor_code)
+);
+comment on table coss_dim.dim_sz_device_info                   is 'Supply  Zone Monitoring Device Information';
+comment on column coss_dim.dim_sz_device_info.supply_id        is 'Supply ID';
+comment on column coss_dim.dim_sz_device_info.supply_code      is 'Supply Code';
+comment on column coss_dim.dim_sz_device_info.device_code      is 'Device Code';
+comment on column coss_dim.dim_sz_device_info.device_name      is 'Device Name';
+comment on column coss_dim.dim_sz_device_info.sensor_code      is 'Sensor Code';
+comment on column coss_dim.dim_sz_device_info.sensor_name      is 'Sensor Name';
+comment on column coss_dim.dim_sz_device_info.unit             is 'Unit';
+comment on column coss_dim.dim_sz_device_info.coordinate_x     is 'X-Axis Coordinate';
+comment on column coss_dim.dim_sz_device_info.coordinate_y     is 'Y-Axis Coordinate';
+comment on column coss_dim.dim_sz_device_info.dim_update_time  is 'Update Time';
+comment on column coss_dim.dim_sz_device_info.dim_load_time    is 'Load Time';
+
+
+
+create table coss_dm.dm_tmu_sensor_data_mini_month(
+	id                  varchar(100),
+	sensor_code         varchar(100),
+	sensor_value        decimal(20,6),
+	sensor_time         timestamp(6),
+	dm_update_time      timestamp(6) default current_timestamp,
+	dm_load_time        timestamp(6) default current_timestamp,
+	primary key (sensor_code, sensor_time)
+)
+partition by range (sensor_time)
 (
     -- 2025 Monthly Partitions
     PARTITION mh_202501 VALUES LESS THAN ('2025-02-01 00:00:00'),
@@ -32,7 +72,14 @@ partition by range (tag_time)
     PARTITION mh_202809 VALUES LESS THAN ('2028-10-01 00:00:00'),
     -- Future Partition (avoids insertion failure for unplanned time data)
     PARTITION mh_future VALUES LESS THAN ('9999-01-01 00:00:00')
-)
+);
+comment on table coss_dm.dm_tmu_sensor_data_mini_month                 is 'Terminal User Sensor MOnitoring Data';
+comment on column coss_dm.dm_tmu_sensor_data_mini_month.id             is 'ID';     
+comment on column coss_dm.dm_tmu_sensor_data_mini_month.sensor_code    is 'Sensor Code';
+comment on column coss_dm.dm_tmu_sensor_data_mini_month.sensor_value   is 'Sensor Value';
+comment on column coss_dm.dm_tmu_sensor_data_mini_month.sensor_time    is 'Sensor Time';
+comment on column coss_dm.dm_tmu_sensor_data_mini_month.dm_update_time is 'Data Update Time';
+comment on column coss_dm.dm_tmu_sensor_data_mini_month.dm_load_time   is 'Data Loading Time';
 
 
 
