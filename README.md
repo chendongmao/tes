@@ -1,3 +1,7 @@
+select * from coss_dm.dm_wqm_accident_tag_monitored_day_mini 
+dim_water_quality_accident_sz_installation_info
+
+
 TW_ClearWaterTank_Level_E_Level
 TW_ClearWaterTank_Level_W_Level
 TW_FilterCommonDevices_InFlow_Flow
