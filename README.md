@@ -1,3 +1,28 @@
+TW_ClearWaterTank_Level_E.Level
+TW_ClearWaterTank_Level_W.Level
+TW_FilterCommonDevices.InFlow_Flow
+TW_FilterCommonDevices.OutFlow
+TW_FinalWater_ES_Fluoride.Fluoride
+TW_FinalWater_ES_PH.PH
+TW_FinalWater_ES_ResChlorine.ResidualChlorine
+TW_FinalWater_ES_Turbidity.Turbidity
+TW_FinalWater_WS_Fluoride.Fluoride
+TW_FinalWater_WS_PH.PH
+TW_FinalWater_WS_ResChlorine.ResidualChlorine
+TW_FinalWater_WS_Turbidity.Turbidity
+TW_RawWater_ES_PH.PH
+TW_RawWater_ES_Turbidity.Turbidity
+TW_RawWater_WS_PH.PH
+TW_RawWater_WS_Turbidity.Turbidity
+
+
+
+
+<img width="345" height="305" alt="image" src="https://github.com/user-attachments/assets/b6ca9abc-0c41-4ecb-ad1e-ba28ac1b1425" />
+
+
+
+
 dm_pnw_daily_water_distribution_detail_di
 
 
