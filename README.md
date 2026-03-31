@@ -1,3 +1,10 @@
+http://10.66.168.83/COSS/dashboard/workbench
+账号：admin
+密码：admin
+
+
+
+
 select * from coss_dm.dm_wqm_accident_tag_monitored_day_mini 
 dim_water_quality_accident_sz_installation_info
 
