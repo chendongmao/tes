@@ -1,3 +1,66 @@
+import requests
+import json
+
+# API基础配置
+API_URL = "http://10.66.169.58:8001/iot3/rest/api/v1/realtime.json"
+HEADERS = {
+    "Content-Type": "application/json; charset=utf-8",
+}
+
+request_data = {
+  "codes": [
+    "FWWSKN02005Q00101",
+    "FWBDKN05002Q00102",
+    "FWSRNW04023Q00102",
+    "FWSRNW04023Q00103",
+    "FWWSKN02005Q00102",
+    "FWBDKN05002Q00102",
+    "FWSRNW04023Q00101",
+    "FWSRNW04023Q00104",
+    "FWSRNW04023Q00105",
+    "FWWSKN02005Q00103",
+    "FWBDKN05002Q00103",
+    "FWBDKN05002Q00104",
+    "FWBDKN05002Q00105",
+    "FWWSKN02005Q00104",
+    "FWWSKN02005Q00105"
+  ]
+}
+
+def get_iot_realtime_data():
+    try:
+        response = requests.post(
+            url=API_URL,
+            headers=HEADERS,
+            json=request_data,
+            timeout=30
+        )
+        response.raise_for_status()
+        result = response.json()
+        print("API调用成功，返回数据：")
+        print(json.dumps(result, ensure_ascii=False, indent=4))
+        return result
+    except Exception as e:
+        print(f"请求失败：{str(e)}")
+    return None
+
+if __name__ == "__main__":
+    get_iot_realtime_data()
+
+
+
+{
+    "code": 9999,
+    "message": "could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet"
+}
+
+
+
+
+<img width="1217" height="730" alt="image" src="https://github.com/user-attachments/assets/0a6348fd-0dea-4950-a7fc-5f3ec6861508" />
+
+
+
 jdbc:postgresql://10.66.110.219:8000,10.66.110.206:8000,10.66.110.11:8000/wsd?loadBalance=true
 
 
