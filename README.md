@@ -1,3 +1,6 @@
+jdbc:postgresql://10.66.110.219:8000,10.66.110.206:8000,10.66.110.11:8000/wsd?loadBalance=true
+
+
 1. 
 
 ```python
