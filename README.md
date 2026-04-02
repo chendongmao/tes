@@ -1,3 +1,72 @@
+1. 
+
+```python
+import requests
+import json
+
+# API基础配置
+API_URL = "http://10.66.169.58:8001/iot3/rest/api/v1/realtime.json"  # 完整接口地址
+HEADERS = {
+    "Content-Type": "application/json; charset=utf-8",  # 必传JSON格式请求头
+    # 若接口需要鉴权（如token/cookie），可在此添加："Authorization": "Bearer xxx"
+}
+
+# 请求参数（与接口要求一致）
+request_data = {
+  "codes": [
+    "25",
+    "18",
+    "41"
+  ]
+}
+
+def get_iot_realtime_data():
+    """调用IoT历史数据API，返回响应结果"""
+    try:
+        # 发送POST请求，JSON格式传参
+        response = requests.post(
+            url=API_URL,
+            headers=HEADERS,
+            data=json.dumps(request_data),  # 字典转JSON字符串
+            timeout=30  # 超时时间30秒，可根据需求调整
+        )
+        # 校验请求状态码
+        response.raise_for_status()  # 非200状态码抛出异常
+        # 解析JSON响应结果
+        result = response.json()
+        print("API调用成功，返回数据：")
+        print(json.dumps(result, ensure_ascii=False, indent=4))
+        return result
+    except requests.exceptions.ConnectTimeout:
+        print(f"错误：连接接口{API_URL}超时，请检查网络或服务器状态")
+    except requests.exceptions.ConnectionError:
+        print(f"错误：无法连接到接口{API_URL}，请检查地址/端口是否正确，或服务器是否启动")
+    except requests.exceptions.HTTPError as e:
+        print(f"错误：接口返回异常状态码，详情：{e}")
+    except json.JSONDecodeError:
+        print("错误：接口返回非JSON格式数据，解析失败")
+    except Exception as e:
+        print(f"未知错误：{str(e)}")
+    return None
+
+# 执行调用
+if __name__ == "__main__":
+    get_iot_realtime_data()
+```
+
+返回结果
+
+```tex
+API调用成功，返回数据：
+{
+    "code": 9999,
+    "message": "could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet"
+}
+```
+
+
+
+
 1. 凤山阁：
    坐标北(米): 816305, 坐标东(米): 840581
     坐标： 840581 816300
