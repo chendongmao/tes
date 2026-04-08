@@ -1,3 +1,43 @@
+-- coss_dim.dim_wqp_dict_info definition
+
+-- Drop table
+
+-- DROP TABLE coss_dim.dim_wqp_dict_info;
+
+CREATE TABLE coss_dim.dim_wqp_dict_info (
+	code varchar(12) NOT NULL, -- Dictionary Code
+	origin_code varchar(36) NULL, -- Origin Code
+	"type" varchar(36) NOT NULL, -- Type
+	name_cn varchar(64) NULL, -- Simplified Chinese Name
+	name_tc varchar(64) NULL, -- Traditional Chinese Name
+	name_en varchar(64) NULL, -- English Name
+	dim_load_time timestamp(6) NULL DEFAULT pg_systimestamp(), -- Data Load Time
+	dim_update_time timestamp(6) NULL DEFAULT pg_systimestamp(), -- Data Update Time
+	CONSTRAINT dim_wqp_dict_info_pkey PRIMARY KEY (code,"type")
+)
+WITH (
+	orientation=row,
+	compression=no
+);
+COMMENT ON TABLE coss_dim.dim_wqp_dict_info IS 'Water Quality Parameters Dictionary Information';
+
+-- Column comments
+
+COMMENT ON COLUMN coss_dim.dim_wqp_dict_info.code IS 'Dictionary Code';
+COMMENT ON COLUMN coss_dim.dim_wqp_dict_info.origin_code IS 'Origin Code';
+COMMENT ON COLUMN coss_dim.dim_wqp_dict_info."type" IS 'Type';
+COMMENT ON COLUMN coss_dim.dim_wqp_dict_info.name_cn IS 'Simplified Chinese Name';
+COMMENT ON COLUMN coss_dim.dim_wqp_dict_info.name_tc IS 'Traditional Chinese Name';
+COMMENT ON COLUMN coss_dim.dim_wqp_dict_info.name_en IS 'English Name';
+COMMENT ON COLUMN coss_dim.dim_wqp_dict_info.dim_load_time IS 'Data Load Time';
+COMMENT ON COLUMN coss_dim.dim_wqp_dict_info.dim_update_time IS 'Data Update Time';
+
+
+
+
+
+
+
 import requests
 import json
 
