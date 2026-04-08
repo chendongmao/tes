@@ -1,3 +1,12 @@
+| CODE | DESC         |
+| ---- | ------------ |
+| 数分 | 数据分析     |
+| 数开 | 数据开发     |
+| 数配 | 页面数据配置 |
+| 原改 | 原型修改     |
+| 优化 | 页面优化     |
+
+
 -- coss_dim.dim_wqp_dict_info definition
 
 -- Drop table
