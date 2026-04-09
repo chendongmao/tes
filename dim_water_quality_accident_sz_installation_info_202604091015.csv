@@ -1,0 +1,6 @@
+"ordernum","installation_id","installation_type","region_abbr","sub_region_code","name_cn","name_tc","name_en","water_type_code","supply_code","supply_id","dim_load_time","dim_update_time"
+"202505178427287554530",TW025,TW,HKI,PP_WN_000006,小蚝湾滤水厂,小蠔灣濾水廠,Siu Ho Wan Water Treatment Works,WT_FC_000002,"4.25","89",2026-01-06 13:43:38.455,2026-01-06 13:43:38.455
+"202505178427287554512",TW025,TW,HKI,PP_WN_000006,小蚝湾滤水厂,小蠔灣濾水廠,Siu Ho Wan Water Treatment Works,WT_FC_000002,"4.25","89",2026-01-06 13:44:33.725,2026-01-06 13:44:33.725
+"202505178427287554549",TW025,TW,HKI,PP_WN_000006,小蚝湾滤水厂,小蠔灣濾水廠,Siu Ho Wan Water Treatment Works,WT_FC_000002,"4.25","89",2026-01-06 13:41:24.659,2026-01-06 13:41:24.659
+"202505178427287551519",SR080,SR,HKI,PP_WN_000001,筲箕湾食水配水库,筲箕灣食水配水庫,Shau Kei Wan Fresh Water Service Reservoir,WT_FC_000002,"1.35 & 1.55","92",2026-01-12 20:46:20.366,2026-01-12 20:46:20.366
+"202505178427287551519",SR167,SR,HKI,PP_WN_000001,筲箕湾二号食水配水库,筲箕灣二號食水配水庫,Shau Kei Wan No.2 Fresh Water Service Reservoir,WT_FC_000002,"1.35 & 1.55","92",2026-01-12 20:47:18.376,2026-01-12 20:47:18.376
