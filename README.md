@@ -1,3 +1,7 @@
+数仓连接：https://docs.qq.com/sheet/DUGdOTE9rdnJwb2xI?no_promotion=1&tab=fl8tx0
+巡检表：https://docs.qq.com/sheet/DVG1CRE1wbExHWEVk?tab=000001
+
+
 <img width="1672" height="782" alt="image" src="https://github.com/user-attachments/assets/f7d0e6d3-0b1b-4d6b-bf6a-378f8281cf04" />
 
 
