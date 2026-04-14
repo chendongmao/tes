@@ -1,3 +1,110 @@
+-- Get the latest one data record per sensor code with row number
+with ranked_data as (
+    select
+        id,                                   -- Data id
+        code as sensor_code,                  -- Sensor code
+        value as sensor_value,                -- Sensor measure value
+        to_timestamp(time / 1000) as sensor_time, -- Sensor data time
+        -- Group by code, order by time desc to pick the latest record
+        row_number() over (partition by code order by time desc) as rn
+    from iot.data_gw
+    where code in (
+        'FWBDKN05002Q00101',
+        'FWBDKN05002Q00102',
+        'FWBDKN05002Q00103',
+        'FWBDKN05002Q00104',
+        'FWBDKN05002Q00105',
+        'FWPHNW04006Q00101',
+        'FWPHNW04006Q00102',
+        'FWPHNW04006Q00103',
+        'FWPHNW04006Q00104',
+        'FWPHNW04006Q00105',
+        'FWPRKN04052Q00101',
+        'FWPRKN04052Q00102',
+        'FWPRKN04052Q00103',
+        'FWPRKN04052Q00104',
+        'FWPRKN04052Q00105',
+        'FWPRKN04052Q00201',
+        'FWSRKN02229Q00101',
+        'FWSRKN02229Q00102',
+        'FWSRKN02229Q00103',
+        'FWSRKN02229Q00104',
+        'FWSRKN02229Q00105',
+        'FWSRKN03085Q00101',
+        'FWSRKN03085Q00102',
+        'FWSRKN03085Q00103',
+        'FWSRKN03085Q00104',
+        'FWSRKN03085Q00105',
+        'FWSRKN03085Q00201',
+        'FWSRKN04011Q00101',
+        'FWSRKN04011Q00102',
+        'FWSRKN04011Q00103',
+        'FWSRKN04011Q00110',
+        'FWSRKN04020Q00101',
+        'FWSRKN04020Q00103',
+        'FWSRKN04020Q00104',
+        'FWSRKN05058Q00104',
+        'FWSRKN05058Q00105',
+        'FWSRKN05058Q00110',
+        'FWSRKN05058Q00111',
+        'FWSRKN05074Q00101',
+        'FWSRKN05074Q00102',
+        'FWSRKN05074Q00103',
+        'FWSRKN05074Q00104',
+        'FWSRKN05074Q00107',
+        'FWSRKN05074Q00201',
+        'FWSRNW04023Q00101',
+        'FWSRNW04023Q00102',
+        'FWSRNW04023Q00103',
+        'FWSRNW04023Q00104',
+        'FWSRNW04023Q00105',
+        'FWSRNW01109Q00101',
+        'FWSRNW01109Q00102',
+        'FWSRNW01109Q00103',
+        'FWSRNW01109Q00104',
+        'FWSRNW01109Q00105',
+        'FWSRNW04082Q00101',
+        'FWSRNW04082Q00102',
+        'FWSRNW04082Q00103',
+        'FWSRNW04082Q00104',
+        'FWSRNW04082Q00105',
+        'FWWMNW03001Q00101',
+        'FWWMNW03001Q00102',
+        'FWWMNW03001Q00103',
+        'FWWMNW03001Q00104',
+        'FWWMNW03001Q00105',
+        'FWWMNW04001Q00101',
+        'FWWMNW04001Q00102',
+        'FWWMNW04001Q00103',
+        'FWWMNW04001Q00104',
+        'FWWMNW04001Q00105',
+        'FWWSKN02005Q00101',
+        'FWWSKN02005Q00102',
+        'FWWSKN02005Q00103',
+        'FWWSKN02005Q00104',
+        'FWWSKN02005Q00105'
+    )
+)
+select
+    id,
+    sensor_code,
+    sensor_value,
+    sensor_time,
+    current_timestamp as dm_update_time,      -- Data warehouse update time
+    current_timestamp as dm_load_time         -- Data warehouse load time
+from ranked_data
+where rn = 1;
+
+
+
+
+
+
+
+
+
+
+
 https://docs.qq.com/sheet/DUGdOTE9rdnJwb2xI?no_promotion=1&tab=fl8tx0
 
 
