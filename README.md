@@ -1,3 +1,30 @@
+-- ****************************************************************************************
+-- Subject     Areas: Terminal User
+-- Function Describe: Terminal User Monitoring For Water Quality
+-- Create         By: dongmaochen
+-- Create       Date: 2026-04-08
+-- Modify Date                Modify By                    Modify Content
+-- None                       None                         None
+-- Source Table:
+-- Target Table:  
+-- ****************************************************************************************
+insert into coss_dm.dm_tmu_sensor_data_mini_month
+select
+	id,
+	sensor_code,
+	sensor_value,
+	sensor_time,
+	dm_update_time,
+	dm_load_time
+from
+coss_dm.dm_tmu_sensor_data_stg_mini
+on duplicate key update nothing
+
+
+
+
+
+
 -- Get the latest one data record per sensor code with row number
 with ranked_data as (
     select
