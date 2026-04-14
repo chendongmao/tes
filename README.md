@@ -1,3 +1,13 @@
+select device_name , count(1) aa  from coss_dim.dim_sz_device_info 
+group by 
+device_name 
+order by 
+device_name 
+
+
+
+
+
 <img width="901" height="238" alt="image" src="https://github.com/user-attachments/assets/b39b020b-b2a7-4eb4-b9ca-367a1985063c" />
 
 
