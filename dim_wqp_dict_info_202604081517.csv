@@ -1,6 +1,0 @@
-"code","origin_code","type","name_cn","name_tc","name_en","dim_load_time","dim_update_time"
-TEMP,,IOT_WQP,水温,水溫,Temperature,2026-04-02 10:54:57.943,2026-04-02 10:54:57.943
-COND,,IOT_WQP,电导率,電導率,Conductivity,2026-04-02 10:54:58.135,2026-04-02 10:54:58.135
-TURBITIDY,,IOT_WQP,浊度,濁度,Turbidity,2026-04-02 10:54:58.319,2026-04-02 10:54:58.319
-PH,,IOT_WQP,pH 值,pH 值,pH,2026-04-02 10:54:58.504,2026-04-02 10:54:58.504
-CHLORINE,,IOT_WQP,游离余氯,游離餘氯,FCL,2026-04-02 10:54:58.690,2026-04-02 10:54:58.690
