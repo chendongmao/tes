@@ -1,3 +1,16 @@
+Kwun Tong HL FWSR (Hach)
+
+> FCL(DPD)
+>
+> FCL(CLT10SC)
+
+
+<img width="361" height="504" alt="image-20260415102238943" src="https://github.com/user-attachments/assets/f7a6a918-6444-45e2-9190-a40be1089530" />
+
+
+
+
+
 select device_name , count(1) aa  from coss_dim.dim_sz_device_info 
 group by 
 device_name 
