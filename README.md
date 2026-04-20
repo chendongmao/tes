@@ -1,3 +1,59 @@
+drop table if exists coss_dim.dim_tmu_dict_info;
+CREATE TABLE if not exists coss_dim.dim_tmu_dict_info (
+	code varchar(12) NOT NULL, -- Dictionary Code
+	origin_code varchar(36) NULL, -- Origin Code
+	"type" varchar(36) NOT NULL, -- Type
+	name_cn varchar(64) NULL, -- Simplified Chinese Name
+	name_tc varchar(64) NULL, -- Traditional Chinese Name
+	name_en varchar(64) NULL, -- English Name
+	dim_load_time timestamp(6) NULL DEFAULT pg_systimestamp(), -- Data Load Time
+	dim_update_time timestamp(6) NULL DEFAULT pg_systimestamp(), -- Data Update Time
+	PRIMARY KEY (code, type)
+)
+WITH (
+	orientation=row,
+	compression=no
+);
+COMMENT ON TABLE coss_dim.dim_tmu_dict_info IS 'Terminal User Dictionary Information';
+COMMENT ON COLUMN coss_dim.dim_tmu_dict_info.code IS 'Dictionary Code';
+COMMENT ON COLUMN coss_dim.dim_tmu_dict_info.origin_code IS 'Origin Code';
+COMMENT ON COLUMN coss_dim.dim_tmu_dict_info."type" IS 'Type';
+COMMENT ON COLUMN coss_dim.dim_tmu_dict_info.name_cn IS 'Simplified Chinese Name';
+COMMENT ON COLUMN coss_dim.dim_tmu_dict_info.name_tc IS 'Traditional Chinese Name';
+COMMENT ON COLUMN coss_dim.dim_tmu_dict_info.name_en IS 'English Name';
+COMMENT ON COLUMN coss_dim.dim_tmu_dict_info.dim_load_time IS 'Data Load Time';
+COMMENT ON COLUMN coss_dim.dim_tmu_dict_info.dim_update_time IS 'Data Update Time';
+
+
+
+
+drop table if exists coss_dm.dm_tmu_user_customer_meter_item_di;
+CREATE TABLE if not exists coss_dm.dm_tmu_user_customer_meter_item_di (
+	statistical_year varchar(10) NOT NULL, -- Statistical Year
+	region_abbr varchar(120) NOT NULL, -- Regional Abbreviation
+	inter_item_code varchar(120) NOT NULL, -- internal item code
+	item_value numeric(20, 5) NULL, -- item value
+	dm_update_time timestamp(6) NULL DEFAULT pg_systimestamp(), -- Data Update Time
+	dm_load_time timestamp(6) NULL DEFAULT pg_systimestamp(), -- Data Loading Time
+	PRIMARY KEY (statistical_year,region_abbr,inter_item_code)
+)
+WITH (
+	orientation=row,
+	compression=no
+);
+COMMENT ON TABLE coss_dm.dm_tmu_user_customer_meter_item_di IS 'The Annual Customer Meter items';
+COMMENT ON COLUMN coss_dm.dm_tmu_user_customer_meter_item_di.statistical_year IS 'Statistical Year';
+COMMENT ON COLUMN coss_dm.dm_tmu_user_customer_meter_item_di.region_abbr IS 'Regional Abbreviation';
+COMMENT ON COLUMN coss_dm.dm_tmu_user_customer_meter_item_di.inter_item_code IS 'internal item code';
+COMMENT ON COLUMN coss_dm.dm_tmu_user_customer_meter_item_di.item_value IS 'item value';
+COMMENT ON COLUMN coss_dm.dm_tmu_user_customer_meter_item_di.dm_update_time IS 'Data Update Time';
+COMMENT ON COLUMN coss_dm.dm_tmu_user_customer_meter_item_di.dm_load_time IS 'Data Loading Time';
+
+
+
+
+
+
 https://docs.qq.com/sheet/DWkdsQ2J4elhUcU5I?tab=000001
 
 
