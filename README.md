@@ -1,3 +1,6 @@
+ods_pems_cus_water_sample_number_di
+
+
 drop table if exists coss_dim.dim_tmu_dict_info;
 CREATE TABLE if not exists coss_dim.dim_tmu_dict_info (
 	code varchar(12) NOT NULL, -- Dictionary Code
