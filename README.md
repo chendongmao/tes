@@ -1,4 +1,453 @@
-1. 
+
+
+# pakkong
+
+## ods_dcs_extract_pakkong_min(调度任务)
+
+### ods_dcs_wtw_opc_data_pakkong_minf
+
+#### create table
+
+```sql
+drop table if exists coss_ods.ods_dcs_wtw_opc_data_pakkong_minf;
+create table if not exists coss_ods.ods_dcs_wtw_opc_data_pakkong_minf (
+    id bigserial not null,
+    tag_name varchar(128) null,
+    tag_value decimal(25,5) null,
+    tag_value_avg decimal(25,5) null,
+    tag_value_min decimal(25,5) null,
+    tag_value_max decimal(25,5) null,
+    quality int4 not null,
+    tag_time timestamp not null,
+    ms_sql_time timestamp not null,
+    ods_update_time timestamp(6) default current_timestamp,
+    ods_load_time   timestamp(6) default current_timestamp,
+    primary key (tag_name)
+);
+comment on table  coss_ods.ods_dcs_wtw_opc_data_pakkong_minf                   is 'water treatment work tag poc data latest';
+comment on column coss_ods.ods_dcs_wtw_opc_data_pakkong_minf.id                is 'id';
+comment on column coss_ods.ods_dcs_wtw_opc_data_pakkong_minf.tag_name          is 'tag name';
+comment on column coss_ods.ods_dcs_wtw_opc_data_pakkong_minf.tag_value         is 'tag value';
+comment on column coss_ods.ods_dcs_wtw_opc_data_pakkong_minf.tag_value_avg     is 'tag value avg';
+comment on column coss_ods.ods_dcs_wtw_opc_data_pakkong_minf.tag_value_min     is 'tag value min';
+comment on column coss_ods.ods_dcs_wtw_opc_data_pakkong_minf.tag_value_max     is 'tag value max';
+comment on column coss_ods.ods_dcs_wtw_opc_data_pakkong_minf.quality           is 'quality';
+comment on column coss_ods.ods_dcs_wtw_opc_data_pakkong_minf.tag_time          is 'tag time';
+comment on column coss_ods.ods_dcs_wtw_opc_data_pakkong_minf.ms_sql_time       is 'ms sql time';
+comment on column coss_ods.ods_dcs_wtw_opc_data_pakkong_minf.ods_update_time   is 'ods update time';
+comment on column coss_ods.ods_dcs_wtw_opc_data_pakkong_minf.ods_load_time     is 'ods load time';
+```
+
+#### select sql
+
+```sql
+-- ****************************************************************************************
+-- subject     areas: Water Treatment Works
+-- function describe: Water Treatment Works Monitoring For pakkong
+-- create         by: dongmaochen
+-- create       date: 2026-03-30
+-- modify date                modify by                    modify content
+-- None                       None                         None
+-- source table
+-- coss_dcs.opc_data_pakkong
+-- coss_dim.dim_wtw_tag_info
+-- target table
+-- coss_ods.ods_dcs_wtw_opc_data_pakkong_minf
+-- ****************************************************************************************
+-- insert into coss_ods.ods_dcs_wtw_opc_data_pakkong_minf
+select
+    t.id,                              -- id
+    t.tag_name,                        -- tag name
+    t.tag_value,                       -- tag value
+    t.tag_value_avg,                   -- tag value avg
+    t.tag_value_min,                   -- tag value min
+    t.tag_value_max,                   -- tag value max
+    t.quality,                         -- quality
+    t.tag_time,                        -- tag time
+    t.ms_sql_time,                     -- ms sql time
+    current_timestamp ods_update_time, -- ods update time
+    current_timestamp ods_load_time    -- ods load time
+from coss_dcs.opc_data_pakkong t
+  inner join coss_dim.dim_wtw_tag_info t1 on t.tag_name = t1.tag_name_en where t1.i_code = 'TW020'
+```
+
+
+
+### ods_dcs_wtw_opc_data_full_pakkong_mini_month
+
+#### create table
+
+```sql
+drop table if exists coss_ods.ods_dcs_wtw_opc_data_full_pakkong_mini_month;
+create table if not exists coss_ods.ods_dcs_wtw_opc_data_full_pakkong_mini_month (
+    id bigserial not null,
+    tag_name varchar(128) not null,
+    tag_value decimal(25,5) null,
+    tag_value_avg decimal(25,5) null,
+    tag_value_min decimal(25,5) null,
+    tag_value_max decimal(25,5) null,
+    quality int4 not null,
+    tag_time timestamp not null,
+    ms_sql_time timestamp not null,
+    ods_update_time timestamp(6) default current_timestamp,
+    ods_load_time   timestamp(6) default current_timestamp,
+    primary key (tag_name, tag_time)
+)
+partition by range (tag_time)
+(
+    partition mh_202506 values less than ('2025-07-01 00:00:00'),
+    partition mh_202512 values less than ('2026-01-01 00:00:00'),
+    partition mh_202606 values less than ('2026-07-01 00:00:00'),
+    partition mh_202612 values less than ('2027-01-01 00:00:00'),
+    partition mh_202706 values less than ('2027-07-01 00:00:00'),
+    partition mh_202712 values less than ('2028-01-01 00:00:00'),
+    partition mh_202806 values less than ('2028-07-01 00:00:00'),
+    partition mh_202812 values less than ('2029-01-01 00:00:00'),
+    partition mh_future values less than ('9999-01-01 00:00:00')
+);
+comment on table  coss_ods.ods_dcs_wtw_opc_data_full_pakkong_mini_month                   is 'water treatment work tag poc history data';
+comment on column coss_ods.ods_dcs_wtw_opc_data_full_pakkong_mini_month.id                is 'id';
+comment on column coss_ods.ods_dcs_wtw_opc_data_full_pakkong_mini_month.tag_name          is 'tag name';
+comment on column coss_ods.ods_dcs_wtw_opc_data_full_pakkong_mini_month.tag_value         is 'tag value';
+comment on column coss_ods.ods_dcs_wtw_opc_data_full_pakkong_mini_month.tag_value_avg     is 'tag value avg';
+comment on column coss_ods.ods_dcs_wtw_opc_data_full_pakkong_mini_month.tag_value_min     is 'tag value min';
+comment on column coss_ods.ods_dcs_wtw_opc_data_full_pakkong_mini_month.tag_value_max     is 'tag value max';
+comment on column coss_ods.ods_dcs_wtw_opc_data_full_pakkong_mini_month.quality           is 'quality';
+comment on column coss_ods.ods_dcs_wtw_opc_data_full_pakkong_mini_month.tag_time          is 'tag time';
+comment on column coss_ods.ods_dcs_wtw_opc_data_full_pakkong_mini_month.ms_sql_time       is 'ms sql time';
+comment on column coss_ods.ods_dcs_wtw_opc_data_full_pakkong_mini_month.ods_update_time   is 'ods update time';
+comment on column coss_ods.ods_dcs_wtw_opc_data_full_pakkong_mini_month.ods_load_time     is 'ods load time';
+
+```
+
+#### select sql
+
+```sql
+-- ****************************************************************************************
+-- subject     areas: Water Treatment Works
+-- function describe: Water Treatment Works Monitoring For pakkong
+-- create         by: dongmaochen
+-- create       date: 2025-10-14
+-- modify date                modify by                    modify content
+-- None                       None                         None
+-- source table: coss_ods.ods_dcs_wtw_opc_data_pakkong_minf
+-- target table: coss_ods.ods_dcs_wtw_opc_data_full_pakkong_mini_month
+-- ****************************************************************************************
+insert into coss_ods.ods_dcs_wtw_opc_data_full_pakkong_mini_month (
+    id,
+    tag_name,
+    tag_value,
+    tag_value_avg,
+    tag_value_min,
+    tag_value_max,
+    quality,
+    tag_time,
+    ms_sql_time,
+    ods_update_time,
+    ods_load_time
+)
+select
+    t.id,                              -- id
+    t.tag_name,                        -- tag name
+    t.tag_value,                       -- tag value
+    t.tag_value_avg,                   -- tag value avg
+    t.tag_value_min,                   -- tag value min
+    t.tag_value_max,                   -- tag value max
+    t.quality,                         -- quality
+    t.tag_time,                        -- tag time
+    t.ms_sql_time,                     -- ms sql time
+    current_timestamp as ods_update_time, -- ods update time
+    current_timestamp as ods_load_time    -- ods load time
+from coss_ods.ods_dcs_wtw_opc_data_pakkong_minf t
+on duplicate key update nothing;
+```
+
+
+
+## dwd_wtw_etl_pakkong_monitoring_min（调度任务）
+
+### dwd_wtw_opc_data_latest_minf
+
+#### select sql
+
+```sql
+-- ****************************************************************************************
+-- subject     areas: Water Treatment Works
+-- function describe: Water Treatment Works Monitoring For pakkong
+-- create         by: dongmaochen
+-- create       date: 2025-10-14
+-- modify date                modify by                    modify content
+-- None                       None                         None
+-- source table
+-- coss_ods.ods_dcs_wtw_opc_data_pakkong_minf
+-- coss_dim.dim_wtw_tag_info
+-- target table
+-- coss_dwd.dwd_wtw_opc_data_latest_minf
+-- ****************************************************************************************
+insert into coss_dwd.dwd_wtw_opc_data_latest_minf (
+    id,
+    i_code,
+    tag_name,
+    tag_value,
+    tag_value_avg,
+    tag_value_min,
+    tag_value_max,
+    quality,
+    tag_time,
+    dwd_update_time,
+    dwd_load_time
+)
+select
+    id,                                 -- id
+    'TW020' as i_code,                  -- install code
+    tag_name,                           -- tag name
+    case
+        when tag_name in ('HVPumpSuctionPress_Press', 'JunkBayDeliveryPress_Press')
+        then tag_value / 9.81
+        else tag_value
+    end as tag_value, -- KPa转m（m = KPa/9.81）
+
+    case
+        when tag_name in ('HVPumpSuctionPress_Press', 'JunkBayDeliveryPress_Press')
+        then tag_value_avg / 9.81
+        else tag_value_avg
+    end as tag_value_avg, -- KPa转m（m = KPa/9.81）
+
+    case
+        when tag_name in ('HVPumpSuctionPress_Press', 'JunkBayDeliveryPress_Press')
+        then tag_value_min / 9.81
+        else tag_value_min
+    end as tag_value_min, -- KPa转m（m = KPa/9.81）
+
+    case
+        when tag_name in ('HVPumpSuctionPress_Press', 'JunkBayDeliveryPress_Press')
+        then tag_value_max / 9.81
+        else tag_value_max
+    end as tag_value_max, -- KPa转m（m = KPa/9.81）
+    quality,                            -- quality
+    tag_time,                           -- tag time
+    current_timestamp as dwd_update_time,  -- dwd update time
+    current_timestamp as dwd_load_time     -- dwd load time
+from coss_ods.ods_dcs_wtw_opc_data_pakkong_minf
+on duplicate key update
+    id = values(id),
+    tag_value = values(tag_value),
+    tag_value_avg = values(tag_value_avg),
+    tag_value_min = values(tag_value_min),
+    tag_value_max = values(tag_value_max),
+    quality = values(quality),
+    tag_time = values(tag_time),
+    dwd_update_time = values(dwd_update_time);
+```
+
+
+
+
+
+
+
+### dwd_wtw_opc_data_mini_month
+
+#### select sql
+
+```sql
+-- ****************************************************************************************
+-- subject     areas: Water Treatment Works
+-- function describe: Water Treatment Works Monitoring For pakkong
+-- create         by: dongmaochen
+-- create       date: 2025-10-14
+-- modify date                modify by                    modify content
+-- None                       None                         None
+-- source table
+-- coss_dwd.dwd_wtw_opc_data_latest_minf
+-- target table
+-- coss_dwd.dwd_wtw_opc_data_mini_month
+-- ****************************************************************************************
+insert into coss_dwd.dwd_wtw_opc_data_mini_month (
+    id,
+    i_code,
+    tag_name,
+    tag_value,
+    tag_value_avg,
+    tag_value_min,
+    tag_value_max,
+    quality,
+    tag_time,
+    dwd_update_time,
+    dwd_load_time
+)
+select
+    id,                                    -- id
+    i_code,                                -- install code
+    tag_name,                              -- tag name
+    tag_value,                             -- tag value
+    tag_value_avg,                         -- tag value avg
+    tag_value_min,                         -- tag value min
+    tag_value_max,                         -- tag value max
+    quality,                               -- quality
+    tag_time,                              -- tag time
+    current_timestamp as dwd_update_time,  -- dwd update time
+    current_timestamp as dwd_load_time     -- dwd load time
+from coss_dwd.dwd_wtw_opc_data_latest_minf t
+where i_code = 'TW020'
+on duplicate key update nothing;
+```
+
+## dm_wtw_etl_pakkong_monitoring_min（调度任务）
+
+### dm_wtw_opc_data_latest_minf
+
+#### select sql
+
+```sql
+-- ****************************************************************************************
+-- subject     areas: Water Treatment Works
+-- function describe: Water Treatment Works Monitoring For pakkong
+-- create         by: dongmaochen
+-- create       date: 2025-10-14
+-- modify date                modify by                    modify content
+-- None                       None                         None
+-- source table
+-- coss_dwd.dwd_wtw_opc_data_latest_minf
+-- coss_dim.dim_wtw_tag_info
+-- target table
+-- coss_dm.dm_wtw_opc_data_latest_minf
+-- ****************************************************************************************
+insert into coss_dm.dm_wtw_opc_data_latest_minf (
+    id,
+    i_code,
+    region_abbr,
+    wtw_name_en,
+    wtw_name_cn,
+    wtw_name_tc,
+    tag_name_cn,
+    tag_name_tc,
+    units,
+    tag_type,
+    tag_name,
+    tag_value,
+    tag_value_avg,
+    tag_value_min,
+    tag_value_max,
+    quality,
+    tag_time,
+    dm_update_time,
+    dm_load_time
+)
+select
+    t.id,                              -- id
+    t1.i_code,                         -- install code
+    t1.region_abbr,                    -- region abbreviation
+    t1.wtw_name_en,                    -- water treatments work english name
+    t1.wtw_name_cn,                    -- water treatments work chinese name
+    t1.wtw_name_tc,                    -- water treatments work traditional chinese name
+    t1.tag_name_cn,                    -- tag chinese name
+    t1.tag_name_tc,                    -- tag traditional chinese name
+    t1.units,                          -- tag units
+    t1.tag_type,                       -- tag type
+    t.tag_name,                        -- tag name
+    t.tag_value,                       -- tag value
+    t.tag_value_avg,                   -- tag value avg
+    t.tag_value_min,                   -- tag value min
+    t.tag_value_max,                   -- tag value max
+    t.quality,                         -- quality
+    t.tag_time,                        -- tag time
+    current_timestamp as dm_update_time,  -- dm update time
+    current_timestamp as dm_load_time     -- dm load time
+from coss_dwd.dwd_wtw_opc_data_latest_minf t
+inner join coss_dim.dim_wtw_tag_info t1
+    on t.tag_name = t1.tag_name_en
+where t1.i_code = 'TW020'
+on duplicate key update     id = values(id),
+    region_abbr = values(region_abbr),
+    wtw_name_en = values(wtw_name_en),
+    wtw_name_cn = values(wtw_name_cn),
+    wtw_name_tc = values(wtw_name_tc),
+    tag_name_cn = values(tag_name_cn),
+    tag_name_tc = values(tag_name_tc),
+    units = values(units),
+    tag_type = values(tag_type),
+    tag_value = values(tag_value),
+    tag_value_avg = values(tag_value_avg),
+    tag_value_min = values(tag_value_min),
+    tag_value_max = values(tag_value_max),
+    quality = values(quality),
+    tag_time = values(tag_time),
+    dm_load_time = values(dm_load_time);
+```
+
+
+
+### dm_wtw_opc_data_mini_month
+
+#### select sql
+
+```sql
+-- ****************************************************************************************
+-- subject     areas: Water Treatment Works
+-- function describe: Water Treatment Works Monitoring For pakkong
+-- create         by: dongmaochen
+-- create       date: 2025-10-14
+-- modify date                modify by                    modify content
+-- None                       None                         None
+-- source table
+-- coss_dm.dm_wtw_opc_data_latest_minf
+-- target table
+-- coss_dm.dm_wtw_opc_data_mini_month
+-- ****************************************************************************************
+insert into coss_dm.dm_wtw_opc_data_mini_month (
+    id,
+    i_code,
+    region_abbr,
+    wtw_name_en,
+    wtw_name_cn,
+    wtw_name_tc,
+    tag_name_cn,
+    tag_name_tc,
+    units,
+    tag_type,
+    tag_name,
+    tag_value,
+    tag_value_avg,
+    tag_value_min,
+    tag_value_max,
+    quality,
+    tag_time,
+    dm_update_time,
+    dm_load_time
+)
+select
+    id,                                -- id
+    i_code,                            -- install code
+    region_abbr,                       -- region abbreviation
+    wtw_name_en,                       -- water treatments work english name
+    wtw_name_cn,                       -- water treatments work chinese name
+    wtw_name_tc,                       -- water treatments work traditional chinese name
+    tag_name_cn,                       -- tag chinese name
+    tag_name_tc,                       -- tag traditional chinese name
+    units,                             -- tag units
+    tag_type,                          -- tag type
+    tag_name,                          -- tag name
+    tag_value,                         -- tag value
+    tag_value_avg,                     -- tag value avg
+    tag_value_min,                     -- tag value min
+    tag_value_max,                     -- tag value max
+    quality,                           -- quality
+    tag_time,                          -- tag time
+    current_timestamp as dm_update_time,    -- dm update time
+    current_timestamp as dm_load_time       -- dm load time
+from coss_dm.dm_wtw_opc_data_latest_minf t
+where t.i_code = 'TW020'
+on duplicate key update nothing;
+```
+
+
+
+
+
+
+
+
 
 1. 预生产数据库权限开通
    - 数据库链接：jdbc:postgresql://10.66.110.64:8000,10.66.110.151:8000,10.66.110.194:8000,10.66.110.235:8000/wsd
