@@ -126,7 +126,7 @@ create table if not exists coss_dm.dm_wtw_opc_data_latest_minf (
     tag_value_min decimal(25,5) null,
     tag_value_max decimal(25,5) null,
     quality  int,
-	tag_time timestamp(6) not null,
+	tag_time timestamp not null,
 	dm_update_time timestamp(6) not null,
     dm_load_time timestamp(6) not null,
     primary key(i_code, tag_name)
@@ -220,8 +220,8 @@ create table if not exists coss_dm.dm_wtw_opc_data_mini_month (
     tag_value_min   decimal(25,5)  null,
     tag_value_max   decimal(25,5)  null,
     quality         int            null,
-    tag_time        timestamp(6)   not null,
-    dm_update_time  timestamp(6)   not null,
+    tag_time        timestamp      not null,
+    dm_update_time  timestamp(6)      not null,
     dm_load_time    timestamp(6)   not null,
     primary key (i_code, tag_name, tag_time)
 )
@@ -290,6 +290,7 @@ comment on column coss_dm.dm_wtw_opc_data_mini_month.quality is 'Quality';
 comment on column coss_dm.dm_wtw_opc_data_mini_month.tag_time is 'Tag Time';
 comment on column coss_dm.dm_wtw_opc_data_mini_month.dm_update_time is 'Update Time';
 comment on column coss_dm.dm_wtw_opc_data_mini_month.dm_load_time is 'Load Time';
+
 ```
 
 ## 恢复数据
@@ -321,286 +322,6 @@ from
 ```
 
 
-
-
-
-
-
-# dwd and dm layer create table
-
-
-
-## dwd_wtw_etl_tuenmun_monitoring_min(调度任务)
-
-### dwd_wtw_opc_data_latest_minf
-
-#### create table
-
-```sql
-drop table if exists coss_dwd.dwd_wtw_opc_data_latest_minf;
-create table coss_dwd.dwd_wtw_opc_data_latest_minf (
-	id bigserial not null,
-	i_code varchar(50) not null,
-	tag_name varchar(128) null,
-	tag_value decimal(25,5) null,
-    tag_value_avg decimal(25,5) null,
-    tag_value_min decimal(25,5) null,
-    tag_value_max decimal(25,5) null,
-	quality int4 not null,
-	tag_time timestamp not null,
-	dwd_update_time timestamp not null,
-    dwd_load_time timestamp(6) not null,
-    primary key(i_code, tag_name)
-)
-with (
-	orientation=row,
-	compression=no,
-	storage_type=ustore,
-	segment=off
-);
-comment on table  coss_dwd.dwd_wtw_opc_data_latest_minf                     is 'water treatment work tag poc data latest';
-comment on column coss_dwd.dwd_wtw_opc_data_latest_minf.id                  is 'id';
-comment on column coss_dwd.dwd_wtw_opc_data_latest_minf.i_code              is 'install code';
-comment on column coss_dwd.dwd_wtw_opc_data_latest_minf.tag_name            is 'tag name';
-comment on column coss_dwd.dwd_wtw_opc_data_latest_minf.tag_value           is 'tag value';
-comment on column coss_dwd.dwd_wtw_opc_data_latest_minf.tag_value_avg       is 'tag value avg';
-comment on column coss_dwd.dwd_wtw_opc_data_latest_minf.tag_value_min       is 'tag value min';
-comment on column coss_dwd.dwd_wtw_opc_data_latest_minf.tag_value_max       is 'tag value max';
-comment on column coss_dwd.dwd_wtw_opc_data_latest_minf.quality             is 'quality';
-comment on column coss_dwd.dwd_wtw_opc_data_latest_minf.tag_time            is 'tag time';
-comment on column coss_dwd.dwd_wtw_opc_data_latest_minf.dwd_update_time     is 'dwd update time';
-comment on column coss_dwd.dwd_wtw_opc_data_latest_minf.dwd_load_time       is 'dwd load time';
-```
-
-
-
-### dwd_wtw_opc_data_mini_month
-
-#### create table
-
-```sql
-drop table if exists coss_dwd.dwd_wtw_opc_data_mini_month;
-create table if not exists coss_dwd.dwd_wtw_opc_data_mini_month(
-	id bigserial not null,
-	i_code varchar(50) not null,
-	tag_name varchar(128) null,
-	tag_value decimal(25,5) null,
-    tag_value_avg decimal(25,5) null,
-    tag_value_min decimal(25,5) null,
-    tag_value_max decimal(25,5) null,
-	quality int4 not null,
-	tag_time timestamp not null,
-	dwd_update_time timestamp not null,
-    dwd_load_time timestamp(6) not null,
-    primary key(i_code, tag_name, tag_time)
-)
-with (
-	orientation=row,
-	compression=no,
-	storage_type=ustore,
-	segment=off
-)
-partition by range (tag_time)
-(
-    -- 2025 Monthly Partitions
-    PARTITION mh_202501 VALUES LESS THAN ('2025-02-01 00:00:00'),
-    PARTITION mh_202503 VALUES LESS THAN ('2025-04-01 00:00:00'),
-    PARTITION mh_202505 VALUES LESS THAN ('2025-06-01 00:00:00'),
-    PARTITION mh_202507 VALUES LESS THAN ('2025-08-01 00:00:00'),
-    PARTITION mh_202509 VALUES LESS THAN ('2025-10-01 00:00:00'),
-    PARTITION mh_202511 VALUES LESS THAN ('2025-12-01 00:00:00'),
-    
-    -- 2026 Monthly Partitions
-    PARTITION mh_202601 VALUES LESS THAN ('2026-02-01 00:00:00'),
-    PARTITION mh_202603 VALUES LESS THAN ('2026-04-01 00:00:00'),
-    PARTITION mh_202605 VALUES LESS THAN ('2026-06-01 00:00:00'),
-    PARTITION mh_202607 VALUES LESS THAN ('2026-08-01 00:00:00'),
-    PARTITION mh_202609 VALUES LESS THAN ('2026-10-01 00:00:00'),
-    PARTITION mh_202611 VALUES LESS THAN ('2026-12-01 00:00:00'),
-    
-    -- 2027 Monthly Partitions
-    PARTITION mh_202701 VALUES LESS THAN ('2027-02-01 00:00:00'),
-    PARTITION mh_202703 VALUES LESS THAN ('2027-04-01 00:00:00'),
-    PARTITION mh_202705 VALUES LESS THAN ('2027-06-01 00:00:00'),
-    PARTITION mh_202707 VALUES LESS THAN ('2027-08-01 00:00:00'),
-    PARTITION mh_202709 VALUES LESS THAN ('2027-10-01 00:00:00'),
-    PARTITION mh_202711 VALUES LESS THAN ('2027-12-01 00:00:00'),
-    
-    -- 2028 Monthly Partitions
-    PARTITION mh_202801 VALUES LESS THAN ('2028-02-01 00:00:00'),
-    PARTITION mh_202803 VALUES LESS THAN ('2028-04-01 00:00:00'),
-    PARTITION mh_202805 VALUES LESS THAN ('2028-06-01 00:00:00'),
-    PARTITION mh_202807 VALUES LESS THAN ('2028-08-01 00:00:00'),
-    PARTITION mh_202809 VALUES LESS THAN ('2028-10-01 00:00:00'),
-    -- Future Partition (avoids insertion failure for unplanned time data)
-    PARTITION mh_future VALUES LESS THAN ('9999-01-01 00:00:00')
-);
-comment on table  coss_dwd.dwd_wtw_opc_data_mini_month                     is 'water treatment work tag poc data latest';
-comment on column coss_dwd.dwd_wtw_opc_data_mini_month.id                  is 'id';
-comment on column coss_dwd.dwd_wtw_opc_data_mini_month.i_code              is 'install code';
-comment on column coss_dwd.dwd_wtw_opc_data_mini_month.tag_name            is 'tag name';
-comment on column coss_dwd.dwd_wtw_opc_data_mini_month.tag_value           is 'tag value';
-comment on column coss_dwd.dwd_wtw_opc_data_mini_month.tag_value_avg       is 'tag value avg';
-comment on column coss_dwd.dwd_wtw_opc_data_mini_month.tag_value_min       is 'tag value min';
-comment on column coss_dwd.dwd_wtw_opc_data_mini_month.tag_value_max       is 'tag value max';
-comment on column coss_dwd.dwd_wtw_opc_data_mini_month.quality             is 'tag value quality';
-comment on column coss_dwd.dwd_wtw_opc_data_mini_month.tag_time            is 'tag time';
-comment on column coss_dwd.dwd_wtw_opc_data_mini_month.dwd_update_time     is 'dm update time';
-comment on column coss_dwd.dwd_wtw_opc_data_mini_month.dwd_load_time       is 'dm load time';
-```
-
-
-
-## dm_wtw_etl_tuenmun_monitoring_min(调度任务)
-
-### dm_wtw_opc_data_latest_minf
-
-#### create table
-
-```sql
-drop table if exists coss_dm.dm_wtw_opc_data_latest_minf;
-create table if not exists coss_dm.dm_wtw_opc_data_latest_minf (
-	id bigserial not null,
-	i_code varchar(50) not null,
-    region_abbr  varchar(50) ,
-    wtw_name_en  varchar(128) null,
-    wtw_name_cn  varchar(128) null,
-    wtw_name_tc  varchar(128) null,
-    tag_name_cn  varchar(128) null,
-    tag_name_tc  varchar(128) null,
-    units        varchar(128) null,
-    tag_type     varchar(128) null,
-	tag_name     varchar(128) null,
-	tag_value     decimal(25,5) null,
-    tag_value_avg decimal(25,5) null,
-    tag_value_min decimal(25,5) null,
-    tag_value_max decimal(25,5) null,
-    quality  int,
-	tag_time timestamp not null,
-	dm_update_time timestamp not null,
-    dm_load_time timestamp(6) not null,
-    primary key(i_code, tag_name)
-)
-with (
-	orientation=row,
-	compression=no,
-	storage_type=ustore,
-	segment=off
-);
-comment on table  coss_dm.dm_wtw_opc_data_latest_minf                     is 'water treatment work tag poc data latest';
-comment on column coss_dm.dm_wtw_opc_data_latest_minf.id                  is 'id';
-comment on column coss_dm.dm_wtw_opc_data_latest_minf.i_code              is 'install code';
-comment on column coss_dm.dm_wtw_opc_data_latest_minf.region_abbr         is 'region abbreviation';
-comment on column coss_dm.dm_wtw_opc_data_latest_minf.wtw_name_en         is 'water treatments work engliash name ';
-comment on column coss_dm.dm_wtw_opc_data_latest_minf.wtw_name_cn         is 'water treatments work chinses name ';
-comment on column coss_dm.dm_wtw_opc_data_latest_minf.wtw_name_tc         is 'water treatments work traditional chinses name ';
-comment on column coss_dm.dm_wtw_opc_data_latest_minf.tag_name_cn         is 'tag chinses name ';
-comment on column coss_dm.dm_wtw_opc_data_latest_minf.tag_name_tc         is 'tag traditional chinses name ';
-comment on column coss_dm.dm_wtw_opc_data_latest_minf.units               is 'tag units';
-comment on column coss_dm.dm_wtw_opc_data_latest_minf.tag_type            is 'tag type';
-comment on column coss_dm.dm_wtw_opc_data_latest_minf.tag_name            is 'tag name';
-comment on column coss_dm.dm_wtw_opc_data_latest_minf.tag_value           is 'tag value';
-comment on column coss_dm.dm_wtw_opc_data_latest_minf.quality             is 'quality';
-comment on column coss_dm.dm_wtw_opc_data_latest_minf.tag_time            is 'tag time';
-comment on column coss_dm.dm_wtw_opc_data_latest_minf.dm_update_time      is 'dm update time';
-comment on column coss_dm.dm_wtw_opc_data_latest_minf.dm_load_time        is 'dm load time';
-```
-
-### dm_wtw_opc_data_mini_month
-
-#### create table
-
-```sql
--- Drop table if exists
-drop table if exists coss_dm.dm_wtw_opc_data_mini_month;
-
--- Create table with range partition and storage parameters
-create table if not exists coss_dm.dm_wtw_opc_data_mini_month (
-    id              bigserial      not null,
-    i_code          varchar(50)    not null,
-    region_abbr     varchar(50)    null,
-    wtw_name_en     varchar(128)   null,
-    wtw_name_cn     varchar(128)   null,
-    wtw_name_tc     varchar(128)   null,
-    tag_name_cn     varchar(128)   null,
-    tag_name_tc     varchar(128)   null,
-    units           varchar(128)   null,
-    tag_type        varchar(128)   null,
-    tag_name        varchar(128)   null,
-    tag_value       decimal(25,5)  null,
-    tag_value_avg   decimal(25,5)  null,
-    tag_value_min   decimal(25,5)  null,
-    tag_value_max   decimal(25,5)  null,
-    quality         int            null,
-    tag_time        timestamp      not null,
-    dm_update_time  timestamp      not null,
-    dm_load_time    timestamp(6)   not null,
-    primary key (i_code, tag_name, tag_time)
-)
-with (
-    orientation=row,
-    compression=no,
-    storage_type=ustore,
-    segment=off
-)
-partition by range (tag_time) (
-    -- 2025 monthly partitions
-    partition mh_202501 values less than ('2025-02-01 00:00:00'),
-    partition mh_202503 values less than ('2025-04-01 00:00:00'),
-    partition mh_202505 values less than ('2025-06-01 00:00:00'),
-    partition mh_202507 values less than ('2025-08-01 00:00:00'),
-    partition mh_202509 values less than ('2025-10-01 00:00:00'),
-    partition mh_202511 values less than ('2025-12-01 00:00:00'),
-
-    -- 2026 monthly partitions
-    partition mh_202601 values less than ('2026-02-01 00:00:00'),
-    partition mh_202603 values less than ('2026-04-01 00:00:00'),
-    partition mh_202605 values less than ('2026-06-01 00:00:00'),
-    partition mh_202607 values less than ('2026-08-01 00:00:00'),
-    partition mh_202609 values less than ('2026-10-01 00:00:00'),
-    partition mh_202611 values less than ('2026-12-01 00:00:00'),
-
-    -- 2027 monthly partitions
-    partition mh_202701 values less than ('2027-02-01 00:00:00'),
-    partition mh_202703 values less than ('2027-04-01 00:00:00'),
-    partition mh_202705 values less than ('2027-06-01 00:00:00'),
-    partition mh_202707 values less than ('2027-08-01 00:00:00'),
-    partition mh_202709 values less than ('2027-10-01 00:00:00'),
-    partition mh_202711 values less than ('2027-12-01 00:00:00'),
-
-    -- 2028 monthly partitions
-    partition mh_202801 values less than ('2028-02-01 00:00:00'),
-    partition mh_202803 values less than ('2028-04-01 00:00:00'),
-    partition mh_202805 values less than ('2028-06-01 00:00:00'),
-    partition mh_202807 values less than ('2028-08-01 00:00:00'),
-    partition mh_202809 values less than ('2028-10-01 00:00:00'),
-
-    -- Future partition, avoid insertion failure for unexpected time data
-    partition mh_future values less than ('9999-01-01 00:00:00')
-);
-
--- Add table and column comments
-comment on table coss_dm.dm_wtw_opc_data_mini_month is 'Water Treatment Work Tag Opc Data Latest';
-comment on column coss_dm.dm_wtw_opc_data_mini_month.id is 'ID';
-comment on column coss_dm.dm_wtw_opc_data_mini_month.i_code is 'Install Code';
-comment on column coss_dm.dm_wtw_opc_data_mini_month.region_abbr is 'Region Abbreviation';
-comment on column coss_dm.dm_wtw_opc_data_mini_month.wtw_name_en is 'Water Treatments Work English Name';
-comment on column coss_dm.dm_wtw_opc_data_mini_month.wtw_name_cn is 'Water Treatments Work Chinese Name';
-comment on column coss_dm.dm_wtw_opc_data_mini_month.wtw_name_tc is 'Water Treatments Work Traditional Chinese Name';
-comment on column coss_dm.dm_wtw_opc_data_mini_month.tag_name_cn is 'Tag Chinese Name';
-comment on column coss_dm.dm_wtw_opc_data_mini_month.tag_name_tc is 'Tag Traditional Chinese Name';
-comment on column coss_dm.dm_wtw_opc_data_mini_month.units is 'Tag Units';
-comment on column coss_dm.dm_wtw_opc_data_mini_month.tag_type is 'Tag Type';
-comment on column coss_dm.dm_wtw_opc_data_mini_month.tag_name is 'Tag Name';
-comment on column coss_dm.dm_wtw_opc_data_mini_month.tag_value is 'Tag Value';
-comment on column coss_dm.dm_wtw_opc_data_mini_month.tag_value_avg is 'Tag Value Avg';
-comment on column coss_dm.dm_wtw_opc_data_mini_month.tag_value_min is 'Tag Value Min';
-comment on column coss_dm.dm_wtw_opc_data_mini_month.tag_value_max is 'Tag Value Max';
-comment on column coss_dm.dm_wtw_opc_data_mini_month.quality is 'Quality';
-comment on column coss_dm.dm_wtw_opc_data_mini_month.tag_time is 'Tag Time';
-comment on column coss_dm.dm_wtw_opc_data_mini_month.dm_update_time is 'Dm Update Time';
-comment on column coss_dm.dm_wtw_opc_data_mini_month.dm_load_time is 'Dm Load Time';
-```
 
 
 
