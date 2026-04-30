@@ -1,3 +1,327 @@
+# coss_dm.dm_cus_water_quality_wo_details_mini
+
+## 备份数据
+
+```sql
+create table coss_tmp.dm_cus_water_quality_wo_details_mini_arch260430 as 
+select * from coss_dm.dm_cus_water_quality_wo_details_mini
+```
+
+## 新表建表语句
+
+```sql
+drop table if exists coss_dm.dm_cus_water_quality_wo_details_mini;
+
+create table if not exists coss_dm.dm_cus_water_quality_wo_details_mini (
+	ordernum varchar(150) not null, -- Order Num
+	region_abbr varchar(200) null, -- Region
+	admin_division_code varchar(100) null, -- Administrative Area Code
+	cpt_type_code varchar(100) null, -- Complaint Code
+	urgency_code varchar(100) null, -- Urgency Code
+	water_type_code varchar(100) null, -- Water Supply Type Code
+	wo_status_code varchar(100) null, -- Ticket Status Code
+	org_type_code varchar(100) null, -- Channel Status Code
+	wq_cpt_type_code varchar(100) null, -- Water Quality Type Code
+	dma_code varchar(100) null, -- Dma Code
+	street varchar(200) null, -- Street
+	estate varchar(200) null, -- Estate
+	term varchar(200) null, -- Term
+	village varchar(200) null, -- Village
+	affect_building_code varchar(200) null, -- Affect Building Code
+	building_tc varchar(100) null, -- Building Tc
+	building_en varchar(100) null, -- Building En
+	floor varchar(200) null, -- Floor
+	isrepeatedcomplaint int4 null, -- Is Repeated Complaint
+	relateorder varchar(150) null, -- Relate Order
+	service_content varchar(500) null, -- Service Content
+	post varchar(100) null, -- Position Of Responsible Person
+	functionary varchar(100) null, -- Functionary Of Responsible Person
+	phone varchar(100) null, -- Phone Of Responsible Person
+	coordinate_x numeric(20, 6) null, -- X-Axis Coordinate
+	coordinate_y numeric(20, 6) null, -- Y-Axis Coordinate
+	region_receiving_date timestamp(6) null, -- Region Receiving Date
+	create_time timestamp(6) null, -- Create Time
+	finishtime timestamp(6) null, -- Create Time
+	dm_update_time timestamp(6) null default pg_systimestamp(), -- Work Order Completion Time
+	dm_load_time timestamp(6) null default pg_systimestamp(), -- Data Loading Time
+	primary key (ordernum)
+)
+with (
+	orientation=row,
+	compression=no
+);
+comment on table coss_dm.dm_cus_water_quality_wo_details_mini is 'Customer Service Water Quality Word Order Details';
+
+-- column comments
+
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.ordernum is 'Order Num';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.region_abbr is 'Region';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.admin_division_code is 'Administrative Area Code';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.cpt_type_code is 'Complaint Code';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.urgency_code is 'Urgency Code';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.water_type_code is 'Water Supply Type Code';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.wo_status_code is 'Ticket Status Code';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.org_type_code is 'Channel Status Code';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.wq_cpt_type_code is 'Water Quality Type Code';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.dma_code is 'Dma Code';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.street is 'Street';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.estate is 'Estate';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.term is 'Term';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.village is 'Village';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.affect_building_code is 'Affect Building Code';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.building_tc is 'Building Tc';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.building_en is 'Building En';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.floor is 'Floor';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.isrepeatedcomplaint is 'Is Repeated Complaint';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.relateorder is 'Relate Order';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.service_content is 'Service Content';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.post is 'Position Of Responsible Person';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.functionary is 'Functionary Of Responsible Person';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.phone is 'Phone Of Responsible Person';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.coordinate_x is 'X-Axis Coordinate';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.coordinate_y is 'Y-Axis Coordinate';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.region_receiving_date is 'Region Receiving Date';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.create_time is 'Create Time';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.finishtime is 'Finish Time';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.dm_update_time is 'Update Time';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.dm_load_time is 'Loading Time';
+```
+
+## 恢复数据
+
+```sql
+insert into coss_dm.dm_cus_water_quality_wo_details_mini
+select * from coss_tmp.dm_cus_water_quality_wo_details_mini_arch260430
+```
+
+
+
+# dm_wtw_opc_data_latest_minf
+
+## 备份数据
+
+```sql
+create table coss_tmp.dm_wtw_opc_data_latest_minf_arch260430 as 
+select * from coss_dm.dm_wtw_opc_data_latest_minf
+```
+
+## 新表建表语句
+
+```
+drop table if exists coss_dm.dm_wtw_opc_data_latest_minf;
+create table if not exists coss_dm.dm_wtw_opc_data_latest_minf (
+	id bigserial not null,
+	i_code varchar(50) not null,
+    region_abbr  varchar(50) ,
+    wtw_name_en  varchar(128) null,
+    wtw_name_cn  varchar(128) null,
+    wtw_name_tc  varchar(128) null,
+    tag_name_cn  varchar(128) null,
+    tag_name_tc  varchar(128) null,
+    units        varchar(128) null,
+    tag_type     varchar(128) null,
+	tag_name     varchar(128) null,
+	tag_value     decimal(25,5) null,
+    tag_value_avg decimal(25,5) null,
+    tag_value_min decimal(25,5) null,
+    tag_value_max decimal(25,5) null,
+    quality  int,
+	tag_time timestamp(6) not null,
+	dm_update_time timestamp(6) not null,
+    dm_load_time timestamp(6) not null,
+    primary key(i_code, tag_name)
+)
+with (
+	orientation=row,
+	compression=no,
+	storage_type=ustore,
+	segment=off
+);
+comment on table  coss_dm.dm_wtw_opc_data_latest_minf                     is 'Water Treatment Work Tag Opc Data Latest';
+comment on column coss_dm.dm_wtw_opc_data_latest_minf.id                  is 'Id';
+comment on column coss_dm.dm_wtw_opc_data_latest_minf.i_code              is 'Install Code';
+comment on column coss_dm.dm_wtw_opc_data_latest_minf.region_abbr         is 'Region Abbreviation';
+comment on column coss_dm.dm_wtw_opc_data_latest_minf.wtw_name_en         is 'Water Treatment Work English Name';
+comment on column coss_dm.dm_wtw_opc_data_latest_minf.wtw_name_cn         is 'Water Treatment Work Chinese Name';
+comment on column coss_dm.dm_wtw_opc_data_latest_minf.wtw_name_tc         is 'Water Treatment Work Traditional Chinese Name';
+comment on column coss_dm.dm_wtw_opc_data_latest_minf.tag_name_cn         is 'Tag Chinese Name';
+comment on column coss_dm.dm_wtw_opc_data_latest_minf.tag_name_tc         is 'Tag Traditional Chinese Name';
+comment on column coss_dm.dm_wtw_opc_data_latest_minf.units               is 'Tag Units';
+comment on column coss_dm.dm_wtw_opc_data_latest_minf.tag_type            is 'Tag Type';
+comment on column coss_dm.dm_wtw_opc_data_latest_minf.tag_name            is 'Tag Name';
+comment on column coss_dm.dm_wtw_opc_data_latest_minf.tag_value           is 'Tag Value';
+comment on column coss_dm.dm_wtw_opc_data_latest_minf.tag_value_avg       is 'Tag Value Avg';
+comment on column coss_dm.dm_wtw_opc_data_latest_minf.tag_value_min       is 'Tag Value Min';
+comment on column coss_dm.dm_wtw_opc_data_latest_minf.tag_value_max       is 'Tag Value Max';
+comment on column coss_dm.dm_wtw_opc_data_latest_minf.quality             is 'Quality';
+comment on column coss_dm.dm_wtw_opc_data_latest_minf.tag_time            is 'Tag Time';
+comment on column coss_dm.dm_wtw_opc_data_latest_minf.dm_update_time      is 'Update Time';
+comment on column coss_dm.dm_wtw_opc_data_latest_minf.dm_load_time        is 'Load Time';
+```
+
+## 恢复数据
+
+```sql
+insert into coss_dm.dm_wtw_opc_data_latest_minf
+select 
+  id
+  ,i_code
+  ,region_abbr
+  ,wtw_name_en
+  ,wtw_name_cn
+  ,wtw_name_tc
+  ,tag_name_cn
+  ,tag_name_tc
+  ,units
+  ,tag_type
+  ,tag_name
+  ,tag_value
+  ,null tag_value_avg
+  ,null tag_value_min
+  ,null tag_value_max
+  ,quality
+  ,tag_time
+  ,current_timestamp dm_update_time
+  ,current_timestamp dm_load_time
+from 
+	coss_tmp.dm_wtw_opc_data_latest_minf_arch260430 
+```
+
+# dm_wtw_opc_data_mini_month
+
+## 备份数据
+
+```sql
+create table coss_tmp.dm_wtw_opc_data_mini_month_arch260430 as 
+select * from coss_dm.dm_wtw_opc_data_mini_month
+```
+
+## 新表建表语句
+
+```sql
+-- Drop table if exists
+drop table if exists coss_dm.dm_wtw_opc_data_mini_month;
+
+-- Create table with range partition and storage parameters
+create table if not exists coss_dm.dm_wtw_opc_data_mini_month (
+    id              bigserial      not null,
+    i_code          varchar(50)    not null,
+    region_abbr     varchar(50)    null,
+    wtw_name_en     varchar(128)   null,
+    wtw_name_cn     varchar(128)   null,
+    wtw_name_tc     varchar(128)   null,
+    tag_name_cn     varchar(128)   null,
+    tag_name_tc     varchar(128)   null,
+    units           varchar(128)   null,
+    tag_type        varchar(128)   null,
+    tag_name        varchar(128)   null,
+    tag_value       decimal(25,5)  null,
+    tag_value_avg   decimal(25,5)  null,
+    tag_value_min   decimal(25,5)  null,
+    tag_value_max   decimal(25,5)  null,
+    quality         int            null,
+    tag_time        timestamp(6)   not null,
+    dm_update_time  timestamp(6)   not null,
+    dm_load_time    timestamp(6)   not null,
+    primary key (i_code, tag_name, tag_time)
+)
+with (
+    orientation=row,
+    compression=no,
+    storage_type=ustore,
+    segment=off
+)
+partition by range (tag_time) (
+    -- 2025 monthly partitions
+    partition mh_202501 values less than ('2025-02-01 00:00:00'),
+    partition mh_202503 values less than ('2025-04-01 00:00:00'),
+    partition mh_202505 values less than ('2025-06-01 00:00:00'),
+    partition mh_202507 values less than ('2025-08-01 00:00:00'),
+    partition mh_202509 values less than ('2025-10-01 00:00:00'),
+    partition mh_202511 values less than ('2025-12-01 00:00:00'),
+
+    -- 2026 monthly partitions
+    partition mh_202601 values less than ('2026-02-01 00:00:00'),
+    partition mh_202603 values less than ('2026-04-01 00:00:00'),
+    partition mh_202605 values less than ('2026-06-01 00:00:00'),
+    partition mh_202607 values less than ('2026-08-01 00:00:00'),
+    partition mh_202609 values less than ('2026-10-01 00:00:00'),
+    partition mh_202611 values less than ('2026-12-01 00:00:00'),
+
+    -- 2027 monthly partitions
+    partition mh_202701 values less than ('2027-02-01 00:00:00'),
+    partition mh_202703 values less than ('2027-04-01 00:00:00'),
+    partition mh_202705 values less than ('2027-06-01 00:00:00'),
+    partition mh_202707 values less than ('2027-08-01 00:00:00'),
+    partition mh_202709 values less than ('2027-10-01 00:00:00'),
+    partition mh_202711 values less than ('2027-12-01 00:00:00'),
+
+    -- 2028 monthly partitions
+    partition mh_202801 values less than ('2028-02-01 00:00:00'),
+    partition mh_202803 values less than ('2028-04-01 00:00:00'),
+    partition mh_202805 values less than ('2028-06-01 00:00:00'),
+    partition mh_202807 values less than ('2028-08-01 00:00:00'),
+    partition mh_202809 values less than ('2028-10-01 00:00:00'),
+
+    -- Future partition, avoid insertion failure for unexpected time data
+    partition mh_future values less than ('9999-01-01 00:00:00')
+);
+-- Add table and column comments
+comment on table coss_dm.dm_wtw_opc_data_mini_month is 'Water Treatment Work Tag Opc History Data';
+comment on column coss_dm.dm_wtw_opc_data_mini_month.id is 'Id';
+comment on column coss_dm.dm_wtw_opc_data_mini_month.i_code is 'Install Code';
+comment on column coss_dm.dm_wtw_opc_data_mini_month.region_abbr is 'Region Abbreviation';
+comment on column coss_dm.dm_wtw_opc_data_mini_month.wtw_name_en is 'Water Treatment Work English Name';
+comment on column coss_dm.dm_wtw_opc_data_mini_month.wtw_name_cn is 'Water Treatment Work Chinese Name';
+comment on column coss_dm.dm_wtw_opc_data_mini_month.wtw_name_tc is 'Water Treatment Work Traditional Chinese Name';
+comment on column coss_dm.dm_wtw_opc_data_mini_month.tag_name_cn is 'Tag Chinese Name';
+comment on column coss_dm.dm_wtw_opc_data_mini_month.tag_name_tc is 'Tag Traditional Chinese Name';
+comment on column coss_dm.dm_wtw_opc_data_mini_month.units is 'Tag Units';
+comment on column coss_dm.dm_wtw_opc_data_mini_month.tag_type is 'Tag Type';
+comment on column coss_dm.dm_wtw_opc_data_mini_month.tag_name is 'Tag Name';
+comment on column coss_dm.dm_wtw_opc_data_mini_month.tag_value is 'Tag Value';
+comment on column coss_dm.dm_wtw_opc_data_mini_month.tag_value_avg is 'Tag Value Avg';
+comment on column coss_dm.dm_wtw_opc_data_mini_month.tag_value_min is 'Tag Value Min';
+comment on column coss_dm.dm_wtw_opc_data_mini_month.tag_value_max is 'Tag Value Max';
+comment on column coss_dm.dm_wtw_opc_data_mini_month.tag_value_avg is 'Tag Value Avg';
+comment on column coss_dm.dm_wtw_opc_data_mini_month.tag_value_min is 'Tag Value Min';
+comment on column coss_dm.dm_wtw_opc_data_mini_month.tag_value_max is 'Tag Value Max';
+comment on column coss_dm.dm_wtw_opc_data_mini_month.quality is 'Quality';
+comment on column coss_dm.dm_wtw_opc_data_mini_month.tag_time is 'Tag Time';
+comment on column coss_dm.dm_wtw_opc_data_mini_month.dm_update_time is 'Update Time';
+comment on column coss_dm.dm_wtw_opc_data_mini_month.dm_load_time is 'Load Time';
+```
+
+## 恢复数据
+
+```sql
+insert into coss_dm.dm_wtw_opc_data_mini_month
+select 
+  id
+  ,i_code
+  ,region_abbr
+  ,wtw_name_en
+  ,wtw_name_cn
+  ,wtw_name_tc
+  ,tag_name_cn
+  ,tag_name_tc
+  ,units
+  ,tag_type
+  ,tag_name
+  ,tag_value
+  ,null tag_value_avg
+  ,null tag_value_min
+  ,null tag_value_max
+  ,quality
+  ,tag_time
+  ,current_timestamp dm_update_time
+  ,current_timestamp dm_load_time
+from 
+	coss_tmp.dm_wtw_opc_data_mini_month_arch260430 
+```
+
+
+
 
 
 
