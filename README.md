@@ -1,3 +1,4 @@
+> 修改了开发环境的表结构，需要把新的表结构更新到 IUAT PRE ISIT Envrenment
 # coss_dm.dm_cus_water_quality_wo_details_mini
 
 ## 备份数据
