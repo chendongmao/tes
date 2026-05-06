@@ -1,3 +1,1999 @@
+
+PEMS	ods_pems_extract_work_order_min	Extract customer service records and data
+PEMS	dwd_cus_etl_water_quality_wo_mini	Clean and load water quality work order related data in the dwd layer
+PEMS	dwd_cus_etl_water_quality_accident_impact_mini	Clean and load water quality accident impact related data in the dwd layer
+PEMS	dm_cus_etl_water_quality_wo_mini	Clean and load water quality work order related data in the dm layer
+PEMS	dm_cus_etl_water_quality_accident_impact_mini	Clean and load water quality accident impact related data in the dm layer
+<img width="758" height="111" alt="image" src="https://github.com/user-attachments/assets/a19374c1-184a-44e6-a196-1f139ae704f6" />
+
+
+
+
+## 数据清洗过程
+
+> complantlastupdatetime 是否为更新时间
+>
+> createdat 是否为工单的创建时间
+
+### dm_cus_water_quality_wo_details_mini
+
+#### create table
+
+```sql
+drop table if exists coss_dm.dm_cus_water_quality_wo_details_mini;
+
+create table if not exists coss_dm.dm_cus_water_quality_wo_details_mini (
+	ordernum varchar(150) not null, -- Order Num
+	region_abbr varchar(200) null, -- Region
+	admin_division_code varchar(100) null, -- Administrative Area Code
+	cpt_type_code varchar(100) null, -- Complaint Code
+	urgency_code varchar(100) null, -- Urgency Code
+	water_type_code varchar(100) null, -- Water Supply Type Code
+	wo_status_code varchar(100) null, -- Ticket Status Code
+	org_type_code varchar(100) null, -- Channel Status Code
+	wq_cpt_type_code varchar(100) null, -- Water Quality Type Code
+	dma_code varchar(100) null, -- Dma Code
+	street varchar(200) null, -- Street
+	estate varchar(200) null, -- Estate
+	term varchar(200) null, -- Term
+	village varchar(200) null, -- Village
+	affect_building_code varchar(200) null, -- Affect Building Code
+	building_tc varchar(100) null, -- Building Tc
+	building_en varchar(100) null, -- Building En
+	floor varchar(200) null, -- Floor
+	isrepeatedcomplaint int4 null, -- Is Repeated Complaint
+	relateorder varchar(150) null, -- Relate Order
+	service_content varchar(500) null, -- Service Content
+	post varchar(100) null, -- Position Of Responsible Person
+	functionary varchar(100) null, -- Functionary Of Responsible Person
+	phone varchar(100) null, -- Phone Of Responsible Person
+	coordinate_x numeric(20, 6) null, -- X-Axis Coordinate
+	coordinate_y numeric(20, 6) null, -- Y-Axis Coordinate
+	region_receiving_date timestamp(6) null, -- Region Receiving Date
+	create_time timestamp(6) null, -- Create Time
+	finishtime timestamp(6) null, -- Create Time
+	dm_update_time timestamp(6) null default pg_systimestamp(), -- Work Order Completion Time
+	dm_load_time timestamp(6) null default pg_systimestamp(), -- Data Loading Time
+	primary key (ordernum)
+)
+with (
+	orientation=row,
+	compression=no
+);
+comment on table coss_dm.dm_cus_water_quality_wo_details_mini is 'Customer Service Water Quality Word Order Details';
+
+-- column comments
+
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.ordernum is 'Order Num';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.region_abbr is 'Region';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.admin_division_code is 'Administrative Area Code';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.cpt_type_code is 'Complaint Code';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.urgency_code is 'Urgency Code';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.water_type_code is 'Water Supply Type Code';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.wo_status_code is 'Ticket Status Code';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.org_type_code is 'Channel Status Code';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.wq_cpt_type_code is 'Water Quality Type Code';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.dma_code is 'Dma Code';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.street is 'Street';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.estate is 'Estate';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.term is 'Term';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.village is 'Village';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.affect_building_code is 'Affect Building Code';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.building_tc is 'Building Tc';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.building_en is 'Building En';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.floor is 'Floor';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.isrepeatedcomplaint is 'Is Repeated Complaint';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.relateorder is 'Relate Order';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.service_content is 'Service Content';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.post is 'Position Of Responsible Person';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.functionary is 'Functionary Of Responsible Person';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.phone is 'Phone Of Responsible Person';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.coordinate_x is 'X-Axis Coordinate';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.coordinate_y is 'Y-Axis Coordinate';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.region_receiving_date is 'Region Receiving Date';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.create_time is 'Create Time';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.finishtime is 'Finish Time';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.dm_update_time is 'Update Time';
+comment on column coss_dm.dm_cus_water_quality_wo_details_mini.dm_load_time is 'Loading Time';
+```
+
+#### select sql
+
+```sql
+-- ****************************************************************************************
+-- Subject     Areas: Customer Service
+-- Function Describe: Customer Service WO Details
+-- Create         By: dongmaochen
+-- Create       Date: 2025-04-30
+-- Modify Date                Modify By                    Modify Content
+-- None                       None                         None
+-- Source Table:  coss_dws.dws_tmu_building_di
+-- Source Table:  coss_dwd.dwd_cus_water_quality_fa_details_mini
+-- Source Table:  coss_dwd.dwd_cus_water_quality_wo_details_mini
+-- Target Table:  coss_dm.dm_cus_water_quality_wo_details_mini
+-- ****************************************************************************************
+insert into coss_dm.dm_cus_water_quality_wo_details_mini
+(
+    ordernum,
+    region_abbr,
+    admin_division_code,
+    cpt_type_code,
+    urgency_code,
+    water_type_code,
+    wo_status_code,
+    org_type_code,
+    wq_cpt_type_code,
+    dma_code,
+    street,
+    estate,
+    term,
+    village,
+    affect_building_code,
+    building_tc,
+    building_en,
+    floor,
+    isrepeatedcomplaint,
+    relateorder,
+    service_content,
+    post,
+    functionary,
+    phone,
+    coordinate_x,
+    coordinate_y,
+    region_receiving_date,
+    create_time,
+    finishtime,
+    dm_update_time,
+    dm_load_time
+)
+select
+    t.ordernum,
+    t.region_abbr,
+    t.admin_division_code,
+    t.cpt_type_code,
+    t.urgency_code,
+    t1.water_type_code,
+    t.wo_status_code,
+    t.org_type_code,
+    t.wq_cpt_type_code,
+    '' as dma_code,
+    t.street,
+    t.estate,
+    t.term,
+    t.village,
+    t.affect_building_code,
+    null as building_tc,
+    t2.building_name as building_en,
+    coalesce(t."floor", 'Other') as "floor", 
+    t.isrepeatedcomplaint,
+    t.relateorder,
+    t.service_content,
+    t1.post,
+    t1.functionary,
+    t1.phone,
+    t.coordinate_x,
+    t.coordinate_y,
+    t.region_receiving_date,
+    t.create_time,
+    t.finishtime,
+    current_timestamp as dm_update_time,
+    current_timestamp as dm_load_time
+from 
+coss_dwd.dwd_cus_water_quality_wo_details_mini t
+left join coss_dwd.dwd_cus_water_quality_fa_details_mini t1 on t.ordernum = t1.pems_id
+left join coss_dws.dws_tmu_building_di t2 on t.affect_building_code = t2.building_csu_id 
+on duplicate key update
+    region_abbr = values(region_abbr),
+    admin_division_code = values(admin_division_code),
+    cpt_type_code = values(cpt_type_code),
+    urgency_code = values(urgency_code),
+    water_type_code = values(water_type_code),
+    wo_status_code = values(wo_status_code),
+    org_type_code = values(org_type_code),
+    wq_cpt_type_code = values(wq_cpt_type_code),
+    dma_code = values(dma_code),
+    street = values(street),
+    estate = values(estate),
+    term = values(term),
+    village = values(village),
+    affect_building_code = values(affect_building_code),
+    building_tc = values(building_tc),
+    building_en = values(building_en),
+    floor = values(floor),
+    isrepeatedcomplaint = values(isrepeatedcomplaint),
+    relateorder = values(relateorder),
+    service_content = values(service_content),
+    post = values(post),
+    functionary = values(functionary),
+    phone = values(phone),
+    coordinate_x = values(coordinate_x),
+    coordinate_y = values(coordinate_y),
+    region_receiving_date = values(region_receiving_date),
+    create_time = values(create_time),
+    finishtime = values(finishtime),
+    dm_update_time = values(dm_update_time);
+```
+
+### dm_cus_water_quality_impact_build_mini
+
+#### create table
+
+```sql
+drop table if exists coss_dm.dm_cus_water_quality_impact_build_mini;
+
+create table if not exists coss_dm.dm_cus_water_quality_impact_build_mini (
+	affect_building_code varchar(64) not null, -- Affect Building Code
+	affect_building varchar(256) null, -- Affect Building Name
+	affect_meter_no float8 null, -- Number of Affect Meter
+	affect_people_no float8 null, -- Number of Affect People
+	dm_update_time timestamp(6) null default current_timestamp, -- Update Time
+	dm_load_time timestamp(6) null default current_timestamp, -- Load Time 
+	primary key (affect_building_code)
+)
+with (
+	orientation=row,
+	compression=no
+);
+comment on table coss_dm.dm_cus_water_quality_impact_build_mini is 'Water Quality Complaints Affect Buildings';
+
+-- column comments
+
+comment on column coss_dm.dm_cus_water_quality_impact_build_mini.affect_building_code is 'Affect Building Code';
+comment on column coss_dm.dm_cus_water_quality_impact_build_mini.affect_building is 'Affect Building Name';
+comment on column coss_dm.dm_cus_water_quality_impact_build_mini.affect_meter_no is 'Number of Affect Meter';
+comment on column coss_dm.dm_cus_water_quality_impact_build_mini.affect_people_no is 'Number of Affect People';
+comment on column coss_dm.dm_cus_water_quality_impact_build_mini.dm_update_time is 'Dm Update Time';
+comment on column coss_dm.dm_cus_water_quality_impact_build_mini.dm_load_time is 'Dm Load Time ';
+```
+
+
+
+#### select sql
+
+```sql
+-- ****************************************************************************************
+-- Subject     Areas: Customer Service
+-- Function Describe: Customer Service Affect Building Metrics
+-- Create         By: dongmaochen
+-- Create       Date: 2025-04-30
+-- Modify Date                Modify By                    Modify Content
+-- None                       None                         None
+-- Source Table:  coss_dws.dws_tmu_building_di
+-- Target Table:  coss_dm.dm_cus_water_quality_impact_build_mini
+-- ****************************************************************************************
+insert into coss_dm.dm_cus_water_quality_impact_build_mini
+(
+    affect_building_code,
+    affect_building,
+    affect_meter_no,
+    affect_people_no,
+    dm_load_time,
+    dm_update_time
+)
+select
+    building_csu_id     as affect_building_code,
+    building_name      as affect_building,
+    meter_num          as affect_meter_no,
+    population         as affect_people_no,
+    current_timestamp  as dm_load_time,
+    current_timestamp  as dm_update_time
+from coss_dws.dws_tmu_building_di
+on duplicate key update
+    affect_building = values(affect_building),
+    affect_meter_no = values(affect_meter_no),
+    affect_people_no = values(affect_people_no),
+    dm_update_time = values(dm_update_time);
+```
+
+### dm_cus_water_quality_accident_impact_mini
+
+#### create table
+
+```sql
+drop table if exists coss_dm.dm_cus_water_quality_accident_impact_mini;
+
+create table if not exists coss_dm.dm_cus_water_quality_accident_impact_mini (
+	ordernum varchar(100) not null, -- The Water Quality Accident Work Order Number
+	affect_building_no numeric(15) null, -- Affect Building Name
+	affect_meter_no numeric(15) null, -- Number of Affect Meter
+	affect_people_no numeric(15) null, -- Number of Affect People
+	incident_cpt_no numeric(15) null, -- Number Of Incident Complaints
+	water_quality_no numeric(15) null, -- Number Of Water Quality Samples
+	meter_clearance_no numeric(15) null, -- Number Of Water Meter Clearance Requests
+	dm_load_time timestamp(6) null default current_timestamp, -- Data Loading Time
+	dm_update_time timestamp(6) null default current_timestamp, -- Data Update Time
+	primary key (ordernum)
+)
+with (
+	orientation=row,
+	compression=no
+);
+comment on table coss_dm.dm_cus_water_quality_accident_impact_mini is 'Water Quality Complaints About The Impact Of Accidents';
+comment on column coss_dm.dm_cus_water_quality_accident_impact_mini.ordernum is 'The Water Quality Accident Work Order Number';
+comment on column coss_dm.dm_cus_water_quality_accident_impact_mini.affect_building_no is 'Affect Building Name';
+comment on column coss_dm.dm_cus_water_quality_accident_impact_mini.affect_meter_no is 'Number of Affect Meter';
+comment on column coss_dm.dm_cus_water_quality_accident_impact_mini.affect_people_no is 'Number of Affect People';
+comment on column coss_dm.dm_cus_water_quality_accident_impact_mini.incident_cpt_no is 'Number Of Incident Complaints';
+comment on column coss_dm.dm_cus_water_quality_accident_impact_mini.water_quality_no is 'Number Of Water Quality Samples';
+comment on column coss_dm.dm_cus_water_quality_accident_impact_mini.meter_clearance_no is 'Number Of Water Meter Clearance Requests';
+comment on column coss_dm.dm_cus_water_quality_accident_impact_mini.dm_load_time is 'Data Loading Time';
+comment on column coss_dm.dm_cus_water_quality_accident_impact_mini.dm_update_time is 'Data Update Time';
+```
+
+#### select sql
+
+```sql
+-- ****************************************************************************************
+-- Subject     Areas: Customer Service
+-- Function Describe: Customer Service Accident Impact Metrics
+-- Create         By: dongmaochen
+-- Create       Date: 2025-04-30
+-- Modify Date                Modify By                    Modify Content
+-- None                       None                         None
+-- Source Table:  coss_dwd.dwd_cus_water_quality_wo_details_mini
+-- Source Table:  coss_dws.dws_tmu_building_di
+-- Source Table:  coss_dwd.dwd_cus_water_quality_accident_impact_mini
+-- Target Table:  coss_dm.dm_cus_water_quality_accident_impact_stg_mini
+-- ****************************************************************************************
+with 
+-- 1. 水质工单投诉数据
+t_work_a as (
+    select 
+        ordernum,
+        relateorder
+    from coss_dwd.dwd_cus_water_quality_wo_details_mini
+    -- where ds >= '2025-01-01'
+),
+t_work_b as (
+    select 
+        distinct coalesce(relateorder, ordernum) as relateorder,
+        affect_building_code
+    from coss_dwd.dwd_cus_water_quality_wo_details_mini t
+    where exists (
+        select 1 from t_work_a
+        where t.ordernum = t_work_a.ordernum
+           or (t.relateorder = t_work_a.relateorder and t_work_a.relateorder is not null)
+    )
+),
+t_work_c as (
+    select 
+        t.relateorder         as ordernum,
+        count(t.affect_building_code) as affect_building_code,
+        sum(t1.meter_num)     as affect_meter_no,
+        sum(t1.population)    as affect_people_no
+    from t_work_b t
+    inner join coss_dws.dws_tmu_building_di t1
+        on t.affect_building_code = t1.building_csu_id 
+    group by relateorder
+)
+insert into coss_dm.dm_cus_water_quality_accident_impact_stg_mini
+(
+    ordernum,
+    affect_building_no,
+    affect_meter_no,
+    affect_people_no,
+    incident_cpt_no,
+    water_quality_no,
+    meter_clearance_no,
+    dm_load_time,
+    dm_update_time
+)
+select 
+    ordernum,
+    max(affect_building_code) as affect_building_no,
+    max(affect_meter_no)      as affect_meter_no,
+    max(affect_people_no)     as affect_people_no,
+    max(incident_cpt_no)      as incident_cpt_no,
+    max(water_quality_no)     as water_quality_no,
+    max(meter_clearance_no)   as meter_clearance_no,
+    current_timestamp         as dm_load_time,
+    current_timestamp         as dm_update_time
+from
+(
+    select 
+        ordernum,
+        affect_building_code,
+        affect_meter_no,
+        affect_people_no,
+        null as incident_cpt_no,
+        null as water_quality_no,
+        null as meter_clearance_no
+    from t_work_c t
+
+    union all 
+
+    select 
+        ordernum,
+        null as affect_building_code,
+        null as affect_meter_no,
+        null as affect_people_no,
+        incident_cpt_no,
+        water_quality_no,
+        meter_clearance_no
+    from coss_dwd.dwd_cus_water_quality_accident_impact_mini
+) 
+group by ordernum;
+
+
+-- ****************************************************************************************
+insert into coss_dm.dm_cus_water_quality_accident_impact_mini
+(
+    ordernum,
+    affect_building_no,
+    affect_meter_no,
+    affect_people_no,
+    incident_cpt_no,
+    water_quality_no,
+    meter_clearance_no,
+    dm_load_time,
+    dm_update_time
+)
+select 
+    ordernum,
+    affect_building_no,
+    affect_meter_no,
+    affect_people_no,
+    incident_cpt_no,
+    water_quality_no,
+    meter_clearance_no,
+    current_timestamp as dm_load_time,
+    current_timestamp as dm_update_time
+from coss_dm.dm_cus_water_quality_accident_impact_stg_mini
+on duplicate key update
+    affect_building_no    = values(affect_building_no),
+    affect_meter_no       = values(affect_meter_no),
+    affect_people_no      = values(affect_people_no),
+    incident_cpt_no       = values(incident_cpt_no),
+    water_quality_no      = values(water_quality_no),
+    meter_clearance_no    = values(meter_clearance_no),
+    dm_update_time        = values(dm_update_time);
+```
+
+
+
+### dwd_cus_water_quality_wo_details_mini
+
+#### create table
+
+```sql
+drop table if exists coss_dwd.dwd_cus_water_quality_wo_details_mini;
+
+create table if not exists coss_dwd.dwd_cus_water_quality_wo_details_mini (
+    ordernum varchar(150) not null, -- The Ticket Number
+    region_abbr varchar(200) null, -- Region
+    admin_division_code varchar(100) null, -- Administrative Area Code
+    cpt_type_code varchar(100) null, -- Complaint Code
+    urgency_code varchar(100) null, -- Urgency Code
+    wo_status_code varchar(100) null, -- Ticket Status Code
+    org_type_code varchar(100) null, -- Channel Status Code
+    wq_cpt_type_code varchar(100) null, -- Water Quality Type Code
+    street varchar(200) null, -- Street
+    estate varchar(200) null, -- Estate
+    term varchar(200) null, -- Term
+    village varchar(200) null, -- Village
+    affect_building_code varchar(200) null, -- Affect Building Code
+    floor varchar(200) null, -- Floor
+    isrepeatedcomplaint int4 null, -- Is Repeated Complaint
+    relateorder varchar(150) null, -- Relate Order
+    service_content varchar(500) null, -- Service Content
+    coordinate_x numeric(20, 6) null, -- X-axis Coordinate
+    coordinate_y numeric(20, 6) null, -- Y-axis Coordinate
+    region_receiving_date timestamp(6) null, -- Region Receiving Date
+    create_time timestamp(6) null, -- Create Time
+    finishtime timestamp(6) null, -- Create Time
+    dwd_update_time timestamp(6) default pg_systimestamp() null, -- Work Order Completion Time
+    dwd_load_time timestamp(6) default pg_systimestamp() null, -- Data Loading Time
+    primary key (ordernum)
+)
+with (
+    orientation=row,
+    compression=no,
+    storage_type=ustore,
+    segment=off
+);
+
+-- Table comment
+comment on table coss_dwd.dwd_cus_water_quality_wo_details_mini is 'Customer Service Water Quality Work Order Details';
+
+-- Column comments
+comment on column coss_dwd.dwd_cus_water_quality_wo_details_mini.ordernum is 'The Work Order Number';
+comment on column coss_dwd.dwd_cus_water_quality_wo_details_mini.region_abbr is 'Region';
+comment on column coss_dwd.dwd_cus_water_quality_wo_details_mini.admin_division_code is 'Administrative Area Code';
+comment on column coss_dwd.dwd_cus_water_quality_wo_details_mini.cpt_type_code is 'Complaint Code';
+comment on column coss_dwd.dwd_cus_water_quality_wo_details_mini.urgency_code is 'Urgency Code';
+comment on column coss_dwd.dwd_cus_water_quality_wo_details_mini.wo_status_code is 'Work Order Status Code';
+comment on column coss_dwd.dwd_cus_water_quality_wo_details_mini.org_type_code is 'Channel Status Code';
+comment on column coss_dwd.dwd_cus_water_quality_wo_details_mini.wq_cpt_type_code is 'Water Quality Complaint Type Code';
+comment on column coss_dwd.dwd_cus_water_quality_wo_details_mini.street is 'Street';
+comment on column coss_dwd.dwd_cus_water_quality_wo_details_mini.estate is 'Estate';
+comment on column coss_dwd.dwd_cus_water_quality_wo_details_mini.term is 'Term';
+comment on column coss_dwd.dwd_cus_water_quality_wo_details_mini.village is 'Village';
+comment on column coss_dwd.dwd_cus_water_quality_wo_details_mini.affect_building_code is 'Affect Building Code';
+comment on column coss_dwd.dwd_cus_water_quality_wo_details_mini.floor is 'Floor';
+comment on column coss_dwd.dwd_cus_water_quality_wo_details_mini.isrepeatedcomplaint is 'Is Repeated Complaint';
+comment on column coss_dwd.dwd_cus_water_quality_wo_details_mini.relateorder is 'Relate Order';
+comment on column coss_dwd.dwd_cus_water_quality_wo_details_mini.service_content is 'Service Content';
+comment on column coss_dwd.dwd_cus_water_quality_wo_details_mini.coordinate_x is 'X-axis Coordinate';
+comment on column coss_dwd.dwd_cus_water_quality_wo_details_mini.coordinate_y is 'Y-axis Coordinate';
+comment on column coss_dwd.dwd_cus_water_quality_wo_details_mini.region_receiving_date is 'Region Receiving Date';
+comment on column coss_dwd.dwd_cus_water_quality_wo_details_mini.create_time is 'Create Time';
+comment on column coss_dwd.dwd_cus_water_quality_wo_details_mini.finishtime is 'Work Order Completion Time';
+comment on column coss_dwd.dwd_cus_water_quality_wo_details_mini.dwd_update_time is 'Data Update Time';
+comment on column coss_dwd.dwd_cus_water_quality_wo_details_mini.dwd_load_time is 'Data Loading Time';
+
+```
+
+#### select sql
+
+```sql
+-- ****************************************************************************************
+-- Subject     Areas: Customer Service
+-- Function Describe: Customer Service WO Details
+-- Create         By: dongmaochen
+-- Create       Date: 2025-04-30
+-- Modify Date                Modify By                    Modify Content
+-- None                       None                         None
+-- Source Table:  coss_ods.ods_pems_cus_t_order_workorder_mini_year
+-- Source Table:  coss_ods.ods_pems_cus_t_dic_district_df
+-- Source Table:  coss_dim.dim_admin_division_info
+-- Source Table:  coss_dim.dim_wo_biz_type_info
+-- Source Table:  coss_dim.dim_wo_dict_info
+-- Target Table:  coss_dwd.dwd_cus_water_quality_wo_details_stg_mini
+-- ****************************************************************************************
+
+-- clean region_abbr, admin_division_code
+with t_a as (
+    select 
+        t.ordernum,
+        t2.region_abbr,
+        t2.admin_division_code
+    from coss_ods.ods_pems_cus_t_order_workorder_mini_year t 
+    inner join coss_ods.ods_pems_cus_t_dic_district_df t1 
+        on t.bigregion = t1.code
+    inner join coss_dim.dim_admin_division_info t2 
+        on t1.nametc = t2.admin_division_tc
+), 
+-- clean cpt_type_code complaint type,urgency_code Urgence type,wo_status_code Work Status 
+t_b as (
+    select
+        t.ordernum,
+        t1.wo_biz_type_code as cpt_type_code,
+        case
+            when urgency = 1 then 'CU_EM_100001'
+            when urgency = 2 then 'CU_EM_100002'
+            else null
+        end as urgency_code,
+        case
+            when orderstate = 1 then 'WO_PE_000001'
+            when orderstate = 2 then 'WO_PE_000002'
+            when orderstate = 3 then 'WO_PE_000003'
+            else null
+        end as wo_status_code,
+        t2.code as org_type_code
+    from coss_ods.ods_pems_cus_t_order_workorder_mini_year t 
+    left join coss_dim.dim_wo_biz_type_info t1 
+        on t.classify2 = t1.origin_code
+    left join coss_dim.dim_wo_dict_info t2 
+        on t.channeltype = t2.origin_code
+    where t1.topic_type = 'COMPLAINTS'
+      and t2."type" = 'ORIGIN'
+),
+-- Water Quality Complaint Type Code Conversion
+t_c as (
+    select 
+        ordernum,
+        string_agg(wq_cpt_type_code, ',') as wq_cpt_type_code
+    from (
+        select
+            ordernum,
+            case split_code
+                when 'L1' then 'CP_WQ_000001'
+                when 'S1' then 'CP_WQ_000002'
+                when 'S2' then 'CP_WQ_000003'
+                when 'S3' then 'CP_WQ_000004'
+                when 'P1' then 'CP_WQ_000005'
+                when 'P2' then 'CP_WQ_000006'
+                when 'P3' then 'CP_WQ_000007'
+                when 'C1' then 'CP_WQ_000008'
+                when 'O1' then 'CP_WQ_000009'
+                else null
+            end as wq_cpt_type_code
+        from (
+            select
+                ordernum,
+                regexp_split_to_table(waterqualitycode, ',') as split_code
+            from coss_ods.ods_pems_cus_t_order_workorder_mini_year
+            where waterqualitycode is not null
+        ) t
+    ) t1
+    where wq_cpt_type_code is not null 
+    group by ordernum
+), 
+-- Regin + Complaint Type Combine
+t_d as (
+    select 
+        t.ordernum,
+        t.region_abbr,
+        t.admin_division_code,
+        t1.wq_cpt_type_code
+    from t_a t
+    left join t_c t1 
+        on t.ordernum = t1.ordernum 
+)
+-- Write To STG Table
+insert into coss_dwd.dwd_cus_water_quality_wo_details_stg_mini
+(
+    ordernum,
+    region_abbr,
+    admin_division_code,
+    cpt_type_code,
+    urgency_code,
+    wo_status_code,
+    org_type_code,
+    wq_cpt_type_code,
+    street,
+    estate,
+    term,
+    village,
+    affect_building_code,
+    floor,
+    isrepeatedcomplaint,
+    relateorder,
+    service_content,
+    coordinate_x,
+    coordinate_y,
+    region_receiving_date,
+    create_time,
+    finishtime,
+    dwd_update_time,
+    dwd_load_time
+)
+select 
+    t.ordernum,
+    t2.region_abbr,
+    t2.admin_division_code,
+    t1.cpt_type_code,
+    t1.urgency_code,
+    t1.wo_status_code,
+    t1.org_type_code,
+    t2.wq_cpt_type_code,
+    nullif(t.street, '')                as street,
+    nullif(t.estate, '')               as estate,
+    nullif(t.term, '')                 as term,
+    nullif(t.village, '')              as village,
+    nullif(t.buildingno, '')           as affect_building_code,
+    nullif(t.floor, '')                as floor,
+    t.isrepeatedcomplaint,
+    nullif(t.relateorder, '')          as relateorder,
+    t.servicecontent                   as service_content,
+    t.locationx                        as coordinate_x,
+    t.locationy                        as coordinate_y,
+    t.regionreceivingdate              as region_receiving_date,
+    t.createdat                        as create_time,
+    t.finishtime,
+    current_timestamp                  as dwd_update_time,
+    current_timestamp                  as dwd_load_time
+from coss_ods.ods_pems_cus_t_order_workorder_mini_year t 
+left join t_b t1 
+    on t.ordernum = t1.ordernum
+left join t_d t2 
+    on t.ordernum = t2.ordernum;
+
+-- Write To Targe Table
+insert into coss_dwd.dwd_cus_water_quality_wo_details_mini 
+(
+    ordernum,
+    region_abbr,
+    admin_division_code,
+    cpt_type_code,
+    urgency_code,
+    wo_status_code,
+    org_type_code,
+    wq_cpt_type_code,
+    street,
+    estate,
+    term,
+    village,
+    affect_building_code,
+    floor,
+    isrepeatedcomplaint,
+    relateorder,
+    service_content,
+    coordinate_x,
+    coordinate_y,
+    region_receiving_date,
+    create_time,
+    finishtime,
+    dwd_update_time,
+    dwd_load_time
+)
+select 
+    ordernum,
+    region_abbr,
+    admin_division_code,
+    cpt_type_code,
+    urgency_code,
+    wo_status_code,
+    org_type_code,
+    wq_cpt_type_code,
+    street,
+    estate,
+    term,
+    village,
+    affect_building_code,
+    floor,
+    isrepeatedcomplaint,
+    relateorder,
+    service_content,
+    coordinate_x,
+    coordinate_y,
+    region_receiving_date,
+    create_time,
+    finishtime,
+    current_timestamp        as dwd_update_time,
+    current_timestamp        as dwd_load_time
+from coss_dwd.dwd_cus_water_quality_wo_details_stg_mini 
+on duplicate key update
+    region_abbr            = values(region_abbr),
+    admin_division_code    = values(admin_division_code),
+    cpt_type_code          = values(cpt_type_code),
+    urgency_code           = values(urgency_code),
+    wo_status_code         = values(wo_status_code),
+    org_type_code          = values(org_type_code),
+    wq_cpt_type_code       = values(wq_cpt_type_code),
+    street                 = values(street),
+    estate                 = values(estate),
+    term                   = values(term),
+    village                = values(village),
+    affect_building_code   = values(affect_building_code),
+    floor                  = values(floor),
+    isrepeatedcomplaint    = values(isrepeatedcomplaint),
+    relateorder            = values(relateorder),
+    service_content        = values(service_content),
+    coordinate_x           = values(coordinate_x),
+    coordinate_y           = values(coordinate_y),
+    region_receiving_date  = values(region_receiving_date),
+    create_time            = values(create_time),
+    finishtime             = values(finishtime),
+    dwd_update_time        = values(dwd_update_time);
+```
+
+
+
+### dwd_cus_water_quality_fa_details_mini
+
+#### create table
+
+```sql
+drop table if exists coss_dwd.dwd_cus_water_quality_fa_details_mini;
+
+create table if not exists coss_dwd.dwd_cus_water_quality_fa_details_mini
+(
+    pems_id          varchar(50)    not null,
+    water_type_code  varchar(100)   null,
+    post             varchar(100)   null,
+    functionary      varchar(300)   null,
+    phone            varchar(20)    null,
+    dwd_update_time   timestamp(6)   default current_timestamp,
+    dwd_load_time     timestamp(6)   default current_timestamp,
+    primary key (pems_id)
+)
+;
+
+-- Table comment
+comment on table coss_dwd.dwd_cus_water_quality_fa_details_mini is 'Customer Service Water Quality FA Details';
+-- Column comments
+comment on column coss_dwd.dwd_cus_water_quality_fa_details_mini.pems_id is 'Pems Id';
+comment on column coss_dwd.dwd_cus_water_quality_fa_details_mini.water_type_code is 'Water Supply Type Code';
+comment on column coss_dwd.dwd_cus_water_quality_fa_details_mini.post is 'Position Of Responsible Person';
+comment on column coss_dwd.dwd_cus_water_quality_fa_details_mini.functionary is 'Functionary Of Responsible Person';
+comment on column coss_dwd.dwd_cus_water_quality_fa_details_mini.phone is 'Phone Of Responsible Person';
+comment on column coss_dwd.dwd_cus_water_quality_fa_details_mini.dwd_update_time is 'Data Update Time';
+comment on column coss_dwd.dwd_cus_water_quality_fa_details_mini.dwd_load_time is 'Data Loading Time';
+```
+
+#### select sql 
+
+```sql
+-- ****************************************************************************************
+-- Subject     Areas: Customer Service
+-- Function Describe: Customer Service FA Details
+-- Create         By: dongmaochen
+-- Create       Date: 2025-04-30
+-- Modify Date                Modify By                    Modify Content
+-- None                       None                         None
+-- Source Table:  coss_ods.ods_isms_pwo_css_work_order_mini
+-- Target Table:  coss_dwd.dwd_cus_water_quality_fa_details_mini
+-- ****************************************************************************************
+insert into coss_dwd.dwd_cus_water_quality_fa_details_mini
+(
+    pems_id,
+    water_type_code,
+    post,
+    functionary,
+    phone,
+    dwd_update_time,
+    dwd_load_time
+)
+select
+    pems_id,
+    case water_nature
+        when 'FW'  then 'WT_FC_000005'
+        when 'SW'  then 'WT_SC_000001'
+        when 'FS'  then 'WT_FW_000001'
+        when 'TMF' then 'WT_FC_000006'
+        else null
+    end as water_type_code,
+    receiver_post        as post,
+    current_process_by   as functionary,
+    ''                   as phone,
+    current_timestamp    as dwd_update_time,
+    current_timestamp    as dwd_load_time
+from coss_ods.ods_isms_pwo_css_work_order_di
+where pems_id is not null 
+on duplicate key update
+    water_type_code   = values(water_type_code),
+    post              = values(post),
+    functionary       = values(functionary),
+    phone             = values(phone),
+    dwd_update_time   = values(dwd_update_time);
+```
+
+
+
+> Brandon 要求，如果楼层为null ，就改为其他（Other）
+
+### dwd_cus_water_quality_accident_impact_mini
+
+#### create table
+
+```sql
+drop table if exists coss_dwd.dwd_cus_water_quality_accident_impact_mini;
+
+create table if not exists coss_dwd.dwd_cus_water_quality_accident_impact_mini
+(
+    ordernum               varchar(64)   not null,
+    incident_cpt_no        decimal(15,0),
+    water_quality_no       decimal(15,0),
+    meter_clearance_no     decimal(15,0),
+    dwd_load_time          timestamp(6)  default current_timestamp,
+    dwd_update_time        timestamp(6)  default current_timestamp,
+    primary key (ordernum)
+);
+
+comment on table  coss_dwd.dwd_cus_water_quality_accident_impact_mini is 'Water Quality Accident Impact';
+comment on column coss_dwd.dwd_cus_water_quality_accident_impact_mini.ordernum is 'Order Num';
+comment on column coss_dwd.dwd_cus_water_quality_accident_impact_mini.incident_cpt_no is 'Number Of Incident Complaints';
+comment on column coss_dwd.dwd_cus_water_quality_accident_impact_mini.water_quality_no is 'Number Of Water Quality Samples';
+comment on column coss_dwd.dwd_cus_water_quality_accident_impact_mini.meter_clearance_no is 'Number Of Water Meter Clearance Requests';
+comment on column coss_dwd.dwd_cus_water_quality_accident_impact_mini.dwd_load_time is 'Data Loading Time';
+comment on column coss_dwd.dwd_cus_water_quality_accident_impact_mini.dwd_update_time is 'Data Update Time';
+
+```
+
+#### select sql
+
+```sql
+-- ****************************************************************************************
+-- Subject     Areas: Customer Service
+-- Function Describe: Customer Service Accident Impact
+-- Create         By: dongmaochen
+-- Create       Date: 2025-04-30
+-- Modify Date                Modify By                    Modify Content
+-- None                       None                         None
+-- Source Table:  coss_ods.ods_pems_cus_t_order_workorder_mini_year
+-- Source Table:  coss_ods.ods_pems_cus_meter_clean_number_di
+-- Source Table:  coss_ods.ods_pems_cus_water_sample_number_di
+-- Target Table:  coss_dwd.dwd_cus_water_quality_accident_impact_stg_mini
+-- ****************************************************************************************
+with 
+-- 1. Water Quality WO Number
+t_work_a as (
+    select 
+        ordernum,
+        relateorder
+    from coss_ods.ods_pems_cus_t_order_workorder_mini_year
+    -- where ds >= '2025-01-01'
+),
+t_work_b as (
+    select distinct 
+        ordernum,
+        coalesce(relateorder, ordernum) as relateorder
+    from coss_ods.ods_pems_cus_t_order_workorder_mini_year t
+    where exists (
+        select 1 from t_work_a
+        where t.ordernum = t_work_a.ordernum
+           or (t.relateorder = t_work_a.relateorder and t_work_a.relateorder is not null)
+    )
+),
+work_data as (
+    select 
+        relateorder         as ordernum,
+        count(ordernum)     as incident_cpt_no,
+        cast(null as bigint) as water_quality_no,
+        cast(null as bigint) as meter_clearance_no
+    from t_work_b
+    group by relateorder
+),
+
+-- 2. Meter Cleaning Request
+t_clean_a as (
+    select 
+        ordernum,
+        clean_num
+    from coss_ods.ods_pems_cus_meter_clean_number_di
+),
+t_clean_b as (
+    select distinct
+        t.ordernum,
+        coalesce(t.relateorder, t.ordernum) as relateorder
+    from coss_ods.ods_pems_cus_t_order_workorder_mini_year t
+    where exists (
+        select 1 from t_clean_a
+        where t_clean_a.ordernum = t.ordernum
+           or t_clean_a.ordernum = t.relateorder
+    )
+),
+clean_data as (
+    select
+        t_clean_b.relateorder as ordernum,
+        cast(null as bigint) as incident_cpt_no,
+        cast(null as bigint) as water_quality_no,
+        sum(t_clean_a.clean_num) as meter_clearance_no
+    from t_clean_a
+    inner join t_clean_b 
+        on t_clean_a.ordernum = t_clean_b.ordernum
+    group by t_clean_b.relateorder
+),
+
+-- 3. Water Sample Number
+t_sample_a as (
+    select ordernum
+    from coss_ods.ods_pems_cus_water_sample_number_di
+),
+t_sample_b as (
+    select distinct
+        t.ordernum,
+        coalesce(t.relateorder, t.ordernum) as relateorder
+    from coss_ods.ods_pems_cus_t_order_workorder_mini_year t
+    where exists (
+        select 1 from t_sample_a
+        where t_sample_a.ordernum = t.ordernum
+           or t_sample_a.ordernum = t.relateorder
+    )
+),
+t_sample_c as (
+    select
+        t1.relateorder,
+        sum(t.sample_num) as sample_num
+    from coss_ods.ods_pems_cus_water_sample_number_di t
+    inner join t_sample_b t1 
+        on t.ordernum = t1.ordernum
+    group by t1.relateorder
+),
+sample_data as (
+    select 
+        relateorder as ordernum,
+        cast(null as bigint) as incident_cpt_no,
+        sample_num as water_quality_no,
+        cast(null as bigint) as meter_clearance_no
+    from t_sample_c
+)
+-- Write To STG Table
+insert into coss_dwd.dwd_cus_water_quality_accident_impact_stg_mini
+(
+    ordernum,
+    incident_cpt_no,
+    water_quality_no,
+    meter_clearance_no,
+    dwd_load_time,
+    dwd_update_time
+)
+select
+    ordernum,
+    max(incident_cpt_no)        as incident_cpt_no,
+    max(water_quality_no)       as water_quality_no,
+    max(meter_clearance_no)     as meter_clearance_no,
+    current_timestamp           as dwd_load_time,
+    current_timestamp           as dwd_update_time
+from 
+(
+    select ordernum, incident_cpt_no, water_quality_no, meter_clearance_no from work_data
+    union all
+    select ordernum, incident_cpt_no, water_quality_no, meter_clearance_no from clean_data
+    union all
+    select ordernum, incident_cpt_no, water_quality_no, meter_clearance_no from sample_data
+)
+group by ordernum;
+
+-- Write To Target Table
+insert into coss_dwd.dwd_cus_water_quality_accident_impact_mini
+(
+    ordernum,
+    incident_cpt_no,
+    water_quality_no,
+    meter_clearance_no,
+    dwd_load_time,
+    dwd_update_time
+)
+select
+    ordernum,
+    incident_cpt_no,
+    water_quality_no,
+    meter_clearance_no,
+    dwd_load_time,
+    dwd_update_time
+from coss_dwd.dwd_cus_water_quality_accident_impact_stg_mini
+on duplicate key update
+    incident_cpt_no    = values(incident_cpt_no),
+    water_quality_no   = values(water_quality_no),
+    meter_clearance_no  = values(meter_clearance_no),
+    dwd_update_time     = values(dwd_update_time);
+    
+```
+
+### ods_pems_cus_t_order_workorder_mini_year
+
+#### create table 
+
+```sql
+drop table if exists coss_ods.ods_pems_cus_t_order_workorder_mini_year;
+
+create table if not exists coss_ods.ods_pems_cus_t_order_workorder_mini_year(
+    ordernum varchar(50),
+    msgid int8,
+    agentgroupid int8,
+    accountno varchar(20),
+    cusid varchar(50),
+    personid varchar(20),
+    meterno varchar(50),
+    premisesid varchar(20),
+    telno varchar(50),
+    faxno varchar(50),
+    contactno varchar(50),
+    channeltype int4,
+    busicenter varchar(50),
+    classify1 int8,
+    classify2 int8,
+    subarea int8,
+    system int8,
+    classify3 int8,
+    classify4 int8,
+    realclassify1 int8,
+    realclassify2 int8,
+    bigregion varchar(30),
+    subregion int8,
+    dayshift int4,
+    dutyshift int4,
+    urgency int4,
+    address varchar(500),
+    servicecontent varchar(4000),
+    remarks varchar(2000),
+    isclosed int4,
+    state int4,
+    orderstate int4,
+    isdelay int4,
+    delayday int4,
+    iscomplant int4,
+    compliantmemo varchar(2000),
+    isreply int4,
+    replychannel varchar(20),
+    wsdcreateat timestamp(0),
+    createdby int4,
+    completedate date,
+    casenumber varchar(50),
+    casesource int8,
+    transferivr int4,
+    chargeback int4,
+    ivrlanguage int4,
+    relateorder varchar(50),
+    district1 varchar(30),
+    district2 varchar(30),
+    street varchar(200),
+    estate varchar(200),
+    term varchar(100),
+    village varchar(200),
+    buildingno varchar(100),
+    buildingname varchar(200),
+    floor varchar(200),
+    company varchar(200),
+    createname varchar(100),
+    posttitle varchar(100),
+    thirdid varchar(50),
+    responsedate date,
+    isrepeatedcomplaint int4,
+    subcomplaint int4,
+    complainttype varchar(50),
+    initialcomplaintdate timestamp(0),
+    regionreceivingdate timestamp(0),
+    createdat timestamp(0),
+    receivedepartment int8,
+    receiver int8,
+    lastupdatedby int8,
+    lastupdateat timestamp(0),
+    finishtime timestamp,
+    printedflag int4,
+    isregionorder int4,
+    actiontaken varchar(1000),
+    nature varchar(35),
+    responsibleofficer varchar(35),
+    outstandingdays int4,
+    interimreplydate date,
+    finalreplydate date,
+    finalreplydays int4,
+    completedbyregion varchar(5),
+    pledgeachieved varchar(5),
+    casereferredothers varchar(35),
+    actualreplytime timestamp,
+    actionsreplycontent varchar(1000),
+    repairtype varchar(50),
+    repairdate date,
+    repairdays int4,
+    repairexpirydate date,
+    firstrepairreinspectiondate date,
+    referringcasedate date,
+    grantedhowlong int4,
+    issuingdate date,
+    notificationdays int4,
+    expirydate date,
+    firstreinspectiondate date,
+    casecompletiondate date,
+    methodcompletion varchar(100),
+    totalprocessingdays int4,
+    responsibleai varchar(35),
+    responsiblecsi varchar(35),
+    supplytype varchar(50),
+    venue varchar(35),
+    slopefeature varchar(35),
+    glano varchar(35),
+    groupval varchar(35),
+    complaintlodged varchar(255),
+    email varchar(50),
+    acknowledgementdate date,
+    referinwsd int4,
+    isdelete bpchar(1),
+    regiondistrict varchar(50),
+    basecallpid int4,
+    complantlastupdator int8,
+    complantlastupdatetime timestamp(0),
+    waterqualitycode varchar(50),
+    interimreplytargetdate date,
+    buildingcsuid varchar(19),
+    locationx varchar(6),
+    locationy varchar(6),
+    intervenescase bpchar(1),
+    docindexdesc text,
+    processingdesc text,
+    appointmentremovaldate date,
+    appointmentremovalapm varchar(2),
+    appointmentwitnessdate date,
+    appointmentwitnesstime varchar(12),
+    isdone int4,
+    sourcetype varchar(10),
+    waterqualitycodecategory bpchar(1),
+    ods_load_time timestamp(6) default current_timestamp,
+    ods_update_time timestamp(6) default current_timestamp,
+    primary key (ordernum)
+)
+with (
+    orientation = row,
+    compression = no
+)
+partition by range (createdat)
+(
+    partition yr_2005 values less than ('2006-01-01 00:00:00'),
+    partition yr_2006 values less than ('2007-01-01 00:00:00'),
+    partition yr_2007 values less than ('2008-01-01 00:00:00'),
+    partition yr_2008 values less than ('2009-01-01 00:00:00'),
+    partition yr_2009 values less than ('2010-01-01 00:00:00'),
+    partition yr_2010 values less than ('2011-01-01 00:00:00'),
+    partition yr_2011 values less than ('2012-01-01 00:00:00'),
+    partition yr_2012 values less than ('2013-01-01 00:00:00'),
+    partition yr_2013 values less than ('2014-01-01 00:00:00'),
+    partition yr_2014 values less than ('2015-01-01 00:00:00'),
+    partition yr_2015 values less than ('2016-01-01 00:00:00'),
+    partition yr_2016 values less than ('2017-01-01 00:00:00'),
+    partition yr_2017 values less than ('2018-01-01 00:00:00'),
+    partition yr_2018 values less than ('2019-01-01 00:00:00'),
+    partition yr_2019 values less than ('2020-01-01 00:00:00'),
+    partition yr_2020 values less than ('2021-01-01 00:00:00'),
+    partition yr_2021 values less than ('2022-01-01 00:00:00'),
+    partition yr_2022 values less than ('2023-01-01 00:00:00'),
+    partition yr_2023 values less than ('2024-01-01 00:00:00'),
+    partition yr_2024 values less than ('2025-01-01 00:00:00'),
+    partition yr_2025 values less than ('2026-01-01 00:00:00'),
+    partition yr_2026 values less than ('2027-01-01 00:00:00'),
+    partition yr_future values less than ('9999-01-01 00:00:00')
+);
+
+comment on table coss_ods.ods_pems_cus_t_order_workorder_mini_year is 'Work Order Read Time Table';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.ordernum is 'Work Order No.';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.msgid is 'Message ID';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.agentgroupid is 'Agent Group ID';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.accountno is 'Account No.';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.cusid is 'Customer ID (Relate to Customer Table)';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.personid is 'User ID';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.meterno is 'Water Meter No.';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.premisesid is 'Water Meter ID';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.telno is 'Registration No.';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.faxno is 'Fax No.';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.contactno is 'Contact / Landline Phone';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.channeltype is 'Channel Type';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.busicenter is 'Business Centre (Department)';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.classify1 is 'Work Order Category 1';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.classify2 is 'Work Order Category 2';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.subarea is 'District – Sub-district';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.system is 'Dispatch System';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.classify3 is 'Work Order Category 3';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.classify4 is 'Work Order Category 4';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.realclassify1 is 'Actual Work Order Category 3';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.realclassify2 is 'Actual Work Order Category 4';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.bigregion is 'District (Relate to t_dic_district.code)';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.subregion is 'District Subdivision – Sub-area';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.dayshift is 'Daily Team';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.dutyshift is 'Duty Team';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.urgency is 'Urgency Level';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.address is 'Address';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.servicecontent is 'Service Content';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.remarks is 'Remarks';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.isclosed is '1=Completed, 2=Dispatched';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.state is 'External Status';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.orderstate is 'Work Order Status: 1=Pending, 2=In Progress, 3=Completed';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.isdelay is 'Is Delayed: 1=Yes';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.delayday is 'Delayed Days';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.iscomplant is 'Is Complaint Work Order: 1=Yes, 2=Tree Related, 0=No';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.compliantmemo is 'Complaint Description';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.isreply is 'Need Reply: 1=Yes';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.replychannel is 'Reply Channel';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.wsdcreateat is 'WSD Complaint Acceptance Time';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.createdby is '';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.completedate is 'Deadline Date / Due Date';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.casenumber is '1823 Case No.';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.casesource is 'Case Source';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.transferivr is 'Is Transferred to IVR';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.chargeback is 'Is Order Returned';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.ivrlanguage is 'IVR Language Selection';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.relateorder is 'Related Work Order No.';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.district1 is 'Sub-district (Relate to t_dic_sub_district.code)';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.district2 is 'Concerned Area Level 2';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.street is 'Street';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.estate is 'Estate';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.term is 'Phase';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.village is 'Village';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.buildingno is 'Building No.';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.buildingname is 'Building Name';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.floor is 'Floor';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.company is 'Unit';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.createname is 'Registrant Name';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.posttitle is 'Registrant Position';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.thirdid is 'Third-party Work Order ID';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.responsedate is 'Response Due Date';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.isrepeatedcomplaint is 'Is Repeat Complaint';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.subcomplaint is 'Is Sub-complaint';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.complainttype is 'Complainant Type';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.initialcomplaintdate is 'Complaint Time';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.regionreceivingdate is 'District Complaint Receipt Time';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.createdat is 'Data Loading Time';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.receivedepartment is 'Acceptance Department';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.receiver is 'Acceptor';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.lastupdatedby is 'Last Updated By';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.lastupdateat is 'Last Updated Time';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.finishtime is 'Work Order Completion Time';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.printedflag is 'Is Printed';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.isregionorder is 'Is Created by District: 1=CS, 2=HW';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.actiontaken is 'Action Taken';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.nature is 'Type';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.responsibleofficer is 'Person in Charge';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.outstandingdays is 'Outstanding Time as of Today (Days)';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.interimreplydate is 'Interim Reply Date';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.finalreplydate is 'Final Reply Date / Substantive Reply Date';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.finalreplydays is 'Time Required for Final Reply (Days)';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.completedbyregion is 'Is Case Completed by District';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.pledgeachieved is 'Service Commitment Achieved';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.casereferredothers is 'Case Referred to Others (e.g. JO / Distribution)';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.actualreplytime is 'Actual Reply Time';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.actionsreplycontent is 'Follow-up Actions After Reply';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.repairtype is 'Type of Maintenance Notice Issued';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.repairdate is 'Maintenance Notice Issue Date';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.repairdays is 'Allowed Maintenance Period (Days)';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.repairexpirydate is 'Maintenance Validity Period';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.firstrepairreinspectiondate is 'First Maintenance Notice Re-inspection Date';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.referringcasedate is 'Date of Case Referral to Home Affairs Department';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.grantedhowlong is 'If EOT Granted, Period (Days)';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.issuingdate is 'FJ Issue Date';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.notificationdays is 'Notice Period Specified in FJ (Days)';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.expirydate is 'FJ Deadline Date (Validity)';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.firstreinspectiondate is 'First FJ Re-inspection Date';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.casecompletiondate is 'Case Completion Date';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.methodcompletion is 'Completion Method';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.totalprocessingdays is 'Total Processing Time (Days)';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.responsibleai is 'Responsible AI';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.responsiblecsi is 'Responsible CSI';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.supplytype is 'Supply Type';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.venue is '';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.slopefeature is 'Slope';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.glano is '';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.groupval is '';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.complaintlodged is 'Complaint Short Description';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.email is 'Email';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.acknowledgementdate is 'Acknowledgement Receipt Time';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.referinwsd is 'Is Transferred Internally: 1=Yes';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.isdelete is 'Can Be Deleted: 1=Yes, 0=No';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.regiondistrict is 'Region of District';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.basecallpid is '';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.complantlastupdator is 'Last Modified By of Complaint';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.complantlastupdatetime is 'Last Modified Time of Complaint';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.waterqualitycode is 'Dictionary Code of Water Quality Code';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.interimreplytargetdate is 'Interim Reply Date';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.buildingcsuid is 'BDCSUID';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.locationx is 'Coordinate X';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.locationy is 'Coordinate Y';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.intervenescase is 'Is Ombudsman Involved: Y/N';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.docindexdesc is 'Related Document Index';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.processingdesc is 'Processing Status';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.appointmentremovaldate is 'Meter Removal Date dd/MM/yyyy';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.appointmentremovalapm is 'Meter Removal Slot (AM/PM Only)';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.appointmentwitnessdate is 'Meter Removal Date dd/MM/yyyy';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.appointmentwitnesstime is 'On-site Testing Witness Period HH:mm-HH:mm';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.isdone is '';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.sourcetype is '';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.waterqualitycodecategory is 'System Subclass Selection: Select Individual (I) / Multiple (M) for Other Water Quality Issues, Drinking Water Turbidity & Odour Complaints (Flushing Water)';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.ods_load_time is 'Ods Load Time';
+comment on column coss_ods.ods_pems_cus_t_order_workorder_mini_year.ods_update_time is 'Ods Update Time';
+
+```
+
+#### datax
+
+```sql
+select 
+    ordernum, -- Work Order No.
+    msgid, -- Message ID
+    agentgroupid, -- Agent Group ID
+    accountno, -- Account No.
+    cusid, -- Customer ID (Relate to Customer Table)
+    personid, -- User ID
+    meterno, -- Water Meter No.
+    premisesid, -- Water Meter ID
+    telno, -- Registration No.
+    faxno, -- Fax No.
+    contactno, -- Contact / Landline Phone
+    channeltype, -- Channel Type
+    busicenter, -- Business Centre (Department)
+    classify1, -- Work Order Category 1
+    classify2, -- Work Order Category 2
+    subarea, -- District – Sub-district
+    system, -- Dispatch System
+    classify3, -- Work Order Category 3
+    classify4, -- Work Order Category 4
+    realclassify1, -- Actual Work Order Category 3
+    realclassify2, -- Actual Work Order Category 4
+    bigregion, -- District (Relate to t_dic_district.code)
+    subregion, -- District Subdivision – Sub-area
+    dayshift, -- Daily Team
+    dutyshift, -- Duty Team
+    urgency, -- Urgency Level
+    address, -- Address
+    servicecontent, -- Service Content
+    remarks, -- Remarks
+    isclosed, -- 1=Completed, 2=Dispatched
+    state, -- External Status
+    orderstate, -- Work Order Status: 1=Pending, 2=In Progress, 3=Completed
+    isdelay, -- Is Delayed: 1=Yes
+    delayday, -- Delayed Days
+    iscomplant, -- Is Complaint Work Order: 1=Yes, 2=Tree Related, 0=No
+    compliantmemo, -- Complaint Description
+    isreply, -- Need Reply: 1=Yes
+    replychannel, -- Reply Channel
+    wsdcreateat, -- WSD Complaint Acceptance Time
+    createdby, -- [NULL]
+    completedate, -- Deadline Date / Due Date
+    casenumber, -- 1823 Case No.
+    casesource, -- Case Source
+    transferivr, -- Is Transferred to IVR
+    chargeback, -- Is Order Returned
+    ivrlanguage, -- IVR Language Selection
+    relateorder, -- Related Work Order No.
+    district1, -- Sub-district (Relate to t_dic_sub_district.code)
+    district2, -- Concerned Area Level 2
+    street, -- Street
+    estate, -- Estate
+    term, -- Phase
+    village, -- Village
+    buildingno, -- Building No.
+    buildingname, -- Building Name
+    floor, -- Floor
+    company, -- Unit
+    createname, -- Registrant Name
+    posttitle, -- Registrant Position
+    thirdid, -- Third-party Work Order ID
+    responsedate, -- Response Due Date
+    isrepeatedcomplaint, -- Is Repeat Complaint
+    subcomplaint, -- Is Sub-complaint
+    complainttype, -- Complainant Type
+    initialcomplaintdate, -- Complaint Time
+    regionreceivingdate, -- District Complaint Receipt Time
+    createdat, -- Data Loading Time
+    receivedepartment, -- Acceptance Department
+    receiver, -- Acceptor
+    lastupdatedby, -- Last Updated By
+    lastupdateat, -- Last Updated Time
+    finishtime, -- Work Order Completion Time
+    printedflag, -- Is Printed
+    isregionorder, -- Is Created by District: 1=CS, 2=HW
+    actiontaken, -- Action Taken
+    nature, -- Type
+    responsibleofficer, -- Person in Charge
+    outstandingdays, -- Outstanding Time as of Today (Days)
+    interimreplydate, -- Interim Reply Date
+    finalreplydate, -- Final Reply Date / Substantive Reply Date
+    finalreplydays, -- Time Required for Final Reply (Days)
+    completedbyregion, -- Is Case Completed by District
+    pledgeachieved, -- Service Commitment Achieved
+    casereferredothers, -- Case Referred to Others (e.g. JO / Distribution)
+    actualreplytime, -- Actual Reply Time
+    actionsreplycontent, -- Follow-up Actions After Reply
+    repairtype, -- Type of Maintenance Notice Issued
+    repairdate, -- Maintenance Notice Issue Date
+    repairdays, -- Allowed Maintenance Period (Days)
+    repairexpirydate, -- Maintenance Validity Period
+    firstrepairreinspectiondate, -- First Maintenance Notice Re-inspection Date
+    referringcasedate, -- Date of Case Referral to Home Affairs Department
+    grantedhowlong, -- If EOT Granted, Period (Days)
+    issuingdate, -- FJ Issue Date
+    notificationdays, -- Notice Period Specified in FJ (Days)
+    expirydate, -- FJ Deadline Date (Validity)
+    firstreinspectiondate, -- First FJ Re-inspection Date
+    casecompletiondate, -- Case Completion Date
+    methodcompletion, -- Completion Method
+    totalprocessingdays, -- Total Processing Time (Days)
+    responsibleai, -- Responsible AI
+    responsiblecsi, -- Responsible CSI
+    supplytype, -- Supply Type
+    venue, -- [NULL]
+    slopefeature, -- Slope
+    glano, -- [NULL]
+    groupval, -- [NULL]
+    complaintlodged, -- Complaint Short Description
+    email, -- Email
+    acknowledgementdate, -- Acknowledgement Receipt Time
+    referinwsd, -- Is Transferred Internally: 1=Yes
+    isdelete, -- Can Be Deleted: 1=Yes, 0=No
+    regiondistrict, -- Region of District
+    basecallpid, -- [NULL]
+    complantlastupdator, -- Last Modified By of Complaint
+    complantlastupdatetime, -- Last Modified Time of Complaint
+    waterqualitycode, -- Dictionary Code of Water Quality Code
+    interimreplytargetdate, -- Interim Reply Date
+    buildingcsuid, -- BDCSUID
+    locationx, -- Coordinate X
+    locationy, -- Coordinate Y
+    intervenescase, -- Is Ombudsman Involved: Y/N
+    docindexdesc, -- Related Document Index
+    processingdesc, -- Processing Status
+    appointmentremovaldate, -- Meter Removal Date dd/MM/yyyy
+    appointmentremovalapm, -- Meter Removal Slot (AM/PM Only)
+    appointmentwitnessdate, -- Meter Removal Date dd/MM/yyyy
+    appointmentwitnesstime, -- On-site Testing Witness Period HH:mm-HH:mm
+    isdone, -- [NULL]
+    sourcetype, -- [NULL]
+    waterqualitycodecategory, -- System Subclass Selection: Select Individual (I) / Multiple (M) for Other Water Quality Issues, Drinking Water Turbidity & Odour Complaints (Flushing Water)
+    current_timestamp as ods_load_time,  -- Load Time
+    current_timestamp as ods_update_time  -- Update Time
+from pems.t_order_workorder
+where
+	complantlastupdatetime >= '${complantlastupdatetime}'
+	or createdat >= '${createdat}'
+```
+
+#### select sql
+
+```sql
+-- ****************************************************************************************
+-- Subject     Areas: Customer Service
+-- Function Describe: Customer Service Workorder
+-- Create         By: dongmaochen
+-- Create       Date: 2026-04-23
+-- Modify Date                Modify By                    Modify Content
+-- None                       None                         None
+-- Source Table:  coss_ods.ods_pems_cus_t_order_workorder_stg_mini
+-- Target Table:  coss_ods.ods_pems_cus_t_order_workorder_mini_year
+-- ****************************************************************************************
+insert into coss_ods.ods_pems_cus_t_order_workorder_mini_year
+select
+    ordernum, -- Work Order No.
+    msgid, -- Message ID
+    agentgroupid, -- Agent Group ID
+    accountno, -- Account No.
+    cusid, -- Customer ID (Relate to Customer Table)
+    personid, -- User ID
+    meterno, -- Water Meter No.
+    premisesid, -- Water Meter ID
+    telno, -- Registration No.
+    faxno, -- Fax No.
+    contactno, -- Contact / Landline Phone
+    channeltype, -- Channel Type
+    busicenter, -- Business Centre (Department)
+    classify1, -- Work Order Category 1
+    classify2, -- Work Order Category 2
+    subarea, -- District – Sub-district
+    system, -- Dispatch System
+    classify3, -- Work Order Category 3
+    classify4, -- Work Order Category 4
+    realclassify1, -- Actual Work Order Category 3
+    realclassify2, -- Actual Work Order Category 4
+    bigregion, -- District (Relate to t_dic_district.code)
+    subregion, -- District Subdivision – Sub-area
+    dayshift, -- Daily Team
+    dutyshift, -- Duty Team
+    urgency, -- Urgency Level
+    address, -- Address
+    servicecontent, -- Service Content
+    remarks, -- Remarks
+    isclosed, -- 1=Completed, 2=Dispatched
+    state, -- External Status
+    orderstate, -- Work Order Status: 1=Pending, 2=In Progress, 3=Completed
+    isdelay, -- Is Delayed: 1=Yes
+    delayday, -- Delayed Days
+    iscomplant, -- Is Complaint Work Order: 1=Yes, 2=Tree Related, 0=No
+    compliantmemo, -- Complaint Description
+    isreply, -- Need Reply: 1=Yes
+    replychannel, -- Reply Channel
+    wsdcreateat, -- WSD Complaint Acceptance Time
+    createdby, -- [NULL]
+    completedate, -- Deadline Date / Due Date
+    casenumber, -- 1823 Case No.
+    casesource, -- Case Source
+    transferivr, -- Is Transferred to IVR
+    chargeback, -- Is Order Returned
+    ivrlanguage, -- IVR Language Selection
+    relateorder, -- Related Work Order No.
+    district1, -- Sub-district (Relate to t_dic_sub_district.code)
+    district2, -- Concerned Area Level 2
+    street, -- Street
+    estate, -- Estate
+    term, -- Phase
+    village, -- Village
+    buildingno, -- Building No.
+    buildingname, -- Building Name
+    floor, -- Floor
+    company, -- Unit
+    createname, -- Registrant Name
+    posttitle, -- Registrant Position
+    thirdid, -- Third-party Work Order ID
+    responsedate, -- Response Due Date
+    isrepeatedcomplaint, -- Is Repeat Complaint
+    subcomplaint, -- Is Sub-complaint
+    complainttype, -- Complainant Type
+    initialcomplaintdate, -- Complaint Time
+    regionreceivingdate, -- District Complaint Receipt Time
+    createdat, -- Data Loading Time
+    receivedepartment, -- Acceptance Department
+    receiver, -- Acceptor
+    lastupdatedby, -- Last Updated By
+    lastupdateat, -- Last Updated Time
+    finishtime, -- Work Order Completion Time
+    printedflag, -- Is Printed
+    isregionorder, -- Is Created by District: 1=CS, 2=HW
+    actiontaken, -- Action Taken
+    nature, -- Type
+    responsibleofficer, -- Person in Charge
+    outstandingdays, -- Outstanding Time as of Today (Days)
+    interimreplydate, -- Interim Reply Date
+    finalreplydate, -- Final Reply Date / Substantive Reply Date
+    finalreplydays, -- Time Required for Final Reply (Days)
+    completedbyregion, -- Is Case Completed by District
+    pledgeachieved, -- Service Commitment Achieved
+    casereferredothers, -- Case Referred to Others (e.g. JO / Distribution)
+    actualreplytime, -- Actual Reply Time
+    actionsreplycontent, -- Follow-up Actions After Reply
+    repairtype, -- Type of Maintenance Notice Issued
+    repairdate, -- Maintenance Notice Issue Date
+    repairdays, -- Allowed Maintenance Period (Days)
+    repairexpirydate, -- Maintenance Validity Period
+    firstrepairreinspectiondate, -- First Maintenance Notice Re-inspection Date
+    referringcasedate, -- Date of Case Referral to Home Affairs Department
+    grantedhowlong, -- If EOT Granted, Period (Days)
+    issuingdate, -- FJ Issue Date
+    notificationdays, -- Notice Period Specified in FJ (Days)
+    expirydate, -- FJ Deadline Date (Validity)
+    firstreinspectiondate, -- First FJ Re-inspection Date
+    casecompletiondate, -- Case Completion Date
+    methodcompletion, -- Completion Method
+    totalprocessingdays, -- Total Processing Time (Days)
+    responsibleai, -- Responsible AI
+    responsiblecsi, -- Responsible CSI
+    supplytype, -- Supply Type
+    venue, -- [NULL]
+    slopefeature, -- Slope
+    glano, -- [NULL]
+    groupval, -- [NULL]
+    complaintlodged, -- Complaint Short Description
+    email, -- Email
+    acknowledgementdate, -- Acknowledgement Receipt Time
+    referinwsd, -- Is Transferred Internally: 1=Yes
+    isdelete, -- Can Be Deleted: 1=Yes, 0=No
+    regiondistrict, -- Region of District
+    basecallpid, -- [NULL]
+    complantlastupdator, -- Last Modified By of Complaint
+    complantlastupdatetime, -- Last Modified Time of Complaint
+    waterqualitycode, -- Dictionary Code of Water Quality Code
+    interimreplytargetdate, -- Interim Reply Date
+    buildingcsuid, -- BDCSUID
+    locationx, -- Coordinate X
+    locationy, -- Coordinate Y
+    intervenescase, -- Is Ombudsman Involved: Y/N
+    docindexdesc, -- Related Document Index
+    processingdesc, -- Processing Status
+    appointmentremovaldate, -- Meter Removal Date dd/MM/yyyy
+    appointmentremovalapm, -- Meter Removal Slot (AM/PM Only)
+    appointmentwitnessdate, -- Meter Removal Date dd/MM/yyyy
+    appointmentwitnesstime, -- On-site Testing Witness Period HH:mm-HH:mm
+    isdone, -- [NULL]
+    sourcetype, -- [NULL]
+    waterqualitycodecategory, -- System Subclass Selection: Select Individual (I) / Multiple (M) for Other Water Quality Issues, Drinking Water Turbidity & Odour Complaints (Flushing Water)
+    current_timestamp as ods_load_time,  -- Load Time
+    current_timestamp as ods_update_time  -- Update Time
+from coss_ods.ods_pems_cus_t_order_workorder_stg_mini
+on duplicate key update
+    msgid = values(msgid),
+    agentgroupid = values(agentgroupid),
+    accountno = values(accountno),
+    cusid = values(cusid),
+    personid = values(personid),
+    meterno = values(meterno),
+    premisesid = values(premisesid),
+    telno = values(telno),
+    faxno = values(faxno),
+    contactno = values(contactno),
+    channeltype = values(channeltype),
+    busicenter = values(busicenter),
+    classify1 = values(classify1),
+    classify2 = values(classify2),
+    subarea = values(subarea),
+    system = values(system),
+    classify3 = values(classify3),
+    classify4 = values(classify4),
+    realclassify1 = values(realclassify1),
+    realclassify2 = values(realclassify2),
+    bigregion = values(bigregion),
+    subregion = values(subregion),
+    dayshift = values(dayshift),
+    dutyshift = values(dutyshift),
+    urgency = values(urgency),
+    address = values(address),
+    servicecontent = values(servicecontent),
+    remarks = values(remarks),
+    isclosed = values(isclosed),
+    state = values(state),
+    orderstate = values(orderstate),
+    isdelay = values(isdelay),
+    delayday = values(delayday),
+    iscomplant = values(iscomplant),
+    compliantmemo = values(compliantmemo),
+    isreply = values(isreply),
+    replychannel = values(replychannel),
+    wsdcreateat = values(wsdcreateat),
+    createdby = values(createdby),
+    completedate = values(completedate),
+    casenumber = values(casenumber),
+    casesource = values(casesource),
+    transferivr = values(transferivr),
+    chargeback = values(chargeback),
+    ivrlanguage = values(ivrlanguage),
+    relateorder = values(relateorder),
+    district1 = values(district1),
+    district2 = values(district2),
+    street = values(street),
+    estate = values(estate),
+    term = values(term),
+    village = values(village),
+    buildingno = values(buildingno),
+    buildingname = values(buildingname),
+    floor = values(floor),
+    company = values(company),
+    createname = values(createname),
+    posttitle = values(posttitle),
+    thirdid = values(thirdid),
+    responsedate = values(responsedate),
+    isrepeatedcomplaint = values(isrepeatedcomplaint),
+    subcomplaint = values(subcomplaint),
+    complainttype = values(complainttype),
+    initialcomplaintdate = values(initialcomplaintdate),
+    regionreceivingdate = values(regionreceivingdate),
+    createdat = values(createdat),
+    receivedepartment = values(receivedepartment),
+    receiver = values(receiver),
+    lastupdatedby = values(lastupdatedby),
+    lastupdateat = values(lastupdateat),
+    finishtime = values(finishtime),
+    printedflag = values(printedflag),
+    isregionorder = values(isregionorder),
+    actiontaken = values(actiontaken),
+    nature = values(nature),
+    responsibleofficer = values(responsibleofficer),
+    outstandingdays = values(outstandingdays),
+    interimreplydate = values(interimreplydate),
+    finalreplydate = values(finalreplydate),
+    finalreplydays = values(finalreplydays),
+    completedbyregion = values(completedbyregion),
+    pledgeachieved = values(pledgeachieved),
+    casereferredothers = values(casereferredothers),
+    actualreplytime = values(actualreplytime),
+    actionsreplycontent = values(actionsreplycontent),
+    repairtype = values(repairtype),
+    repairdate = values(repairdate),
+    repairdays = values(repairdays),
+    repairexpirydate = values(repairexpirydate),
+    firstrepairreinspectiondate = values(firstrepairreinspectiondate),
+    referringcasedate = values(referringcasedate),
+    grantedhowlong = values(grantedhowlong),
+    issuingdate = values(issuingdate),
+    notificationdays = values(notificationdays),
+    expirydate = values(expirydate),
+    firstreinspectiondate = values(firstreinspectiondate),
+    casecompletiondate = values(casecompletiondate),
+    methodcompletion = values(methodcompletion),
+    totalprocessingdays = values(totalprocessingdays),
+    responsibleai = values(responsibleai),
+    responsiblecsi = values(responsiblecsi),
+    supplytype = values(supplytype),
+    venue = values(venue),
+    slopefeature = values(slopefeature),
+    glano = values(glano),
+    groupval = values(groupval),
+    complaintlodged = values(complaintlodged),
+    email = values(email),
+    acknowledgementdate = values(acknowledgementdate),
+    referinwsd = values(referinwsd),
+    isdelete = values(isdelete),
+    regiondistrict = values(regiondistrict),
+    basecallpid = values(basecallpid),
+    complantlastupdator = values(complantlastupdator),
+    complantlastupdatetime = values(complantlastupdatetime),
+    waterqualitycode = values(waterqualitycode),
+    interimreplytargetdate = values(interimreplytargetdate),
+    buildingcsuid = values(buildingcsuid),
+    locationx = values(locationx),
+    locationy = values(locationy),
+    intervenescase = values(intervenescase),
+    docindexdesc = values(docindexdesc),
+    processingdesc = values(processingdesc),
+    appointmentremovaldate = values(appointmentremovaldate),
+    appointmentremovalapm = values(appointmentremovalapm),
+    appointmentwitnessdate = values(appointmentwitnessdate),
+    appointmentwitnesstime = values(appointmentwitnesstime),
+    isdone = values(isdone),
+    sourcetype = values(sourcetype),
+    waterqualitycodecategory = values(waterqualitycodecategory),
+    ods_update_time = values(ods_update_time)
+
+
+```
+
+
+
+
+
+### ods_pems_cus_t_dic_district_df
+
+#### create table
+
+```sql
+drop table if exists coss_ods.ods_pems_cus_t_dic_district_df;
+
+create table if not exists coss_ods.ods_pems_cus_t_dic_district_df
+(
+    namesc           varchar(100) null,
+    nametc           varchar(100) null,
+    nameen           varchar(100) null,
+    isvalid          int4         null,
+    createdat        timestamp    null,
+    lastupdateat     timestamp    null,
+    code             varchar(30)  not null,
+    sort             int4         null,
+    createdby        int4         null,
+    updatedby        int4         null,
+    ods_load_time    timestamp(6) default current_timestamp,
+    ods_update_time  timestamp(6) default current_timestamp,
+    primary key (code)
+)
+with (
+    orientation=row,
+    compression=no,
+    storage_type=ustore,
+    segment=off
+);
+
+comment on table coss_ods.ods_pems_cus_t_dic_district_df is 'District Dictionary Table';
+
+comment on column coss_ods.ods_pems_cus_t_dic_district_df.namesc is 'Name in Simplified Chinese';
+comment on column coss_ods.ods_pems_cus_t_dic_district_df.nametc is 'Name in Traditional Chinese';
+comment on column coss_ods.ods_pems_cus_t_dic_district_df.nameen is 'Name in English';
+comment on column coss_ods.ods_pems_cus_t_dic_district_df.isvalid is 'Is Valid';
+comment on column coss_ods.ods_pems_cus_t_dic_district_df.createdat is 'Created Time';
+comment on column coss_ods.ods_pems_cus_t_dic_district_df.lastupdateat is 'Last Updated Time';
+comment on column coss_ods.ods_pems_cus_t_dic_district_df.code is 'District Code';
+comment on column coss_ods.ods_pems_cus_t_dic_district_df.sort is 'Sort Order';
+comment on column coss_ods.ods_pems_cus_t_dic_district_df.createdby is 'Created By';
+comment on column coss_ods.ods_pems_cus_t_dic_district_df.updatedby is 'Updated By';
+comment on column coss_ods.ods_pems_cus_t_dic_district_df.ods_load_time is 'ODS Load Time';
+comment on column coss_ods.ods_pems_cus_t_dic_district_df.ods_update_time is 'ODS Update Time';
+```
+
+#### datax
+
+```sql
+select 
+    namesc,  -- Name in Simplified Chinese
+    nametc,  -- Name in Traditional Chinese
+    nameen,  -- Name in English
+    isvalid,  -- Is Valid
+    createdat,  -- Created Time
+    lastupdateat,  -- Last Updated Time
+    code,  -- District Code
+    sort,  -- Sort Order
+    createdby,  -- Created By
+    updatedby,  -- Updated By
+    current_timestamp as ods_load_time,  -- ODS Load Time
+    current_timestamp as ods_update_time  -- ODS Update Time
+from pems.t_dic_district
+where
+    lastupdateat >= '${lastupdateat}'
+    or createdat >= '${createdat}'
+```
+
+#### select sql
+
+```sql
+-- ****************************************************************************************
+-- Subject     Areas: Customer Service
+-- Function Describe: District Dictionary
+-- Create         By: dongmaochen
+-- Create       Date: 2025-04-30
+-- Modify Date                Modify By                    Modify Content
+-- None                       None                         None
+-- Source Table:  pems_sit.t_dic_district
+-- Target Table:  coss_ods.ods_pems_cus_t_dic_district_df
+-- ****************************************************************************************
+insert into coss_ods.ods_pems_cus_t_dic_district_df
+select
+    namesc,  -- Name in Simplified Chinese
+    nametc,  -- Name in Traditional Chinese
+    nameen,  -- Name in English
+    isvalid,  -- Is Valid
+    createdat,  -- Created Time
+    lastupdateat,  -- Last Updated Time
+    code,  -- District Code
+    sort,  -- Sort Order
+    createdby,  -- Created By
+    updatedby,  -- Updated By
+    current_timestamp as ods_load_time,  -- ODS Load Time
+    current_timestamp as ods_update_time  -- ODS Update Time
+from coss_ods.ods_pems_cus_t_dic_district_stg_df
+on duplicate key update
+    namesc = values(namesc),
+    nametc = values(nametc),
+    nameen = values(nameen),
+    isvalid = values(isvalid),
+    createdat = values(createdat),
+    lastupdateat = values(lastupdateat),
+    sort = values(sort),
+    createdby = values(createdby),
+    updatedby = values(updatedby),
+    ods_update_time = values(ods_update_time)
+```
+
+
+
+### ods_pems_cus_water_sample_number_di
+
+#### create table
+
+```sql
+drop table if exists coss_ods.ods_pems_cus_water_sample_number_di;
+create table if not exists coss_ods.ods_pems_cus_water_sample_number_di (
+	ordernum varchar(150) not null, -- PEMS ID
+	sample_date timestamp(6) not null, -- Sample Date
+	sample_num numeric(10) null, -- Sample Num
+	sample_user varchar(100) null, -- Sample User
+	create_user varchar(100) null, -- Create User
+	ods_create_time timestamp(6) default current_timestamp,
+	ods_update_time timestamp(6) default current_timestamp,
+	primary key (ordernum, sample_date)
+)
+with (
+	orientation=row,
+	compression=no,
+	storage_type=ustore,
+	segment=off
+);
+
+-- Table And Column Comments
+comment on table  coss_ods.ods_pems_cus_water_sample_number_di is 'Water Samples Number Data Entry Form';
+comment on column coss_ods.ods_pems_cus_water_sample_number_di.ordernum is 'PEMS ID';
+comment on column coss_ods.ods_pems_cus_water_sample_number_di.sample_date is 'Sample Date';
+comment on column coss_ods.ods_pems_cus_water_sample_number_di.sample_num is 'Sample Num';
+comment on column coss_ods.ods_pems_cus_water_sample_number_di.sample_user is 'Sample User';
+comment on column coss_ods.ods_pems_cus_water_sample_number_di.create_user is 'Create User';
+comment on column coss_ods.ods_pems_cus_water_sample_number_di.ods_create_time is 'Create Time';
+comment on column coss_ods.ods_pems_cus_water_sample_number_di.ods_update_time is 'Update Time';
+
+-- 1. Create Auto-Update Time Function
+create or replace function coss_ods.auto_refresh_update_time()
+returns trigger as $$
+begin
+  new.ods_update_time = current_timestamp;
+  return new;
+end;
+$$ language plpgsql;
+
+-- 2. Create Trigger: Automatically Refresh Time When Executing Update
+create trigger trg_sample_update_time
+before update on coss_ods.ods_pems_cus_water_sample_number_di
+for each row
+execute procedure coss_ods.auto_refresh_update_time();
+```
+
+### ods_pems_cus_meter_clean_number_di
+
+#### create table
+
+```sql
+drop table if exists coss_ods.ods_pems_cus_meter_clean_number_di;
+create table if not exists coss_ods.ods_pems_cus_meter_clean_number_di (
+	ordernum varchar(150) not null, -- PEMS ID
+	clean_date timestamp(6) not null, -- Clean Date
+	clean_num numeric(10) null, -- Clean Num
+	clean_user varchar(100) null, -- Clean User
+	create_user varchar(100) null, -- Create User
+	ods_create_time timestamp(6) default current_timestamp, 
+	ods_update_time timestamp(6) default current_timestamp,
+	primary key (ordernum, clean_date)
+)
+with (
+	orientation=row,
+	compression=no,
+	storage_type=ustore,
+	segment=off
+);
+
+-- Table And Column Comments
+comment on table  coss_ods.ods_pems_cus_meter_clean_number_di is 'Meter Cleaning Requests Number Data Entry Form';
+comment on column coss_ods.ods_pems_cus_meter_clean_number_di.ordernum is 'PEMS ID';
+comment on column coss_ods.ods_pems_cus_meter_clean_number_di.clean_date is 'Clean Date';
+comment on column coss_ods.ods_pems_cus_meter_clean_number_di.clean_num is 'Clean Num';
+comment on column coss_ods.ods_pems_cus_meter_clean_number_di.clean_user is 'Clean User';
+comment on column coss_ods.ods_pems_cus_meter_clean_number_di.create_user is 'Create User';
+comment on column coss_ods.ods_pems_cus_meter_clean_number_di.ods_create_time is 'Create Time';
+comment on column coss_ods.ods_pems_cus_meter_clean_number_di.ods_update_time is 'Update Time';
+
+-- 1. Create Auto-Update Time Function
+create or replace function coss_ods.auto_refresh_update_time()
+returns trigger as $$
+begin
+  new.ods_update_time = current_timestamp;
+  return new;
+end;
+$$ language plpgsql;
+
+-- 2. Create Trigger: Automatically Refresh Time When Executing Update
+create trigger trg_clean_update_time
+before update on coss_ods.ods_pems_cus_meter_clean_number_di
+for each row
+execute procedure coss_ods.auto_refresh_update_time();
+```
+
+
+
+
+
+
+
+
+
+
+
 > 修改了开发环境的表结构，需要把新的表结构更新到 IUAT PRE ISIT Envrenment
 # coss_dm.dm_cus_water_quality_wo_details_mini
 
