@@ -1,3 +1,7 @@
+<img width="712" height="503" alt="image" src="https://github.com/user-attachments/assets/74b196cc-648a-444b-92ee-53548257402d" />
+
+
+jdbc:postgresql://10.66.109.175:5432/dms_uat
 
 PEMS	ods_pems_extract_work_order_min	Extract customer service records and data
 PEMS	dwd_cus_etl_water_quality_wo_mini	Clean and load water quality work order related data in the dwd layer
