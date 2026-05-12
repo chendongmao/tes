@@ -1,3 +1,11 @@
+
+Assets 接口地址：https://wiki.sis2.wsd.gov/ems/webresources/assets?id=1&id=2
+
+Assets接口报错，报错内容如下：
+
+[{"class":"SQLException","message":"(conn=6144) Unknown column '1035_active' in 'field list' Query: SELECT a.ID, a.Name, a.Description, a.Location_Code, a.Account_No, a.Remarks, a.Active, a.Offical_Name as Official_Name, a.Station_Code, a.Billing_Active, a.Installation_number, r.Name as Region, r.Description as Region_Desc, t.Name as Type, t.Description as Type_Desc, ps_active, ecw_active, hkp_active, fy_active, 1035_active, fw_portion, sw_portion, rw_portion, tw_portion FROM asset a INNER JOIN region r ON a.Region_Id=r.id INNER JOIN installation_type t ON a.Installation_Type_Id=t.ID   WHERE a.ID IN (?) ORDER BY a.ID Parameters: [1]"}]
+
+
 <img width="712" height="503" alt="image" src="https://github.com/user-attachments/assets/74b196cc-648a-444b-92ee-53548257402d" />
 
 
