@@ -1,3 +1,70 @@
+-- Drop table if it exists
+drop table if exists coss_dwd.dwd_tmu_sensor_data_mini_month;
+
+-- Create table with range partition by sensor_time
+create table if not exists coss_dwd.dwd_tmu_sensor_data_mini_month (
+    sensor_code     varchar(100),
+    sensor_value    decimal(20,6),
+    sensor_time     timestamp(6),
+    dwd_update_time timestamp(6) default current_timestamp,
+    dwd_load_time   timestamp(6) default current_timestamp,
+    primary key (sensor_code, sensor_time)
+)
+partition by range (sensor_time) (
+    -- 2025 monthly partitions
+    partition mh_202501 values less than ('2025-02-01 00:00:00'),
+    partition mh_202503 values less than ('2025-04-01 00:00:00'),
+    partition mh_202505 values less than ('2025-06-01 00:00:00'),
+    partition mh_202507 values less than ('2025-08-01 00:00:00'),
+    partition mh_202509 values less than ('2025-10-01 00:00:00'),
+    partition mh_202511 values less than ('2025-12-01 00:00:00'),
+
+    -- 2026 monthly partitions
+    partition mh_202601 values less than ('2026-02-01 00:00:00'),
+    partition mh_202603 values less than ('2026-04-01 00:00:00'),
+    partition mh_202605 values less than ('2026-06-01 00:00:00'),
+    partition mh_202607 values less than ('2026-08-01 00:00:00'),
+    partition mh_202609 values less than ('2026-10-01 00:00:00'),
+    partition mh_202611 values less than ('2026-12-01 00:00:00'),
+
+    -- 2027 monthly partitions
+    partition mh_202701 values less than ('2027-02-01 00:00:00'),
+    partition mh_202703 values less than ('2027-04-01 00:00:00'),
+    partition mh_202705 values less than ('2027-06-01 00:00:00'),
+    partition mh_202707 values less than ('2027-08-01 00:00:00'),
+    partition mh_202709 values less than ('2027-10-01 00:00:00'),
+    partition mh_202711 values less than ('2027-12-01 00:00:00'),
+
+    -- 2028 monthly partitions
+    partition mh_202801 values less than ('2028-02-01 00:00:00'),
+    partition mh_202803 values less than ('2028-04-01 00:00:00'),
+    partition mh_202805 values less than ('2028-06-01 00:00:00'),
+    partition mh_202807 values less than ('2028-08-01 00:00:00'),
+    partition mh_202809 values less than ('2028-10-01 00:00:00'),
+
+    -- Future partition, avoid insertion failure for unexpected time data
+    partition mh_future values less than ('9999-01-01 00:00:00')
+);
+
+-- Add table comment
+comment on table coss_dwd.dwd_tmu_sensor_data_mini_month
+    is 'Terminal User Sensor Monitoring Data';
+
+-- Add column comments
+comment on column coss_dwd.dwd_tmu_sensor_data_mini_month.sensor_code
+    is 'Sensor Code';
+comment on column coss_dwd.dwd_tmu_sensor_data_mini_month.sensor_value
+    is 'Sensor Value';
+comment on column coss_dwd.dwd_tmu_sensor_data_mini_month.sensor_time
+    is 'Sensor Time';
+comment on column coss_dwd.dwd_tmu_sensor_data_mini_month.dwd_update_time
+    is 'Data Update Time';
+comment on column coss_dwd.dwd_tmu_sensor_data_mini_month.dwd_load_time
+    is 'Data Loading Time';
+
+
+
+
 import requests
 import json
 
