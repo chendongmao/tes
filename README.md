@@ -1,4 +1,5 @@
-
+GDHK_MART.GDHK_MART_TW_KPI_DAY
+指标编码：TTOSROVOF
 Assets 接口地址：https://wiki.sis2.wsd.gov/ems/webresources/assets?id=1&id=2
 
 Assets接口报错，报错内容如下：
