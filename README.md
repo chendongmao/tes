@@ -1,3 +1,8 @@
+jdbc:postgresql://192.168.138.107:8000,192.168.138.98:8000,192.168.138.25:8000,192.168.138.120:8000/wsd
+
+
+
+
 -- Drop table if it exists
 drop table if exists coss_dwd.dwd_tmu_sensor_data_mini_month;
 
