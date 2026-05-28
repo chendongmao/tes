@@ -28,6 +28,8 @@ create table if not exists coss_tmp.dm_srs_daily_sr_wl_qty_item_di_01 (
     w_type_desc     varchar(50) null,
     a_wl            numeric(20, 5) null,
     b_wl            numeric(20, 5) null,
+    a_storage       numeric(20, 5) null,
+    b_storage       numeric(20, 5) null,
   	tot_storage     numeric(20, 5) null,
     qty_del         numeric(20, 5) null,
     rec_dt          timestamp(6) null,
@@ -40,15 +42,19 @@ with t_b as (
         t.sr_id,
         t.a_wl,
         t.b_wl,
-  			t.tot_storage,
-        t.qty_del,
+        t.a_storage,
+        t.b_storage,
+  		t.tot_storage,
+        t1.qty_del,
         t.rec_dt
     from (
         select
             sr_id,
             a_wl,
             b_wl,
-            tot_storage,
+            a_storage,
+            b_storage,
+  		    tot_storage,
             rec_dt
         from coss_dwd.dwd_srs_sr_storage_detail_di_year
           where rec_dt >= '${rec_dt}'
@@ -62,7 +68,7 @@ with t_b as (
         where left(src_id, 2) = 'SR'
           and qty_del is not null
           and qty_del > 0
-          and rec_dt > '${rec_dt}'
+         and rec_dt > '${rec_dt}'
         group by
             src_id,
             rec_dt
@@ -83,8 +89,10 @@ select
     t1.w_type,                     -- Water Type
     t1.w_type_desc,                     -- Water Type Describe
     t.a_wl,                      -- A Water Level
-    t.b_wl,                      -- B Water Level
-    t.tot_storage
+    t.b_wl,                      -- B Water level
+    t.a_storage,                      -- A Water Storage
+    t.b_storage,                      -- B Water Storage
+    t.tot_storage,
     t.qty_del,                      -- Qty Del
     t.rec_dt,                      -- Rec Date
     current_timestamp dm_update_time,      -- Dm Update Time
@@ -107,7 +115,9 @@ select
     w_type,               -- Water Type
     w_type_desc,          -- Water Type Describe
     a_wl,                 -- A Water Level
-    b_wl,                 -- B Water Level
+    b_wl,                 -- B Water level
+    a_storage,            -- A Water Storage
+    b_storage,            -- B Water Storage
     tot_storage,          -- Total Volume Of Water In A+ B+..+R.  Unit Is In Cu M
     qty_del,              -- Qty Del
     rec_dt,               -- Rec Date
@@ -129,9 +139,12 @@ on duplicate key update
     w_type_desc = values(w_type_desc),
     a_wl = values(a_wl),
     b_wl = values(b_wl),
+    a_storage = values(a_storage),
+    b_storage = values(b_storage),
     tot_storage = values(tot_storage),
     qty_del = values(qty_del),
     dm_update_time = values(dm_update_time);
+
 
 
 
