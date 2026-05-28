@@ -1,3 +1,145 @@
+-- ****************************************************************************************
+-- Subject     Areas: Service Reservoir Supply
+-- Function Describe: Service Reservoir Water Level And Quantity
+-- Create         By: dongmaochen
+-- Create       Date: 2025-11-14
+-- Modify Date                Modify By                    Modify Content
+-- None                       None                         None
+-- Source Table:
+-- coss_dwd.dwd_srs_sr_storage_detail_di_year
+-- coss_dwd.dwd_rws_channel_flow_detail_di_year
+-- coss_dim.dim_sr_installation_info
+-- Target Table:
+-- coss_dm.dm_srs_daily_sr_wl_qty_item_di
+-- ****************************************************************************************
+drop table if exists coss_tmp.dm_srs_daily_sr_wl_qty_item_di_01;
+create table if not exists coss_tmp.dm_srs_daily_sr_wl_qty_item_di_01 (
+    sr_id           varchar(50) null,
+    i_code          varchar(50) null,
+    sr_name         varchar(200) null,
+    sr_cname        varchar(300) null,
+    rpt_label       varchar(100) null,
+    region_code     varchar(50) null,
+    sub_region      varchar(50) null,
+    region_name     varchar(50) null,
+    region_cname    varchar(50) null,
+    region_ind      varchar(50) null,
+    w_type          varchar(50) null,
+    w_type_desc     varchar(50) null,
+    a_wl            numeric(20, 5) null,
+    b_wl            numeric(20, 5) null,
+  	tot_storage     numeric(20, 5) null,
+    qty_del         numeric(20, 5) null,
+    rec_dt          timestamp(6) null,
+    dm_update_time  timestamp(6) null default pg_systimestamp(),
+    dm_load_time    timestamp(6) null default pg_systimestamp()
+);
+
+with t_b as (
+    select
+        t.sr_id,
+        t.a_wl,
+        t.b_wl,
+  			t.tot_storage,
+        t.qty_del,
+        t.rec_dt
+    from (
+        select
+            sr_id,
+            a_wl,
+            b_wl,
+            tot_storage,
+            rec_dt
+        from coss_dwd.dwd_srs_sr_storage_detail_di_year
+          where rec_dt >= '${rec_dt}'
+    ) t
+    left join (
+        select
+            src_id,
+            rec_dt,
+            sum(qty_del) as qty_del
+        from coss_dwd.dwd_rws_channel_flow_detail_di_year
+        where left(src_id, 2) = 'SR'
+          and qty_del is not null
+          and qty_del > 0
+          and rec_dt > '${rec_dt}'
+        group by
+            src_id,
+            rec_dt
+    ) t1 on t.sr_id = t1.src_id and t.rec_dt = t1.rec_dt
+)
+insert into coss_tmp.dm_srs_daily_sr_wl_qty_item_di_01
+select
+    t1.sr_id,                     -- Service Reservoir Id
+    t1.i_code,                     -- Installation Code
+    t1.sr_name,                     -- Service Reservoir Name En
+    t1.sr_cname,                     -- Service Reservoir Name Tc
+    t1.rpt_label,                     -- Report Label
+    t1.region_code,                     -- Region Code
+    t1.sub_region,                     -- Sub Region
+    t1.region_name,                     -- Region Name En
+    t1.region_cname,                     -- Region Name Tc
+    t1.region_ind,                     -- Region Ind
+    t1.w_type,                     -- Water Type
+    t1.w_type_desc,                     -- Water Type Describe
+    t.a_wl,                      -- A Water Level
+    t.b_wl,                      -- B Water Level
+    t.tot_storage
+    t.qty_del,                      -- Qty Del
+    t.rec_dt,                      -- Rec Date
+    current_timestamp dm_update_time,      -- Dm Update Time
+    current_timestamp dm_load_time           -- Dm Load Time
+from t_b t
+inner join coss_dim.dim_sr_installation_info t1 on t.sr_id = t1.sr_id;
+
+insert into coss_dm.dm_srs_daily_sr_wl_qty_item_di
+select
+    sr_id,                -- Service Reservoir Id
+    i_code,               -- Installation Code
+    sr_name,              -- Service Reservoir Name En
+    sr_cname,             -- Service Reservoir Name Tc
+    rpt_label,            -- Report Label
+    region_code,          -- Region Code
+    sub_region,           -- Sub Region
+    region_name,          -- Region Name En
+    region_cname,         -- Region Name Tc
+    region_ind,           -- Region Ind
+    w_type,               -- Water Type
+    w_type_desc,          -- Water Type Describe
+    a_wl,                 -- A Water Level
+    b_wl,                 -- B Water Level
+    tot_storage,          -- Total Volume Of Water In A+ B+..+R.  Unit Is In Cu M
+    qty_del,              -- Qty Del
+    rec_dt,               -- Rec Date
+    dm_update_time,       -- Dm Update Time
+    dm_load_time          -- Dm Load Time
+from
+    coss_tmp.dm_srs_daily_sr_wl_qty_item_di_01
+on duplicate key update
+    i_code = values(i_code),
+    sr_name = values(sr_name),
+    sr_cname = values(sr_cname),
+    rpt_label = values(rpt_label),
+    region_code = values(region_code),
+    sub_region = values(sub_region),
+    region_name = values(region_name),
+    region_cname = values(region_cname),
+    region_ind = values(region_ind),
+    w_type = values(w_type),
+    w_type_desc = values(w_type_desc),
+    a_wl = values(a_wl),
+    b_wl = values(b_wl),
+    tot_storage = values(tot_storage),
+    qty_del = values(qty_del),
+    dm_update_time = values(dm_update_time);
+
+
+
+	
+
+
+
+
 jdbc:postgresql://192.168.138.107:8000,192.168.138.98:8000,192.168.138.25:8000,192.168.138.120:8000/wsd
 
 
