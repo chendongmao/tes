@@ -1,3 +1,23 @@
+insert into coss_dm.dm_wqm_accident_logger_info_mini 
+select 
+'202605288427287554512' ordernum,
+logger_id,
+logger_ref,
+supply_code supply_zone,
+coordinate_x,
+coordinate_y,
+current_timestamp dm_update_time,
+current_timestamp dm_load_time
+from coss_dm.dm_pnw_logger_info_df 
+where supply_id = '94'
+
+
+
+
+
+
+
+
 -- ****************************************************************************************
 -- Subject     Areas: Service Reservoir Supply
 -- Function Describe: Service Reservoir Water Level And Quantity
