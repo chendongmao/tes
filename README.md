@@ -1,3 +1,14 @@
+accident	affect_building_code	building_tc
+tg	1103122336	富山閣
+tg	1103122918	寶山閣
+tg	1103122639	鳳山閣
+tg	1103122935	怡山閣
+jw	1103126666	灣景中心大廈Ａ座
+jw	1103126998	灣景中心大廈Ｃ座
+jw	1103126849	灣景中心大廈Ｂ座
+
+
+
 burst_event_id
 wr_no
 compl_rpt_no
