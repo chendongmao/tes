@@ -1,9 +1,33 @@
+## 数据查询条件数据
 
-select * from coss_dm.dm_cus_water_quality_wo_details_mini 
-where ordernum = '251115J3R7B' 
-or relateorder = '251115J3R7B'
-or ordernum = '2605027PX2F' 
-or relateorder = '2605027PX2F'
+# 事件ID和查询条件
+
+| Parent PEMS ID | 水质事件     | 开始时间                  | 结束时间                  |
+| -------------- | ------------ | ------------------------- | ------------------------- |
+| 2605027PX2F    | 景湾中心大厦 | `2026-06-06 09:30:01.000` | `2026-06-10 14:25:21.000` |
+| 251115J3R7B    | 太古城       | `2025-11-15 09:25:01.000` | `2025-11-21 14:56:15.000` |
+
+## 景湾中心大厦 水质类型
+
+```tex
+(S2)unknown odour other than solvent smell and excessive chlorine
+(P2)sand in water
+(P1)bitumen particles in water
+(C1)discoloured water
+(S1)odour with solvent smell
+(L1)Water gathering ground
+```
+
+## 太古城水质类型
+
+```tex
+(S2)unknown odour other than solvent smell and excessive chlorine
+(P1)bitumen particles in water
+(C1)discoloured water
+(S1)odour with solvent smell
+(L1)Water gathering ground
+```
+
 
 
 
