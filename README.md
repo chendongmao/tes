@@ -1,4 +1,13 @@
 
+select * from coss_dm.dm_cus_water_quality_wo_details_mini 
+where ordernum = '251115J3R7B' 
+or relateorder = '251115J3R7B'
+or ordernum = '2605027PX2F' 
+or relateorder = '2605027PX2F'
+
+
+
+
 
 
 
