@@ -1,33 +1,47 @@
-## 数据查询条件数据
+-- ****************************************************************************************
+-- Subject     Areas: Terminal User
+-- Function Describe: Terminal User Monitoring For Sensor Data
+-- Create         By: dongmaochen
+-- Create       Date: 2026-05-21
+-- Modify Date                Modify By                    Modify Content
+-- None                       None                         None
+-- Source Table: coss_ods.ods_iot_tmu_realtime_sensor_mini
+-- Target Table: coss_dwd.dwd_tmu_sensor_data_mini_month
+-- ****************************************************************************************
+insert into coss_dwd.dwd_tmu_sensor_data_mini_month
+select 
+    code sensor_code,
+    case when abs(value) < power(10,14) then value else null end sensor_value,
+    time sensor_time,
+    current_timestamp dwd_update_time,
+    current_timestamp dwd_load_time
+from coss_ods.ods_iot_tmu_realtime_sensor_mini
+where ods_update_time >= '${dwd_update_time}'
+on duplicate key update nothing;
 
-# 事件ID和查询条件
 
-| Parent PEMS ID | 水质事件     | 开始时间                  | 结束时间                  |
-| -------------- | ------------ | ------------------------- | ------------------------- |
-| 2605027PX2F    | 景湾中心大厦 | `2026-06-06 09:30:01.000` | `2026-06-10 14:25:21.000` |
-| 251115J3R7B    | 太古城       | `2025-11-15 09:25:01.000` | `2025-11-21 14:56:15.000` |
 
-## 景湾中心大厦 水质类型
-
-```tex
-(S2)unknown odour other than solvent smell and excessive chlorine
-(P2)sand in water
-(P1)bitumen particles in water
-(C1)discoloured water
-(S1)odour with solvent smell
-(L1)Water gathering ground
-```
-
-## 太古城水质类型
-
-```tex
-(S2)unknown odour other than solvent smell and excessive chlorine
-(P1)bitumen particles in water
-(C1)discoloured water
-(S1)odour with solvent smell
-(L1)Water gathering ground
-```
-
+-- ****************************************************************************************
+-- Subject     Areas: Terminal User
+-- Function Describe: Terminal User Monitoring For Water Quality
+-- Create         By: dongmaochen
+-- Create       Date: 2026-05-21
+-- Modify Date                Modify By                    Modify Content
+-- None                       None                         None
+-- Source Table: coss_dwd.dwd_tmu_sensor_data_mini_month
+-- Target Table: coss_dm.dm_tmu_sensor_data_mini_month
+-- ****************************************************************************************
+insert into coss_dm.dm_tmu_sensor_data_mini_month
+select 
+    uuid() id,
+    sensor_code,
+    sensor_value,
+    sensor_time,
+    current_timestamp dm_update_time,
+    current_timestamp dm_load_time
+from coss_dwd.dwd_tmu_sensor_data_mini_month
+    where dwd_update_time >= '${dm_update_time}'
+on duplicate key update nothing
 
 
 
