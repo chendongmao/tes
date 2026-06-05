@@ -1,9 +1,22 @@
-<img width="1670" height="848" alt="image" src="https://github.com/user-attachments/assets/ed300ab2-9166-4f7c-bcd7-0cc98805b743" />
+CREATE TABLE coss_dcs.opc_data_ngautammei (
+	id bigserial NOT NULL,
+	tag_name varchar(128) NULL,
+	tag_value varchar(128) NULL,
+	quality int4 NOT NULL,
+	tag_time timestamp NOT NULL,
+	ms_sql_time timestamp NOT NULL DEFAULT pg_systimestamp(),
+	tag_value_avg numeric NULL,
+	tag_value_min numeric NULL,
+	tag_value_max numeric NULL,
+	CONSTRAINT opc_data_ngautammei_unique UNIQUE (tag_name)
+)
+WITH (
+	orientation=row,
+	compression=no,
+	storage_type=ustore,
+	segment=off
+);
 
-
-
-
-jdbc:postgresql://192.168.138.107:8000,192.168.138.98:8000,192.168.138.25:8000,192.168.138.120:8000/wsd
 
 
 
