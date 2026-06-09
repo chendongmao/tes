@@ -1,3 +1,11 @@
+select * from coss_dm.dm_cus_annon_watersupplyinfo_di 
+where id = '621532262856396800'
+
+select * from coss_dim.dim_wtw_tag_info dwti 
+where i_code = 'TW027'
+
+
+
 CREATE TABLE coss_dcs.opc_data_ngautammei (
 	id bigserial NOT NULL,
 	tag_name varchar(128) NULL,
