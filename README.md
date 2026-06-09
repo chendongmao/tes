@@ -1,98 +1,421 @@
-select * from coss_dm.dm_cus_annon_watersupplyinfo_di 
-where id = '621532262856396800'
+# ngautammei(没数据)
 
-select * from coss_dim.dim_wtw_tag_info dwti 
-where i_code = 'TW027'
+## ods_dcs_extract_ngautammei_min(调度任务)
 
+### ods_dcs_wtw_opc_data_ngautammei_minf
 
+#### create table
 
-CREATE TABLE coss_dcs.opc_data_ngautammei (
-	id bigserial NOT NULL,
-	tag_name varchar(128) NULL,
-	tag_value varchar(128) NULL,
-	quality int4 NOT NULL,
-	tag_time timestamp NOT NULL,
-	ms_sql_time timestamp NOT NULL DEFAULT pg_systimestamp(),
-	tag_value_avg numeric NULL,
-	tag_value_min numeric NULL,
-	tag_value_max numeric NULL,
-	CONSTRAINT opc_data_ngautammei_unique UNIQUE (tag_name)
-)
-WITH (
-	orientation=row,
-	compression=no,
-	storage_type=ustore,
-	segment=off
+```sql
+drop table if exists coss_ods.ods_dcs_wtw_opc_data_ngautammei_minf;
+create table if not exists coss_ods.ods_dcs_wtw_opc_data_ngautammei_minf (
+    id bigserial not null,
+    tag_name varchar(128) null,
+    tag_value decimal(25,5) null,
+    tag_value_avg decimal(25,5) null,
+    tag_value_min decimal(25,5) null,
+    tag_value_max decimal(25,5) null,
+    quality int4 not null,
+    tag_time timestamp not null,
+    ms_sql_time timestamp not null,
+    ods_update_time timestamp(6) default current_timestamp,
+    ods_load_time   timestamp(6) default current_timestamp,
+    primary key (tag_name)
 );
+comment on table  coss_ods.ods_dcs_wtw_opc_data_ngautammei_minf                   is 'Water Treatment Work Tag Opc Data Latest (ngautammei)';
+comment on column coss_ods.ods_dcs_wtw_opc_data_ngautammei_minf.id                is 'Id';
+comment on column coss_ods.ods_dcs_wtw_opc_data_ngautammei_minf.tag_name          is 'Tag Name';
+comment on column coss_ods.ods_dcs_wtw_opc_data_ngautammei_minf.tag_value         is 'Tag Value';
+comment on column coss_ods.ods_dcs_wtw_opc_data_ngautammei_minf.tag_value_avg     is 'Tag Value Avg';
+comment on column coss_ods.ods_dcs_wtw_opc_data_ngautammei_minf.tag_value_min     is 'Tag Value Min';
+comment on column coss_ods.ods_dcs_wtw_opc_data_ngautammei_minf.tag_value_max     is 'Tag Value Max';
+comment on column coss_ods.ods_dcs_wtw_opc_data_ngautammei_minf.quality           is 'Quality';
+comment on column coss_ods.ods_dcs_wtw_opc_data_ngautammei_minf.tag_time          is 'Tag Time';
+comment on column coss_ods.ods_dcs_wtw_opc_data_ngautammei_minf.ms_sql_time       is 'Ms Sql Time';
+comment on column coss_ods.ods_dcs_wtw_opc_data_ngautammei_minf.ods_update_time   is 'Update Time';
+comment on column coss_ods.ods_dcs_wtw_opc_data_ngautammei_minf.ods_load_time     is 'Load Time';
+```
+
+#### select sql
+
+```sql
+-- ****************************************************************************************
+-- subject     areas: Water Treatment Works
+-- function describe: Water Treatment Works Monitoring For ngautammei
+-- create         by: dongmaochen
+-- create       date: 2026-03-30
+-- modify date                modify by                    modify content
+-- None                       None                         None
+-- source table
+-- coss_dcs.opc_data_ngautammei
+-- coss_dim.dim_wtw_tag_info
+-- target table
+-- coss_ods.ods_dcs_wtw_opc_data_ngautammei_minf
+-- ****************************************************************************************
+-- insert into coss_ods.ods_dcs_wtw_opc_data_ngautammei_minf
+select
+    t.id,                              -- id
+    t.tag_name,                        -- tag name
+    t.tag_value,                       -- tag value
+    t.tag_value_avg,                   -- tag value avg
+    t.tag_value_min,                   -- tag value min
+    t.tag_value_max,                   -- tag value max
+    t.quality,                         -- quality
+    t.tag_time,                        -- tag time
+    t.ms_sql_time,                     -- ms sql time
+    current_timestamp ods_update_time, -- ods update time
+    current_timestamp ods_load_time    -- ods load time
+from coss_dcs.opc_data_ngautammei t
+  inner join coss_dim.dim_wtw_tag_info t1 on t.tag_name = t1.tag_name_en where t1.i_code = 'TW027'
+```
 
 
 
+### ods_dcs_wtw_opc_data_full_ngautammei_mini_month
 
+#### create table
 
--- Drop table if it exists
-drop table if exists coss_dwd.dwd_tmu_sensor_data_mini_month;
-
--- Create table with range partition by sensor_time
-create table if not exists coss_dwd.dwd_tmu_sensor_data_mini_month (
-    sensor_code     varchar(100),
-    sensor_value    decimal(20,6),
-    sensor_time     timestamp(6),
-    dwd_update_time timestamp(6) default current_timestamp,
-    dwd_load_time   timestamp(6) default current_timestamp,
-    primary key (sensor_code, sensor_time)
+```sql
+drop table if exists coss_ods.ods_dcs_wtw_opc_data_full_ngautammei_mini_month;
+create table if not exists coss_ods.ods_dcs_wtw_opc_data_full_ngautammei_mini_month (
+    id bigserial not null,
+    tag_name varchar(128) not null,
+    tag_value decimal(25,5) null,
+    tag_value_avg decimal(25,5) null,
+    tag_value_min decimal(25,5) null,
+    tag_value_max decimal(25,5) null,
+    quality int4 not null,
+    tag_time timestamp not null,
+    ms_sql_time timestamp not null,
+    ods_update_time timestamp(6) default current_timestamp,
+    ods_load_time   timestamp(6) default current_timestamp,
+    primary key (tag_name, tag_time)
 )
-partition by range (sensor_time) (
-    -- 2025 monthly partitions
-    partition mh_202501 values less than ('2025-02-01 00:00:00'),
-    partition mh_202503 values less than ('2025-04-01 00:00:00'),
-    partition mh_202505 values less than ('2025-06-01 00:00:00'),
-    partition mh_202507 values less than ('2025-08-01 00:00:00'),
-    partition mh_202509 values less than ('2025-10-01 00:00:00'),
-    partition mh_202511 values less than ('2025-12-01 00:00:00'),
-
-    -- 2026 monthly partitions
-    partition mh_202601 values less than ('2026-02-01 00:00:00'),
-    partition mh_202603 values less than ('2026-04-01 00:00:00'),
-    partition mh_202605 values less than ('2026-06-01 00:00:00'),
-    partition mh_202607 values less than ('2026-08-01 00:00:00'),
-    partition mh_202609 values less than ('2026-10-01 00:00:00'),
-    partition mh_202611 values less than ('2026-12-01 00:00:00'),
-
-    -- 2027 monthly partitions
-    partition mh_202701 values less than ('2027-02-01 00:00:00'),
-    partition mh_202703 values less than ('2027-04-01 00:00:00'),
-    partition mh_202705 values less than ('2027-06-01 00:00:00'),
-    partition mh_202707 values less than ('2027-08-01 00:00:00'),
-    partition mh_202709 values less than ('2027-10-01 00:00:00'),
-    partition mh_202711 values less than ('2027-12-01 00:00:00'),
-
-    -- 2028 monthly partitions
-    partition mh_202801 values less than ('2028-02-01 00:00:00'),
-    partition mh_202803 values less than ('2028-04-01 00:00:00'),
-    partition mh_202805 values less than ('2028-06-01 00:00:00'),
-    partition mh_202807 values less than ('2028-08-01 00:00:00'),
-    partition mh_202809 values less than ('2028-10-01 00:00:00'),
-
-    -- Future partition, avoid insertion failure for unexpected time data
+partition by range (tag_time)
+(
+    partition mh_202506 values less than ('2025-07-01 00:00:00'),
+    partition mh_202512 values less than ('2026-01-01 00:00:00'),
+    partition mh_202606 values less than ('2026-07-01 00:00:00'),
+    partition mh_202612 values less than ('2027-01-01 00:00:00'),
+    partition mh_202706 values less than ('2027-07-01 00:00:00'),
+    partition mh_202712 values less than ('2028-01-01 00:00:00'),
+    partition mh_202806 values less than ('2028-07-01 00:00:00'),
+    partition mh_202812 values less than ('2029-01-01 00:00:00'),
     partition mh_future values less than ('9999-01-01 00:00:00')
 );
+comment on table  coss_ods.ods_dcs_wtw_opc_data_full_ngautammei_mini_month                   is 'Water Treatment Work Tag Opc History Data (ngautammei)';
+comment on column coss_ods.ods_dcs_wtw_opc_data_full_ngautammei_mini_month.id                is 'Id';
+comment on column coss_ods.ods_dcs_wtw_opc_data_full_ngautammei_mini_month.tag_name          is 'Tag Name';
+comment on column coss_ods.ods_dcs_wtw_opc_data_full_ngautammei_mini_month.tag_value         is 'Tag Value';
+comment on column coss_ods.ods_dcs_wtw_opc_data_full_ngautammei_mini_month.tag_value_avg     is 'Tag Value Avg';
+comment on column coss_ods.ods_dcs_wtw_opc_data_full_ngautammei_mini_month.tag_value_min     is 'Tag Value Min';
+comment on column coss_ods.ods_dcs_wtw_opc_data_full_ngautammei_mini_month.tag_value_max     is 'Tag Value Max';
+comment on column coss_ods.ods_dcs_wtw_opc_data_full_ngautammei_mini_month.quality           is 'Quality';
+comment on column coss_ods.ods_dcs_wtw_opc_data_full_ngautammei_mini_month.tag_time          is 'Tag Time';
+comment on column coss_ods.ods_dcs_wtw_opc_data_full_ngautammei_mini_month.ms_sql_time       is 'Ms Sql Time';
+comment on column coss_ods.ods_dcs_wtw_opc_data_full_ngautammei_mini_month.ods_update_time   is 'Update Time';
+comment on column coss_ods.ods_dcs_wtw_opc_data_full_ngautammei_mini_month.ods_load_time     is 'Load Time';
 
--- Add table comment
-comment on table coss_dwd.dwd_tmu_sensor_data_mini_month
-    is 'Terminal User Sensor Monitoring Data';
+```
 
--- Add column comments
-comment on column coss_dwd.dwd_tmu_sensor_data_mini_month.sensor_code
-    is 'Sensor Code';
-comment on column coss_dwd.dwd_tmu_sensor_data_mini_month.sensor_value
-    is 'Sensor Value';
-comment on column coss_dwd.dwd_tmu_sensor_data_mini_month.sensor_time
-    is 'Sensor Time';
-comment on column coss_dwd.dwd_tmu_sensor_data_mini_month.dwd_update_time
-    is 'Data Update Time';
-comment on column coss_dwd.dwd_tmu_sensor_data_mini_month.dwd_load_time
-    is 'Data Loading Time';
+#### select sql
 
+```sql
+-- ****************************************************************************************
+-- subject     areas: Water Treatment Works
+-- function describe: Water Treatment Works Monitoring For ngautammei
+-- create         by: dongmaochen
+-- create       date: 2025-10-14
+-- modify date                modify by                    modify content
+-- None                       None                         None
+-- source table: coss_ods.ods_dcs_wtw_opc_data_ngautammei_minf
+-- target table: coss_ods.ods_dcs_wtw_opc_data_full_ngautammei_mini_month
+-- ****************************************************************************************
+insert into coss_ods.ods_dcs_wtw_opc_data_full_ngautammei_mini_month (
+    id,
+    tag_name,
+    tag_value,
+    tag_value_avg,
+    tag_value_min,
+    tag_value_max,
+    quality,
+    tag_time,
+    ms_sql_time,
+    ods_update_time,
+    ods_load_time
+)
+select
+    t.id,                              -- id
+    t.tag_name,                        -- tag name
+    t.tag_value,                       -- tag value
+    t.tag_value_avg,                   -- tag value avg
+    t.tag_value_min,                   -- tag value min
+    t.tag_value_max,                   -- tag value max
+    t.quality,                         -- quality
+    t.tag_time,                        -- tag time
+    t.ms_sql_time,                     -- ms sql time
+    current_timestamp as ods_update_time, -- ods update time
+    current_timestamp as ods_load_time    -- ods load time
+from coss_ods.ods_dcs_wtw_opc_data_ngautammei_minf t
+on duplicate key update nothing;
+```
+
+
+
+## dwd_wtw_etl_ngautammei_monitoring_min（调度任务）
+
+### dwd_wtw_opc_data_latest_minf
+
+#### select sql
+
+```sql
+-- ****************************************************************************************
+-- subject     areas: Water Treatment Works
+-- function describe: Water Treatment Works Monitoring For ngautammei
+-- create         by: dongmaochen
+-- create       date: 2025-10-14
+-- modify date                modify by                    modify content
+-- None                       None                         None
+-- source table
+-- coss_ods.ods_dcs_wtw_opc_data_ngautammei_minf
+-- coss_dim.dim_wtw_tag_info
+-- target table
+-- coss_dwd.dwd_wtw_opc_data_latest_minf
+-- ****************************************************************************************
+insert into coss_dwd.dwd_wtw_opc_data_latest_minf (
+    id,
+    i_code,
+    tag_name,
+    tag_value,
+    tag_value_avg,
+    tag_value_min,
+    tag_value_max,
+    quality,
+    tag_time,
+    dwd_update_time,
+    dwd_load_time
+)
+select
+    id,                                 -- id
+    'TW027' as i_code,                  -- install code
+    tag_name,                           -- tag name
+    tag_value,                          -- tag value
+    tag_value_avg,                      -- tag value avg
+    tag_value_min,                      -- tag value min
+    tag_value_max,                      -- tag value max
+    quality,                            -- quality
+    tag_time,                           -- tag time
+    current_timestamp as dwd_update_time,  -- dwd update time
+    current_timestamp as dwd_load_time     -- dwd load time
+from coss_ods.ods_dcs_wtw_opc_data_ngautammei_minf
+on duplicate key update 
+    id = values(id),
+    tag_value = values(tag_value),
+    tag_value_avg = values(tag_value_avg),
+    tag_value_min = values(tag_value_min),
+    tag_value_max = values(tag_value_max),
+    quality = values(quality),
+    tag_time = values(tag_time),
+    dwd_update_time = values(dwd_update_time);
+```
+
+
+
+### dwd_wtw_opc_data_mini_month
+
+#### select sql
+
+```sql
+-- ****************************************************************************************
+-- subject     areas: Water Treatment Works
+-- function describe: Water Treatment Works Monitoring For ngautammei
+-- create         by: dongmaochen
+-- create       date: 2025-10-14
+-- modify date                modify by                    modify content
+-- None                       None                         None
+-- source table
+-- coss_dwd.dwd_wtw_opc_data_latest_minf
+-- target table
+-- coss_dwd.dwd_wtw_opc_data_mini_month
+-- ****************************************************************************************
+insert into coss_dwd.dwd_wtw_opc_data_mini_month (
+    id,
+    i_code,
+    tag_name,
+    tag_value,
+    tag_value_avg,
+    tag_value_min,
+    tag_value_max,
+    quality,
+    tag_time,
+    dwd_update_time,
+    dwd_load_time
+)
+select
+    id,                                    -- id
+    i_code,                                -- install code
+    tag_name,                              -- tag name
+    tag_value,                             -- tag value
+    tag_value_avg,                         -- tag value avg
+    tag_value_min,                         -- tag value min
+    tag_value_max,                         -- tag value max
+    quality,                               -- quality
+    tag_time,                              -- tag time
+    current_timestamp as dwd_update_time,  -- dwd update time
+    current_timestamp as dwd_load_time     -- dwd load time
+from coss_dwd.dwd_wtw_opc_data_latest_minf t
+where i_code = 'TW027'
+on duplicate key update nothing;
+```
+
+## dm_wtw_etl_ngautammei_monitoring_min（调度任务）
+
+### dm_wtw_opc_data_latest_minf
+
+#### select sql
+
+```sql
+-- ****************************************************************************************
+-- subject     areas: Water Treatment Works
+-- function describe: Water Treatment Works Monitoring For ngautammei
+-- create         by: dongmaochen
+-- create       date: 2025-10-14
+-- modify date                modify by                    modify content
+-- None                       None                         None
+-- source table
+-- coss_dwd.dwd_wtw_opc_data_latest_minf
+-- coss_dim.dim_wtw_tag_info
+-- target table
+-- coss_dm.dm_wtw_opc_data_latest_minf
+-- ****************************************************************************************
+insert into coss_dm.dm_wtw_opc_data_latest_minf (
+    id,
+    i_code,
+    region_abbr,
+    wtw_name_en,
+    wtw_name_cn,
+    wtw_name_tc,
+    tag_name_cn,
+    tag_name_tc,
+    units,
+    tag_type,
+    tag_name,
+    tag_value,
+    tag_value_avg,
+    tag_value_min,
+    tag_value_max,
+    quality,
+    tag_time,
+    dm_update_time,
+    dm_load_time
+)
+select
+    t.id,                              -- id
+    t1.i_code,                         -- install code
+    t1.region_abbr,                    -- region abbreviation
+    t1.wtw_name_en,                    -- water treatments work english name
+    t1.wtw_name_cn,                    -- water treatments work chinese name
+    t1.wtw_name_tc,                    -- water treatments work traditional chinese name
+    t1.tag_name_cn,                    -- tag chinese name
+    t1.tag_name_tc,                    -- tag traditional chinese name
+    t1.units,                          -- tag units
+    t1.tag_type,                       -- tag type
+    t.tag_name,                        -- tag name
+    t.tag_value,                       -- tag value
+    t.tag_value_avg,                   -- tag value avg
+    t.tag_value_min,                   -- tag value min
+    t.tag_value_max,                   -- tag value max
+    t.quality,                         -- quality
+    t.tag_time,                        -- tag time
+    current_timestamp as dm_update_time,  -- dm update time
+    current_timestamp as dm_load_time     -- dm load time
+from coss_dwd.dwd_wtw_opc_data_latest_minf t
+inner join coss_dim.dim_wtw_tag_info t1
+    on t.tag_name = t1.tag_name_en
+where t1.i_code = 'TW027'
+on duplicate key update 
+    id = values(id),
+    region_abbr = values(region_abbr),
+    wtw_name_en = values(wtw_name_en),
+    wtw_name_cn = values(wtw_name_cn),
+    wtw_name_tc = values(wtw_name_tc),
+    tag_name_cn = values(tag_name_cn),
+    tag_name_tc = values(tag_name_tc),
+    units = values(units),
+    tag_type = values(tag_type),
+    tag_value = values(tag_value),
+    tag_value_avg = values(tag_value_avg),
+    tag_value_min = values(tag_value_min),
+    tag_value_max = values(tag_value_max),
+    quality = values(quality),
+    tag_time = values(tag_time),
+    dm_load_time = values(dm_load_time);
+```
+
+
+
+### dm_wtw_opc_data_mini_month
+
+#### select sql
+
+```sql
+-- ****************************************************************************************
+-- subject     areas: Water Treatment Works
+-- function describe: Water Treatment Works Monitoring For ngautammei
+-- create         by: dongmaochen
+-- create       date: 2025-10-14
+-- modify date                modify by                    modify content
+-- None                       None                         None
+-- source table
+-- coss_dm.dm_wtw_opc_data_latest_minf
+-- target table
+-- coss_dm.dm_wtw_opc_data_mini_month
+-- ****************************************************************************************
+insert into coss_dm.dm_wtw_opc_data_mini_month (
+    id,
+    i_code,
+    region_abbr,
+    wtw_name_en,
+    wtw_name_cn,
+    wtw_name_tc,
+    tag_name_cn,
+    tag_name_tc,
+    units,
+    tag_type,
+    tag_name,
+    tag_value,
+    tag_value_avg,
+    tag_value_min,
+    tag_value_max,
+    quality,
+    tag_time,
+    dm_update_time,
+    dm_load_time
+)
+select
+    id,                                -- id
+    i_code,                            -- install code
+    region_abbr,                       -- region abbreviation
+    wtw_name_en,                       -- water treatments work english name
+    wtw_name_cn,                       -- water treatments work chinese name
+    wtw_name_tc,                       -- water treatments work traditional chinese name
+    tag_name_cn,                       -- tag chinese name
+    tag_name_tc,                       -- tag traditional chinese name
+    units,                             -- tag units
+    tag_type,                          -- tag type
+    tag_name,                          -- tag name
+    tag_value,                         -- tag value
+    tag_value_avg,                     -- tag value avg
+    tag_value_min,                     -- tag value min
+    tag_value_max,                     -- tag value max
+    quality,                           -- quality
+    tag_time,                          -- tag time
+    current_timestamp as dm_update_time,    -- dm update time
+    current_timestamp as dm_load_time       -- dm load time
+from coss_dm.dm_wtw_opc_data_latest_minf t
+where t.i_code = 'TW027'
+on duplicate key update nothing;
+```
 
 
 
