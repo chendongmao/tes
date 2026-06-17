@@ -1,3 +1,18 @@
+pems.t_dic_district   -- 关联运作区和行政区
+pems.t_dic_sub_district   -- 关联运作区和行政区
+pems.t_dic_bigclass   -- 关联投诉类型
+-- 关联工单状态
+pems.t_sys_dict  -- 关联渠道码表
+pems.t_sys_dict  -- 水质类型编码
+
+
+
+
+    
+    
+    
+    
+    
     COSS系统在预生产环境访问EMIS接口报错，需要您协助帮忙解决，五个接口报错内容如下：
 1. 访问接口：https://wiki.sis2.wsd.gov/ems/webresources/reports?loc_id=24&from=2023-01-01&to=2023-02-28
 报错内容：(conn=43276) Table 'mysql2.report_pump' doesn't exist Query: SELECT LEFT(Report_Id,LENGTH(Report_Id)-6) AS asset_id, RIGHT(Report_Id,6) as ym, Hours_Run_This_Month, Pump_Number, Water_Pumped_This_Month, pd.Name as drive, pc.Name as category, del.Name as destination, del.ID AS dest_id, Average_Head_Suct, Average_Head_Del FROM report_pump rp INNER JOIN pump_delivery_to del ON rp.Delivery_To_Id=del.ID INNER JOIN pump_category pc ON rp.Category_Id = pc.ID INNER JOIN pump_drive pd ON rp.Drive_Id = pd.ID HAVING asset_id = ? AND ym BETWEEN ? AND ? ORDER BY ym,Pump_Number Parameters: [24, 202301, 202302]
