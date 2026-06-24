@@ -279,7 +279,21 @@ class GaussDB:
 
 
 
+Dear Manager Zeng,
 
+The GaussDB preproduction environment for COSS is as below:
+
+1.      Connection string: (noted: 192.168.* should be used whenever possible)
+
+jdbc:postgresql://192.168.130.137:8000,192.168.130.11:8000,192.168.130.213:8000,192.168.130.145:8000/wsd?autoBalance=true&refreshCNIpListTime=3
+
+jdbc:postgresql://10.66.110.19:8000,10.66.110.145:8000,10.66.110.192:8000,10.66.110.201:8000/wsd?loadBalanceHosts=true&refreshCNIpListTime=3
+
+ 
+
+2.      User name / password: coss/ WsdUat@Cs300
+
+ 
 
 
 
