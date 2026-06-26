@@ -1,3 +1,20 @@
+opc_data_full_cheungsha
+tag_name, tag_time
+
+opc_data_cheungsha
+tag_name
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 http://10.66.169.102:8330/share/data/sensor/moreDevRealtime
