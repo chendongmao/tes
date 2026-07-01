@@ -1,16 +1,24 @@
-ods_iot_extract_device_info_day
+drop table if exists coss_ods.ods_iot_tmu_device_info_df;
 
+create table if not exists coss_ods.ods_iot_tmu_device_info_df (
+    device_code      varchar(200),
+    device_name      varchar(200),
+    sensor_id        varchar(200),
+    sensor_name      varchar(200),
+    sensor_unit      varchar(120),
+    ods_update_time  timestamp(6) null default pg_systimestamp(),
+    ods_load_time    timestamp(6) null default pg_systimestamp(),
+    primary key (device_code)
+);
 
-
-
-
-
-opc_data_full_cheungsha
-tag_name, tag_time
-
-opc_data_cheungsha
-tag_name
-
+comment on table coss_ods.ods_iot_tmu_device_info_df is 'Device Info';
+comment on column coss_ods.ods_iot_tmu_device_info_df.device_code is 'Device Code';
+comment on column coss_ods.ods_iot_tmu_device_info_df.device_name is 'Device Name';
+comment on column coss_ods.ods_iot_tmu_device_info_df.sensor_id is 'Sensorid';
+comment on column coss_ods.ods_iot_tmu_device_info_df.sensor_name is 'Sensor Name';
+comment on column coss_ods.ods_iot_tmu_device_info_df.sensor_unit is 'Sensor Unit';
+comment on column coss_ods.ods_iot_tmu_device_info_df.ods_update_time is 'Ods Update Time';
+comment on column coss_ods.ods_iot_tmu_device_info_df.ods_load_time is 'Ods Load Time';
 
 
 
