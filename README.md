@@ -1,3 +1,10 @@
+ods_iot_extract_device_info_day
+
+
+
+
+
+
 opc_data_full_cheungsha
 tag_name, tag_time
 
