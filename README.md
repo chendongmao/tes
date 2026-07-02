@@ -1,3 +1,13 @@
+预生产DP
+ http://10.66.168.212:12345/dolphinscheduler/ui/login
+
+预生产GaussDB
+jdbc:postgresql://10.66.169.52:8000,10.66.169.59:8000,10.66.169.76:8000,10.66.169.225:8000/wsd?loadBalanceHosts=true&refreshCNIpListTime=3
+账号：coss
+密码:WsdUat@MS30F
+
+
+
 -- coss_dim.dim_wtw_installation_info definition
 
 -- Drop table
