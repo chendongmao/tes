@@ -1,3 +1,122 @@
+-- coss_dim.dim_wtw_installation_info definition
+
+-- Drop table
+
+-- DROP TABLE coss_dim.dim_wtw_installation_info;
+
+CREATE TABLE coss_dim.dim_wtw_installation_info (
+	asset_id numeric(11) NOT NULL, -- Asset Id 
+	asset_name varchar(120) NULL, -- Asset Name
+	asset_desc varchar(120) NULL, -- Asset Descrip
+	installation_id varchar(36) NULL, -- Installation ID
+	loca_code varchar(15) NULL, -- Local Code
+	region_abbr varchar(150) NULL, -- Region
+	i_type_id numeric(11) NULL, -- Installation Type Id 
+	i_type_code varchar(150) NULL, -- Installation Code 
+	i_type_desc varchar(150) NULL, -- Installation Type Descrip
+	dim_update_time timestamp(6) NULL DEFAULT pg_systimestamp(), -- Dm Update Time
+	dim_load_time timestamp(6) NULL DEFAULT pg_systimestamp(), -- Dm Load Time
+	CONSTRAINT dim_wtw_installation_info_pkey PRIMARY KEY (asset_id)
+)
+WITH (
+	orientation=row,
+	compression=no
+);
+COMMENT ON TABLE coss_dim.dim_wtw_installation_info IS 'The Water Treatment Works Items';
+
+-- Column comments
+
+COMMENT ON COLUMN coss_dim.dim_wtw_installation_info.asset_id IS 'Asset Id ';
+COMMENT ON COLUMN coss_dim.dim_wtw_installation_info.asset_name IS 'Asset Name';
+COMMENT ON COLUMN coss_dim.dim_wtw_installation_info.asset_desc IS 'Asset Descrip';
+COMMENT ON COLUMN coss_dim.dim_wtw_installation_info.installation_id IS 'Installation ID';
+COMMENT ON COLUMN coss_dim.dim_wtw_installation_info.loca_code IS 'Local Code';
+COMMENT ON COLUMN coss_dim.dim_wtw_installation_info.region_abbr IS 'Region';
+COMMENT ON COLUMN coss_dim.dim_wtw_installation_info.i_type_id IS 'Installation Type Id ';
+COMMENT ON COLUMN coss_dim.dim_wtw_installation_info.i_type_code IS 'Installation Code ';
+COMMENT ON COLUMN coss_dim.dim_wtw_installation_info.i_type_desc IS 'Installation Type Descrip';
+COMMENT ON COLUMN coss_dim.dim_wtw_installation_info.dim_update_time IS 'Dm Update Time';
+COMMENT ON COLUMN coss_dim.dim_wtw_installation_info.dim_load_time IS 'Dm Load Time';
+
+-- Permissions
+
+ALTER TABLE coss_dim.dim_wtw_installation_info OWNER TO gddst01;
+GRANT ALL ON TABLE coss_dim.dim_wtw_installation_info TO gddst01;
+
+
+
+
+
+
+-- coss_dm.dm_srs_daily_sr_wl_qty_item_di definition
+
+-- Drop table
+
+-- DROP TABLE coss_dm.dm_srs_daily_sr_wl_qty_item_di;
+
+CREATE TABLE coss_dm.dm_srs_daily_sr_wl_qty_item_di (
+	sr_id varchar(50) NOT NULL, -- Service Reservoir Id
+	i_code varchar(50) NULL, -- Installation Code
+	sr_name varchar(200) NULL, -- Service Reservoir Name En 
+	sr_cname varchar(300) NULL, -- Service Reservoir Name Tc 
+	rpt_label varchar(100) NULL, -- Report Label
+	region_code varchar(50) NULL, -- Region Code
+	sub_region varchar(50) NULL, -- Sub Region
+	region_name varchar(50) NULL, -- Region Name En
+	region_cname varchar(50) NULL, -- Region Name Tc
+	region_ind varchar(50) NULL, -- Region Ind
+	w_type varchar(50) NULL, -- Water Type
+	w_type_desc varchar(50) NULL, -- Water Type Describe
+	a_wl numeric(20, 5) NULL, -- A Water Level
+	b_wl numeric(20, 5) NULL, -- B Water Level 
+	a_storage numeric(20, 5) NULL,
+	b_storage numeric(20, 5) NULL, -- B Water Storage 
+	tot_storage numeric(20, 5) NULL, -- Total Volume Of Water In A+ B+..+R.  Unit Is In Cu M
+	qty_del numeric(20, 5) NULL, -- Qty Del
+	rec_dt timestamp(6) NOT NULL, -- Rec Date
+	dm_update_time timestamp(6) NULL DEFAULT pg_systimestamp(), -- Dm Update Time
+	dm_load_time timestamp(6) NULL DEFAULT pg_systimestamp(), -- Dm Load Time
+	CONSTRAINT dm_srs_daily_sr_wl_qty_item_di_pkey PRIMARY KEY (sr_id, rec_dt)
+)
+WITH (
+	orientation=row,
+	compression=no
+);
+COMMENT ON TABLE coss_dm.dm_srs_daily_sr_wl_qty_item_di IS 'Service Reservoir Water Level And Qty_del Detail';
+
+-- Column comments
+
+COMMENT ON COLUMN coss_dm.dm_srs_daily_sr_wl_qty_item_di.sr_id IS 'Service Reservoir Id';
+COMMENT ON COLUMN coss_dm.dm_srs_daily_sr_wl_qty_item_di.i_code IS 'Installation Code';
+COMMENT ON COLUMN coss_dm.dm_srs_daily_sr_wl_qty_item_di.sr_name IS 'Service Reservoir Name En ';
+COMMENT ON COLUMN coss_dm.dm_srs_daily_sr_wl_qty_item_di.sr_cname IS 'Service Reservoir Name Tc ';
+COMMENT ON COLUMN coss_dm.dm_srs_daily_sr_wl_qty_item_di.rpt_label IS 'Report Label';
+COMMENT ON COLUMN coss_dm.dm_srs_daily_sr_wl_qty_item_di.region_code IS 'Region Code';
+COMMENT ON COLUMN coss_dm.dm_srs_daily_sr_wl_qty_item_di.sub_region IS 'Sub Region';
+COMMENT ON COLUMN coss_dm.dm_srs_daily_sr_wl_qty_item_di.region_name IS 'Region Name En';
+COMMENT ON COLUMN coss_dm.dm_srs_daily_sr_wl_qty_item_di.region_cname IS 'Region Name Tc';
+COMMENT ON COLUMN coss_dm.dm_srs_daily_sr_wl_qty_item_di.region_ind IS 'Region Ind';
+COMMENT ON COLUMN coss_dm.dm_srs_daily_sr_wl_qty_item_di.w_type IS 'Water Type';
+COMMENT ON COLUMN coss_dm.dm_srs_daily_sr_wl_qty_item_di.w_type_desc IS 'Water Type Describe';
+COMMENT ON COLUMN coss_dm.dm_srs_daily_sr_wl_qty_item_di.a_wl IS 'A Water Level';
+COMMENT ON COLUMN coss_dm.dm_srs_daily_sr_wl_qty_item_di.b_wl IS 'B Water Level ';
+COMMENT ON COLUMN coss_dm.dm_srs_daily_sr_wl_qty_item_di.b_storage IS 'B Water Storage ';
+COMMENT ON COLUMN coss_dm.dm_srs_daily_sr_wl_qty_item_di.tot_storage IS 'Total Volume Of Water In A+ B+..+R.  Unit Is In Cu M';
+COMMENT ON COLUMN coss_dm.dm_srs_daily_sr_wl_qty_item_di.qty_del IS 'Qty Del';
+COMMENT ON COLUMN coss_dm.dm_srs_daily_sr_wl_qty_item_di.rec_dt IS 'Rec Date';
+COMMENT ON COLUMN coss_dm.dm_srs_daily_sr_wl_qty_item_di.dm_update_time IS 'Dm Update Time';
+COMMENT ON COLUMN coss_dm.dm_srs_daily_sr_wl_qty_item_di.dm_load_time IS 'Dm Load Time';
+
+-- Permissions
+
+ALTER TABLE coss_dm.dm_srs_daily_sr_wl_qty_item_di OWNER TO gddst01;
+GRANT ALL ON TABLE coss_dm.dm_srs_daily_sr_wl_qty_item_di TO gddst01;
+
+
+
+
+
+
 ods_iot_extract_device_info_day
 http://10.66.169.58:8001/iot3/rest/api/v1/realtime.json
 
