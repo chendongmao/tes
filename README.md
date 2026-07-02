@@ -1,3 +1,7 @@
+ods_iot_extract_device_info_day
+http://10.66.169.58:8001/iot3/rest/api/v1/realtime.json
+
+
 drop table if exists coss_ods.ods_iot_tmu_device_info_df;
 
 create table if not exists coss_ods.ods_iot_tmu_device_info_df (
