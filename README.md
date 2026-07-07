@@ -1,3 +1,66 @@
+
+drop table if exists coss_dm.dm_tmu_sensor_data_minf;
+
+create table if not exists coss_dm.dm_tmu_sensor_data_minf (
+    id              varchar(100),
+    sensor_code     varchar(100),
+    sensor_value    decimal(20,6),
+    sensor_time     timestamp(6),
+    dm_update_time  timestamp(6) default current_timestamp,
+    dm_load_time    timestamp(6) default current_timestamp,
+    primary key (sensor_code)
+);
+
+-- Add table comment
+comment on table coss_dm.dm_tmu_sensor_data_minf is 'Water Quality Realtime Data';
+
+-- Add column comments
+comment on column coss_dm.dm_tmu_sensor_data_minf.id is 'ID';
+comment on column coss_dm.dm_tmu_sensor_data_minf.sensor_code is 'Sensor Code';
+comment on column coss_dm.dm_tmu_sensor_data_minf.sensor_value is 'Sensor Value';
+comment on column coss_dm.dm_tmu_sensor_data_minf.sensor_time is 'Sensor Time';
+comment on column coss_dm.dm_tmu_sensor_data_minf.dm_update_time is 'Data Update Time';
+comment on column coss_dm.dm_tmu_sensor_data_minf.dm_load_time is 'Data Loading Time';
+
+
+-- ****************************************************************************************
+-- Subject     Areas: Terminal User
+-- Function Describe: Terminal User Monitoring For Water Quality
+-- Create         By: dongmaochen
+-- Create       Date: 2026-05-21
+-- Modify Date                Modify By                    Modify Content
+-- None                       None                         None
+-- Source Table: coss_dwd.dwd_tmu_sensor_data_mini_month
+-- Target Table: coss_dm.dm_tmu_sensor_data_minf
+-- ****************************************************************************************
+insert into coss_dm.dm_tmu_sensor_data_mini_month 
+select 
+    id,
+    sensor_code,
+    sensor_value,
+    sensor_time,
+    dm_update_time,
+    dm_load_time
+from (
+    select 
+        id,
+        sensor_code,
+        sensor_value,
+        sensor_time,
+        dm_update_time,
+        dm_load_time,
+        row_number() over (partition by sensor_code order by sensor_time desc) as rn
+    from coss_dwd.dwd_tmu_sensor_data_mini_month
+    where dwd_update_time >= '${dm_update_time}'
+) t
+where rn = 1
+on duplicate key update nothing
+
+
+
+
+
+
 https://10.66.110.21:6443/arcgis/rest/services/MSC/MSC/MapServer/0/query
 
 
