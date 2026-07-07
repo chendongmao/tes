@@ -1,3 +1,7 @@
+https://10.66.110.21:6443/arcgis/rest/services/MSC/MSC/MapServer/0/query
+
+
+
 
 https://10.66.168.83/dm/topic/waterQualityComplaint/waterQualityPoint/position
 
