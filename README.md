@@ -10,6 +10,41 @@ IUAT	10.66.168.113	192.168.101.145
 <img width="422" height="199" alt="image" src="https://github.com/user-attachments/assets/2a5c07aa-05b3-42e1-be27-4ef21e773bef" />
 
 
+
+import requests
+
+# 配置参数
+BASE_URL = "http://10.66.110.106:8325"
+APP_ID = "替换为你的真实appId"
+HEADERS = {"appId": APP_ID, "Content-Type": "application/json"}
+
+def get_permission_data(page_no=1, page_size=10, device_codes=None, business_type=None):
+    url = f"{BASE_URL}/share/data/permission"
+    payload = {"pageNo": page_no, "pageSize": page_size}
+    if device_codes:
+        payload["deviceCodes"] = device_codes
+    if business_type:
+        payload["businessType"] = business_type
+
+    resp = requests.post(url, json=payload, headers=HEADERS)
+    resp.raise_for_status()  # 抛出http异常
+    res = resp.json()
+    return res if res.get("success") else None
+
+# 示例调用
+if __name__ == "__main__":
+    data = get_permission_data(page_no=1, page_size=10)
+    if data:
+        records = data["data"]["records"]
+        print(f"总条数：{data['data']['total']}")
+        for item in records:
+            print("设备编码：", item["deviceCode"])
+
+
+
+
+			
+
 curl -X POST --url "http://10.66.110.106:8325/share/data/permission" \
 -H "appId: none" \
 -H "Content-Type: application/json" \
