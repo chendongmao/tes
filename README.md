@@ -1,4 +1,9 @@
 
+<img width="3436" height="1594" alt="image" src="https://github.com/user-attachments/assets/38066cb6-0ceb-443b-9d83-4797fc1e6314" />
+
+
+
+
 drop table if exists coss_dm.dm_tmu_sensor_data_minf;
 
 create table if not exists coss_dm.dm_tmu_sensor_data_minf (
