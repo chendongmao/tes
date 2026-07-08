@@ -10,6 +10,20 @@ IUAT	10.66.168.113	192.168.101.145
 <img width="422" height="199" alt="image" src="https://github.com/user-attachments/assets/2a5c07aa-05b3-42e1-be27-4ef21e773bef" />
 
 
+curl -X POST --url "http://10.66.110.106:8325/share/data/permission" \
+-H "Content-Type: application/json" \
+-d '{
+  "deviceCodes": [],
+  "pageSize": 10,
+  "pageNo": 1
+}'
+
+{"success":true,"code":200,"message":"success","data":{"records":[],"total":0,"size":10,"current":1,"orders":[{"column":"sort_num","asc":true},{"column":"update_time","asc":false}],"optimizeCountSql":true,"searchCount":true,"optimizeJoinOfCountSql":true,"maxLimit":null,"countId":null,"pages":0},"timestamp":1783491271051,"requestId":"LZXAQC4TalMTa3hVVMc5","msg":"success"}
+
+
+
+
+
 curl -X POST --url "http://10.66.110.106:8325/share/data/sensor/realtime" \
 -H "Content-Type: application/json" \
 -d  '{
@@ -62,8 +76,7 @@ curl -X POST --url "http://10.66.110.106:8325/share/data/sensor/realtime" \
 
 
 
-curl -X POST "http://10.66.110.106:8325/share/data/permission" \
--H "appId: your_app_id_here" \
+curl -X POST --url "http://10.66.110.106:8325/share/data/permission" \
 -H "Content-Type: application/json" \
 -d '{
   "deviceCodes": [],
