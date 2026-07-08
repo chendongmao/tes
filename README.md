@@ -1,3 +1,37 @@
+预生产	10.66.168.212	192.168.110.226
+预生产	10.66.168.11	192.168.110.215
+预生产	10.66.168.85	192.168.110.145
+ISIT	10.66.168.7	192.168.102.75
+ISIT	10.66.168.50	192.168.102.155
+ISIT	10.66.168.121	192.168.102.84
+IUAT	10.66.168.174	192.168.101.238
+IUAT	10.66.168.41	192.168.101.138
+IUAT	10.66.168.113	192.168.101.145
+<img width="422" height="199" alt="image" src="https://github.com/user-attachments/assets/2a5c07aa-05b3-42e1-be27-4ef21e773bef" />
+
+
+curl -X POST --url "http://10.66.110.106:8325/share/data/sensor/realtime" \
+-H "Content-Type: application/json" \
+-d  '{
+    "sensorCodes": [
+        "WLIS_1023_voltage_1",
+        "WLIS_1023_voltage_2",
+        "WLIS_1023_digital_in_1"
+    ]
+}'
+
+
+
+{"success":true,"code":200,"message":"success",
+"data":[{"snsCode":"WLIS_1023_voltage_1"}
+,{"snsCode":"WLIS_1023_voltage_2"},
+{"snsCode":"WLIS_1023_digital_in_1"}],"timestamp":1783482568080,"requestId":"xhQIsn4O1KyBbnZUekOe","msg":"success"}
+
+
+
+
+
+![Uploading image.png…]()
 
  /share/data/sensor/realtime
 
