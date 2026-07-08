@@ -11,6 +11,7 @@ IUAT	10.66.168.113	192.168.101.145
 
 
 curl -X POST --url "http://10.66.110.106:8325/share/data/permission" \
+-H "appId: none" \
 -H "Content-Type: application/json" \
 -d '{
   "deviceCodes": [],
