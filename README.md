@@ -1,4 +1,18 @@
 
+
+
+curl -X POST "http://10.66.110.106:8325/share/data/permission" \
+-H "appId: your_app_id_here" \
+-H "Content-Type: application/json" \
+-d '{
+  "deviceCodes": [],
+  "pageSize": 10,
+  "pageNo": 1
+}'
+
+
+
+
 <img width="3436" height="1594" alt="image" src="https://github.com/user-attachments/assets/38066cb6-0ceb-443b-9d83-4797fc1e6314" />
 
 
