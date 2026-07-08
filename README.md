@@ -1,4 +1,31 @@
 
+ /share/data/sensor/realtime
+
+
+{
+    "sensorCodes": [
+        "WLIS_1023_voltage_1",
+        "WLIS_1023_voltage_2",
+        "WLIS_1023_digital_in_1"
+    ]
+}
+
+
+
+
+curl -X POST --url "http://10.66.110.106:8325/share/data/sensor/realtime" \
+-H "Content-Type: application/json" \
+-d {
+    "sensorCodes": [
+        "WLIS_1023_voltage_1",
+        "WLIS_1023_voltage_2",
+        "WLIS_1023_digital_in_1"
+    ]
+}
+
+
+
+
 
 
 curl -X POST "http://10.66.110.106:8325/share/data/permission" \
