@@ -1,3 +1,12 @@
+1. 水质dev接口： http://10.66.169.58:8001/iot3/rest/api/v1/realtime.json
+2. 与生产水位接口：http://10.66.110.106:8325
+3. ISIT远传表接口：http://10.66.169.102:8330/share/data/sensor/moreDevRealtime
+
+iuat dp
+http://10.66.168.41:12345/dolphinscheduler/ui/login
+iuat gaussdb
+jdbc:postgresql://192.168.136.64:8000,192.168.136.61:8000,192.168.136.52:8000,192.168.136.206:8000/wsd?loadBalanceHosts=true&refreshCNIpListTime=3
+coss/WsdUat@MS30F
 
 
 jdbc:postgresql://192.168.130.137:8000,192.168.130.11:8000,192.168.130.213:8000,192.168.130.145:8000/wsd?autoBalance=true&refreshCNIpListTime=3
@@ -93,7 +102,7 @@ curl -X POST --url "http://10.66.110.106:8325/share/data/sensor/realtime" \
 
 
 
-![Uploading image.png…]()
+<img width="158" height="23" alt="image" src="https://github.com/user-attachments/assets/489e8a17-49ce-4daa-838e-859e2c5e44bb" />
 
  /share/data/sensor/realtime
 
