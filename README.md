@@ -1,3 +1,8 @@
+ods_emis_psr_report_di_year
+ods_emis_psr_bills_di_year
+
+
+
 1. 水质dev接口： http://10.66.169.58:8001/iot3/rest/api/v1/realtime.json
 2. 与生产水位接口：http://10.66.110.106:8325
 3. ISIT远传表接口：http://10.66.169.102:8330/share/data/sensor/moreDevRealtime
