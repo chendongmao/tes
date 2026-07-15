@@ -1,13 +1,164 @@
-dm_psr_annual_pump_station_item_di
-dm_psr_annual_pump_station_item_di
-dm_psr_daily_ps_running_item_di
-dm_psr_monthly_ps_running_item_di
-dm_wtw_annual_water_treatment_works_item_
-dm_wtw_monthly_water_treatment_works_item_di
-dm_wtw_annual_water_treatment_works_item_detail_di
-dm_wtw_monthly_water_treatment_works_item_detail_di
-dm_wtw_monthly_eng_cons_billing_hist_di
+# 数开-IOT数据对接
 
+## 数据清洗过程
+
+1. 18个水质监测点的数据查询sql
+
+   ```sql
+    select * from iot.device where  "type" ='gw111'
+   ```
+
+2. 查询水质监测点的sensor数据，gps_position是经纬度，需要转换为HK80,对应数据表的表解构：dim_sz_device_info
+
+   ```sql
+   -- 1.在源系统导出数据
+   select 
+   	0 supply_id,
+   	0 supply_code,
+   	t.code device_code,
+   	t.name device_name,
+   	t1.code sensor_code,
+   	t1.name sensor_name,
+   	t1."unit",
+   	string_to_array(gps_position, ',')[1]  coordinate_x,
+   	string_to_array(gps_position, ',')[2] coordinate_y,
+   	current_timestamp dim_update_time,
+   	current_timestamp dim_load_time
+   from 
+   (
+   	select 
+   	id,
+   	code,
+   	name,
+   	gps_position
+   	from iot.device where "type" ='gw111'
+   ) t 
+   inner join (
+   	select
+   	device, 
+   	code, 
+   	"name" ,
+   	"unit"  
+   	from sensor where name in(
+       'pH',
+       'Temperature',
+       'FCL',
+       'Conductivity',
+       'Turbidity'
+   	)
+   ) t1 on t.id = t1.device
+   
+   -- 2.把导出来的数据用豆包转换coordinate_x和coordinate_y的经纬度数
+   
+   -- 3.转换sensor_name和unit的代码值
+   select 
+   	supply_id,
+   	supply_code,
+   	device_code,
+   	device_name,
+   	sensor_code,
+       CASE
+           WHEN sensor_name = 'Turbidity' THEN 'TURBITIDY'
+           WHEN sensor_name = 'Conductivity' THEN 'COND'
+           WHEN sensor_name = 'FCL' THEN 'CHLORINE'
+           WHEN sensor_name = 'pH' THEN 'PH'
+           WHEN sensor_name = 'Temperature' THEN 'TEMP'
+           ELSE sensor_name  -- 其他值保持不变
+       END AS sensor_name,
+   	CASE
+   	    WHEN unit = 'NTU' THEN 'NTU'
+   	    WHEN unit = 'V4'  THEN 'uS/cm'
+   	    WHEN unit = 'CL'  THEN 'mg/L'
+   	    WHEN unit = 'PH'  THEN ''   -- 你写的目标为空
+   	    WHEN unit = 'C'   THEN 'C'
+       ELSE unit  -- 其他不变
+   	END AS unit,
+   	coordinate_x,
+   	coordinate_y,
+   	dim_update_time,
+   	dim_load_time
+   from coss_dim.dim_sz_device_info
+   
+   
+   ```
+
+3. 查询需要获取三个监测数据的sensor数据，获取相关的sensor_code值
+
+   ```sql
+   select 
+   	0 supply_id,
+   	0 supply_code,
+   	t.code device_code,
+   	t.name device_name,
+   	t1.code sensor_code,
+   	t1.name sensor_name,
+   	t1."unit",
+   	string_to_array(gps_position, ',')[1]  coordinate_x,
+   	string_to_array(gps_position, ',')[2] coordinate_y,
+   	current_timestamp dim_update_time,
+   	current_timestamp dim_load_time
+   from 
+   (
+   	select 
+   	id,
+   	code,
+   	name,
+   	gps_position
+   	from iot.device where "type" ='gw111'
+   	and name in ('WSD Kowloon Bay Building (PI)',
+   	'Fan Kam Road Kiosk (PI)',
+   	'Tsuen Wan Park (S::can)')
+   ) t 
+   inner join (
+   	select
+   	device, 
+   	code, 
+   	"name" ,
+   	"unit"  
+   	from sensor where name in(
+       'pH',
+       'Temperature',
+       'FCL',
+       'Conductivity',
+       'Turbidity'
+   	)
+   ) t1 on t.id = t1.device
+   ```
+
+4. 查询三个指定点位的sensor数据
+
+   ```sql
+   insert into coss_dm.dm_tmu_sensor_data_mini_month 
+   select 
+   	id,
+   	code sensor_code,
+   	value sensor_value,
+   	to_timestamp(time / 1000) sensor_time,
+   	current_timestamp dm_update_time,
+   	current_timestamp dm_load_time
+   from data_gw
+   where 
+   code in ('FWWMNW04001Q00101',
+   'FWWMNW04001Q00105',
+   'FWBDKN05002Q00101',
+   'FWBDKN05002Q00103',
+   'FWBDKN05002Q00104',
+   'FWBDKN05002Q00105',
+   'FWWMNW03001Q00101',
+   'FWWMNW03001Q00103',
+   'FWWMNW03001Q00102',
+   'FWWMNW03001Q00105',
+   'FWBDKN05002Q00102',
+   'FWWMNW03001Q00104',
+   'FWWMNW04001Q00103',
+   'FWWMNW04001Q00104',
+   'FWWMNW04001Q00102')
+   and 
+   to_timestamp(time / 1000) >= '2026-04-01 18:52:00.000 +0800'
+   
+   ```
+
+   
 
 
 1. 水质dev接口： http://10.66.169.58:8001/iot3/rest/api/v1/realtime.json
