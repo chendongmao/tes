@@ -1,3 +1,39 @@
+-- coss_dcs.opc_data_tseungkwuno definition
+
+-- Drop table
+
+-- DROP TABLE coss_dcs.opc_data_tseungkwuno;
+
+CREATE TABLE coss_dcs.opc_data_tseungkwuno (
+	id bigserial NOT NULL,
+	tag_name varchar(128) NULL,
+	tag_value varchar(128) NULL,
+	tag_value_avg numeric NULL,
+	tag_value_min numeric NULL,
+	tag_value_max numeric NULL,
+	quality int4 NOT NULL,
+	tag_time timestamp NOT NULL,
+	ms_sql_time timestamp NOT NULL DEFAULT pg_systimestamp(),
+	CONSTRAINT opc_data_tseungkwuno_unique UNIQUE (tag_name)
+)
+WITH (
+	orientation=row,
+	compression=no,
+	storage_type=ustore,
+	segment=off
+);
+
+-- Permissions
+
+GRANT SELECT ON TABLE coss_dcs.opc_data_tseungkwuno TO coss;
+GRANT ALL ON TABLE coss_dcs.opc_data_tseungkwuno TO coss_dcs_wtw;
+GRANT SELECT ON TABLE coss_dcs.opc_data_tseungkwuno TO wqms_admin;
+
+
+
+
+
+
 https://docs.qq.com/sheet/DUGdOTE9rdnJwb2xI?no_promotion=1&tab=fl8tx0
 
 
