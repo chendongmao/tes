@@ -1,0 +1,40 @@
+"i_code","region_abbr","wtw_name_en","wtw_name_cn","wtw_name_tc","tag_name_en","tag_name_cn","tag_name_tc","units","tag_type","dim_update_time","dim_load_time"
+TW100,NTE,Tseung Kwan O Desalination Plant,将军澳海水化淡厂,將軍澳海水化淡廠,SL_TKO_GAC_INTAKE_T1GAC02_CF101XG01_MEAS,水厂入水-海水流量,水廠入水-海水流量,MLD,FLOW,2026-07-20 16:17:37.599,2026-07-20 16:17:37.599
+TW100,NTE,Tseung Kwan O Desalination Plant,将军澳海水化淡厂,將軍澳海水化淡廠,SL_TKO_GAC_INTAKE_T1GAC02_CL101AXG04_MEAS,水厂入水-海水泵站A1压力,水廠入水-海水泵站A1壓力,m ,PRESSURE,2026-07-20 16:17:37.599,2026-07-20 16:17:37.599
+TW100,NTE,Tseung Kwan O Desalination Plant,将军澳海水化淡厂,將軍澳海水化淡廠,SL_TKO_GAC_INTAKE_T1GAC02_CL101BXG04_MEAS,水厂入水-海水泵站B1压力,水廠入水-海水泵站B1壓力,m ,PRESSURE,2026-07-20 16:17:37.599,2026-07-20 16:17:37.599
+TW100,NTE,Tseung Kwan O Desalination Plant,将军澳海水化淡厂,將軍澳海水化淡廠,SL_TKO_GAC_INTAKE_T1GAC02_CQ102XG06_MEAS,水厂入水-海水碳氢化合物,水廠入水-海水碳氫化合物,μg/L,HC,2026-07-20 16:17:37.599,2026-07-20 16:17:37.599
+TW100,NTE,Tseung Kwan O Desalination Plant,将军澳海水化淡厂,將軍澳海水化淡廠,SL_TKO_GAC_INTAKE_T1GAC02_CQ103XG06_MEAS,水厂入水-海水氧化还原电位,水廠入水-海水氧化還原電位,mV,ORP,2026-07-20 16:17:37.599,2026-07-20 16:17:37.599
+TW100,NTE,Tseung Kwan O Desalination Plant,将军澳海水化淡厂,將軍澳海水化淡廠,SL_TKO_GKC_PRODUCT_T1GKC01_1_AP003_STP_ACTIVE,水厂出水-泵机3号停止,水廠出水-泵浦機3號停止,,PMP_S/S_STS,2026-07-20 16:17:37.599,2026-07-20 16:17:37.599
+TW100,NTE,Tseung Kwan O Desalination Plant,将军澳海水化淡厂,將軍澳海水化淡廠,SL_TKO_GKC_PRODUCT_T1GKC01_1_AP003_STR_ACTIVE,水厂出水-泵机3号运行,水廠出水-泵浦機3號運行,,PMP_S/S_STS,2026-07-20 16:17:37.599,2026-07-20 16:17:37.599
+TW100,NTE,Tseung Kwan O Desalination Plant,将军澳海水化淡厂,將軍澳海水化淡廠,SL_TKO_GKC_PRODUCT_T1GKC01_CF101_MEAS_MEAS,水厂出水-干管流量(CF101),水廠出水-幹管流量(CF101),MLD,FLOW,2026-07-20 16:17:37.599,2026-07-20 16:17:37.599
+TW100,NTE,Tseung Kwan O Desalination Plant,将军澳海水化淡厂,將軍澳海水化淡廠,SL_TKO_GKC_PRODUCT_T1GKC01_CF101XG01_MEAS,水厂出水-干管流量(CF101XG01),水廠出水-幹管流量(CF101XG01),MLD,FLOW,2026-07-20 16:17:37.599,2026-07-20 16:17:37.599
+TW100,NTE,Tseung Kwan O Desalination Plant,将军澳海水化淡厂,將軍澳海水化淡廠,SL_TKO_GKC_PRODUCT_T1GKC01_CF101XG07_MEAS,水厂出水-干管流量(CF101XG07),水廠出水-幹管流量(CF101XG07),MLD,FLOW,2026-07-20 16:17:37.599,2026-07-20 16:17:37.599
+TW100,NTE,Tseung Kwan O Desalination Plant,将军澳海水化淡厂,將軍澳海水化淡廠,SL_TKO_GKC_PRODUCT_T1GKC01_CF102_MEAS_MEAS,水厂出水-干管流量(CF102),水廠出水-幹管流量(CF102),MLD,FLOW,2026-07-20 16:17:37.599,2026-07-20 16:17:37.599
+TW100,NTE,Tseung Kwan O Desalination Plant,将军澳海水化淡厂,將軍澳海水化淡廠,SL_TKO_GKC_PRODUCT_T1GKC01_CF102XG01_MEAS,水厂出水-干管流量(CF102XG01),水廠出水-幹管流量(CF102XG01),MLD,FLOW,2026-07-20 16:17:37.599,2026-07-20 16:17:37.599
+TW100,NTE,Tseung Kwan O Desalination Plant,将军澳海水化淡厂,將軍澳海水化淡廠,SL_TKO_GKC_PRODUCT_T1GKC01_CF102XG07_MEAS,水厂出水-备用流量计(CF102XG07),水廠出水-備用流量計(CF102XG07),MLD,FLOW,2026-07-20 16:17:37.599,2026-07-20 16:17:37.599
+TW100,NTE,Tseung Kwan O Desalination Plant,将军澳海水化淡厂,將軍澳海水化淡廠,SL_TKO_GKC_PRODUCT_T1GKC01_CF801A_OUT,水厂出水-备用流量计(CF801A),水廠出水-備用流量計(CF801A),MLD,FLOW,2026-07-20 16:17:37.599,2026-07-20 16:17:37.599
+TW100,NTE,Tseung Kwan O Desalination Plant,将军澳海水化淡厂,將軍澳海水化淡廠,SL_TKO_GKC_PRODUCT_T1GKC01_CP101XG02_MEAS,水厂出水-食水压力,水廠出水-食水壓力,m,PRESSURE,2026-07-20 16:17:37.599,2026-07-20 16:17:37.599
+TW100,NTE,Tseung Kwan O Desalination Plant,将军澳海水化淡厂,將軍澳海水化淡廠,SL_TKO_GAC_INTAKE_T1GAC02_CQ104XG06_MEAS,水厂入水-海水电导率,水廠入水-海水電導率,µS/cm,EC,2026-07-20 16:17:37.599,2026-07-20 16:17:37.599
+TW100,NTE,Tseung Kwan O Desalination Plant,将军澳海水化淡厂,將軍澳海水化淡廠,SL_TKO_GAC_INTAKE_T1GAC02_CQ105XG06_MEAS,水厂入水-海水浊度,水廠入水-海水濁度,NTU,TURBIDITY,2026-07-20 16:17:37.599,2026-07-20 16:17:37.599
+TW100,NTE,Tseung Kwan O Desalination Plant,将军澳海水化淡厂,將軍澳海水化淡廠,SL_TKO_GAC_INTAKE_T1GAC01_CL101AXG04_MEAS,水厂入水-海水泵站A1压力,水廠入水-海水泵站A1壓力,m ,PRESSURE,2026-07-20 16:17:37.599,2026-07-20 16:17:37.599
+TW100,NTE,Tseung Kwan O Desalination Plant,将军澳海水化淡厂,將軍澳海水化淡廠,SL_TKO_GAC_INTAKE_T1GAC01_CL101BXG04_MEAS,水厂入水-海水泵站B1压力,水廠入水-海水泵站B1壓力,m ,PRESSURE,2026-07-20 16:17:37.599,2026-07-20 16:17:37.599
+TW100,NTE,Tseung Kwan O Desalination Plant,将军澳海水化淡厂,將軍澳海水化淡廠,SL_TKO_GAC_INTAKE_T1GAC02_CQ106XG06_MEAS,水厂入水-海水PH,水廠入水-海水PH,,PH,2026-07-20 16:17:37.599,2026-07-20 16:17:37.599
+TW100,NTE,Tseung Kwan O Desalination Plant,将军澳海水化淡厂,將軍澳海水化淡廠,SL_TKO_GAC_INTAKE_T1GAC02_CQ107XG06_MEAS,水厂入水-海水余氯,水廠入水-海水餘氯,mg/L,CHLORINE,2026-07-20 16:17:37.599,2026-07-20 16:17:37.599
+TW100,NTE,Tseung Kwan O Desalination Plant,将军澳海水化淡厂,將軍澳海水化淡廠,SL_TKO_GAC_INTAKE_T1GAC02_CQ108XQ06_MEAS,水厂入水-海水叶绿素,水廠入水-海水葉綠素,µg/L,CHL,2026-07-20 16:17:37.599,2026-07-20 16:17:37.599
+TW100,NTE,Tseung Kwan O Desalination Plant,将军澳海水化淡厂,將軍澳海水化淡廠,SL_TKO_GAC_INTAKE_T1GAC02_CQ109XG06_MEAS,水厂入水-海水溶解氧,水廠入水-海水溶氧,mg/L,DO,2026-07-20 16:17:37.599,2026-07-20 16:17:37.599
+TW100,NTE,Tseung Kwan O Desalination Plant,将军澳海水化淡厂,將軍澳海水化淡廠,SL_TKO_GAC_INTAKE_T1GAC02_CT101XG05_MEAS,水厂入水-海水温度,水廠入水-海水溫度,°C,TEMP,2026-07-20 16:17:37.599,2026-07-20 16:17:37.599
+TW100,NTE,Tseung Kwan O Desalination Plant,将军澳海水化淡厂,將軍澳海水化淡廠,SL_TKO_GKC_PRODUCT_T1GKC01_1_AP002_STP_ACTIVE,水厂出水-泵机2号停止,水廠出水-泵浦機2號停止,,PMP_S/S_STS,2026-07-20 16:17:37.599,2026-07-20 16:17:37.599
+TW100,NTE,Tseung Kwan O Desalination Plant,将军澳海水化淡厂,將軍澳海水化淡廠,SL_TKO_GKC_PRODUCT_T1GKC01_1_AP002_STR_ACTIVE,水厂出水-泵机2号运行,水廠出水-泵浦機2號運行,,PMP_S/S_STS,2026-07-20 16:17:37.599,2026-07-20 16:17:37.599
+TW100,NTE,Tseung Kwan O Desalination Plant,将军澳海水化淡厂,將軍澳海水化淡廠,SL_TKO_GKC_PRODUCT_T1GKC01_1_AP003_EMG_ACTIVE,水厂出水-泵机3号故障,水廠出水-泵浦機3號故障,,PMP_ALARM_STS,2026-07-20 16:17:37.599,2026-07-20 16:17:37.599
+TW100,NTE,Tseung Kwan O Desalination Plant,将军澳海水化淡厂,將軍澳海水化淡廠,SL_TKO_GKB_PRODUCT_T1GKB01_CQ112XQ16_MEAS,水厂出水-食水氟,水廠出水-食水氟,mg/L,FLUORIDE,2026-07-20 16:17:37.599,2026-07-20 16:17:37.599
+TW100,NTE,Tseung Kwan O Desalination Plant,将军澳海水化淡厂,將軍澳海水化淡廠,SL_TKO_GKC_PRODUCT_T1GKC01_1_AP001_EMG_ACTIVE,水厂出水-泵机1号故障,水廠出水-泵浦機1號故障,,PMP_ALARM_STS,2026-07-20 16:17:37.599,2026-07-20 16:17:37.599
+TW100,NTE,Tseung Kwan O Desalination Plant,将军澳海水化淡厂,將軍澳海水化淡廠,SL_TKO_GKC_PRODUCT_T1GKC01_1_AP001_STP_ACTIVE,水厂出水-泵机1号停止,水廠出水-泵浦機1號停止,,PMP_S/S_STS,2026-07-20 16:17:37.599,2026-07-20 16:17:37.599
+TW100,NTE,Tseung Kwan O Desalination Plant,将军澳海水化淡厂,將軍澳海水化淡廠,SL_TKO_GKC_PRODUCT_T1GKC01_1_AP001_STR_ACTIVE,水厂出水-泵机1号运行,水廠出水-泵浦機1號運行,,PMP_S/S_STS,2026-07-20 16:17:37.599,2026-07-20 16:17:37.599
+TW100,NTE,Tseung Kwan O Desalination Plant,将军澳海水化淡厂,將軍澳海水化淡廠,SL_TKO_GKC_PRODUCT_T1GKC01_1_AP002_EMG_ACTIVE,水厂出水-泵机2号故障,水廠出水-泵浦機2號故障,,PMP_ALARM_STS,2026-07-20 16:17:37.599,2026-07-20 16:17:37.599
+TW100,NTE,Tseung Kwan O Desalination Plant,将军澳海水化淡厂,將軍澳海水化淡廠,SL_TKO_GKB_PRODUCT_T1GKB01_1_CL101XG04_MEAS,水厂出水-清水池1水位比,水廠出水-清水池1水位比,%,LEVEL,2026-07-20 16:17:37.599,2026-07-20 16:17:37.599
+TW100,NTE,Tseung Kwan O Desalination Plant,将军澳海水化淡厂,將軍澳海水化淡廠,SL_TKO_GKB_PRODUCT_T1GKB01_1_CL102XG04_MEAS,水厂出水-清水池2水位比,水廠出水-清水池2水位比,%,LEVEL,2026-07-20 16:17:37.599,2026-07-20 16:17:37.599
+TW100,NTE,Tseung Kwan O Desalination Plant,将军澳海水化淡厂,將軍澳海水化淡廠,SL_TKO_GKB_PRODUCT_T1GKB01_1_CQ107XG06_MEAS,水厂出水-食水PH,水廠出水-食水PH,,PH,2026-07-20 16:17:37.599,2026-07-20 16:17:37.599
+TW100,NTE,Tseung Kwan O Desalination Plant,将军澳海水化淡厂,將軍澳海水化淡廠,SL_TKO_GKB_PRODUCT_T1GKB01_1_CQ108XG06_MEAS,水厂出水-食水导电率,水廠出水-食水導電率,µS/cm,EC,2026-07-20 16:17:37.599,2026-07-20 16:17:37.599
+TW100,NTE,Tseung Kwan O Desalination Plant,将军澳海水化淡厂,將軍澳海水化淡廠,SL_TKO_GKB_PRODUCT_T1GKB01_1_CQ109XG06_MEAS,水厂出水-食水浊度,水廠出水-食水濁度,NTU,TURBIDITY,2026-07-20 16:17:37.599,2026-07-20 16:17:37.599
+TW100,NTE,Tseung Kwan O Desalination Plant,将军澳海水化淡厂,將軍澳海水化淡廠,SL_TKO_GKB_PRODUCT_T1GKB01_1_CQ110XG06_MEAS,水厂出水-食水总氯,水廠出水-食水總氯,mg/L,CHLORINE,2026-07-20 16:17:37.599,2026-07-20 16:17:37.599
+TW100,NTE,Tseung Kwan O Desalination Plant,将军澳海水化淡厂,將軍澳海水化淡廠,SL_TKO_GKB_PRODUCT_T1GKB01_1_CQ111XG06_MEAS,水厂出水-食水余氯,水廠出水-食水餘氯,mg/L,CHLORINE,2026-07-20 16:17:37.599,2026-07-20 16:17:37.599
