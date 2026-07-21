@@ -1,3 +1,28 @@
+t_order_workorder	ordernum
+	bigregion
+	classify2
+	urgency
+	orderstate
+	channeltype
+	isrepeatedcomplaint
+t_order_workorder_entity	waterqualitycode
+	street
+	estate
+	term
+	village
+	buildingno
+	floor
+	relateorder
+	servicecontent
+	locationx
+	locationy
+	regionreceivingdate
+	createdat
+	finishtime
+
+
+
+
 -- coss_dcs.opc_data_tseungkwuno definition
 
 -- Drop table
