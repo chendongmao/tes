@@ -1,3 +1,10 @@
+数仓建设文档：
+https://docs.qq.com/sheet/DUGdOTE9rdnJwb2xI?no_promotion=1&tab=BB08J2
+
+
+
+
+
 t_order_workorder	ordernum
 	bigregion
 	classify2
