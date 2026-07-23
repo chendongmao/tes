@@ -1,3 +1,26 @@
+drop table if exists coss_dm.dm_tmu_user_customer_item_di;
+
+create table if not exists coss_dm.dm_tmu_user_customer_item_di (
+    statistical_year  varchar(50),
+    inter_item_code   varchar(120),
+    hsic_code         varchar(120),
+    item_value        numeric(20,6),
+    dm_update_time    timestamp(6) null default current_timestamp,
+    dm_load_time      timestamp(6) null default current_timestamp,
+    primary key (statistical_year, inter_item_code, hsic_code)
+);
+
+comment on table coss_dm.dm_tmu_user_customer_item_di is 'User Customer Item Table';
+comment on column coss_dm.dm_tmu_user_customer_item_di.statistical_year  is 'Statistical Year';
+comment on column coss_dm.dm_tmu_user_customer_item_di.inter_item_code   is 'Index Code';
+comment on column coss_dm.dm_tmu_user_customer_item_di.hsic_code         is 'Industry Classification Code';
+comment on column coss_dm.dm_tmu_user_customer_item_di.item_value        is 'Index Value';
+comment on column coss_dm.dm_tmu_user_customer_item_di.dm_update_time    is 'Dm Update Time';
+comment on column coss_dm.dm_tmu_user_customer_item_di.dm_load_time      is 'Dm Load Time';
+
+
+
+
 数仓建设文档：
 https://docs.qq.com/sheet/DUGdOTE9rdnJwb2xI?no_promotion=1&tab=BB08J2
 
