@@ -1,4 +1,20 @@
-        select
+create table coss_tmp.dm_srs_daily_sr_wl_qty_item_di_arch260723 as 
+select * from coss_dm.dm_srs_daily_sr_wl_qty_item_di 
+where 
+rec_dt >= '2025-12-13 00:00:00.000'
+order by rec_dt asc 
+
+delete  from coss_dm.dm_srs_daily_sr_wl_qty_item_di 
+where 
+rec_dt >= '2025-12-13 00:00:00.000'
+
+
+
+		
+		
+		
+		
+		select
             asset_id,
             total_kwh/pump_qty as kwh_ml,
             mh
