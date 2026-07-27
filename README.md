@@ -1,3 +1,31 @@
+        select
+            asset_id,
+            total_kwh/pump_qty as kwh_ml,
+            mh
+        from coss_dws.dws_psr_eng_cons_billing_details_di_year
+        where pump_qty != 0
+            and pump_qty is not null
+            and mh >= ${mh1}
+            
+            
+            
+            
+        select
+            asset_id,
+            sum(total_kwh)/sum(pump_qty) as kwh_ml,
+            mh
+        from coss_dws.dws_psr_eng_cons_billing_details_di_year
+        where pump_qty != 0
+            and pump_qty is not null
+            and mh >= ${mh1}    
+        group by
+          asset_id,
+          mh
+            
+
+
+
+
 核对其计算逻辑：
 select *  from coss_dws.dws_psr_eng_cons_billing_details_di_year  
 where asset_id = 71 and mh = 201503
