@@ -1,3 +1,6 @@
+ https://10.66.168.83/COSS/login
+
+
 drop table if exists coss_dm.dm_tmu_user_customer_item_di;
 
 create table if not exists coss_dm.dm_tmu_user_customer_item_di (
