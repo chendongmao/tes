@@ -1,3 +1,11 @@
+核对其计算逻辑：
+select *  from coss_dws.dws_psr_eng_cons_billing_details_di_year  
+where asset_id = 71 and mh = 201503
+71	201503
+ 
+ 
+ 
+ 
  https://10.66.168.83/COSS/login
 
 
