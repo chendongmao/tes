@@ -1,3 +1,10 @@
+
+<img width="3746" height="1854" alt="image" src="https://github.com/user-attachments/assets/8ed97cd1-a083-45f3-acee-3105750a2c2f" />
+
+
+
+
+
 create table coss_tmp.dm_srs_daily_sr_wl_qty_item_di_arch260723 as 
 select * from coss_dm.dm_srs_daily_sr_wl_qty_item_di 
 where 
