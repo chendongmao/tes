@@ -1,3 +1,45 @@
+delete from coss_dim.dim_ass_wtw_info
+where i_code not in (
+select distinct i_code from coss_dim.dim_wtw_tag_info dwti 
+)
+
+-- coss_dm.dm_tmu_annual_user_customer_item_di definition
+
+-- Drop table
+
+-- DROP TABLE coss_dm.dm_tmu_annual_user_customer_item_di;
+
+CREATE TABLE coss_dm.dm_tmu_annual_user_customer_item_di (
+	statistical_year varchar(50) NOT NULL, -- Statistical Year
+	region_abbr varchar(120) NOT NULL, -- Regional Abbreviation
+	inter_item_code varchar(120) NOT NULL, -- Index Code
+	type_code varchar(120) NOT NULL, -- Type Code
+	item_value numeric(20, 6) NULL, -- Index Value
+	dm_update_time timestamp(6) NULL DEFAULT pg_systimestamp(), -- Dm Update Time
+	dm_load_time timestamp(6) NULL DEFAULT pg_systimestamp(), -- Dm Load Time
+	CONSTRAINT dm_tmu_user_customer_item_di_pkey PRIMARY KEY (statistical_year, region_abbr, inter_item_code, type_code)
+)
+WITH (
+	orientation=row,
+	compression=no
+);
+COMMENT ON TABLE coss_dm.dm_tmu_annual_user_customer_item_di IS 'User Customer Item Table';
+
+-- Column comments
+
+COMMENT ON COLUMN coss_dm.dm_tmu_annual_user_customer_item_di.statistical_year IS 'Statistical Year';
+COMMENT ON COLUMN coss_dm.dm_tmu_annual_user_customer_item_di.region_abbr IS 'Regional Abbreviation';
+COMMENT ON COLUMN coss_dm.dm_tmu_annual_user_customer_item_di.inter_item_code IS 'Index Code';
+COMMENT ON COLUMN coss_dm.dm_tmu_annual_user_customer_item_di.type_code IS 'Type Code';
+COMMENT ON COLUMN coss_dm.dm_tmu_annual_user_customer_item_di.item_value IS 'Index Value';
+COMMENT ON COLUMN coss_dm.dm_tmu_annual_user_customer_item_di.dm_update_time IS 'Dm Update Time';
+COMMENT ON COLUMN coss_dm.dm_tmu_annual_user_customer_item_di.dm_load_time IS 'Dm Load Time';
+
+
+
+
+
+
 
 10.66.168.220:8080/webroot/decision/login?
 
