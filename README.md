@@ -1,3 +1,357 @@
+DROP TABLE coss_dwd.dwd_tmu_meter_svc_dtl_di;
+
+CREATE TABLE coss_dwd.dwd_tmu_meter_svc_dtl_di (
+	meter_id bpchar(10) NULL, -- Meter ID
+	meter_no bpchar(8) NULL, -- Meter number
+	meter_type_code varchar(15) NULL, -- Meter type code
+	meter_sts_ind bpchar(1) NULL, -- Meter status
+	serial_no varchar(16) NULL, -- Serial number
+	rcv_date timestamp(6) NULL, -- Received date
+	retire_date timestamp(6) NULL, -- Retired date
+	"comments" varchar(254) NULL, -- Remarks
+	retire_rsn_code varchar(10) NULL, -- Retired reason code
+	recond_date timestamp(6) NULL, -- Registered date
+	created_date timestamp(6) NULL, -- Created time
+	modified_date timestamp(6) NULL, -- Modified time
+	premise_id bpchar(10) NULL, -- Foreign key, PREMISE
+	hsic_code varchar(8) NULL, -- Industry classification HSIC code
+	hsic_desc varchar(60) NULL, -- Classification Description
+	hsic_desc_tc varchar(60) NULL, -- Classification Description (Traditional Chinese)
+	desc_on_bill varchar(60) NULL, -- Description on Bill
+	desc_on_bill_tc varchar(60) NULL, -- Description on Bill (Traditional Chinese)
+	sic_bcode varchar(40) NULL, -- sic bcode
+	mcategory_code varchar(40) NULL, -- mcategory code
+	dwd_load_time timestamp(6) default current_timestamp, -- Data load time
+	dwd_update_time timestamp(6) default current_timestamp,
+	primary key(meter_id)
+)
+WITH (
+	orientation=row,
+	compression=no,
+	storage_type=ustore,
+	segment=off
+);
+COMMENT ON TABLE coss_dwd.dwd_tmu_meter_svc_dtl_di IS 'Meter info';
+
+-- Column comments
+
+COMMENT ON COLUMN coss_dwd.dwd_tmu_meter_svc_dtl_di.meter_id IS 'Meter ID';
+COMMENT ON COLUMN coss_dwd.dwd_tmu_meter_svc_dtl_di.meter_no IS 'Meter number';
+COMMENT ON COLUMN coss_dwd.dwd_tmu_meter_svc_dtl_di.meter_type_code IS 'Meter type code';
+COMMENT ON COLUMN coss_dwd.dwd_tmu_meter_svc_dtl_di.meter_sts_ind IS 'Meter status';
+COMMENT ON COLUMN coss_dwd.dwd_tmu_meter_svc_dtl_di.serial_no IS 'Serial number';
+COMMENT ON COLUMN coss_dwd.dwd_tmu_meter_svc_dtl_di.rcv_date IS 'Received date';
+COMMENT ON COLUMN coss_dwd.dwd_tmu_meter_svc_dtl_di.retire_date IS 'Retired date';
+COMMENT ON COLUMN coss_dwd.dwd_tmu_meter_svc_dtl_di."comments" IS 'Remarks';
+COMMENT ON COLUMN coss_dwd.dwd_tmu_meter_svc_dtl_di.retire_rsn_code IS 'Retired reason code';
+COMMENT ON COLUMN coss_dwd.dwd_tmu_meter_svc_dtl_di.recond_date IS 'Registered date';
+COMMENT ON COLUMN coss_dwd.dwd_tmu_meter_svc_dtl_di.created_date IS 'Created time';
+COMMENT ON COLUMN coss_dwd.dwd_tmu_meter_svc_dtl_di.modified_date IS 'Modified time';
+COMMENT ON COLUMN coss_dwd.dwd_tmu_meter_svc_dtl_di.premise_id IS 'Foreign key, PREMISE';
+COMMENT ON COLUMN coss_dwd.dwd_tmu_meter_svc_dtl_di.hsic_code IS 'Industry classification HSIC code';
+COMMENT ON COLUMN coss_dwd.dwd_tmu_meter_svc_dtl_di.hsic_desc IS 'Classification Description';
+COMMENT ON COLUMN coss_dwd.dwd_tmu_meter_svc_dtl_di.hsic_desc_tc IS 'Classification Description (Traditional Chinese)';
+COMMENT ON COLUMN coss_dwd.dwd_tmu_meter_svc_dtl_di.desc_on_bill IS 'Description on Bill';
+COMMENT ON COLUMN coss_dwd.dwd_tmu_meter_svc_dtl_di.desc_on_bill_tc IS 'Description on Bill (Traditional Chinese)';
+COMMENT ON COLUMN coss_dwd.dwd_tmu_meter_svc_dtl_di.sic_bcode IS 'sic bcode';
+COMMENT ON COLUMN coss_dwd.dwd_tmu_meter_svc_dtl_di.mcategory_code IS 'mcategory code';
+COMMENT ON COLUMN coss_dwd.dwd_tmu_meter_svc_dtl_di.dwd_load_time IS 'Data load time';
+COMMENT ON COLUMN coss_dwd.dwd_tmu_meter_svc_dtl_di.dwd_update_time IS 'Data Update time';
+
+
+
+
+
+
+drop table if exists coss_dwd.dwd_tmu_premise_svc_dtl_di;
+
+create table if not exists coss_dwd.dwd_tmu_premise_svc_dtl_di (
+	premise_id bpchar(10) null,
+	hsic_code varchar(8) null,
+	hsic_desc varchar(60) null,
+	hsic_desc_tc varchar(60) null,
+	desc_on_bill varchar(60) null,
+	desc_on_bill_tc varchar(60) null,
+	dwd_load_time timestamp(6) default current_timestamp,
+	dwd_update_time timestamp(6) default current_timestamp,
+	primary key(premise_id)
+)
+with (
+	orientation=row,
+	compression=no,
+	storage_type=USTORE,
+	segment=off
+);
+
+-- table comment
+comment on table coss_dwd.dwd_tmu_premise_svc_dtl_di is 'Premise Service Detail';
+
+-- column comment
+comment on column coss_dwd.dwd_tmu_premise_svc_dtl_di.premise_id is 'Premise Id';
+comment on column coss_dwd.dwd_tmu_premise_svc_dtl_di.hsic_code is 'Hsic Code';
+comment on column coss_dwd.dwd_tmu_premise_svc_dtl_di.hsic_desc is 'Hsic Description';
+comment on column coss_dwd.dwd_tmu_premise_svc_dtl_di.hsic_desc_tc is 'Hsic Description Tc';
+comment on column coss_dwd.dwd_tmu_premise_svc_dtl_di.desc_on_bill is 'Description On Bill';
+comment on column coss_dwd.dwd_tmu_premise_svc_dtl_di.desc_on_bill_tc is 'Description On Bill Tc';
+comment on column coss_dwd.dwd_tmu_premise_svc_dtl_di.dwd_load_time is 'Dwd Load Time';
+comment on column coss_dwd.dwd_tmu_premise_svc_dtl_di.dwd_update_time is 'Dwd Update Time';
+
+
+
+
+
+with t_a as (
+    select
+        premise_id,
+        hsic_code,
+        start_date
+    from (
+        select
+            premise_id,
+            hsic_code,
+            start_date,
+            row_number() over(partition by premise_id order by start_date desc) as rk
+        from coss_ods.ods_abpms_tmu_svc_dtl_di
+        where
+          ods_update_time >= '${dwd_update_time}'
+          and hsic_code is not null
+          and premise_id is not null
+    ) sub
+    where rk = 1
+),
+t_b as (
+    select
+        t.hsic_code,
+        t.hsic_desc,
+        t.hsic_desc_tc,
+        t.desc_on_bill,
+        t.desc_on_bill_tc,
+        t1.sic_bcode,
+        t1.mcategory_code
+    from (
+        select
+            hsic_code,
+            hsic_desc,
+            hsic_desc_tc,
+            desc_on_bill,
+            desc_on_bill_tc
+        from coss_ods.ods_abpms_tmu_cfg_hsic_df
+    ) t
+    inner join (
+        select
+            sic_bcode,
+            sic_ecode,
+            mcategory_code
+        from coss_ods.ods_inms_gdhk_dim_sic_mcategory_df
+    ) t1
+        on t.hsic_code = t1.sic_bcode
+)
+insert into coss_dwd.dwd_tmu_premise_svc_dtl_stg_di (
+    premise_id,
+    hsic_code,
+    hsic_desc,
+    hsic_desc_tc,
+    desc_on_bill,
+    desc_on_bill_tc,
+    dwd_load_time,
+    dwd_update_time
+)
+select
+    t.premise_id,
+    t.hsic_code,
+    t1.hsic_desc,
+    t1.hsic_desc_tc,
+    t1.desc_on_bill,
+    t1.desc_on_bill_tc,
+    current_timestamp as dwd_load_time,
+    current_timestamp as dwd_update_time
+from t_a t
+inner join t_b t1
+    on t.hsic_code = t1.hsic_code;
+
+
+-- ****************************************************************************************
+-- subject     areas: TMU
+-- function describe: Premise Service Detail Information
+-- create         by:
+-- create       date: 2026-08-09
+-- modify date                modify by                    modify content
+-- None                       None                         None
+-- source table
+-- coss_ods.ods_inms_gdhk_dim_sic_mcategory_df
+-- coss_ods.ods_abpms_tmu_cfg_hsic_df
+-- coss_ods.ods_abpms_tmu_svc_dtl_di
+-- target table
+-- coss_dwd.dwd_tmu_premise_svc_dtl_di
+-- ****************************************************************************************
+insert into coss_dwd.dwd_tmu_premise_svc_dtl_di
+select
+    premise_id,
+    hsic_code,
+    hsic_desc,
+    hsic_desc_tc,
+    desc_on_bill,
+    desc_on_bill_tc,
+    current_timestamp dwd_load_time,
+    current_timestamp dwd_update_time
+from coss_dwd.dwd_tmu_premise_svc_dtl_stg_di
+on duplicate key update
+    hsic_code = values(hsic_code),
+    hsic_desc = values(hsic_desc),
+    hsic_desc_tc = values(hsic_desc_tc),
+    desc_on_bill = values(desc_on_bill),
+    desc_on_bill_tc = values(desc_on_bill_tc),
+    dwd_update_time = values(dwd_update_time)
+
+
+
+
+
+
+create table if not exists coss_dm.dm_tmu_annual_user_customer_item_stg_di (
+    statistical_year varchar(50) not null, -- Statistical Year
+    region_abbr varchar(120) not null, -- Regional Abbreviation
+    inter_item_code varchar(120) not null, -- Index Code
+    type_code varchar(120) not null, -- Type Code
+    item_value numeric(20, 6) null, -- Index Value
+    dm_update_time timestamp(6) null default pg_systimestamp(), -- Dm Update Time
+    dm_load_time timestamp(6) null default pg_systimestamp(), -- Dm Load Time
+    primary key (statistical_year, region_abbr, inter_item_code, type_code)
+);
+
+with t_a as (
+    select
+        meter_no,
+        region_abbr,
+        case
+            when amr = 'Y' then 'ME_TY_000002'
+            else 'ME_TY_000001'
+        end as type_code
+    from coss_dwd.dwd_ass_user_meter_di
+    where meter_status = 'Active'
+      and region_abbr is not null
+)
+insert into coss_dm.dm_tmu_annual_user_customer_item_stg_di
+select
+	statistical_year,
+	region_abbr,
+	inter_item_code,
+	type_code,
+	item_value,
+	dm_update_time,
+	dm_load_time
+from
+(
+select
+    to_char(current_timestamp, 'YYYY') as statistical_year,
+    region_abbr,
+    'US_CM_000001' as inter_item_code,
+    type_code,
+    count(distinct meter_no) as item_value,
+    current_timestamp as dm_update_time,
+    current_timestamp as dm_load_time
+from t_a
+group by
+    region_abbr,
+    type_code
+
+union all
+
+select
+    to_char(current_timestamp, 'YYYY') as statistical_year,
+    'HKSAR' as region_abbr,
+    'US_CM_000001' as inter_item_code,
+    type_code,
+    count(distinct meter_no) as item_value,
+    current_timestamp as dm_update_time,
+    current_timestamp as dm_load_time
+from t_a
+group by
+    type_code
+)
+
+
+
+-- ****************************************************************************************
+-- subject     areas: TMU
+-- function describe: User Customer Item
+-- create         by:
+-- create       date: 2026-08-09
+-- modify date                modify by                    modify content
+-- None                       None                         None
+-- source table
+-- coss_dwd.dwd_ass_user_meter_di
+-- target table
+-- coss_dm.dm_tmu_annual_user_customer_item_di
+-- ****************************************************************************************
+insert into coss_dm.dm_tmu_annual_user_customer_item_di (
+    statistical_year,
+    region_abbr,
+    inter_item_code,
+    type_code,
+    item_value,
+    dm_update_time,
+    dm_load_time
+)
+select
+    statistical_year,
+    region_abbr,
+    inter_item_code,
+    type_code,
+    item_value,
+    dm_update_time,
+    dm_load_time
+from coss_dm.dm_tmu_annual_user_customer_item_stg_di
+on duplicate key update
+    item_value = values(item_value),
+    dm_update_time = values(dm_update_time);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 delete from coss_dim.dim_ass_wtw_info
 where i_code not in (
 select distinct i_code from coss_dim.dim_wtw_tag_info dwti 
