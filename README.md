@@ -1,10 +1,3 @@
-ABPMS	dm_tmu_etl_customer_meter_day	Clean and load customer meter data in the dwd layer
-ABPMS	dwd_tmu_etl_premise_svc_day	Clean and load permise service detail data from ods schema
-ABPMS	ods_abpms_extract_user_bill_day	"	Extract information such as users,meter,meter reading from ABPMS system."
-<img width="1243" height="67" alt="image" src="https://github.com/user-attachments/assets/ad67901e-19f6-4935-975c-fd09af20788d" />
-
-
-
 
 
 
