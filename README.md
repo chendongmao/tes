@@ -1,3 +1,11 @@
+select distinct sr_id  from coss_dm.dm_srs_daily_sr_wl_qty_item_di
+where 
+sr_id not in(
+select sr_id
+from coss_dim.dim_sr_installation_info
+where is_qty = 1)
+and qty_del is not null 
+
 
 
 
