@@ -1,3 +1,111 @@
+# -*- coding: utf-8 -*-
+# File : point_in_shape.py
+# Author : CDM
+# Date : 2026/5/18 10:55
+
+import pandas as pd
+import json
+from shapely.geometry import Point, Polygon
+from shapely.strtree import STRtree
+import warnings
+
+warnings.filterwarnings('ignore')
+
+def match_wq_complaint_sz(df_areas: pd.DataFrame, df_orders: pd.DataFrame) -> pd.DataFrame:
+    """
+    Spatial matching using R-tree index (point-by-point query, more stable)
+    """
+    if len(df_orders) == 0:
+        return pd.DataFrame(columns=["ordernum", "supply_id", "supply_code", "water_type_code", "ordernum"])
+
+    # Parse polygons
+    geometry_list = []
+    area_metadata = []
+
+    for _, row in df_areas.iterrows():
+        try:
+            coords = [(p[0], p[1]) for p in json.loads(row["geometry"])[0]]
+            polygon = Polygon(coords)
+            geometry_list.append(polygon)
+            area_metadata.append({
+			    "supply_id": row["supply_id"],
+                "supply_code": row["supply_code"],
+                "water_type_code": row["water_type_code"]
+            })
+        except Exception as e:
+            print(f"Error parsing geometry for area {row['supply_code']}: {e}")
+            continue
+
+    if not geometry_list:
+        return pd.DataFrame(columns=["ordernum", "supply_id", "supply_code", "water_type_code", "ordernum"])
+
+    # Build spatial index
+    spatial_index = STRtree(geometry_list)
+
+    # Preprocess order data
+    df_orders = df_orders.copy()
+    df_orders["coordinate_x"] = pd.to_numeric(df_orders["coordinate_x"], errors="coerce")
+    df_orders["coordinate_y"] = pd.to_numeric(df_orders["coordinate_y"], errors="coerce")
+    df_orders = df_orders.dropna(subset=["coordinate_x", "coordinate_y"])
+
+    # Match point by point (accelerated with spatial index)
+    match_results = []
+
+    for _, order in df_orders.iterrows():
+        point = Point(order.coordinate_x, order.coordinate_y)
+
+        # Query candidate areas using spatial index (returns indices in geometry_list)
+        candidate_indices = spatial_index.query(point)
+
+        # Iterate candidates for precise judgment
+        matched = False
+        for area_idx in candidate_indices:
+            # Ensure valid index
+            if area_idx < len(geometry_list):
+                if geometry_list[area_idx].contains(point):
+                    match_results.append((
+                        order.ordernum,
+					    area_metadata[area_idx]["supply_id"],
+                        area_metadata[area_idx]["supply_code"],
+                        area_metadata[area_idx]["water_type_code"]
+                    ))
+                    matched = True
+                    break
+
+    print(f"Matched {len(match_results)} out of {len(df_orders)} order incidents")
+
+    return pd.DataFrame(
+        match_results,
+        columns=["ordernum", "supply_id", "supply_code", "water_type_code"]
+    )
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 -- drop table if exists coss_dwd.dwd_cus_water_quality_accident_wo_mini;
 
 drop table if exists coss_dwd.dwd_cus_water_quality_accident_wo_mini;
