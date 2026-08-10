@@ -1,3 +1,147 @@
+-- coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di definition
+
+-- Drop table
+
+-- DROP TABLE coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di;
+
+CREATE TABLE coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di (
+	recid int8 NOT NULL, -- Announcement ID
+	actionregion int4 NULL, -- Action Region
+	subactionregion int4 NULL, -- Sub Action Region
+	actiongroup varchar(50) NULL, -- Action Group
+	"type" int4 NULL, -- Water Supply Type
+	"level" int4 NULL, -- Water Cut Off Level
+	cutofftime timestamp NULL, -- Water Cut Off Time
+	noticetime timestamp NULL, -- Notice Publish Time
+	prerecoverytime timestamp NULL, -- Expected Recovery Time
+	actualrecoverytime timestamp NULL, -- Actual Recovery Time
+	linkperson1sc varchar(100) NULL, -- Contact Person 1(Simplified Chinese)
+	linkphone1 varchar(20) NULL, -- Contact Phone 1
+	linkperson2sc varchar(100) NULL, -- Contact Person 2(Simplified Chinese)
+	linkphone2 varchar(20) NULL, -- Contact Phone 2
+	buildlocation varchar(100) NULL, -- Construction Location
+	locationcoord varchar(100) NULL, -- Location Coordinate
+	state varchar(5) NULL, -- Status
+	cutoffcase int4 NULL, -- Water Cut Off Reason Code
+	cutoffcaseen varchar(100) NULL, -- Water Cut Off Reason English
+	cutoffcasesc varchar(100) NULL, -- Water Cut Off Reason Simplified Chinese
+	pushoff varchar(100) NULL, -- Publish Target Channel
+	noticecontentsc varchar(1000) NULL, -- Notice Content Simplified Chinese
+	noticecontenttc varchar(1000) NULL, -- Notice Content Traditional Chinese
+	noticecontenten varchar(1000) NULL, -- Notice Content English
+	remarkforinside varchar(1000) NULL, -- Internal Remark
+	remarkforoutsidesc varchar(1000) NULL, -- External Remark Simplified Chinese
+	affectedaddresssc varchar(1000) NULL, -- Affected Address Simplified Chinese
+	affectedaddresstc varchar(1000) NULL, -- Affected Address Traditional Chinese
+	affectedaddressen varchar(1000) NULL, -- Affected Address English
+	createdby int4 NULL, -- Creator User ID
+	createdat timestamp NULL, -- Record Create Time
+	updatedby int4 NULL, -- Modifier User ID
+	lastupdateat timestamp NULL, -- Last Update Time
+	watsunid int8 NULL, -- WATSUN Query ID
+	title int4 NULL, -- Title Code
+	forml int4 NULL, -- Water Cut Off Notice Sent Flag
+	linkperson2tc varchar(100) NULL, -- Contact Person 2 Traditional Chinese
+	linkperson2en varchar(100) NULL, -- Contact Person 2 English
+	relateorder varchar(50) NULL, -- Related Work Order No
+	filesc varchar(255) NULL, -- Attachment File Simplified Chinese
+	filetc varchar(255) NULL, -- Attachment File Traditional Chinese
+	fileen varchar(255) NULL, -- Attachment File English
+	locationx varchar(100) NULL, -- Coordinate X
+	locationy varchar(100) NULL, -- Coordinate Y
+	remarkforoutsidetc varchar(1000) NULL, -- External Remark Traditional Chinese
+	remarkforoutsideen varchar(1000) NULL, -- External Remark English
+	createname varchar(50) NULL, -- Creator Name
+	updatename varchar(50) NULL, -- Modifier Name
+	createposttitle varchar(50) NULL, -- Create Post Title
+	updateposttitle varchar(50) NULL, -- Update Post Title
+	linkperson1tc varchar(100) NULL, -- Contact Person 1 Traditional Chinese
+	linkperson1en varchar(100) NULL, -- Contact Person 1 English
+	prerecoverytimeend timestamp NULL, -- Expected Recovery End Time
+	ods_load_time timestamp(6) NULL DEFAULT pg_systimestamp(), -- Ods Table Load Timestamp
+	ods_update_time timestamp(6) NULL DEFAULT pg_systimestamp(), -- Ods Table Update Timestamp
+	CONSTRAINT ods_pems_cus_t_annon_watercutoffnotice_di_pkey PRIMARY KEY (recid)
+)
+WITH (
+	orientation=row,
+	compression=no,
+	storage_type=USTORE,
+	segment=off
+);
+COMMENT ON TABLE coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di IS 'PEMS System Water Cut Off Announcement Table';
+
+-- Column comments
+
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.recid IS 'Announcement ID';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.actionregion IS 'Action Region';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.subactionregion IS 'Sub Action Region';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.actiongroup IS 'Action Group';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di."type" IS 'Water Supply Type';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di."level" IS 'Water Cut Off Level';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.cutofftime IS 'Water Cut Off Time';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.noticetime IS 'Notice Publish Time';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.prerecoverytime IS 'Expected Recovery Time';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.actualrecoverytime IS 'Actual Recovery Time';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.linkperson1sc IS 'Contact Person 1(Simplified Chinese)';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.linkphone1 IS 'Contact Phone 1';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.linkperson2sc IS 'Contact Person 2(Simplified Chinese)';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.linkphone2 IS 'Contact Phone 2';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.buildlocation IS 'Construction Location';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.locationcoord IS 'Location Coordinate';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.state IS 'Status';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.cutoffcase IS 'Water Cut Off Reason Code';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.cutoffcaseen IS 'Water Cut Off Reason English';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.cutoffcasesc IS 'Water Cut Off Reason Simplified Chinese';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.pushoff IS 'Publish Target Channel';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.noticecontentsc IS 'Notice Content Simplified Chinese';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.noticecontenttc IS 'Notice Content Traditional Chinese';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.noticecontenten IS 'Notice Content English';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.remarkforinside IS 'Internal Remark';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.remarkforoutsidesc IS 'External Remark Simplified Chinese';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.affectedaddresssc IS 'Affected Address Simplified Chinese';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.affectedaddresstc IS 'Affected Address Traditional Chinese';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.affectedaddressen IS 'Affected Address English';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.createdby IS 'Creator User ID';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.createdat IS 'Record Create Time';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.updatedby IS 'Modifier User ID';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.lastupdateat IS 'Last Update Time';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.watsunid IS 'WATSUN Query ID';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.title IS 'Title Code';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.forml IS 'Water Cut Off Notice Sent Flag';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.linkperson2tc IS 'Contact Person 2 Traditional Chinese';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.linkperson2en IS 'Contact Person 2 English';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.relateorder IS 'Related Work Order No';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.filesc IS 'Attachment File Simplified Chinese';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.filetc IS 'Attachment File Traditional Chinese';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.fileen IS 'Attachment File English';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.locationx IS 'Coordinate X';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.locationy IS 'Coordinate Y';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.remarkforoutsidetc IS 'External Remark Traditional Chinese';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.remarkforoutsideen IS 'External Remark English';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.createname IS 'Creator Name';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.updatename IS 'Modifier Name';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.createposttitle IS 'Create Post Title';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.updateposttitle IS 'Update Post Title';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.linkperson1tc IS 'Contact Person 1 Traditional Chinese';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.linkperson1en IS 'Contact Person 1 English';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.prerecoverytimeend IS 'Expected Recovery End Time';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.ods_load_time IS 'Ods Table Load Timestamp';
+COMMENT ON COLUMN coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di.ods_update_time IS 'Ods Table Update Timestamp';
+
+-- Permissions
+
+ALTER TABLE coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di OWNER TO coss;
+GRANT ALL ON TABLE coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di TO coss;
+
+
+
+
+
+
+
+
+
+
 # -*- coding: utf-8 -*-
 # File : point_in_shape.py
 # Author : CDM
