@@ -1,3 +1,349 @@
+-- drop table if exists coss_dwd.dwd_cus_water_quality_accident_wo_mini;
+
+drop table if exists coss_dwd.dwd_cus_water_quality_accident_wo_mini;
+
+create table if not exists coss_dwd.dwd_cus_water_quality_accident_wo_mini (
+    ordernum varchar(150) null, -- Ordernum
+    buildingno varchar(150) null, -- Building NO
+    relateorder varchar(150) null, -- Relate Order
+    case_num int8 null, -- Case Num
+    dwd_update_time timestamp(6) default current_timestamp, -- Dwd Update Time
+    dwd_load_time timestamp(6) default current_timestamp, -- Dwd Load Time
+    primary key (ordernum)
+)
+with (
+    orientation=row,
+    compression=no,
+    storage_type=USTORE,
+    segment=off
+);
+
+-- table comment
+comment on table coss_dwd.dwd_cus_water_quality_accident_wo_mini is 'Customer Water Quality Accident Work Order Mini';
+
+-- column comment
+comment on column coss_dwd.dwd_cus_water_quality_accident_wo_mini.ordernum is 'Ordernum';
+comment on column coss_dwd.dwd_cus_water_quality_accident_wo_mini.buildingno is 'Building NO';
+comment on column coss_dwd.dwd_cus_water_quality_accident_wo_mini.relateorder is 'Relate Order';
+comment on column coss_dwd.dwd_cus_water_quality_accident_wo_mini.case_num is 'Case Num';
+comment on column coss_dwd.dwd_cus_water_quality_accident_wo_mini.dwd_update_time is 'Dwd Update Time';
+comment on column coss_dwd.dwd_cus_water_quality_accident_wo_mini.dwd_load_time is 'Dwd Load Time';
+
+
+-- ****************************************************************************************
+-- Subject     Areas: Customer Service
+-- Function Describe: Customer Service WO Details
+-- Create         By:
+-- Create       Date: 2026-07-07
+-- Modify Date                Modify By                    Modify Content
+-- None                       None                         None
+-- Source Table:  coss_ods.ods_pems_cus_t_order_workorder_entity_mini_year
+-- Target Table:  coss_dwd.dwd_cus_water_quality_accident_wo_mini
+-- ****************************************************************************************
+
+with t_a as (
+    select distinct relateorder
+    from coss_ods.ods_pems_cus_t_order_workorder_entity_mini_year
+    where relateorder is not null
+      and relateorder != ''
+      and ods_update_time >= '${dwd_update_time}'
+),
+t_b as (
+    select
+        ordernum,
+        decode(relateorder, '', ordernum, relateorder) as relateorder
+    from coss_ods.ods_pems_cus_t_order_workorder_entity_mini_year t
+    where exists (
+        select 1
+        from t_a s
+        where s.relateorder = t.ordernum
+    )
+    or exists (
+        select 1
+        from t_a s
+        where s.relateorder = t.relateorder
+    )
+),
+t_c as (
+    select
+        ordernum,
+        relateorder,
+        case_num,
+        current_timestamp as dwd_update_time,
+        current_timestamp as dwd_load_time
+    from (
+        select
+            ordernum,
+            relateorder,
+            count(1) over(partition by relateorder) as case_num
+        from t_b
+    ) sub
+    where case_num > 1
+)
+insert into coss_dwd.dwd_cus_water_quality_accident_wo_stg_mini (
+    ordernum,
+    relateorder,
+    case_num,
+    dwd_update_time,
+    dwd_load_time
+)
+select
+    ordernum,
+    relateorder,
+    case_num,
+    dwd_update_time,
+    dwd_load_time
+from t_c;
+
+
+insert into coss_dwd.dwd_cus_water_quality_accident_wo_mini (
+    ordernum,
+    buildingno,
+    relateorder,
+    case_num,
+    dwd_update_time,
+    dwd_load_time
+)
+select
+    ordernum,
+    buildingno,
+    relateorder,
+    case_num,
+    current_timestamp as dwd_update_time,
+    current_timestamp as dwd_load_time
+from coss_dwd.dwd_cus_water_quality_accident_wo_stg_mini
+on duplicate key update
+    relateorder = values(relateorder),
+    buildingno = values(buildingno),
+    case_num = values(case_num),
+    dwd_update_time = values(dwd_update_time);
+
+
+
+
+create table if not exists coss_dwd.dwd_cus_water_quality_accident_impact_stg_mini (
+    ordernum varchar(64) not null, -- Order Num
+    incident_cpt_no numeric(15) null, -- Number Of Incident Complaints
+    water_quality_no numeric(15) null, -- Number Of Water Quality Samples
+    meter_clearance_no numeric(15) null, -- Number Of Water Meter Clearance Requests
+    dwd_load_time timestamp(6) null default pg_systimestamp(), -- Data Loading Time
+    dwd_update_time timestamp(6) null default pg_systimestamp() -- Data Update Time
+)
+with (
+    orientation=row,
+    compression=no,
+    storage_type=ustore,
+    segment=off
+);
+
+-- ****************************************************************************************
+-- Subject Areas: Customer Service Water Quality Accident Statistics
+-- Function Describe: Statistical water sampling and meter cleaning quantity by relateorder
+-- Source Table 1: coss_dwd.dwd_cus_water_quality_accident_wo_mini
+-- Source Table 2: coss_ods.ods_pems_cus_water_sample_number_di
+-- Source Table 3: coss_ods.ods_pems_cus_meter_clean_number_di
+-- Target Table: coss_dwd.dwd_cus_water_quality_accident_impact_mini
+-- ****************************************************************************************
+
+
+ where dwd_update_time >= '${dwd_update_time}'
+
+
+
+with base_relate as (
+    -- 1、基础维度：按relateorder统计投诉工单总数 incident_cpt_no
+    select
+        relateorder as ordernum,
+        count(distinct ordernum) as incident_cpt_no
+    from coss_dwd.dwd_cus_water_quality_accident_wo_mini
+    where dwd_update_time >= '${dwd_update_time}'
+    group by relateorder
+),
+sample_stat as (
+    -- 2、按relateorder汇总水样数量 water_quality_no
+    select
+        a.relateorder,
+        sum(b.sample_num) as water_quality_no
+    from coss_dwd.dwd_cus_water_quality_accident_wo_mini a
+    left join coss_ods.ods_pems_cus_water_sample_number_di b
+        on a.ordernum = b.ordernum
+    group by a.relateorder
+),
+clean_stat as (
+    -- 3、按relateorder汇总水表清洗数量 meter_clearance_no
+    select
+        a.relateorder,
+        sum(b.clean_num) as meter_clearance_no
+    from coss_dwd.dwd_cus_water_quality_accident_wo_mini a
+    left join coss_ods.ods_pems_cus_meter_clean_number_di b
+        on a.ordernum = b.ordernum
+    group by a.relateorder
+)
+insert into coss_dwd.dwd_cus_water_quality_accident_impact_stg_mini (
+    ordernum,
+    incident_cpt_no,
+    water_quality_no,
+    meter_clearance_no,
+    dwd_load_time,
+    dwd_update_time
+)
+select
+    br.ordernum,
+    br.incident_cpt_no,
+    coalesce(ss.water_quality_no, 0) as water_quality_no,
+    coalesce(cs.meter_clearance_no, 0) as meter_clearance_no,
+    current_timestamp as dwd_load_time,
+    current_timestamp as dwd_update_time
+from base_relate br
+left join sample_stat ss
+    on br.ordernum = ss.relateorder
+left join clean_stat cs
+    on br.ordernum = cs.relateorder
+
+
+-- ****************************************************************************************
+-- Subject     Areas: Customer Service
+-- Function Describe: Customer Service Accident Impact
+-- Create         By:
+-- Create       Date: 2026-06-30
+-- Modify Date                Modify By                    Modify Content
+-- None                       None                         None
+-- Source Table:  coss_dwd.dwd_cus_water_quality_accident_wo_mini
+-- Source Table:  coss_ods.ods_pems_cus_meter_clean_number_di
+-- Source Table:  coss_ods.ods_pems_cus_water_sample_number_di
+-- Target Table:  coss_dwd.dwd_cus_water_quality_accident_impact_mini
+-- ****************************************************************************************
+insert into coss_dwd.dwd_cus_water_quality_accident_impact_mini (
+    ordernum,
+    incident_cpt_no,
+    water_quality_no,
+    meter_clearance_no,
+    dwd_load_time,
+    dwd_update_time
+)
+select
+    ordernum,
+    incident_cpt_no,
+    water_quality_no,
+    meter_clearance_no,
+    dwd_load_time,
+    dwd_update_time
+from coss_dwd.dwd_cus_water_quality_accident_impact_stg_mini
+on duplicate key update
+    incident_cpt_no = values(incident_cpt_no),
+    water_quality_no = values(water_quality_no),
+    meter_clearance_no = values(meter_clearance_no),
+    dwd_update_time = values(dwd_update_time);
+
+
+
+
+with
+-- 1. Water Quality Complains WO
+t_work_a as (
+    select
+        ordernum,
+        relateorder
+    from coss_dwd.dwd_cus_water_quality_wo_details_mini
+    where dwd_update_time >= '${dm_update_time}'
+),
+t_work_b as (
+    select
+        distinct coalesce(relateorder, ordernum) as relateorder,
+        affect_building_code
+    from coss_dwd.dwd_cus_water_quality_wo_details_mini t
+    where exists (
+        select 1 from t_work_a
+        where t.ordernum = t_work_a.ordernum
+           or (t.relateorder = t_work_a.relateorder and t_work_a.relateorder is not null)
+    )
+),
+t_work_c as (
+    select
+        t.relateorder         as ordernum,
+        count(t.affect_building_code) as affect_building_code,
+        sum(t1.meter_num)     as affect_meter_no,
+        sum(t1.population)    as affect_people_no
+    from t_work_b t
+    inner join coss_dws.dws_tmu_building_di t1
+        on t.affect_building_code = t1.building_csu_id
+    group by relateorder
+)
+insert into coss_dm.dm_cus_water_quality_accident_impact_stg_mini
+(
+    ordernum,
+    affect_building_no,
+    affect_meter_no,
+    affect_people_no,
+    incident_cpt_no,
+    water_quality_no,
+    meter_clearance_no,
+    dm_load_time,
+    dm_update_time
+)
+select
+    ordernum,
+    max(affect_building_code) as affect_building_no,
+    max(affect_meter_no)      as affect_meter_no,
+    max(affect_people_no)     as affect_people_no,
+    max(incident_cpt_no)      as incident_cpt_no,
+    max(water_quality_no)     as water_quality_no,
+    max(meter_clearance_no)   as meter_clearance_no,
+    current_timestamp         as dm_load_time,
+    current_timestamp         as dm_update_time
+from
+(
+    select
+        ordernum,
+        affect_building_code,
+        affect_meter_no,
+        affect_people_no,
+        null as incident_cpt_no,
+        null as water_quality_no,
+        null as meter_clearance_no
+    from t_work_c t
+
+    union all
+
+    select
+        ordernum,
+        null as affect_building_code,
+        null as affect_meter_no,
+        null as affect_people_no,
+        incident_cpt_no,
+        water_quality_no,
+        meter_clearance_no
+    from coss_dwd.dwd_cus_water_quality_accident_impact_mini
+        where dwd_update_time >= '${dm_update_time}'
+)
+group by ordernum;
+
+
+
+
+
+
+
+select * from  coss_ods.ods_pems_cus_t_order_workorder_mini_year;
+select * from  coss_ods.ods_pems_cus_t_order_workorder_entity_mini_year;
+select * from  coss_dwd.dwd_cus_water_quality_wo_details_mini ;
+select * from coss_dwd.dwd_cus_water_quality_accident_wo_mini ;
+select * from coss_dwd.dwd_cus_water_quality_fa_details_mini;
+select * from coss_dwd.dwd_cus_water_quality_accident_impact_mini ;
+select * from coss_dm.dm_cus_water_quality_wo_details_mini;
+select * from coss_dm.dm_cus_water_quality_impact_build_mini;
+select * from coss_dm.dm_cus_water_quality_accident_impact_mini;
+
+
+
+
+
+
+
+
+
+
+
 
 
 -- DROP TABLE coss_dim.dim_water_quality_accident_sz_installation_info_1;
