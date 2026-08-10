@@ -1,3 +1,33 @@
+
+
+-- DROP TABLE coss_dim.dim_water_quality_accident_sz_installation_info_1;
+
+CREATE TABLE coss_dim.dim_water_quality_accident_sz_installation_info_1 (
+	ordernum varchar(200) NOT NULL, -- The Work Order Number
+	supply_code varchar(100) NOT NULL, -- Supply Code
+	supply_id varchar(100) NOT NULL, -- Supply ID
+	dim_load_time timestamp(6) NULL DEFAULT pg_systimestamp(), -- Data Loading time
+	dim_update_time timestamp(6) NULL DEFAULT pg_systimestamp(), -- Data Update time
+	CONSTRAINT dim_water_quality_accident_sz_installation_info_1_pkey PRIMARY KEY (ordernum, supply_code, supply_id)
+)
+WITH (
+	orientation=row,
+	compression=no
+);
+COMMENT ON TABLE coss_dim.dim_water_quality_accident_sz_installation_info_1 IS 'Water Quality Accident Supply Zone Installation Information';
+
+-- Column comments
+COMMENT ON COLUMN coss_dim.dim_water_quality_accident_sz_installation_info_1.ordernum IS 'The Work Order Number';
+COMMENT ON COLUMN coss_dim.dim_water_quality_accident_sz_installation_info_1.supply_code IS 'Supply Code';
+COMMENT ON COLUMN coss_dim.dim_water_quality_accident_sz_installation_info_1.supply_id IS 'Supply ID';
+COMMENT ON COLUMN coss_dim.dim_water_quality_accident_sz_installation_info_1.dim_load_time IS 'Data Loading time';
+COMMENT ON COLUMN coss_dim.dim_water_quality_accident_sz_installation_info_1.dim_update_time IS 'Data Update time';
+
+
+
+
+
+
 select distinct sr_id  from coss_dm.dm_srs_daily_sr_wl_qty_item_di
 where 
 sr_id not in(
