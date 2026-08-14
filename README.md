@@ -1,3 +1,726 @@
+
+
+-- subject     areas: water assets areas
+-- function describe: calculate historical stock of water meters by year / region / meter type
+-- create       date: 2026/08/14
+-- modify date     modify by      modify content 
+-- Modify Point: 
+-- 1. Add truncate tmp table to avoid unique key conflict
+-- 2. Fix month_meter join typo
+-- 3. Keep original ON DUPLICATE KEY UPDATE syntax
+-- 4. count(*) align with single region version
+-- source table
+-- coss_dwd.dwd_ass_user_meter_di                                     water meter information table         
+-- target table
+-- coss_dm.dm_tmu_annual_user_customer_item_stg_di                   Annual index of user meter by region & meter type
+-- temp table
+-- coss_dm.dm_tmu_annual_user_customer_item_stg_di_tmp              Temporary staging table for historical meter stock calculation
+
+-- Step1 创建临时中转表
+drop table if exists coss_dm.dm_tmu_annual_user_customer_item_stg_di_tmp;
+create table if not exists coss_dm.dm_tmu_annual_user_customer_item_stg_di_tmp (
+	statistical_year varchar(4),
+	region_abbr varchar(5),
+	inter_item_code varchar(12),
+	type_code varchar(12),
+	item_value float8,
+    dm_load_time timestamp(6) default current_timestamp,
+	dm_update_time timestamp(6) default current_timestamp,
+    primary key (statistical_year,region_abbr,inter_item_code,type_code)
+)
+with (orientation = row, compression = no)
+distribute by hash (statistical_year,region_abbr,type_code);
+
+-- 临时表字段注释
+comment on table coss_dm.dm_tmu_annual_user_customer_item_stg_di_tmp is 'Temporary table for historical user meter index by region & meter type';
+comment on column coss_dm.dm_tmu_annual_user_customer_item_stg_di_tmp.statistical_year is 'Statistical Year';
+comment on column coss_dm.dm_tmu_annual_user_customer_item_stg_di_tmp.region_abbr is 'Regional Abbreviation';
+comment on column coss_dm.dm_tmu_annual_user_customer_item_stg_di_tmp.inter_item_code is 'Internal Item Code';
+comment on column coss_dm.dm_tmu_annual_user_customer_item_stg_di_tmp.type_code is 'Meter Type Code';
+comment on column coss_dm.dm_tmu_annual_user_customer_item_stg_di_tmp.item_value is 'Index Value';
+comment on column coss_dm.dm_tmu_annual_user_customer_item_stg_di_tmp.dm_load_time is 'Data Loading Time';
+comment on column coss_dm.dm_tmu_annual_user_customer_item_stg_di_tmp.dm_update_time is 'Data Update Time';
+
+-- 【关键修复】每次运行清空临时表，杜绝主键重复
+truncate table coss_dm.dm_tmu_annual_user_customer_item_stg_di_tmp;
+
+-- Step2 CTE时序分层计算（新增type_code水表类型拆分，口径与原历史存量完全对齐）
+with all_months as (
+    select
+	    'A' as auxiliary,
+        generate_series as month_start
+    from generate_series (
+        '2000-01-01'::date,                      -- start month
+        date_trunc('month', current_date)::date, -- end month
+        interval '1 month'                       -- step length
+    ) as generate_series
+), all_region_dim as (
+	-- 获取标准区域，排除HKSAR，新增未知区域XXXX
+    select 
+        'A' as auxiliary,
+	    region_abbr
+    from coss_dim.dim_region_info
+    where region_abbr != 'HKSAR'
+    union all
+    select 'A' as auxiliary,'XXXX' as region_abbr
+), all_type_dim as (
+	-- 水表类型维度：普通表、远传表，用于补齐维度笛卡尔积
+	select 'ME_TY_000001' as type_code union select 'ME_TY_000002' as type_code
+), all_dims as (
+    select
+        b.month_start,
+	    a.region_abbr,
+		c.type_code
+    from all_region_dim a
+	inner join all_months b
+	on a.auxiliary = b.auxiliary
+	cross join all_type_dim c
+), all_meter_source as (
+	-- 基础水表数据源，拆分区域、水表类型、业务时间字段
+	select
+	    meter_no,
+		coalesce(region_abbr, 'XXXX') as region_abbr,
+		case when amr = 'Y' then 'ME_TY_000002' else 'ME_TY_000001' end as type_code,
+		least(coalesce(recond_time,'9999-01-01 00:00:00'), coalesce(retire_time,'9999-01-01 00:00:00'), coalesce(receive_time,'9999-01-01 00:00:00')) as receive_time,
+		greatest(coalesce(retire_time,'1900-01-01 00:00:00'), coalesce(receive_time,'1900-01-01 00:00:00')) as retire_time,
+		greatest(coalesce(recond_time,'1900-01-01 00:00:00'), coalesce(retire_time,'1900-01-01 00:00:00'), coalesce(receive_time,'1900-01-01 00:00:00')) as recond_time,
+		meter_status
+	from coss_dwd.dwd_ass_user_meter_di
+), all_meter_count as (
+    select
+	    date_trunc('month', receive_time)::date as month_start,
+		region_abbr,
+		type_code,
+		count(*) as all_total
+    from all_meter_source
+	where recond_time is not null or retire_time is not null or receive_time is not null
+	  and receive_time >= '2000-01-01 00:00:00'
+	group by region_abbr, type_code, date_trunc('month', receive_time)
+), all_meter_count_null as (
+    select
+	    region_abbr,
+		type_code,
+		count(*) as all_total_null
+    from all_meter_source
+    where (recond_time is null and retire_time is null and receive_time is null) 
+	    or receive_time < '2000-01-01 00:00:00'
+	group by region_abbr, type_code
+), all_filled_counts as (
+    select
+        a.month_start,
+		a.region_abbr,
+		a.type_code,
+        b.all_total
+    from all_dims a
+    left join all_meter_count b
+    on a.month_start = b.month_start and a.region_abbr = b.region_abbr and a.type_code = b.type_code
+), all_meter as (
+    select
+        to_char(a.month_start, 'YYYYMM') as statistical_month,
+		a.region_abbr,
+		a.type_code,
+        coalesce(
+			sum(a.all_total) over (partition by a.region_abbr,a.type_code order by a.month_start) + coalesce(b.all_total_null, 0), 
+			coalesce(b.all_total_null, 0)
+		) as all_count
+    from all_filled_counts a
+    left join all_meter_count_null b
+	on a.region_abbr = b.region_abbr and a.type_code = b.type_code
+), retired_meter_counts as (                             
+    select
+	    date_trunc('month', retire_time)::date as month_start,
+		region_abbr,
+		type_code,
+		count(*) as retired_total
+    from all_meter_source
+    where meter_status = 'Retired' and (retire_time is not null or receive_time is not null)
+	  and retire_time >= '2000-01-01 00:00:00'
+	group by region_abbr, type_code, date_trunc('month', retire_time)
+), retired_meter_counts_null as (
+    select
+	    region_abbr,
+		type_code,
+		count(*) as retired_total_null
+    from all_meter_source
+    where meter_status = 'Retired' 
+	  and ((receive_time is null and retire_time is null) or retire_time < '2000-01-01 00:00:00')
+	group by region_abbr, type_code
+), retired_filled_counts as (
+    select
+        a.month_start,
+		a.region_abbr,
+		a.type_code,
+        b.retired_total
+    from all_dims a
+    left join retired_meter_counts b
+    on a.month_start = b.month_start and a.region_abbr = b.region_abbr and a.type_code = b.type_code
+), retired_meter as (
+    select
+        to_char(a.month_start, 'YYYYMM') as statistical_month,
+		a.region_abbr,
+		a.type_code,
+        coalesce(
+			sum(a.retired_total) over (partition by a.region_abbr,a.type_code order by a.month_start) + coalesce(b.retired_total_null, 0), 
+			coalesce(b.retired_total_null, 0)
+		) as retired_count
+    from retired_filled_counts a
+    left join retired_meter_counts_null b
+	on a.region_abbr = b.region_abbr and a.type_code = b.type_code
+), recond_meter_counts as (
+    select
+	    date_trunc('month', recond_time)::date as month_start,
+		region_abbr,
+		type_code,
+		count(*) as recond_total
+    from all_meter_source
+	where meter_status = 'Reconditioned' and (recond_time is not null or retire_time is not null or receive_time is not null)
+	  and recond_time >= '2000-01-01 00:00:00'
+	group by region_abbr, type_code, date_trunc('month', recond_time)
+), recond_meter_counts_null as (
+    select
+	    region_abbr,
+		type_code,
+		count(*) as recond_total_null
+    from all_meter_source
+    where meter_status = 'Reconditioned' 
+	  and ((recond_time is null and retire_time is null and receive_time is null) or recond_time < '2000-01-01 00:00:00')
+	group by region_abbr, type_code
+), recond_filled_counts as (
+    select
+        a.month_start,
+		a.region_abbr,
+		a.type_code,
+        b.recond_total
+    from all_dims a
+    left join recond_meter_counts b
+    on a.month_start = b.month_start and a.region_abbr = b.region_abbr and a.type_code = b.type_code
+), recond_meter as (
+    select
+        to_char(a.month_start, 'YYYYMM') as statistical_month,
+		a.region_abbr,
+		a.type_code,
+        coalesce(
+			sum(a.recond_total) over (partition by a.region_abbr,a.type_code order by a.month_start) + coalesce(b.recond_total_null, 0), 
+			coalesce(b.recond_total_null, 0)
+		) as recond_count
+    from recond_filled_counts a
+    left join recond_meter_counts_null b
+	on a.region_abbr = b.region_abbr and a.type_code = b.type_code
+), sample_meter_counts as (
+    select
+	    date_trunc('month', receive_time)::date as month_start,
+		region_abbr,
+		type_code,
+		count(*) as sample_total
+    from all_meter_source
+	where meter_status in ('Meter is not registering', 'Pending for Sample Inspection', 'Sample Inspection Rejected') 
+	  and receive_time is not null and receive_time >= '2000-01-01 00:00:00'
+	group by region_abbr, type_code, date_trunc('month', receive_time)
+), sample_meter_counts_null as (
+    select
+	    region_abbr,
+		type_code,
+		count(*) as sample_total_null
+    from all_meter_source
+    where meter_status in ('Meter is not registering', 'Pending for Sample Inspection', 'Sample Inspection Rejected') 
+	  and (receive_time is null or receive_time < '2000-01-01 00:00:00')
+	group by region_abbr, type_code
+), sample_filled_counts as (
+    select
+        a.month_start,
+		a.region_abbr,
+		a.type_code,
+        b.sample_total
+    from all_dims a
+    left join sample_meter_counts b
+    on a.month_start = b.month_start and a.region_abbr = b.region_abbr and a.type_code = b.type_code
+), sample_meter as (
+    select
+        to_char(a.month_start, 'YYYYMM') as statistical_month,
+		a.region_abbr,
+		a.type_code,
+        coalesce(
+			sum(a.sample_total) over (partition by a.region_abbr,a.type_code order by a.month_start) + coalesce(b.sample_total_null, 0), 
+			coalesce(b.sample_total_null, 0)
+		) as sample_count
+    from sample_filled_counts a
+    left join sample_meter_counts_null b
+	on a.region_abbr = b.region_abbr and a.type_code = b.type_code
+), month_meter as (
+    select
+	    a.statistical_month,
+		a.region_abbr,
+		a.type_code,
+	    (a.all_count - b.retired_count + c.recond_count - d.sample_count) as month_meter
+	from all_meter a
+	inner join retired_meter b
+	on a.statistical_month = b.statistical_month and a.region_abbr = b.region_abbr and a.type_code = b.type_code
+	inner join recond_meter c
+	on a.statistical_month = c.statistical_month and a.region_abbr = c.region_abbr and a.type_code = c.type_code --修复JOIN笔误
+    inner join sample_meter d
+	on a.statistical_month = d.statistical_month and a.region_abbr = d.region_abbr and a.type_code = d.type_code
+)
+
+-- Step3 将年度存量写入临时表：取每年12月 or 当前年月作为年度存量值
+insert into coss_dm.dm_tmu_annual_user_customer_item_stg_di_tmp(
+    statistical_year,
+    region_abbr,
+    inter_item_code,
+	type_code,
+    item_value
+)
+select 
+    substring(statistical_month,1,4) as statistical_year,
+	region_abbr,
+	'US_CM_000001' as inter_item_code,
+	type_code,
+	month_meter as item_value
+from month_meter
+where substring(statistical_month,5,2) = '12' or statistical_month = to_char(current_timestamp, 'YYYYMM');
+
+-- Step4 正式表入库，保留你原始 ON DUPLICATE KEY UPDATE
+insert into coss_dm.dm_tmu_annual_user_customer_item_stg_di (
+    statistical_year,
+    region_abbr,
+    inter_item_code,
+	type_code,
+    item_value,
+	dm_load_time,
+	dm_update_time
+)
+-- 明细 + 全港汇总
+select 
+    statistical_year,
+    region_abbr,
+    inter_item_code,
+    type_code,
+    item_value,
+    current_timestamp,
+    current_timestamp
+from coss_dm.dm_tmu_annual_user_customer_item_stg_di_tmp
+union all 
+select 
+    statistical_year,
+    'HKSAR' as region_abbr,
+    inter_item_code,
+    type_code,
+    sum(item_value) as item_value,
+    current_timestamp,
+    current_timestamp
+from coss_dm.dm_tmu_annual_user_customer_item_stg_di_tmp
+group by statistical_year, inter_item_code, type_code
+on duplicate key update
+    item_value = values(item_value),
+    dm_load_time = values(dm_load_time),
+    dm_update_time = values(dm_update_time);
+
+-- Step5 删除未知区域XXXX
+delete from coss_dm.dm_tmu_annual_user_customer_item_stg_di where region_abbr = 'XXXX';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- 1. 创建临时表，存储【年份+运作区+水表类型】水表存量
+create table if not exists coss_dm.dm_ass_annual_meter_type_region_item_di_tmp (
+	statistical_year varchar(4),
+	region_abbr varchar(5),
+	inter_item_code varchar(12),
+	item_value float8,
+    dm_load_time timestamp(6) default current_timestamp,
+	dm_update_time timestamp(6) default current_timestamp,
+    primary key (statistical_year,region_abbr,inter_item_code)
+)
+with (orientation = row, compression = no)
+distribute by hash (statistical_year,region_abbr);
+
+comment on table coss_dm.dm_ass_annual_meter_type_region_item_di_tmp is 'Annual water meter stock by region and meter category';
+comment on column coss_dm.dm_ass_annual_meter_type_region_item_di_tmp.statistical_year is 'Statistical Year';
+comment on column coss_dm.dm_ass_annual_meter_type_region_item_di_tmp.region_abbr is 'Regional Abbreviation';
+comment on column coss_dm.dm_ass_annual_meter_type_region_item_di_tmp.inter_item_code is 'Meter Category Code';
+comment on column coss_dm.dm_ass_annual_meter_type_region_item_di_tmp.item_value is 'Water Meter Stock Count';
+comment on column coss_dm.dm_ass_annual_meter_type_region_item_di_tmp.dm_update_time is 'Data Update Time';
+comment on column coss_dm.dm_ass_annual_meter_type_region_item_di_tmp.dm_load_time is 'Data Loading Time';
+
+truncate table coss_dm.dm_ass_annual_meter_type_region_item_di_tmp;
+
+-- 基础关联：水表 + 业务大类编码
+with meter_category_base as (
+    select
+        t.meter_no,
+        nvl(t.region_abbr, 'XXXX') as region_abbr,
+        t2.code as inter_item_code,
+        least(nvl(t.recond_time,'9999-01-01 00:00:00'), nvl(t.retire_time,'9999-01-01 00:00:00'), nvl(t.receive_time,'9999-01-01 00:00:00')) as receive_time,
+        greatest(nvl(t.retire_time,'1900-01-01 00:00:00'), nvl(t.receive_time,'1900-01-01 00:00:00')) as retire_time,
+        greatest(nvl(t.recond_time,'1900-01-01 00:00:00'), nvl(t.retire_time,'1900-01-01 00:00:00'), nvl(t.receive_time,'1900-01-01 00:00:00')) as recond_time,
+        t.meter_status
+    from coss_dwd.dwd_ass_user_meter_di t
+    inner join coss_dwd.dwd_tmu_premise_svc_dtl_di t1
+        on t.premise_id = t1.premise_id
+    inner join coss_dim.dim_tmu_dict_info t2
+        on t2.name_en = t1.mcategory_code
+        and t2."type" = 'SIC_MCATEGORY'
+    -- 和实时脚本口径对齐
+    where t.meter_status in ('Active', 'Reconditioned', 'Meter is registering')
+),
+-- 生成连续月份序列
+all_months as (
+    select
+        'A' as auxiliary,
+        generate_series as month_start
+    from generate_series (
+        '2000-01-01'::date,                      -- start month
+        date_trunc('month', current_date)::date, -- end month
+        interval '1 month'                       -- step length
+    ) as generate_series
+),
+-- 运作区列表
+region_list as (
+    select
+        'A' as auxiliary,
+        region_abbr
+    from
+        coss_dim.dim_region_info
+    where region_abbr != 'HKSAR'
+    union all
+    select 'A' as auxiliary,'XXXX' as region_abbr
+),
+-- 水表类型列表
+category_list as (
+    select distinct inter_item_code
+    from meter_category_base
+),
+-- 全维度笛卡尔积：月份 × 运作区 × 水表类型
+all_dims as (
+    select
+        b.month_start,
+        a.region_abbr,
+        c.inter_item_code
+    from region_list a
+    inner join all_months b
+        on a.auxiliary = b.auxiliary
+    cross join category_list c
+),
+-- 月度新增水表（生效时间≥2000-01-01）
+all_meter_count as (
+    select
+        date_trunc('month', receive_time)::date as month_start,
+        region_abbr,
+        inter_item_code,
+        count(distinct meter_no) as all_total
+    from meter_category_base
+    where receive_time >= '2000-01-01 00:00:00'
+      and (recond_time is not null or retire_time is not null or receive_time is not null)
+    group by
+        region_abbr,
+        inter_item_code,
+        date_trunc('month', receive_time)
+),
+-- 2000年前期初存量水表
+all_meter_count_null as (
+    select
+        region_abbr,
+        inter_item_code,
+        count(distinct meter_no) as all_total_null
+    from meter_category_base
+    where (recond_time is null and retire_time is null and receive_time is null)
+       or receive_time < '2000-01-01 00:00:00'
+    group by region_abbr, inter_item_code
+),
+all_filled_counts as (
+    select
+        a.month_start,
+        a.region_abbr,
+        a.inter_item_code,
+        b.all_total
+    from all_dims a
+    left join all_meter_count b
+        on a.month_start = b.month_start
+        and a.region_abbr = b.region_abbr
+        and a.inter_item_code = b.inter_item_code
+),
+-- 按【运作区+类型】滚动累计总水表
+all_meter as (
+    select
+        to_char(a.month_start, 'YYYYMM') as statistical_month,
+        a.region_abbr,
+        a.inter_item_code,
+        coalesce(
+            sum(a.all_total) over (partition by a.region_abbr, a.inter_item_code order by a.month_start)
+            + coalesce(b.all_total_null, 0),
+            coalesce(b.all_total_null, 0)
+        ) as all_count
+    from all_filled_counts a
+    left join all_meter_count_null b
+        on a.region_abbr = b.region_abbr
+        and a.inter_item_code = b.inter_item_code
+),
+-- 月度退役水表
+retired_meter_counts as (
+    select
+        date_trunc('month', retire_time)::date as month_start,
+        region_abbr,
+        inter_item_code,
+        count(distinct meter_no) as retired_total
+    from meter_category_base
+    where meter_status = 'Retired'
+      and (retire_time is not null or receive_time is not null)
+      and retire_time >= '2000-01-01 00:00:00'
+    group by
+        region_abbr,
+        inter_item_code,
+        date_trunc('month', retire_time)
+),
+retired_meter_counts_null as (
+    select
+        region_abbr,
+        inter_item_code,
+        count(distinct meter_no) as retired_total_null
+    from meter_category_base
+    where meter_status = 'Retired'
+      and ((receive_time is null and retire_time is null) or retire_time < '2000-01-01 00:00:00')
+    group by region_abbr, inter_item_code
+),
+retired_filled_counts as (
+    select
+        a.month_start,
+        a.region_abbr,
+        a.inter_item_code,
+        b.retired_total
+    from all_dims a
+    left join retired_meter_counts b
+        on a.month_start = b.month_start
+        and a.region_abbr = b.region_abbr
+        and a.inter_item_code = b.inter_item_code
+),
+retired_meter as (
+    select
+        to_char(a.month_start, 'YYYYMM') as statistical_month,
+        a.region_abbr,
+        a.inter_item_code,
+        coalesce(
+            sum(a.retired_total) over (partition by a.region_abbr, a.inter_item_code order by a.month_start)
+            + coalesce(b.retired_total_null, 0),
+            coalesce(b.retired_total_null, 0)
+        ) as retired_count
+    from retired_filled_counts a
+    left join retired_meter_counts_null b
+        on a.region_abbr = b.region_abbr
+        and a.inter_item_code = b.inter_item_code
+),
+-- 月度修复水表
+recond_meter_counts as (
+    select
+        date_trunc('month', recond_time)::date as month_start,
+        region_abbr,
+        inter_item_code,
+        count(distinct meter_no) as recond_total
+    from meter_category_base
+    where meter_status = 'Reconditioned'
+      and (recond_time is not null or retire_time is not null or receive_time is not null)
+      and recond_time >= '2000-01-01 00:00:00'
+    group by
+        region_abbr,
+        inter_item_code,
+        date_trunc('month', recond_time)
+),
+recond_meter_counts_null as (
+    select
+        region_abbr,
+        inter_item_code,
+        count(distinct meter_no) as recond_total_null
+    from meter_category_base
+    where meter_status = 'Reconditioned'
+      and ((recond_time is null and retire_time is null and receive_time is null) or recond_time < '2000-01-01 00:00:00')
+    group by region_abbr, inter_item_code
+),
+recond_filled_counts as (
+    select
+        a.month_start,
+        a.region_abbr,
+        a.inter_item_code,
+        b.recond_total
+    from all_dims a
+    left join recond_meter_counts b
+        on a.month_start = b.month_start
+        and a.region_abbr = b.region_abbr
+        and a.inter_item_code = b.inter_item_code
+),
+recond_meter as (
+    select
+        to_char(a.month_start, 'YYYYMM') as statistical_month,
+        a.region_abbr,
+        a.inter_item_code,
+        coalesce(
+            sum(a.recond_total) over (partition by a.region_abbr, a.inter_item_code order by a.month_start)
+            + coalesce(b.recond_total_null, 0),
+            coalesce(b.recond_total_null, 0)
+        ) as recond_count
+    from recond_filled_counts a
+    left join recond_meter_counts_null b
+        on a.region_abbr = b.region_abbr
+        and a.inter_item_code = b.inter_item_code
+),
+-- 月度抽样水表
+sample_meter_counts as (
+    select
+        date_trunc('month', receive_time)::date as month_start,
+        region_abbr,
+        inter_item_code,
+        count(distinct meter_no) as sample_total
+    from meter_category_base
+    where meter_status in ('Meter is not registering', 'Pending for Sample Inspection', 'Sample Inspection Rejected')
+      and receive_time is not null
+      and receive_time >= '2000-01-01 00:00:00'
+    group by
+        region_abbr,
+        inter_item_code,
+        date_trunc('month', receive_time)
+),
+sample_meter_counts_null as (
+    select
+        region_abbr,
+        inter_item_code,
+        count(distinct meter_no) as sample_total_null
+    from meter_category_base
+    where meter_status in ('Meter is not registering', 'Pending for Sample Inspection', 'Sample Inspection Rejected')
+      and (receive_time is null or receive_time < '2000-01-01 00:00:00')
+    group by region_abbr, inter_item_code
+),
+sample_filled_counts as (
+    select
+        a.month_start,
+        a.region_abbr,
+        a.inter_item_code,
+        b.sample_total
+    from all_dims a
+    left join sample_meter_counts b
+        on a.month_start = b.month_start
+        and a.region_abbr = b.region_abbr
+        and a.inter_item_code = b.inter_item_code
+),
+sample_meter as (
+    select
+        to_char(a.month_start, 'YYYYMM') as statistical_month,
+        a.region_abbr,
+        a.inter_item_code,
+        coalesce(
+            sum(a.sample_total) over (partition by a.region_abbr, a.inter_item_code order by a.month_start)
+            + coalesce(b.sample_total_null, 0),
+            coalesce(b.sample_total_null, 0)
+        ) as sample_count
+    from sample_filled_counts a
+    left join sample_meter_counts_null b
+        on a.region_abbr = b.region_abbr
+        and a.inter_item_code = b.inter_item_code
+),
+-- 每月【运作区+水表类型】有效水表存量
+month_meter as (
+    select
+        a.statistical_month,
+        a.region_abbr,
+        a.inter_item_code,
+        (a.all_count - b.retired_count + c.recond_count - d.sample_count) as month_meter
+    from all_meter a
+    inner join retired_meter b
+        on a.statistical_month = b.statistical_month
+        and a.region_abbr = b.region_abbr
+        and a.inter_item_code = b.inter_item_code
+    inner join recond_meter c
+        on a.statistical_month = c.statistical_month
+        and a.region_abbr = c.region_abbr
+        and a.inter_item_code = c.inter_item_code
+    inner join sample_meter d
+        on a.statistical_month = d.statistical_month
+        and a.region_abbr = d.region_abbr
+        and a.inter_item_code = d.inter_item_code
+)
+-- 抽取年末12月 / 当前月份作为年度指标写入临时表
+insert into coss_dm.dm_ass_annual_meter_type_region_item_di_tmp(
+    statistical_year,
+    region_abbr,
+    inter_item_code,
+    item_value
+)
+select
+    substring(statistical_month,1,4) as statistical_year,
+    region_abbr,
+    inter_item_code,
+    month_meter as item_value
+from month_meter
+where substring(statistical_month,5,2) = '12'
+   or statistical_month = to_char(current_timestamp, 'YYYYMM');
+  
+-- =============================================
+-- 写入正式表，追加 HKSAR 全港汇总（对齐实时脚本逻辑）
+-- =============================================
+insert into coss_dm.dm_tmu_user_customer_meter_item_di (
+    statistical_year,
+    region_abbr,
+    inter_item_code,
+    item_value,
+    dm_load_time,
+    dm_update_time
+)
+-- 各运作区分类型明细，过滤未知区域XXXX
+select
+    statistical_year,
+    region_abbr,
+    inter_item_code,
+    item_value,
+    current_timestamp as dm_load_time,
+    current_timestamp as dm_update_time
+from coss_dm.dm_ass_annual_meter_type_region_item_di_tmp
+where region_abbr != 'XXXX'
+
+union all
+
+-- 全港 HKSAR 汇总，同年度+同类型求和
+select
+    statistical_year,
+    'HKSAR' as region_abbr,
+    inter_item_code,
+    sum(item_value) as item_value,
+    current_timestamp as dm_load_time,
+    current_timestamp as dm_update_time
+from coss_dm.dm_ass_annual_meter_type_region_item_di_tmp
+where region_abbr != 'XXXX'
+group by statistical_year, inter_item_code
+on duplicate key update
+    item_value = values(item_value),
+    dm_update_time = current_timestamp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 -- coss_ods.ods_pems_cus_t_annon_watercutoffnotice_di definition
 
 -- Drop table
