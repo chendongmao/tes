@@ -1,4 +1,34 @@
+bi_p_252  Impounding Reservoir Capacity mcm  
+ bi_p_253 Impounding Reservoir Current Storage ML
+ bi_p_254 Impounding Reservoir Current Yield ML
+ bi_p_255 GD Water Actual Supply ML
+ 
+select
+    *
+from coss_dm.dm_rws_region_year_kpi_dip
+where item_code in ('bi_p_252','bi_p_254','bi_p_255')
 
+
+
+select
+    *
+from coss_dm.dm_rws_region_day_kpi_dip
+where item_code in ('bi_p_253','bi_p_254','bi_p_255')
+
+
+
+select
+    *
+from coss_dm.dm_rws_region_month_kpi_dip
+where item_code in ('bi_p_254','bi_p_255');
+   
+
+
+
+
+
+
+   
 
 -- subject     areas: water assets areas
 -- function describe: calculate historical stock of water meters by year / region / meter type
