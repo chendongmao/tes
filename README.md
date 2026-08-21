@@ -1,3 +1,37 @@
+drop table if exists coss_dm.dm_srs_region_year_kpi_dip;
+CREATE TABLE if not exists coss_dm.dm_srs_region_year_kpi_dip (
+	id varchar(42) NULL,
+	region varchar(200) NULL,
+	item_code varchar(200) NULL,
+	item_name varchar(300) NULL,
+	item_value numeric(20, 5) NULL,
+	"unit" varchar(50) NULL,
+	etl_time timestamp(6) NULL,
+    dm_update_time  timestamp(6) default current_timestamp,
+    dm_load_time  timestamp(6) default current_timestamp,
+	yr numeric(10) NULL
+)
+WITH (
+	orientation=row,
+	compression=no
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 bi_p_252  Impounding Reservoir Capacity mcm  
  bi_p_253 Impounding Reservoir Current Storage ML
  bi_p_254 Impounding Reservoir Current Yield ML
