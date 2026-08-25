@@ -1,3 +1,69 @@
+
+drop table if exists coss_dim.dim_date_hk_info;
+
+create table if not exists coss_dim.dim_date_hk_info (
+	day_id numeric(8) not null, -- Date ID (yyyymmdd)
+	full_date date not null, -- Full Date
+	year int4 not null, -- Year
+	quarter int4 null, -- Quarter (1-4)
+	month int4 not null, -- Month (1-12)
+	day int4 not null, -- Day (1-31)
+	day_of_week int4 null, -- Day of Week (1=Monday, 7=Sunday)
+	day_name_en varchar(20) null, -- Day Name (English)
+	day_name_cn varchar(20) null, -- Day Name (Chinese)
+	is_weekend boolean null, -- Is Weekend (Saturday/Sunday)
+	is_workday boolean null, -- Is Workday (HK: not weekend and not public holiday)
+	is_public_holiday boolean null, -- Is HK Public Holiday
+	holiday_name_en varchar(120) null, -- Holiday Name (English)
+	holiday_name_cn varchar(120) null, -- Holiday Name (Chinese)
+	week_of_year int4 null, -- Week of Year (ISO)
+	week_of_month int4 null, -- Week of Month
+	day_of_year int4 null, -- Day of Year (1-366)
+	is_month_end boolean null, -- Is Month End
+	is_year_end boolean null, -- Is Year End
+	fiscal_year int4 null, -- HK Fiscal Year (Apr 1 - Mar 31)
+	fiscal_quarter int4 null, -- Fiscal Quarter (Q1=Apr-Jun, Q2=Jul-Sep, Q3=Oct-Dec, Q4=Jan-Mar)
+	dim_update_time timestamp(6) default current_timestamp,
+	dim_load_time timestamp(6) default current_timestamp,
+	primary key (day_id)
+)
+with (
+	orientation=row,
+	compression=no
+);
+comment on table coss_dim.dim_date_hk_info is 'Date Dimension - Hong Kong Calendar (1990-01-01 ~ 2026-08-25)';
+
+-- column comments
+
+comment on column coss_dim.dim_date_hk_info.day_id is 'Day ID (yyyymmdd)';
+comment on column coss_dim.dim_date_hk_info.full_date is 'Full Date';
+comment on column coss_dim.dim_date_hk_info.year is 'Year';
+comment on column coss_dim.dim_date_hk_info.quarter is 'Quarter (1-4)';
+comment on column coss_dim.dim_date_hk_info.month is 'Month (1-12)';
+comment on column coss_dim.dim_date_hk_info.day is 'Day (1-31)';
+comment on column coss_dim.dim_date_hk_info.day_of_week is 'Day of Week (1=Monday, 7=Sunday)';
+comment on column coss_dim.dim_date_hk_info.day_name_en is 'Day Name (English)';
+comment on column coss_dim.dim_date_hk_info.day_name_cn is 'Day Name (Chinese)';
+comment on column coss_dim.dim_date_hk_info.is_weekend is 'Is Weekend (Saturday/Sunday)';
+comment on column coss_dim.dim_date_hk_info.is_workday is 'Is Workday (HK: not weekend and not public holiday)';
+comment on column coss_dim.dim_date_hk_info.is_public_holiday is 'Is HK Public Holiday';
+comment on column coss_dim.dim_date_hk_info.holiday_name_en is 'Holiday Name (English)';
+comment on column coss_dim.dim_date_hk_info.holiday_name_cn is 'Holiday Name (Chinese)';
+comment on column coss_dim.dim_date_hk_info.week_of_year is 'Week of Year (ISO)';
+comment on column coss_dim.dim_date_hk_info.week_of_month is 'Week of Month';
+comment on column coss_dim.dim_date_hk_info.day_of_year is 'Day of Year (1-366)';
+comment on column coss_dim.dim_date_hk_info.is_month_end is 'Is Month End';
+comment on column coss_dim.dim_date_hk_info.is_year_end is 'Is Year End';
+comment on column coss_dim.dim_date_hk_info.fiscal_year is 'HK Fiscal Year (Apr 1 - Mar 31)';
+comment on column coss_dim.dim_date_hk_info.fiscal_quarter is 'Fiscal Quarter (Q1=Apr-Jun, Q2=Jul-Sep, Q3=Oct-Dec, Q4=Jan-Mar)';
+comment on column coss_dim.dim_date_hk_info.dim_update_time is 'Data Update Time';
+comment on column coss_dim.dim_date_hk_info.dim_load_time is 'Data Load Time';
+
+
+
+
+
+
 select distinct give_up_type_ind from abpms.give_up
 give_up_type_ind
 N
