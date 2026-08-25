@@ -1,3 +1,25 @@
+select distinct give_up_type_ind from abpms.give_up
+give_up_type_ind
+N
+S
+F
+
+
+
+select distinct give_up_sts_ind  from abpms.give_up
+C
+D
+E
+H
+J
+K
+P
+V
+
+
+
+
+
 drop table if exists coss_dm.dm_srs_region_year_kpi_dip;
 CREATE TABLE if not exists coss_dm.dm_srs_region_year_kpi_dip (
 	id varchar(42) NULL,
