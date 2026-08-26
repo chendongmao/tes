@@ -1,3 +1,40 @@
+-- coss_dm.dm_wtw_daily_water_treatment_works_item_di definition
+
+-- Drop table
+
+-- DROP TABLE coss_dm.dm_wtw_daily_water_treatment_works_item_di;
+
+CREATE TABLE coss_dm.dm_wtw_daily_water_treatment_works_item_di (
+	statistical_day varchar(10) NOT NULL, -- Statistical day
+	installation_id varchar(10) NOT NULL, -- Installation ID
+	inter_item_code varchar(120) NOT NULL, -- Internal Item Code
+	item_value numeric(20, 5) NULL, -- Item Value
+	dm_update_time timestamp(6) NULL DEFAULT pg_systimestamp(), -- Data Update Time
+	dm_load_time timestamp(6) NULL DEFAULT pg_systimestamp(), -- Data Loading Time
+	CONSTRAINT dm_wtw_daily_water_treatment_works_item_di_pkey PRIMARY KEY (statistical_day, installation_id, inter_item_code)
+)
+WITH (
+	orientation=row,
+	compression=no
+);
+COMMENT ON TABLE coss_dm.dm_wtw_daily_water_treatment_works_item_di IS 'The Daily WTW Items';
+
+-- Column comments
+
+COMMENT ON COLUMN coss_dm.dm_wtw_daily_water_treatment_works_item_di.statistical_day IS 'Statistical day';
+COMMENT ON COLUMN coss_dm.dm_wtw_daily_water_treatment_works_item_di.installation_id IS 'Installation ID';
+COMMENT ON COLUMN coss_dm.dm_wtw_daily_water_treatment_works_item_di.inter_item_code IS 'Internal Item Code';
+COMMENT ON COLUMN coss_dm.dm_wtw_daily_water_treatment_works_item_di.item_value IS 'Item Value';
+COMMENT ON COLUMN coss_dm.dm_wtw_daily_water_treatment_works_item_di.dm_update_time IS 'Data Update Time';
+COMMENT ON COLUMN coss_dm.dm_wtw_daily_water_treatment_works_item_di.dm_load_time IS 'Data Loading Time';
+
+-- Permissions
+
+ALTER TABLE coss_dm.dm_wtw_daily_water_treatment_works_item_di OWNER TO gddst01;
+GRANT ALL ON TABLE coss_dm.dm_wtw_daily_water_treatment_works_item_di TO gddst01;
+
+
+
 
 
 
