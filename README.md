@@ -1,3 +1,12 @@
+
+drop table coss_dm.dm_wqm_water_quality_monitoring_device_info_df;
+drop table coss_dm.dm_wqm_water_quality_monitoring_point_rt_mini;
+drop table coss_dm.dm_wqm_water_quality_monitoring_result_rt_mini;
+
+
+
+
+
 https://docs.qq.com/sheet/DUGdOTE9rdnJwb2xI?no_promotion=1&tab=BB08J2
 
 
