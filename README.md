@@ -1,7 +1,425 @@
+# dim
 
-drop table coss_dm.dm_wqm_water_quality_monitoring_device_info_df;
-drop table coss_dm.dm_wqm_water_quality_monitoring_point_rt_mini;
-drop table coss_dm.dm_wqm_water_quality_monitoring_result_rt_mini;
+## coss_dim.dim_device_monitoring_point_info
+
+```sql
+drop table if exists coss_dim.dim_device_monitoring_point_info;
+
+create table if not exists coss_dim.dim_device_monitoring_point_info (
+    device_id        varchar(50) not null,
+    device_code      varchar(120),
+    device_name      varchar(255),
+    region           varchar(50),
+    type_code        varchar(120),
+    type_desc        varchar(255),
+    status           int4,
+    business_code    varchar(120),
+    business_desc    varchar(255),
+    coordinate_x     numeric(20,6),
+    coordinate_y     numeric(20,6),
+    dim_update_time  timestamp(6) null default current_timestamp,
+    dim_load_time    timestamp(6) null default current_timestamp,
+    primary key (device_id)
+);
+
+comment on table coss_dim.dim_device_monitoring_point_info is 'Device Monitoring Point Information';
+comment on column coss_dim.dim_device_monitoring_point_info.device_id        is 'Device ID';
+comment on column coss_dim.dim_device_monitoring_point_info.device_code      is 'Device Code';
+comment on column coss_dim.dim_device_monitoring_point_info.device_name      is 'Device Name';
+comment on column coss_dim.dim_device_monitoring_point_info.region           is 'Region';
+comment on column coss_dim.dim_device_monitoring_point_info.type_code        is 'Device Type Code';
+comment on column coss_dim.dim_device_monitoring_point_info.type_desc        is 'Device Type Code Description';
+comment on column coss_dim.dim_device_monitoring_point_info.status           is 'Status';
+comment on column coss_dim.dim_device_monitoring_point_info.business_code    is 'Business Code';
+comment on column coss_dim.dim_device_monitoring_point_info.business_desc    is 'Business Code Description';
+comment on column coss_dim.dim_device_monitoring_point_info.coordinate_x     is 'X-Axis Coordinate';
+comment on column coss_dim.dim_device_monitoring_point_info.coordinate_y     is 'Y-Axis Coordinate';
+comment on column coss_dim.dim_device_monitoring_point_info.dim_update_time  is 'Update Time';
+comment on column coss_dim.dim_device_monitoring_point_info.dim_load_time    is 'Load Time';
+```
+
+
+
+```sql
+insert into coss_dim.dim_device_monitoring_point_info 
+select 
+t1.device_id,
+t1.device_code,
+t1.device_name,
+case when region = 'HK&I' then 'HKI'
+else t.region end region ,
+'DE_TY_000006' type_code,
+'Level Monitoring Point(Catchwater)' type_desc,
+status,
+'DE_BU_000001' business_code,
+'Catchwater' business_desc,
+t1.longitude coordinate_x,
+t1.latitude coordinate_y,
+current_timestamp dim_update_time,
+current_timestamp  dim_load_time
+from coss_tmp.device t  -- iot 数据表
+inner join  coss_tmp.ods_cmsdms_tmu_permission_info_df t1 on t."name" = t1.device_name  -- cmsdms 接口数据
+where business = 'ca'
+
+```
+
+
+
+## coss_dim.dim_device_sensor_info
+
+```sql
+drop table if exists coss_dim.dim_device_sensor_info;
+
+create table if not exists coss_dim.dim_device_sensor_info (
+    sensor_id        varchar(50) not null,
+    device_id        varchar(50) not null,
+    device_code      varchar(120),
+    sensor_code      varchar(120) not null,
+    sensor_name      varchar(100),
+    unit             varchar(100),
+    dim_update_time  timestamp(6) null default current_timestamp,
+    dim_load_time    timestamp(6) null default current_timestamp,
+    primary key (sensor_id, device_id)
+);
+
+comment on table coss_dim.dim_device_sensor_info is 'Device Sensor Information';
+comment on column coss_dim.dim_device_sensor_info.sensor_id        is 'Sensor ID';
+comment on column coss_dim.dim_device_sensor_info.device_id        is 'Device ID';
+comment on column coss_dim.dim_device_sensor_info.device_code      is 'Device Code';
+comment on column coss_dim.dim_device_sensor_info.sensor_code      is 'Sensor Code';
+comment on column coss_dim.dim_device_sensor_info.sensor_name      is 'Sensor Name';
+comment on column coss_dim.dim_device_sensor_info.unit             is 'Unit';
+comment on column coss_dim.dim_device_sensor_info.dim_update_time  is 'Update Time';
+comment on column coss_dim.dim_device_sensor_info.dim_load_time    is 'Load Time';
+```
+
+
+
+```sql
+insert into coss_dim.dim_device_sensor_info
+select 
+    sensor_id        ,
+    device_id        ,
+    device_code      ,
+    sensor_code      ,
+    sensor_name      ,
+    unit             ,
+    current_timestamp dim_update_time  ,
+    current_timestamp dim_load_time    
+from  coss_tmp.ods_cmsdms_tmu_permission_info_df  -- CMSDMS 数据表
+```
+
+
+
+# DM
+
+## coss_dm.dm_rws_catchwater_image_mini_month
+
+```sql
+drop table if exists coss_dm.dm_rws_catchwater_image_mini_month;
+
+create table if not exists coss_dm.dm_rws_catchwater_image_mini_month (
+    id              varchar(50) not null,
+    device_id       varchar(50) not null,
+    device_code     varchar(120),
+    utc_time        timestamp(6),
+    photo           varchar(400),
+    dm_update_time  timestamp(6) default current_timestamp,
+    dm_load_time    timestamp(6) default current_timestamp,
+    primary key (device_code, utc_time)
+)
+partition by range (utc_time)
+(
+    -- 2025 Monthly Partitions
+    partition mh_202501 values less than ('2025-02-01 00:00:00'),
+    partition mh_202503 values less than ('2025-04-01 00:00:00'),
+    partition mh_202505 values less than ('2025-06-01 00:00:00'),
+    partition mh_202507 values less than ('2025-08-01 00:00:00'),
+    partition mh_202509 values less than ('2025-10-01 00:00:00'),
+    partition mh_202511 values less than ('2025-12-01 00:00:00'),
+    -- 2026 Monthly Partitions
+    partition mh_202601 values less than ('2026-02-01 00:00:00'),
+    partition mh_202603 values less than ('2026-04-01 00:00:00'),
+    partition mh_202605 values less than ('2026-06-01 00:00:00'),
+    partition mh_202607 values less than ('2026-08-01 00:00:00'),
+    partition mh_202609 values less than ('2026-10-01 00:00:00'),
+    partition mh_202611 values less than ('2026-12-01 00:00:00'),
+    -- 2027 Monthly Partitions
+    partition mh_202701 values less than ('2027-02-01 00:00:00'),
+    partition mh_202703 values less than ('2027-04-01 00:00:00'),
+    partition mh_202705 values less than ('2027-06-01 00:00:00'),
+    partition mh_202707 values less than ('2027-08-01 00:00:00'),
+    partition mh_202709 values less than ('2027-10-01 00:00:00'),
+    partition mh_202711 values less than ('2027-12-01 00:00:00'),
+    -- 2028 Monthly Partitions
+    partition mh_202801 values less than ('2028-02-01 00:00:00'),
+    partition mh_202803 values less than ('2028-04-01 00:00:00'),
+    partition mh_202805 values less than ('2028-06-01 00:00:00'),
+    partition mh_202807 values less than ('2028-08-01 00:00:00'),
+    partition mh_202809 values less than ('2028-10-01 00:00:00'),
+    -- Future Partition
+    partition mh_future values less than ('9999-01-01 00:00:00')
+);
+
+comment on table coss_dm.dm_rws_catchwater_image_mini_month is 'Catchwater Monitoring Image Monthly';
+comment on column coss_dm.dm_rws_catchwater_image_mini_month.id              is 'ID';
+comment on column coss_dm.dm_rws_catchwater_image_mini_month.device_id       is 'Device ID';
+comment on column coss_dm.dm_rws_catchwater_image_mini_month.device_code     is 'Device Code';
+comment on column coss_dm.dm_rws_catchwater_image_mini_month.utc_time        is 'UTC Time';
+comment on column coss_dm.dm_rws_catchwater_image_mini_month.photo           is 'Photo Url';
+comment on column coss_dm.dm_rws_catchwater_image_mini_month.dm_update_time   is 'Update Time';
+comment on column coss_dm.dm_rws_catchwater_image_mini_month.dm_load_time     is 'Load Time';
+```
+
+## coss_dm.dm_rws_catchwater_image_minf
+
+```sql
+drop table if exists coss_dm.dm_rws_catchwater_image_minf;
+create table if not exists coss_dm.dm_rws_catchwater_image_minf (
+    id              varchar(50) not null,
+    device_id       varchar(50) not null,
+    device_code     varchar(120),
+    utc_time        timestamp(6),
+    photo           varchar(400),
+    dm_update_time  timestamp(6) default current_timestamp,
+    dm_load_time    timestamp(6) default current_timestamp,
+    primary key (device_code)
+);
+
+comment on table coss_dm.dm_rws_catchwater_image_minf is 'Catchwater Monitoring Image Monthly';
+comment on column coss_dm.dm_rws_catchwater_image_minf.id              is 'ID';
+comment on column coss_dm.dm_rws_catchwater_image_minf.device_id       is 'Device ID';
+comment on column coss_dm.dm_rws_catchwater_image_minf.device_code     is 'Device Code';
+comment on column coss_dm.dm_rws_catchwater_image_minf.utc_time        is 'UTC Time';
+comment on column coss_dm.dm_rws_catchwater_image_minf.photo           is 'Photo Url';
+comment on column coss_dm.dm_rws_catchwater_image_minf.dm_update_time   is 'Update Time';
+comment on column coss_dm.dm_rws_catchwater_image_minf.dm_load_time     is 'Load Time';
+```
+
+
+
+## dm_rws_sensor_monitored_hst_mini_month
+
+```sql
+-- Drop table if it exists
+--  drop table if exists coss_dm.dm_rws_sensor_monitored_hst_mini_month;
+
+-- Create table with range partition by sensor_time
+create table if not exists coss_dm.dm_rws_sensor_monitored_hst_mini_month (
+    device_id              varchar(100),
+    sensor_id     varchar(100),
+    sensor_value    decimal(20,6),
+    sensor_time     timestamp(6),
+    dm_update_time  timestamp(6) default current_timestamp,
+    dm_load_time    timestamp(6) default current_timestamp,
+    primary key (device_id,sensor_id, sensor_time)
+)
+partition by range (sensor_time) (
+    -- 2025 monthly partitions
+    partition mh_202501 values less than ('2025-02-01 00:00:00'),
+    partition mh_202503 values less than ('2025-04-01 00:00:00'),
+    partition mh_202505 values less than ('2025-06-01 00:00:00'),
+    partition mh_202507 values less than ('2025-08-01 00:00:00'),
+    partition mh_202509 values less than ('2025-10-01 00:00:00'),
+    partition mh_202511 values less than ('2025-12-01 00:00:00'),
+
+    -- 2026 monthly partitions
+    partition mh_202601 values less than ('2026-02-01 00:00:00'),
+    partition mh_202603 values less than ('2026-04-01 00:00:00'),
+    partition mh_202605 values less than ('2026-06-01 00:00:00'),
+    partition mh_202607 values less than ('2026-08-01 00:00:00'),
+    partition mh_202609 values less than ('2026-10-01 00:00:00'),
+    partition mh_202611 values less than ('2026-12-01 00:00:00'),
+
+    -- 2027 monthly partitions
+    partition mh_202701 values less than ('2027-02-01 00:00:00'),
+    partition mh_202703 values less than ('2027-04-01 00:00:00'),
+    partition mh_202705 values less than ('2027-06-01 00:00:00'),
+    partition mh_202707 values less than ('2027-08-01 00:00:00'),
+    partition mh_202709 values less than ('2027-10-01 00:00:00'),
+    partition mh_202711 values less than ('2027-12-01 00:00:00'),
+
+    -- 2028 monthly partitions
+    partition mh_202801 values less than ('2028-02-01 00:00:00'),
+    partition mh_202803 values less than ('2028-04-01 00:00:00'),
+    partition mh_202805 values less than ('2028-06-01 00:00:00'),
+    partition mh_202807 values less than ('2028-08-01 00:00:00'),
+    partition mh_202809 values less than ('2028-10-01 00:00:00'),
+
+    -- Future partition, avoid insertion failure for unexpected time data
+    partition mh_future values less than ('9999-01-01 00:00:00')
+);
+
+-- Add table comment
+comment on table coss_dm.dm_rws_sensor_monitored_hst_mini_month
+    is 'Sensor Monitoring History Data';
+
+-- Add column comments
+comment on column coss_dm.dm_rws_sensor_monitored_hst_mini_month.device_id
+    is 'Device ID';
+comment on column coss_dm.dm_rws_sensor_monitored_hst_mini_month.sensor_id
+    is 'Sensor ID';
+comment on column coss_dm.dm_rws_sensor_monitored_hst_mini_month.sensor_value
+    is 'Sensor Value';
+comment on column coss_dm.dm_rws_sensor_monitored_hst_mini_month.sensor_time
+    is 'Sensor Time';
+comment on column coss_dm.dm_rws_sensor_monitored_hst_mini_month.dm_update_time
+    is 'Data Update Time';
+comment on column coss_dm.dm_rws_sensor_monitored_hst_mini_month.dm_load_time
+    is 'Data Loading Time';
+```
+
+```sql
+insert into coss_dm.dm_rws_sensor_monitored_hst_mini_month 
+select 
+device_id,
+sensor_id,
+sensor_value,
+to_timestamp(time::bigint / 1000.0) sensor_time,
+current_timestamp dm_update_time,
+current_timestamp dm_load_time
+from coss_ods.ods_cmsdms_tmu_sensor_data_rt_minf  where device_id in 
+(select device_id  from coss_ods.ods_cmsdms_tmu_permission_info_df where 
+device_name like '%Catchwater%'  
+and (longitude is not null 
+and latitude is not null )and coordinate_system = 'HK1980'
+and sensor_id = 'level')
+and sensor_id = 'level'
+```
+
+
+
+
+
+
+
+## dm_rws_sensor_monitored_rt_mini
+
+```sql
+create table if not exists coss_dm.dm_rws_sensor_monitored_rt_mini (
+    device_id       varchar(100),
+    sensor_id       varchar(100),
+    sensor_value    decimal(20,6),
+    sensor_time     timestamp(6),
+    dm_update_time  timestamp(6) default current_timestamp,
+    dm_load_time    timestamp(6) default current_timestamp,
+    primary key (device_id,sensor_id)
+);
+-- Add table comment
+comment on table coss_dm.dm_rws_sensor_monitored_rt_mini
+    is 'Sensor Monitoring Real Time Data';
+-- Add column comments
+comment on column coss_dm.dm_rws_sensor_monitored_rt_mini.device_id
+    is 'Device ID';
+comment on column coss_dm.dm_rws_sensor_monitored_rt_mini.sensor_id
+    is 'Sensor ID';
+comment on column coss_dm.dm_rws_sensor_monitored_rt_mini.sensor_value
+    is 'Sensor Value';
+comment on column coss_dm.dm_rws_sensor_monitored_rt_mini.sensor_time
+    is 'Sensor Time';
+comment on column coss_dm.dm_rws_sensor_monitored_rt_mini.dm_update_time
+    is 'Data Update Time';
+comment on column coss_dm.dm_rws_sensor_monitored_rt_mini.dm_load_time
+    is 'Data Loading Time';
+    
+```
+
+```sql
+insert into coss_dm.dm_rws_sensor_monitored_rt_mini 
+select 
+device_id,
+sensor_id,
+sensor_value,
+to_timestamp(time::bigint / 1000.0) sensor_time,
+current_timestamp dm_update_time,
+current_timestamp dm_load_time
+from coss_ods.ods_cmsdms_tmu_sensor_data_rt_minf  where device_id in 
+(select device_id  from coss_ods.ods_cmsdms_tmu_permission_info_df where 
+device_name like '%Catchwater%'  
+and (longitude is not null 
+and latitude is not null )and coordinate_system = 'HK1980'
+and sensor_id = 'level')
+and sensor_id = 'level'
+```
+
+
+
+
+
+## dm_tmu_sensor_data_mini_month(在用)
+
+```sql
+-- Drop table if it exists
+--  drop table if exists coss_dm.dm_tmu_sensor_data_mini_month;
+
+-- Create table with range partition by sensor_time
+create table if not exists coss_dm.dm_tmu_sensor_data_mini_month (
+    id              varchar(100),
+    sensor_code     varchar(100),
+    sensor_value    decimal(20,6),
+    sensor_time     timestamp(6),
+    dm_update_time  timestamp(6) default current_timestamp,
+    dm_load_time    timestamp(6) default current_timestamp,
+    primary key (sensor_code, sensor_time)
+)
+partition by range (sensor_time) (
+    -- 2025 monthly partitions
+    partition mh_202501 values less than ('2025-02-01 00:00:00'),
+    partition mh_202503 values less than ('2025-04-01 00:00:00'),
+    partition mh_202505 values less than ('2025-06-01 00:00:00'),
+    partition mh_202507 values less than ('2025-08-01 00:00:00'),
+    partition mh_202509 values less than ('2025-10-01 00:00:00'),
+    partition mh_202511 values less than ('2025-12-01 00:00:00'),
+
+    -- 2026 monthly partitions
+    partition mh_202601 values less than ('2026-02-01 00:00:00'),
+    partition mh_202603 values less than ('2026-04-01 00:00:00'),
+    partition mh_202605 values less than ('2026-06-01 00:00:00'),
+    partition mh_202607 values less than ('2026-08-01 00:00:00'),
+    partition mh_202609 values less than ('2026-10-01 00:00:00'),
+    partition mh_202611 values less than ('2026-12-01 00:00:00'),
+
+    -- 2027 monthly partitions
+    partition mh_202701 values less than ('2027-02-01 00:00:00'),
+    partition mh_202703 values less than ('2027-04-01 00:00:00'),
+    partition mh_202705 values less than ('2027-06-01 00:00:00'),
+    partition mh_202707 values less than ('2027-08-01 00:00:00'),
+    partition mh_202709 values less than ('2027-10-01 00:00:00'),
+    partition mh_202711 values less than ('2027-12-01 00:00:00'),
+
+    -- 2028 monthly partitions
+    partition mh_202801 values less than ('2028-02-01 00:00:00'),
+    partition mh_202803 values less than ('2028-04-01 00:00:00'),
+    partition mh_202805 values less than ('2028-06-01 00:00:00'),
+    partition mh_202807 values less than ('2028-08-01 00:00:00'),
+    partition mh_202809 values less than ('2028-10-01 00:00:00'),
+
+    -- Future partition, avoid insertion failure for unexpected time data
+    partition mh_future values less than ('9999-01-01 00:00:00')
+);
+
+-- Add table comment
+comment on table coss_dm.dm_tmu_sensor_data_mini_month
+    is 'Terminal User Sensor Monitoring Data';
+
+-- Add column comments
+comment on column coss_dm.dm_tmu_sensor_data_mini_month.id
+    is 'ID';
+comment on column coss_dm.dm_tmu_sensor_data_mini_month.sensor_code
+    is 'Sensor Code';
+comment on column coss_dm.dm_tmu_sensor_data_mini_month.sensor_value
+    is 'Sensor Value';
+comment on column coss_dm.dm_tmu_sensor_data_mini_month.sensor_time
+    is 'Sensor Time';
+comment on column coss_dm.dm_tmu_sensor_data_mini_month.dm_update_time
+    is 'Data Update Time';
+comment on column coss_dm.dm_tmu_sensor_data_mini_month.dm_load_time
+    is 'Data Loading Time      
+```
+
+
+
+
 
 
 
