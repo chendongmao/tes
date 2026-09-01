@@ -1,3 +1,18 @@
+DE_TY_000001	gw010	IOT_DEVICE_TYPE	压力点 (管网)	壓力點 (管網)	Pressure Monitoring Point(Pipe Network)
+DE_TY_000002	gw100	IOT_DEVICE_TYPE	流量点 (管网)	流量點 (管網)	Flow Monitoring Point(Pipe Network)
+DE_TY_000003	gw111	IOT_DEVICE_TYPE	水质点 (管网)	水質點 (管網)	Water Quality Monitoring Point(Pipe Network)
+DE_TY_000004	sb110	IOT_DEVICE_TYPE	视频点 (水表)	視頻點 (水錶)	Video Monitoring Point(Water Meter)
+DE_TY_000005	sb100	IOT_DEVICE_TYPE	流量点 (水表)	流量點 (水錶)	Flow Monitoring Point(Water Meter)
+DE_TY_000006	ca001	IOT_DEVICE_TYPE	液位点 (引水道)	液位點 (引水道)	Level Monitoring Point(Catchwater)
+DE_BU_000001	ca	IOT_DEVICE_BUSINESS	引水道	引水道	Catchwater
+DE_BU_000002	jc	IOT_DEVICE_BUSINESS	水表	水錶	Water Meter
+DE_BU_000003	gw	IOT_DEVICE_BUSINESS	管网	管網	Pipe Network
+<img width="646" height="164" alt="image" src="https://github.com/user-attachments/assets/e82952b2-e0a8-4192-9d18-7f7ba84d40b7" />
+
+
+
+
+
 # dim
 
 ## coss_dim.dim_device_monitoring_point_info
