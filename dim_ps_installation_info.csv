@@ -1,0 +1,67 @@
+"asset_id","region_abbr","sub_region","i_code","i_type_code","i_type_desc","ps_en","ps_cn","address_en","address_cn","dim_update_time","dim_load_time"
+220,NTE,NTE(D1),PS070,RW,Raw Water,Lower Shing Mun No.2 Raw Water Pumping Station,下城門二號原水抽水站,"Lower Shing Mun Road, Sha Tin",沙田下城門道,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+205,NTE,NTE(D3),PH037,FW,Fresh Water,Kei Pik Shan Fresh Water Pump House,企壁山食水泵房,"Mang Kung Wo Road, Sai Kung",西貢孟公窩路,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+100,NTW,NTW(D2),PH035,FW,Fresh Water,Lung Kwu Sheung Tan Fresh Water Pump House,龍鼓上灘食水泵房,"Lung Kwu Sheung Tan, Tuen Mun",屯門龍鼓上灘,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+189,NTW,NTW(D4),PH005,FW,Fresh Water,Sheung Yat Chuen Fresh Water Pump House,上一村食水泵房,"Shing Mun Ha Chuen, Lei Muk Shue, Kwai Chung",荃灣梨木樹城門下村,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+156,K,K(D2),PS050,FW,Fresh Water,Bowen Drive Salt Water Pumping Station,寶雲徑海水抽水站,,,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+207,NTE,NTE(D3),PH016,FW,Fresh Water,Muk Min Shan Fresh Water Pump House,木棉山食水泵房,"Chuk Yeung Road, Muk Min Shan, Sai Kung",西貢木棉山竹洋路,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+211,NTE,NTE(D3),PH057,FW,Fresh Water,Sha Tau Fresh Water Pump House,沙頭食水泵房,"Sha Tau, Tai Po",大埔沙頭,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+184,NTW,NTW(D5),PH056,FW,Fresh Water,Lui Kung Tin Fresh Water Pump House,雷公田食水泵房,"Lui Kung Tin Village, Shek Kong",石崗雷公田村,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+190,NTW,NTW(D5),PH030,FW,Fresh Water,Shung Shan San Tsuen Fresh Water Pump House,崇山新村食水泵房,"Shung Shan San Tsuen, Yuen Long",元朗崇山新村,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+62,HKI,HKI(D3),PS048,FW,Fresh Water,Chai Wan North Fresh Water Pumping Station,柴灣北食水抽水站,,,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+216,NTE,NTE(D1),PH060,FW,Fresh Water,Ma On Shan Tsuen Fresh Water Pump House,馬鞍山村食水泵房,"Ma On Shan Tsuen, Ma On Shan",馬鞍山馬鞍山村,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+198,NTE,NTE(D4),PS039,RW,Raw Water,Tai Mei Tuk Raw Water Pumping Station,大美督原水抽水站,"Bride's Pool Road, Tai Mei Tuk, Tai Po",大埔大美督新娘潭路,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+44,HKI,HKI(D1),PS096,FW,Fresh Water,Mount Parker Road Fresh Water Pumping Station,柏架山道食水抽水站,"Mount Parker Road, Quarry Bay",鰂魚涌柏架山道,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+52,HKI,HKI(D1),PS071,FW,Fresh Water,So Kon Po Fresh Water Pumping Station,掃桿埔食水抽水站,"Behind Hong Kong Stadium, So Kon Po",掃桿埔香港大球場後面,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+235,HKI,HKI(D6),PH010,FW,Fresh Water,Wong Kung Tin Fresh Water Pump House,黃公田食水泵房,"Mui Wo, Lantau Island",大嶼山梅窩,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+225,NTE,NTE(D4),PH022,FW,Fresh Water,Lai Chi Hang Fresh Water Pump House,荔枝坑食水泵房,"Lai Chi Hang Village, Tai Po Road, Tai Po",大埔大埔道荔枝坑村,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+228,NTE,NTE(D4),PH051,FW,Fresh Water,Ting Kok Fresh Water Pump House,汀角食水泵房,"Ting Kok Road, Tai Mei Tuk, Tai Po",大埔大尾篤汀角路,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+222,NTE,NTE(D4),PH034,FW,Fresh Water,Lin Au Fresh Water Pump House,蓮澳食水泵房,"Shek Lin Road, Tai Po",大埔石蓮路,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+177,NTW,NTW(D1),PH040,FW,Fresh Water,Chuen Lung Fresh Water Pump House,川龍食水泵房,"Near Agriculture & Fisheries Dept, Chuen Lung Depot, Tsuen Wan",荃灣川龍廠近漁農處,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+193,NTW,NTW(D5),PH059,FW,Fresh Water,Wong Chuk Yuen Fresh Water Pump House,黃竹園食水泵房,"Lam Kam Road, Wong Chuk Yuen, Shek Kong, Yuen Long",元朗石崗黃竹園林錦公路,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+125,NTE,NTE(D3),PS136,SW,Salt Water,Tseung Kwan O Salt Water Booster Pumping Station,將軍澳海水增壓抽水站,,,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+113,NTE,NTE(D3),PS055,RW,Raw Water,Ho Chung Lowland Raw Water Pumping Station,蠔涌低地原水抽水站,"Ho Chung Village, Sai Kung",西貢蠔涌村,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+214,NTE,NTE(D1),PH017,FW,Fresh Water,Sha Tin West Fresh Water Pump House,沙田西食水泵房,"Shatin West Fresh Water Service Reservoir, Yau On Street, Sha Tin",沙田悠安街沙田西食水配水庫,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+178,NTW,NTW(D2),PH012,FW,Fresh Water,Fu Tei Sheung Tsuen Fresh Water Pump House,虎地上村食水泵房,"Fu Tei Sheung Tsuen, Tuen Mun",屯門虎地上村,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+209,NTE,NTE(D3),PH038,FW,Fresh Water,Wong Mo Ying Fresh Water Pump House,黃毛應食水泵房,"Yan Yee Road, Sai Kung",西貢仁義路,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+185,NTW,NTW(D2),PH023,FW,Fresh Water,San Shek Wan Fresh Water Pump House,䃟石灣食水泵房,"San Shek Wan Village, Tuen Mun",屯門䃟石灣新村,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+174,NTW,NTW(D5),PS117,RW,Raw Water,Au Tau No.2 Raw Water Pumping Station,凹頭二號原水抽水站,"Au Tau opposite Ko Po Tsuen, Yuen Long",元朗凹頭對面高莆村,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+182,NTW,NTW(D5),PH014,FW,Fresh Water,Ki Lun Shan Fresh Water Pump House,麒麟山食水泵房,"Kiu Ling Shan Village, San Tin, Yuen Long",元朗新田麒麟山村,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+229,NTE,NTE(D2),PH054,FW,Fresh Water,Luk Keng Fresh Water Pump House,鹿頸食水泵房,"Luk Keng Road, Sha Tau Kok",沙頭角鹿頸路,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+203,NTE,NTW(D5),PH032,RW,Raw Water,Tsiu Keng Shaft Raw Water Irrigation Pump House,蕉徑豎井原水灌溉泵房,"Fan Kam Road, Fanling",粉嶺粉錦公路,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+215,NTE,NTE(D1),PH058,FW,Fresh Water,Fa Sam Hang Fresh Water Pump House,花心坑食水泵房,"Fa Sam Hang, Sha Tin",沙田花心坑,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+186,NTW,NTW(D1),PH029,FW,Fresh Water,Sham Tseng Fresh Water Pump House,深井食水泵房,"Tsing Fai Tong San Tsuen, Tsuen Wan",荃灣深井清快塘新村,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+131,NTE,NTE(D3),PH045,FW,Fresh Water,Pak Tam Chung Fresh Water Pump House,北潭涌食水泵房,"Pak Tam Road, Sai Kung",西貢北潭路,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+179,NTW,NTW(D3),PH027,FW,Fresh Water,Fung Kong Tsuen Fresh Water Pump House,鳳降村食水泵房,"Fung Kong Tsuen, Ping Shan, Yuen Long",元朗屏山鳳降村,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+217,NTE,NTE(D1),PH053,FW,Fresh Water,Wong Chuk Yeung Fresh Water Pump House,黃竹洋食水泵房,"Wong Chuk Yeung Tsuen Path, Fo Tan, Sha Tin",沙田火炭黃竹洋村路,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+121,NTE,NTE(D3),PS060,RW,Raw Water,Tai Mong Tsai Lowland Raw Water Pumping Station,大網仔低地原水抽水站,"Yan Yee Road, Tai Mong Tsai Village, Sai Kung",西貢仁義路大網仔村,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+221,NTE,NTE(D4),PS147,FW,Fresh Water,Tai Po Kau Fresh Water Pumping Station,大埔滘食水抽水站,Tai Po Road-Tai Po Kau,大埔公路-大埔滘段,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+173,HKI,HKI(D4),PS157,SW,Salt Water,Bowen Drive Salt Water Pumping Station,寶雲徑海水抽水站,,,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+212,NTE,NTE(D1),PH031,FW,Fresh Water,Yau Oi Tsuen Fresh Water Pump House,友愛村食水泵房,"Tung Lo Wan Hill Road, Sha Tin",沙田銅鑼灣山路,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+204,NTE,NTE(D3),PH064,FW,Fresh Water,Kau Sai Chau Fresh Water Pump House,滘西洲食水泵房,"Kau Sai Chau, Sai Kung",西貢滘西洲,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+79,NTE,NTE(D1),PS126,SW,Salt Water,Sha Tin Salt Water Booster Pumping Station,沙田海水增壓抽水站,,,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+65,NTE,NTE(D1),PS023,RW,Raw Water,Lower Shing Mun Raw Water Pumping Station,下城門原水抽水站,"Lower Shing Mun Road, Sha Tin",沙田下城門道,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+187,NTW,NTW(D4),PH003,FW,Fresh Water,Shek Lei Hang Fresh Water Pump House,石籬坑食水泵房,"Shek Pai Street, Kwai Chung",葵涌石排街,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+137,NTE,NTE(D4),PH033,FW,Fresh Water,Chai Kek Fresh Water Pump House,寨乪食水泵房,"Lam Kam Road, Tai Po",大埔林錦公路,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+234,HKI,HKI(D6),PH061,FW,Fresh Water,Shek Mun Kap Fresh Water Pump House,石門甲食水泵房,"Shek Mun Kap, Lantau Island",大嶼山石門甲,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+213,NTE,NTE(D1),PH028,FW,Fresh Water,Pak Tin North Fresh Water Pump House,白田北食水泵房,"Mei Tin Road, Sha Tin",沙田美田路,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+200,NTE,NTE(D2),PS081,RW,Raw Water,Muk Wu No.2 Raw Water Pumping Station,木湖二號原水抽水站,"Man Kam To Road, Muk Wu",木湖文錦渡路,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+81,NTE,NTE(D2),PH041,FW,Fresh Water,Lin Ma Hang Fresh Water Pump House,蓮麻坑食水泵房,"Lin Ma Hang Road near Heung Yuen Wai, North District",蓮麻坑路近香園圍,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+199,NTE,NTE(D4),PS093,RW,Raw Water,Tai Mei Tuk No.2 Raw Water Pumping Station,大美督二號原水抽水站,"Bride's Pool Road, Tai Mei Tuk, Tai Po",大埔大美督新娘潭路,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+176,NTW,NTW(D1),PH021,FW,Fresh Water,Choi Yuen Tsuen Fresh Water Pump House,菜園村食水泵房,"Castle Peak Road, Upper Tsing Lung Tau, Tuen Mun",屯門青山公路上青龍頭,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+175,NTW,NTW(D5),PS086,Combine,Combine TW & FW,Au Tau Raw Water and Fresh Water Pumping Station,凹頭原水及食水抽水站,"Au Tau opposite Ko Po Tsuen, Yuen Long",元朗凹頭對面高莆村,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+36,HKI,HKI(D4),PS104,SW,Salt Water,Wan Chai Salt Water Pumping Station,灣仔海水抽水站,,,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+169,HKI,HKI(D6),PH044,FW,Fresh Water,Shui Hau Fresh Water Pump House,水口食水泵房,"Shui Hau, Lantau Island",大嶼山水口,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+124,NTE,NTE(D3),PS109,FW,Fresh Water,Tseung Kwan O High Level Fresh Water Pumping Station,將軍澳高地食水抽水站,,,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+201,NTE,NTE(D2),PS119,RW,Raw Water,Muk Wu No.3 Raw Water Pumping Station,木湖三號原水抽水站,"Man Kam To Road, Muk Wu",木湖文錦渡路,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+226,NTE,NTE(D4),PS088,RW,Raw Water,Harbour Island Raw Water Pumping Station,白沙頭洲原水抽水站,"Harbour Island, Tai Po",大埔白沙頭洲,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+195,K,K(D3),PH042,FW,Fresh Water,Sha Tin Pass Fresh Water Pump House,沙田坳食水泵房,"Sha Tin Pass Road, Wong Tai Sin",黃大仙沙田坳道,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+183,NTW,NTW(D1),PH006,FW,Fresh Water,Lo Wai Fresh Water Pump House,老圍食水泵房,"Yuen Yuen Hok Yuen, Hilltop Road, Tsuen Wan",荃灣顯達路圓玄學院,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+233,HKI,HKI(D6),PH043,FW,Fresh Water,Sham Wat Fresh Water Pump House,深屈食水泵房,"Sham Wat Road, Lantau Island",大嶼山深屈道,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+243,K,K(D3),PS168,FW,Fresh Water,Sau Mau Ping Fresh Water Pumping Station,秀茂坪食水抽水站,,,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+138,NTE,NTE(D4),PH065,FW,Fresh Water,Ta Tit Yan Fresh Water Pump House,打鐵印食水泵房,"Ta Tit Yan Village, Tai Po",大埔打鐵印村,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+192,NTW,NTW(D4),PH024,FW,Fresh Water,Wo Yi Hop Fresh Water Pump House,和宜合食水泵房,"Wo Yi Hop Road, Tsuen Wan",荃灣和宜合道,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+180,NTW,NTW(D4),PH001,FW,Fresh Water,Ha Kwai Chung Fresh Water Pump House,下葵涌食水泵房,"Lei Pui Street, Ha Kwai Chung",下葵涌梨貝街,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+206,NTE,NTE(D3),PH036,FW,Fresh Water,Pak Kong Au Fresh Water Pump House,北港凹食水泵房,"Pak Kong Au Fresh Water Service Reservoir, Pak Kong Au Village, Sai Kung",西貢北港凹村北港凹食水配水庫,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+191,NTW,NTW(D1),PH052,FW,Fresh Water,Tsuen Wan West Ultra High Level Fresh Water Pump House,荃灣西超高地食水泵房,"Near Kwong Pan Tin Village, Tsuen Wan",荃灣近光板田村,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
+181,NTW,NTW(D1),PH013,FW,Fresh Water,Hon Man Tsuen Fresh Water Pump House,漢文村食水泵房,"Hon Man Tsuen, Tsuen Wan",荃灣漢民村,2026-09-07 10:58:30.182 +0800,2026-09-07 10:58:30.182 +0800
