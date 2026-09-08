@@ -1,18 +1,4 @@
-新增字段	注释
-cms_complaints	‑
-customer_complaints	‑
-associate_pems_id	‑
-initial_complaint_date	‑
-asn	ASN ID
-customer_biz_type_completion_status	Customer bisness type completionstatus
-person_name	Person name
-person_company_name	Person company name
-water_using_spot_geo_address	Water using spot geo address
-water_using_service_address	Water using service address
-meter_position_geo_address	Meter position geo address
-meter_position_xy_coordinates	Meter position xy coordinates
-miu	MIU
-![Uploading image.png…]()
+<img width="474" height="431" alt="image" src="https://github.com/user-attachments/assets/d56a2a87-bad3-4080-8100-919cd9882e25" />
 
 
 
