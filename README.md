@@ -1,3 +1,6 @@
+url: jdbc:postgresql://192.168.138.107:8000,192.168.138.98:8000,192.168.138.25:8000,192.168.138.120:8000/wsd_isit?loadBalanceHosts=true&refreshCNIpListTime=3
+
+
 
 
 
