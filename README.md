@@ -12,6 +12,8 @@ water_using_service_address	Water using service address
 meter_position_geo_address	Meter position geo address
 meter_position_xy_coordinates	Meter position xy coordinates
 miu	MIU
+![Uploading image.png…]()
+
 
 
 
