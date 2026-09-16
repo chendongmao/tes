@@ -1,5 +1,4 @@
-
-<img width="203" height="125" alt="image" src="https://github.com/user-attachments/assets/f6426295-f02e-4994-a373-17b4607e62ae" />
+http://192.168.206.207:12024/api/open/share/sensor/realtime
 
 
 url: jdbc:postgresql://192.168.138.107:8000,192.168.138.98:8000,192.168.138.25:8000,192.168.138.120:8000/wsd_isit?loadBalanceHosts=true&refreshCNIpListTime=3
