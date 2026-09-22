@@ -1,3 +1,229 @@
+# DM
+
+## dm_wtw_etl_tuenmun_monitoring_min(调度任务)
+
+### dm_wtw_opc_data_rt_mini
+
+#### create table
+
+```sql
+drop table if exists coss_dm.dm_wtw_opc_data_rt_mini;
+create table if not exists coss_dm.dm_wtw_opc_data_rt_mini (
+	installation_id varchar(50) not null,
+	tag_name_en     varchar(128) null,
+	tag_value     decimal(25,5) null,
+    tag_value_avg decimal(25,5) null,
+    tag_value_min decimal(25,5) null,
+    tag_value_max decimal(25,5) null,
+    quality  int,
+	tag_time timestamp not null,
+	dm_update_time timestamp(6) not null,
+    dm_load_time timestamp(6) not null,
+    primary key(installation_id, tag_name_en)
+)
+with (
+	orientation=row,
+	compression=no,
+	storage_type=ustore,
+	segment=off
+);
+comment on table  coss_dm.dm_wtw_opc_data_rt_mini                     is 'Water Treatment Work Tag Opc Real Time Data';
+comment on column coss_dm.dm_wtw_opc_data_rt_mini.installation_id              is 'Installation ID';
+comment on column coss_dm.dm_wtw_opc_data_rt_mini.tag_name_en         is 'Tag Name';
+comment on column coss_dm.dm_wtw_opc_data_rt_mini.tag_value           is 'Tag Value';
+comment on column coss_dm.dm_wtw_opc_data_rt_mini.tag_value_avg       is 'Tag Value Avg';
+comment on column coss_dm.dm_wtw_opc_data_rt_mini.tag_value_min       is 'Tag Value Min';
+comment on column coss_dm.dm_wtw_opc_data_rt_mini.tag_value_max       is 'Tag Value Max';
+comment on column coss_dm.dm_wtw_opc_data_rt_mini.quality             is 'Quality';
+comment on column coss_dm.dm_wtw_opc_data_rt_mini.tag_time            is 'Tag Time';
+comment on column coss_dm.dm_wtw_opc_data_rt_mini.dm_update_time      is 'Update Time';
+comment on column coss_dm.dm_wtw_opc_data_rt_mini.dm_load_time        is 'Load Time';
+
+```
+
+### dm_wtw_opc_data_hst_mini_month
+
+#### create table
+
+```sql
+drop table if exists coss_dm.dm_wtw_opc_data_hst_mini_month;
+
+create table if not exists coss_dm.dm_wtw_opc_data_hst_mini_month (
+    installation_id          varchar(50)    not null,
+    tag_name_en     varchar(128)   null,
+    tag_value       decimal(25,5)  null,
+    tag_value_avg   decimal(25,5)  null,
+    tag_value_min   decimal(25,5)  null,
+    tag_value_max   decimal(25,5)  null,
+    quality         int            null,
+    tag_time        timestamp      not null,
+    dm_update_time  timestamp(6)      not null,
+    dm_load_time    timestamp(6)   not null,
+    primary key (installation_id, tag_name_en, tag_time)
+)
+with (
+    orientation=row,
+    compression=no,
+    storage_type=ustore,
+    segment=off
+)
+partition by range (tag_time) (
+    -- 2025 monthly partitions
+    partition mh_202501 values less than ('2025-02-01 00:00:00'),
+    partition mh_202503 values less than ('2025-04-01 00:00:00'),
+    partition mh_202505 values less than ('2025-06-01 00:00:00'),
+    partition mh_202507 values less than ('2025-08-01 00:00:00'),
+    partition mh_202509 values less than ('2025-10-01 00:00:00'),
+    partition mh_202511 values less than ('2025-12-01 00:00:00'),
+
+    -- 2026 monthly partitions
+    partition mh_202601 values less than ('2026-02-01 00:00:00'),
+    partition mh_202603 values less than ('2026-04-01 00:00:00'),
+    partition mh_202605 values less than ('2026-06-01 00:00:00'),
+    partition mh_202607 values less than ('2026-08-01 00:00:00'),
+    partition mh_202609 values less than ('2026-10-01 00:00:00'),
+    partition mh_202611 values less than ('2026-12-01 00:00:00'),
+
+    -- 2027 monthly partitions
+    partition mh_202701 values less than ('2027-02-01 00:00:00'),
+    partition mh_202703 values less than ('2027-04-01 00:00:00'),
+    partition mh_202705 values less than ('2027-06-01 00:00:00'),
+    partition mh_202707 values less than ('2027-08-01 00:00:00'),
+    partition mh_202709 values less than ('2027-10-01 00:00:00'),
+    partition mh_202711 values less than ('2027-12-01 00:00:00'),
+
+    -- 2028 monthly partitions
+    partition mh_202801 values less than ('2028-02-01 00:00:00'),
+    partition mh_202803 values less than ('2028-04-01 00:00:00'),
+    partition mh_202805 values less than ('2028-06-01 00:00:00'),
+    partition mh_202807 values less than ('2028-08-01 00:00:00'),
+    partition mh_202809 values less than ('2028-10-01 00:00:00'),
+
+    -- Future partition, avoid insertion failure for unexpected time data
+    partition mh_future values less than ('9999-01-01 00:00:00')
+);
+-- Add table and column comments
+comment on table coss_dm.dm_wtw_opc_data_hst_mini_month is 'Water Treatment Work Tag Opc History Data';
+comment on column coss_dm.dm_wtw_opc_data_hst_mini_month.installation_id is 'Installation ID';
+comment on column coss_dm.dm_wtw_opc_data_hst_mini_month.tag_name_en is 'Tag Name';
+comment on column coss_dm.dm_wtw_opc_data_hst_mini_month.tag_value is 'Tag Value';
+comment on column coss_dm.dm_wtw_opc_data_hst_mini_month.tag_value_avg is 'Tag Value Avg';
+comment on column coss_dm.dm_wtw_opc_data_hst_mini_month.tag_value_min is 'Tag Value Min';
+comment on column coss_dm.dm_wtw_opc_data_hst_mini_month.tag_value_max is 'Tag Value Max';
+comment on column coss_dm.dm_wtw_opc_data_hst_mini_month.tag_value_avg is 'Tag Value Avg';
+comment on column coss_dm.dm_wtw_opc_data_hst_mini_month.tag_value_min is 'Tag Value Min';
+comment on column coss_dm.dm_wtw_opc_data_hst_mini_month.tag_value_max is 'Tag Value Max';
+comment on column coss_dm.dm_wtw_opc_data_hst_mini_month.quality is 'Quality';
+comment on column coss_dm.dm_wtw_opc_data_hst_mini_month.tag_time is 'Tag Time';
+comment on column coss_dm.dm_wtw_opc_data_hst_mini_month.dm_update_time is 'Update Time';
+comment on column coss_dm.dm_wtw_opc_data_hst_mini_month.dm_load_time is 'Load Time';
+```
+
+
+
+
+
+# DIM
+
+## create table 
+
+```sql
+drop table if exists coss_dim.dim_wtw_tag_info;
+create table if not exists coss_dim.dim_wtw_tag_info (
+	installation_id varchar(50) not null, -- Installation ID
+	region_abbr varchar(50) null, -- Region Abbreviation
+	wtw_name_en varchar(100) null, -- Water Treatments Work English Name 
+	wtw_name_cn varchar(100) null, -- Water Treatments Work Chinese Name 
+	wtw_name_tc varchar(100) null, -- Water Treatments Work Traditional Chinese Name 
+	tag_name_en varchar(100) not null, -- Tag English Name 
+	tag_name_cn varchar(100) null, -- Tag Chinese Name 
+	tag_name_tc varchar(100) null, -- Tag Traditional Chinese Name 
+	units varchar(20) null, -- Tag Units
+	water_type_code varchar(20) null,
+	category varchar(20) null,
+	tag_type varchar(20) null, -- Tag Type
+	dim_update_time timestamp(6) null, -- Update Time
+	dim_load_time timestamp(6) null, -- Load Time
+	primary key (installation_id, tag_name_en)
+)
+with (
+	orientation=row,
+	compression=no,
+	storage_type=ustore,
+	segment=off
+);
+comment on table coss_dim.dim_wtw_tag_info is 'Water Treatment Work Tag Information';
+
+-- Column comments
+
+comment on column coss_dim.dim_wtw_tag_info.installation_id is 'Installation ID';
+comment on column coss_dim.dim_wtw_tag_info.region_abbr is 'Region Abbreviation';
+comment on column coss_dim.dim_wtw_tag_info.wtw_name_en is 'Water Treatments Work English Name';
+comment on column coss_dim.dim_wtw_tag_info.wtw_name_cn is 'Water Treatments Work Chinese Name';
+comment on column coss_dim.dim_wtw_tag_info.wtw_name_tc is 'Water Treatments Work Traditional Chinese Name';
+comment on column coss_dim.dim_wtw_tag_info.tag_name_en is 'Tag English Name';
+comment on column coss_dim.dim_wtw_tag_info.tag_name_cn is 'Tag Chinese Name';
+comment on column coss_dim.dim_wtw_tag_info.tag_name_tc is 'Tag Traditional Chinese Name';
+comment on column coss_dim.dim_wtw_tag_info.units is 'Tag Units';
+comment on column coss_dim.dim_wtw_tag_info.water_type_code is 'Water Type Code';
+comment on column coss_dim.dim_wtw_tag_info.category is 'Monitoring Category';
+comment on column coss_dim.dim_wtw_tag_info.tag_type is 'Monitoring Type';
+comment on column coss_dim.dim_wtw_tag_info.dim_update_time is 'Update Time';
+comment on column coss_dim.dim_wtw_tag_info.dim_load_time is 'Load Time';
+
+```
+
+## select sql
+
+```sql
+insert into coss_dim.dim_wtw_tag_info  
+select 
+installation_id installation_id,
+region_abbr,
+wtw_name_en,
+wtw_name_cn,
+wtw_name_tc,
+tag_name_en,
+substr(tag_name_cn,6) tag_name_cn,
+substr(tag_name_tc,6) tag_name_tc,
+units,
+case when left(tag_name_cn,4) = '水厂出水' then 'WT_TW_000004'
+     when left(tag_name_cn,4) = '水厂入水' then 'WT_RW_000001'
+     else null 
+end water_type_code,
+case when tag_type in ('COLOR',
+'DOC',
+'TURBIDITY',
+'CHLORINE',
+'PH',
+'FLUORIDE',
+'TEMP',
+'ORP',
+'EC',
+'CHL',
+'DO',
+'HC') then 'WATER QUALITY'
+else tag_type 
+end category,
+tag_type,
+current_timestamp dim_update_time,
+current_timestamp dim_load_time
+from coss_tmp.wtw_item_dia260921 where installation_id is not null 
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
 http://192.168.206.207:12024/api/open/share/sensor/realtime
 
 
