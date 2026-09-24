@@ -1,3 +1,25 @@
+
+【Date Scope】: By Month:2026-04
+【Water Type】: Fresh Water
+【Complaint Type】: (S1)odour with solvent smell
+【State】: Completed
+【District】: Wan Chai
+【Region】: HKI
+【Location】: Causeway Centre Block C
+【PEMSID】: 2605025DW2B
+
+
+
+【Date Scope】: By Custom: 2026-04-01 0:00:00 - 2026-04-30 0:00:00
+
+
+
+
+
+
+
+
+
 # DM
 
 ## dm_wtw_etl_tuenmun_monitoring_min(调度任务)
