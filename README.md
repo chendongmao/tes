@@ -1,4 +1,65 @@
 
+insert into coss_dm.dm_wtw_water_quality_verification_item_di 
+select 
+verification_id
+,i_code
+,sample_date + interval '2year' sample_date
+,verification_item_id * 100 +2 verification_item_id
+,loc_id
+,loc_full_name
+,water_type_code
+,water_type_en
+,water_type_tc
+,water_type_cn
+,ph_manual
+,turb_manual
+,rcl2_manual
+,fluoride_manual
+,mn_manual
+,nh3_manual
+,uv_manual
+,current_timestamp dm_update_time
+,current_timestamp dm_load_time
+from coss_tmp.dm_wtw_water_quality_verification_item_di_arch260926
+where sample_date >= '2024-01-01 00:00:00.000' and sample_date < '2025-01-01 00:00:00.000'  
+order by sample_date asc
+
+insert into coss_dm.dm_wtw_water_quality_verification_item_di 
+select * from 
+coss_tmp.dm_wtw_water_quality_verification_item_di_arch260926
+
+
+
+
+
+
+
+
+select *   from coss_dm.dm_wtw_daily_water_treatment_works_item_di 
+where statistical_day >= 20260924
+order by statistical_day asc 
+
+
+select *  from coss_dm.dm_wtw_daily_water_treatment_works_item_di
+
+insert into coss_dm.dm_wtw_daily_water_treatment_works_item_di 
+select * from coss_tmp.dm_wtw_daily_water_treatment_works_item_di_arch260926
+
+insert into coss_dm.dm_wtw_daily_water_treatment_works_item_di 
+select 
+statistical_day+10000 statistical_day
+,installation_id
+,inter_item_code
+,item_value
+,current_timestamp dm_update_time
+,current_timestamp dm_load_time
+from coss_tmp.dm_wtw_daily_water_treatment_works_item_di_arch260926
+where statistical_day >= 20250101 and statistical_day < 20260101 
+
+
+
+
+
 【Date Scope】: By Month:2026-04
 【Water Type】: Fresh Water
 【Complaint Type】: (S1)odour with solvent smell
