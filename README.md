@@ -1,3 +1,16 @@
+Login: T2043
+
+PW: P@ss1234
+https://cmsdms.wsd.hksarg
+
+ 
+https://intranet5.wsd.gov/division/cs/filemanager/en/content_10239/S&DB%20Handbook%20Volume%202%20-%20Complaints%20and%20Customer%20Services%20(February%202026)%20-%20Main%20Text.pdf
+
+ 
+
+
+
+
 
 insert into coss_dm.dm_wtw_water_quality_verification_item_di 
 select 
