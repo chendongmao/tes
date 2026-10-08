@@ -1,0 +1,47 @@
+"id","name","description","calledno","gatewayid","callednosrc","parentid","vdn","vdnid"
+1,Technical_PUT,供水事宜Technical组中文技能,"24103700",0,"4007766333",-1,0,
+2,Technical_CHI,供水事宜Technical组粤语技能,"24103700",0,"4007766333",-1,0,
+9,Main Burst_ENG,"報告水管爆裂或
+其他緊急事宜组英文技能","24103700",0,,-1,0,
+15,Sub-divided Unit_ENG,滥收水费投诉(Sub-divided Units)英文技能,,0,,-1,0,
+21,Coc give up_ENG,"用戶轉名或終止註冊用戶資格
+Change of Consumership Application",,0,,-1,0,
+5,Account_CHI,帳戶事宜组粤语技能,"24103700",0,"4007766333",-1,0,
+6,Account_ENG,帳戶事宜组英语技能,"24103700",0,,-1,0,
+8,Main Burst_CHI,"報告水管爆裂或
+其他緊急事宜组粤语技能","24103700",0,,-1,0,
+12,General_ENG,General组英文技能,"24103700",0,,-1,0,
+13,Sub-divided Unit_PUT,舉報劏房及濫收水費中文技能组,,0,,-1,0,
+17,Task Force_CHI,水安全計劃資助計劃或提升香港食水安全行動計劃(Task Force)粤语技能,,0,,-1,0,
+19,Coc give up_PUT,"用戶轉名或終止註冊用戶資格
+Change of Consumership Application",,0,,-1,0,
+23,Coc take up_CHI,"查詢用戶轉名或終止註冊用戶資格
+Change of Consumership Enquiry",,0,,-1,0,
+26,Saturday Account_CHI,(星期六)帳戶事宜Account粤语技能,,0,,-1,0,
+28,Saturday Coc take up_PUT,(星期六)查詢用戶轉名或終止註冊用戶資格中文技能,,0,,-1,0,
+14,Sub-divided Unit_CHI,滥收水费投诉(Sub-divided Units)粤语技能,,0,,-1,0,
+18,Task Force_ENG,水安全計劃資助計劃或提升香港食水安全行動計劃(Task Force)英文技能,,0,,-1,0,
+27,Saturday Account_ENG,(星期六)帳戶事宜Account英文技能,,0,,-1,0,
+30,Saturday Coc take up_ENG,(星期六)查詢用戶轉名或終止註冊用戶資格英文技能,,0,,-1,0,
+31,Saturday Coc give up_PUT,(星期六)查詢用戶轉名或終止註冊用戶資格中文技能,,0,,-1,0,
+32,Saturday Coc give up_CHI,(星期六)查詢用戶轉名或終止註冊用戶資格粤语技能,,0,,-1,0,
+35,Control Room_PUT,"",,0,,-1,0,
+36,Control Room_ENG,"",,0,,-1,0,
+3,Technical_ENG,供水事宜Technical组英语技能,"24103700",0,"4007766333",-1,0,
+4,Account_PUT,帳戶事宜组中文技能,"24103700",0,"4007766333",-1,0,
+7,Main Burst_PUT,"報告水管爆裂或
+其他緊急事宜组中文技能","24103700",0,,-1,0,
+10,General_PUT,"General组中文技能
+","24103700",0,,-1,0,
+11,General_CHI,General组粤语技能,"24103700",0,,-1,0,
+16,Task Force_PUT,水安全計劃資助計劃或提升香港食水安全行動計劃(Task Force)中文技能,,0,,-1,0,
+20,Coc give up_CHI,"用戶轉名或終止註冊用戶資格
+Change of Consumership Application",,0,,-1,0,
+22,Coc take up_PUT,"查詢用戶轉名或終止註冊用戶資格
+Change of Consumership Enquiry",,0,,-1,0,
+24,Coc take up_ENG,"查詢用戶轉名或終止註冊用戶資格
+Change of Consumership Enquiry",,0,,-1,0,
+25,Saturday Account_PUT,(星期六)帳戶事宜Account中文技能,,0,,-1,0,
+29,Saturday Coc take up_CHI,(星期六)查詢用戶轉名或終止註冊用戶資格中文技能,,0,,-1,0,
+33,Saturday Coc give up_ENG,(星期六)查詢用戶轉名或終止註冊用戶資格英文技能,,0,,-1,0,
+34,Control Room_CHI,"",,0,,-1,0,
