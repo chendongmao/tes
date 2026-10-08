@@ -1,12 +1,34 @@
-Login: T2043
+opc_data_full_taipo
+opc_data_full_siuhowan
+opc_data_full_yaukomtau
+opc_data_full_autau
+opc_data_full_ngautammei
+opc_data_full_tuenmun
+opc_data_full_shatin
+opc_data_full_shatin_old
+opc_data_full_taipo_202606301134
+opc_data_full_tsuenwan
+opc_data_full_sheungshui
+opc_data_full_cheungsha
+opc_data_full_redhill
+opc_data_full_pakkong
+opc_data_full_yaukomtau_202606301127
+opc_data_full_silverminebay
+opc_data_full_maonshan
+opc_data_full_tuenmun_202606301108
+opc_data_full_tsuenwan_202606301010
+opc_data_full_tseungkwuno
+opc_data_full_taio_202606301138
 
-PW: P@ss1234
-https://cmsdms.wsd.hksarg
+jdbc:postgresql://10.66.169.52:8000,10.66.169.59:8000,10.66.169.76:8000,10.66.169.225:8000/wsd?loadBalanceHosts=true&refreshCNIpListTime=3
 
- 
-https://intranet5.wsd.gov/division/cs/filemanager/en/content_10239/S&DB%20Handbook%20Volume%202%20-%20Complaints%20and%20Customer%20Services%20(February%202026)%20-%20Main%20Text.pdf
 
- 
+
+
+
+
+
+
 
 
 
