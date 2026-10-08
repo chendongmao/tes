@@ -1,3 +1,8 @@
+http://10.66.168.88/login
+
+
+
+
 opc_data_full_taipo
 opc_data_full_siuhowan
 opc_data_full_yaukomtau
