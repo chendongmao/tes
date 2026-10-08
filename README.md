@@ -1,4 +1,37 @@
-http://10.66.168.88/login
+-- coss_dim.dim_ir_intake_level_info definition
+
+-- Drop table
+
+-- DROP TABLE coss_dim.dim_ir_intake_level_info;
+
+CREATE TABLE coss_dim.dim_ir_intake_level_info (
+	ir_id varchar(255) NOT NULL, -- IR ID
+	ir_name varchar(255) NULL, -- IR Name
+	ir_wl numeric(15, 5) NOT NULL, -- IR Intake Water Level
+	intake varchar(255) NULL, -- Intake Name
+	unit varchar(255) NULL, -- Water Level Unit
+	dim_update_time timestamp(6) NULL, -- Data Update Time
+	dim_load_time timestamp(6) NULL, -- Data Load Time
+	CONSTRAINT dim_ir_intake_level_info_pkey PRIMARY KEY (ir_id,ir_wl)
+)
+WITH (
+	orientation=row,
+	compression=no
+);
+COMMENT ON TABLE coss_dim.dim_ir_intake_level_info IS 'Impounding Reservoir Intake Level Information';
+
+-- Column comments
+
+COMMENT ON COLUMN coss_dim.dim_ir_intake_level_info.ir_id IS 'IR ID';
+COMMENT ON COLUMN coss_dim.dim_ir_intake_level_info.ir_name IS 'IR Name';
+COMMENT ON COLUMN coss_dim.dim_ir_intake_level_info.ir_wl IS 'IR Intake Water Level';
+COMMENT ON COLUMN coss_dim.dim_ir_intake_level_info.intake IS 'Intake Name';
+COMMENT ON COLUMN coss_dim.dim_ir_intake_level_info.unit IS 'Water Level Unit';
+COMMENT ON COLUMN coss_dim.dim_ir_intake_level_info.dim_update_time IS 'Data Update Time';
+COMMENT ON COLUMN coss_dim.dim_ir_intake_level_info.dim_load_time IS 'Data Load Time';
+
+
+
 
 
 
