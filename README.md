@@ -1,3 +1,11 @@
+select * from coss_dim.dim_wtw_tag_info dwti where category = 'FLOW' and units is null 
+
+
+delete  from coss_dim.dim_wtw_tag_info dwti where category = 'FLOW' and units is null
+
+
+
+
 http://172.20.1.93:8081/locationMap?HKMap=false
 
 insert into coss_dm.dm_wtw_water_quality_verification_item_di 
