@@ -6,6 +6,53 @@ delete  from coss_dim.dim_wtw_tag_info dwti where category = 'FLOW' and units is
 
 
 
+
+
+
+-- 删除2026年的数据
+delete  from coss_dm.dm_wtw_water_quality_verification_item_di
+where 
+sample_date >= '2026-01-01 00:00:00.000' --  order by sample_date desc 
+
+
+-- 重新生成2026年数据
+insert into coss_dm.dm_wtw_water_quality_verification_item_di
+select 
+verification_id
+,i_code
+,sample_date + interval '2year' sample_date
+,verification_item_id * 100 +2 verification_item_id
+,loc_id
+,loc_full_name
+,water_type_code
+,water_type_en
+,water_type_tc
+,water_type_cn
+,ph_manual
+,turb_manual
+,rcl2_manual
+,fluoride_manual
+,mn_manual
+,nh3_manual
+,uv_manual
+,current_timestamp dm_update_time
+,current_timestamp dm_load_time
+from coss_tmp.dm_wtw_water_quality_verification_item_di_arch260927
+where sample_date >= '2024-01-01 00:00:00.000' and sample_date < '2025-01-01 00:00:00.000'  
+order by sample_date asc
+
+-- 删除大于演示时间的数据
+delete  from coss_dm.dm_wtw_water_quality_verification_item_di
+where 
+sample_date >= '2026-10-12 00:00:00.000' 
+
+
+
+
+
+
+
+
 http://172.20.1.93:8081/locationMap?HKMap=false
 
 insert into coss_dm.dm_wtw_water_quality_verification_item_di 
