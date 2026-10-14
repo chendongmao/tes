@@ -1,69 +1,19 @@
-更新水厂数据表
-
-drop table coss_dim.dim_wtw_tag_info;
-
-create table coss_dim.dim_wtw_tag_info (
-	installation_id varchar(50) not null, -- Installation ID
-	region_abbr varchar(50) null, -- Region Abbreviation
-	wtw_name_en varchar(100) null, -- Water Treatments Work English Name
-	wtw_name_cn varchar(100) null, -- Water Treatments Work Chinese Name
-	wtw_name_tc varchar(100) null, -- Water Treatments Work Traditional Chinese Name
-	tag_name    varchar(100) not null, -- Tag Name
-	tag_name_en varchar(100) not null, -- Tag English Name
-	tag_name_cn varchar(100) null, -- Tag Chinese Name
-	tag_name_tc varchar(100) null, -- Tag Traditional Chinese Name
-	units varchar(20) null, -- Tag Units
-	water_type_code varchar(20) null, -- Water Type Code
-	category varchar(20) null, -- Monitoring Category
-	tag_type varchar(20) null, -- Monitoring Type
-	dim_update_time timestamp(6) default current_timestamp , -- Update Time
-	dim_load_time timestamp(6)  default current_timestamp, -- Load Time
-	primary key (installation_id, tag_name)
-)
-with (
-	orientation=row,
-	compression=no,
-	storage_type=ustore,
-	segment=off
-);
-comment on table coss_dim.dim_wtw_tag_info is 'Water Treatment Work Tag Information';
-
--- Column comments
-
-comment on column coss_dim.dim_wtw_tag_info.installation_id is 'Installation ID';
-comment on column coss_dim.dim_wtw_tag_info.region_abbr is 'Region Abbreviation';
-comment on column coss_dim.dim_wtw_tag_info.wtw_name_en is 'Water Treatments Work English Name';
-comment on column coss_dim.dim_wtw_tag_info.wtw_name_cn is 'Water Treatments Work Chinese Name';
-comment on column coss_dim.dim_wtw_tag_info.wtw_name_tc is 'Water Treatments Work Traditional Chinese Name';
-comment on column coss_dim.dim_wtw_tag_info.tag_name    is 'Tag Name';
-comment on column coss_dim.dim_wtw_tag_info.tag_name_en is 'Tag English Name';
-comment on column coss_dim.dim_wtw_tag_info.tag_name_cn is 'Tag Chinese Name';
-comment on column coss_dim.dim_wtw_tag_info.tag_name_tc is 'Tag Traditional Chinese Name';
-comment on column coss_dim.dim_wtw_tag_info.units is 'Tag Units';
-comment on column coss_dim.dim_wtw_tag_info.water_type_code is 'Water Type Code';
-comment on column coss_dim.dim_wtw_tag_info.category is 'Monitoring Category';
-comment on column coss_dim.dim_wtw_tag_info.tag_type is 'Monitoring Type';
-comment on column coss_dim.dim_wtw_tag_info.dim_update_time is 'Update Time';
-comment on column coss_dim.dim_wtw_tag_info.dim_load_time is 'Load Time';
 
 
-
-
-
-
-
-
-
-
-select * from coss_dim.dim_wtw_tag_info dwti where category = 'FLOW' and units is null 
-
-
-delete  from coss_dim.dim_wtw_tag_info dwti where category = 'FLOW' and units is null
-
-
-
-
-
+--  在预生产导入数据到IUAT 新的监测数据表
+insert into coss_dm.dm_wtw_opc_data_hst_mini_month
+select 
+i_code installation_id,
+tag_name,
+tag_value,
+tag_value_avg,
+tag_value_min,
+tag_value_max,
+quality,
+tag_time,
+current_timestamp dm_update_time,
+current_timestamp dm_load_time
+from coss_dm.dm_wtw_opc_data_mini_month
 
 
 -- 删除2026年的数据
