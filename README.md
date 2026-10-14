@@ -1,4 +1,7 @@
-
+    (t1.asset_name like '%PS%' or t1.asset_name like '%PH%')
+    and lower(t1.asset_name) not like '%ceased%'
+    and lower(t1.asset_name) not like '%decommissi%'
+    and t1.asset_name not like '%WTW%'
 
 --  在预生产导入数据到IUAT 新的监测数据表
 insert into coss_dm.dm_wtw_opc_data_hst_mini_month
