@@ -1,4 +1,14 @@
-    (t1.asset_name like '%PS%' or t1.asset_name like '%PH%')
+用户一张图要改为消费者（consumer）
+要在地图上展示TMF水表，水表读数，和屋邨或屋苑的关系
+冲厕水一张图要添加海水配水库
+漏损管理分析和缓冲区分析合并
+抽水站监测，要展示抽水站的压力，流量，运行状态
+找holmes 讨论CMSDMS 接口对接数据问题
+	
+	
+	
+	
+	(t1.asset_name like '%PS%' or t1.asset_name like '%PH%')
     and lower(t1.asset_name) not like '%ceased%'
     and lower(t1.asset_name) not like '%decommissi%'
     and t1.asset_name not like '%WTW%'
