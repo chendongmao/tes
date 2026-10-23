@@ -1,3 +1,6 @@
+https://10.66.110.21:6443/arcgis/rest/services/WCDMSMAP/DISTRICT/MapServer/0
+
+
 DP ip
 192.168.101.238
 192.168.101.138
