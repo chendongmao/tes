@@ -1,3 +1,29 @@
+代码修改背景：
+水厂数据DCS的代码需要优化，避免数仓同层读取数据，需要对数仓的数据清洗脚本进行修改，但是清洗逻辑是严格不变
+只是添加时间查询条件和数据质量的过滤条件，tuenmun水厂是已经修改好了代码，需要你按照下列要求对其他15个水厂进行优化，按照原来的文件格式输出ods 修改内容
+注意！！代码的具体逻辑内容不能改变
+ods层修改内容
+1.删除select sql 中的 -- create         by: dongmaochen
+2.ods_dcs_wtw_opc_data_full_tuenmun_mini_month 表的select 改为 datax +中间表的形式集成数据
+
+
+dwd 修改内容
+1.删除select sql 中的 -- create         by: dongmaochen
+2.添加 数据过滤条件where quality = 0 and ods_update_time >= '${dwd_update_time}'
+3.修改历史表的select sql语句:dwd_wtw_opc_data_mini_month
+
+dm Layer
+1.dm_wtw_opc_data_latest_minf 表改为：coss_dm.dm_wtw_opc_data_rt_mini， 修改 select sql
+2.dm_wtw_opc_data_mini_month 表改为：coss_dm.dm_wtw_opc_data_hst_mini_month， 修改 select sql
+
+
+
+
+
+
+
+
+
 水质事故专题
 原水监测+地图
 原水监测+地图
