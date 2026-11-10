@@ -1,3 +1,8 @@
+
+
+2025021000005
+
+
 drop table if exists coss_dm.dm_cus_sz_water_cut_off_notice_di;
 create table if not exists coss_dm.dm_cus_sz_water_cut_off_notice_di (
     recid               bigint not null,
