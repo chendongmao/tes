@@ -1,4 +1,84 @@
-http://10.66.168.88/login?appCode=COSSDEV&redirect_url=https://10.66.168.83/COSS
+drop table if exists coss_dm.dm_cus_sz_water_cut_off_notice_di;
+create table if not exists coss_dm.dm_cus_sz_water_cut_off_notice_di (
+    recid               bigint not null,
+    title               varchar(100) null,
+    notice_time         timestamp(6) null,
+    state               varchar(80) null,
+    action_region       varchar(100) null,
+    action_group        varchar(100) null,
+    sub_action_region   varchar(100) null,
+    district            varchar(100) null,
+    sub_district        varchar(100) null,
+    water_type          varchar(50) null,
+    outage_time         timestamp(6) null,
+    pre_recovery_time   timestamp(6) null,
+    actual_recovery_time timestamp(6) null,
+    cut_off_level       varchar(50) null,
+    housing_estate      varchar(300) null,
+    link_person1_en     varchar(100) null,
+    link_phone1         varchar(50) null,
+    link_person2_en     varchar(100) null,
+    link_phone2         varchar(50) null,
+    location_coord      varchar(100) null,
+    build_location      varchar(200) null,
+    relate_order        varchar(60) null,
+    cutoff_case_en      varchar(300) null,
+    affected_address_en varchar(350) null,
+    notice_content_en   varchar(1000) null,
+    remark_for_inside   varchar(500) null,
+    remark_for_outside_en varchar(500) null,
+    supply_id           int null,
+    supply_code         varchar(100) null,
+    dm_update_time      timestamp(6) default current_timestamp,
+    dm_load_time        timestamp(6) default current_timestamp,
+    primary key (recid)
+) with (
+    orientation=row,
+    compression=no,
+    storage_type=ustore,
+    segment=off
+);
+-- Table and Column Comments (all in English)
+comment on table coss_dm.dm_cus_sz_water_cut_off_notice_di                   is 'Supply Zone Water Cut Off Notice';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_di.recid                is 'Announcement ID';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_di.title                 is 'Title';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_di.notice_time          is 'Notice Publish Time';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_di.state                 is 'Status';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_di.action_region         is 'Action Region';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_di.action_group         is 'Action Group';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_di.sub_action_region    is 'Sub Action Region';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_di.district             is 'district';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_di.sub_district         is 'Sub-district';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_di.water_type           is 'Water Supply Type';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_di.outage_time          is 'Water Outage Time';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_di.pre_recovery_time    is 'Expected Recovery Time';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_di.actual_recovery_time is 'Actual Recovery Time';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_di.cut_off_level        is 'Water Cut Off Level';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_di.housing_estate       is 'Housing Estate(s)';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_di.link_person1_en       is 'Contact Person 1 English';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_di.link_phone1          is 'Contact Phone 1';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_di.link_person2_en       is 'Contact Person 2 English';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_di.link_phone2          is 'Contact Phone 2';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_di.location_coord        is 'Location Coordinate';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_di.build_location       is 'Construction Location';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_di.relate_order         is 'Related Work Order No';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_di.cutoff_case_en        is 'Water Cut Off Reason English';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_di.affected_address_en   is 'Affected Address English';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_di.notice_content_en     is 'Notice Content English';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_di.remark_for_inside     is 'Internal Remark';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_di.remark_for_outside_en is 'External Remark English';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_di.supply_id            is 'Supply ID';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_di.supply_code          is 'Supply Code';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_di.dm_update_time       is 'Update Time';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_di.dm_load_time         is 'Load Time';
+
+
+
+
+
+
+
+
 
 代码修改背景：
 水厂数据DCS的代码需要优化，避免数仓同层读取数据，需要对数仓的数据清洗脚本进行修改，但是清洗逻辑是严格不变
