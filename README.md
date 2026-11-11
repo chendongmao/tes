@@ -2,6 +2,106 @@
 
 
 
+-- ****************************************************************************************
+-- Table Name: coss_dm.dm_cus_sz_water_cut_off_notice_mini
+-- Table Comment: Supply Zone Water Cut Off Notice
+-- Subject Areas: Water Cutoff Notice
+-- Function Description: Mini water cut off notice dim table for COSS
+-- ****************************************************************************************
+
+-- drop table
+drop table if exists coss_dm.dm_cus_sz_water_cut_off_notice_mini;
+
+create table coss_dm.dm_cus_sz_water_cut_off_notice_mini (
+    recid                  int8        not null,    -- Announcement ID
+    title                  varchar(100) null,        -- Title
+    notice_time            timestamp(6) null,        -- Notice Publish Time
+    state                  varchar(80)  null,        -- Status
+    action_region          varchar(100) null,        -- Action Region
+    action_group           varchar(100) null,        -- Action Group
+    sub_action_region      varchar(100) null,        -- Sub Action Region
+    district               varchar(100) null,        -- District
+    sub_district           varchar(100) null,        -- Sub-district
+    water_type             varchar(50)  null,        -- Water Supply Type
+    outage_time            timestamp(6) null,        -- Water Outage Time
+    pre_recovery_time      timestamp(6) null,        -- Expected Recovery Time
+    actual_recovery_time   timestamp(6) null,        -- Actual Recovery Time
+    cut_off_level          varchar(50)  null,        -- Water Cut Off Level
+    housing_estate         varchar(300) null,        -- Housing Estate(s)
+    link_person1_en        varchar(100) null,        -- Contact Person 1 English
+    link_phone1            varchar(50)  null,        -- Contact Phone 1
+    link_person2_en        varchar(100) null,        -- Contact Person 2 English
+    link_phone2            varchar(50)  null,        -- Contact Phone 2
+    location_coord         varchar(100) null,        -- Location Coordinate
+    build_location         varchar(200) null,        -- Construction Location
+    relate_order           varchar(60)  null,        -- Related Work Order No
+    cutoff_case_en         varchar(300) null,        -- Water Cut Off Reason English
+    affected_address_en    varchar(350) null,        -- Affected Address English
+    notice_content_en      varchar(1000) null,       -- Notice Content English
+    remark_for_inside      varchar(500) null,        -- Internal Remark
+    remark_for_outside_en  varchar(500) null,        -- External Remark English
+    supply_id              int4         null,        -- Supply ID
+    supply_code            varchar(100) null,        -- Supply Code
+    location_x             float8       null,        -- Location X
+    location_y             float8       null,        -- Location Y
+    created_at             timestamp(6) null,        -- Created At
+    lastupdate_at          timestamp(6) null,        -- Lastupdate At
+    dm_update_time         timestamp(6) null default pg_systimestamp(), -- Update Time
+    dm_load_time           timestamp(6) null default pg_systimestamp(), -- Load Time
+    
+    constraint dm_cus_sz_water_cut_off_notice_mini_pkey primary key (recid)
+)
+with (
+    orientation = row,
+    compression = no,
+    storage_type = ustore,
+    segment = off
+);
+
+comment on table coss_dm.dm_cus_sz_water_cut_off_notice_mini is 'Supply Zone Water Cut Off Notice';
+
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_mini.recid                 is 'Announcement ID';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_mini.title                 is 'Title';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_mini.notice_time           is 'Notice Publish Time';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_mini.state                 is 'Status';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_mini.action_region         is 'Action Region';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_mini.action_group          is 'Action Group';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_mini.sub_action_region     is 'Sub Action Region';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_mini.district              is 'District';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_mini.sub_district          is 'Sub-district';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_mini.water_type            is 'Water Supply Type';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_mini.outage_time           is 'Water Outage Time';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_mini.pre_recovery_time     is 'Expected Recovery Time';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_mini.actual_recovery_time  is 'Actual Recovery Time';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_mini.cut_off_level         is 'Water Cut Off Level';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_mini.housing_estate         is 'Housing Estate(s)';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_mini.link_person1_en       is 'Contact Person 1 English';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_mini.link_phone1           is 'Contact Phone 1';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_mini.link_person2_en       is 'Contact Person 2 English';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_mini.link_phone2           is 'Contact Phone 2';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_mini.location_coord        is 'Location Coordinate';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_mini.build_location         is 'Construction Location';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_mini.relate_order          is 'Related Work Order No';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_mini.cutoff_case_en         is 'Water Cut Off Reason English';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_mini.affected_address_en   is 'Affected Address English';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_mini.notice_content_en     is 'Notice Content English';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_mini.remark_for_inside     is 'Internal Remark';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_mini.remark_for_outside_en is 'External Remark English';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_mini.supply_id             is 'Supply ID';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_mini.supply_code           is 'Supply Code';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_mini.location_x            is 'Location X';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_mini.location_y            is 'Location Y';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_mini.created_at            is 'Created At';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_mini.lastupdate_at         is 'Lastupdate At';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_mini.dm_update_time        is 'Update Time';
+comment on column coss_dm.dm_cus_sz_water_cut_off_notice_mini.dm_load_time          is 'Load Time';
+
+
+
+
+
+
+
 
 
 
