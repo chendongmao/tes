@@ -1,8 +1,3 @@
-location_x	location_y
-836,566	815,453
-
-
-
 -- ****************************************************************************************
 -- Table Name: coss_dm.dm_cus_sz_water_cut_off_notice_mini
 -- Table Comment: Supply Zone Water Cut Off Notice
