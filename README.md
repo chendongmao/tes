@@ -1,4 +1,5 @@
-
+location_x	location_y
+836,566	815,453
 
 
 
