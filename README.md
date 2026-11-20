@@ -1,3 +1,7 @@
+http://172.16.201.18:30080/gis/generateToken
+
+
+
 -- ****************************************************************************************
 -- Table Name: coss_dm.dm_cus_sz_water_cut_off_notice_mini
 -- Table Comment: Supply Zone Water Cut Off Notice
