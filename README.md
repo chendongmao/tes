@@ -49,7 +49,69 @@ comment on column coss_dm.dm_ass_user_meter_di.dm_update_time is 'Data Update Ti
 comment on column coss_dm.dm_ass_user_meter_di.dm_load_time is 'Data Loading Time';
 
 
+-- subject     areas: water assets areas
+-- function describe: import the meter data into the table coss_dm.dm_ass_user_meter_di
+-- create       date: 2026/05/18
+-- modify date     modify by      modify content 
+-- 
+-- source table
+-- coss_dwd.dwd_ass_user_meter_di                                 water meter information table
+-- target table
+-- coss_dm.dm_ass_user_meter_di                                   water meter information table
+insert into coss_dm.dm_ass_user_meter_di(
+    meter_no,                -- meter number
+    meter_type_code,         -- meter type code
+    region_abbr,             -- regional abbreviation
+    admin_division_code,     -- administrative division code
+    meter_status,            -- meter status indicator (active/inactive/retired)
+    serial_no,               -- serial number of the meter
+    receive_time,            -- receive date
+    retire_time,             -- retire date
+    comments,                -- comments
+    retire_rsn_code,         -- retire reason code
+    recond_time,             -- recondition date
+	premise_id,              -- premise id
+    amr,                     -- amr flag
+    coordinate_x,            -- coordinate x
+    coordinate_y             -- coordinate y
+)
+select
+    meter_no,
+	meter_type_code,
+    region_abbr,
+	admin_division_code,
+	meter_status,
+	serial_no,
+	receive_time,
+	retire_time,
+	comments,
+	retire_rsn_code,
+	recond_time,
+	premise_id,
+	amr,
+    coordinate_x,
+	coordinate_y
+from
+    coss_dwd.dwd_ass_user_meter_di
+where dwd_update_time > '${dm_update_time}'
+on duplicate key 
+update
+    region_abbr = values(region_abbr),
+	admin_division_code = values(admin_division_code),
+    meter_status = values(meter_status),
+	receive_time = values(receive_time),
+	retire_time = values(retire_time),
+	comments = values(comments),
+	retire_rsn_code = values(retire_rsn_code),
+	recond_time = values(recond_time),
+	premise_id = values(premise_id),
+	coordinate_x = values(coordinate_x),
+	coordinate_y = values(coordinate_y),
+	dm_update_time = current_timestamp;
 
+
+
+	
 
 
 
