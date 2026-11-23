@@ -1,20 +1,52 @@
 http://172.16.201.18:30080/gis/generateToken
 
 
-
-ALTER TABLE coss_dim.dim_tmu_dict_info ALTER COLUMN origin_code TYPE varchar(255);
-
-INSERT INTO coss_dim.dim_tmu_dict_info (code, origin_code, type, name_cn, name_tc, name_en)
-VALUES
-('WC_SI_000001', '641100,641200,641300,641998', 'WATER_CUTOFF_SIC', '餐馆业', '餐館業', 'RESTAURANTS'),
-('WC_SI_000002', '939998', 'WATER_CUTOFF_SIC', '医院和诊所业', '醫院和診所業', 'HOSPITALS & CLINICS'),
-('WC_SI_000003', '010010,010020,010030,010040,010050,010060,010070,010080,010090', 'WATER_CUTOFF_SIC', '住宅供水', '住宅供水', 'DOMESTIC SUPPLY'),
-('WC_SI_000004', '651100', 'WATER_CUTOFF_SIC', '旅馆', '旅館', 'HOTELS'),
-('WC_SI_000005', '651200', 'WATER_CUTOFF_SIC', '宿舍业', '宿舍業', 'BOARDING HOUSES');
-
-select * from coss_dim.dim_tmu_dict_info where type = 'WATER_CUTOFF_SIC'
-
-
+-- 水表信息
+drop table if exists coss_dm.dm_ass_user_meter_di;
+create table if not exists coss_dm.dm_ass_user_meter_di (
+    meter_no varchar(32),
+	meter_type_code varchar(32),
+	meter_status varchar(32),
+	region_abbr varchar(5),
+	admin_division_code varchar(12),
+	serial_no varchar(32),
+	receive_time timestamp(6),
+	retire_time timestamp(6),
+	comments varchar(512),
+	retire_rsn_code varchar(32),
+	recond_time timestamp(6),
+	premise_id varchar(32),
+	amr varchar(2),
+	hsic_category varchar(32),
+    hsic_code varchar(32),
+	coordinate_x decimal(17,10),
+    coordinate_y decimal(17,10),
+	dm_update_time timestamp(6) default current_timestamp,
+	dm_load_time timestamp(6) default current_timestamp,
+	primary key (meter_no)
+)
+with (orientation = row, compression = no)
+distribute by hash (meter_no);
+comment on table coss_dm.dm_ass_user_meter_di is 'Water meter information table';
+comment on column coss_dm.dm_ass_user_meter_di.meter_no is 'Meter number';
+comment on column coss_dm.dm_ass_user_meter_di.meter_type_code is 'Meter type code';
+comment on column coss_dm.dm_ass_user_meter_di.meter_status is 'Meter status indicator (Active/Inactive/Retired)';
+comment on column coss_dm.dm_ass_user_meter_di.region_abbr is 'Regional Abbreviation';
+comment on column coss_dm.dm_ass_user_meter_di.admin_division_code is 'Administrative Division Code';
+comment on column coss_dm.dm_ass_user_meter_di.serial_no is 'Serial number of the meter';
+comment on column coss_dm.dm_ass_user_meter_di.receive_time is 'Receive date';
+comment on column coss_dm.dm_ass_user_meter_di.retire_time is 'Retire date';
+comment on column coss_dm.dm_ass_user_meter_di.comments is 'Comments';
+comment on column coss_dm.dm_ass_user_meter_di.retire_rsn_code is 'Retire reason code';
+comment on column coss_dm.dm_ass_user_meter_di.recond_time is 'Recondition date';
+comment on column coss_dm.dm_ass_user_meter_di.premise_id is 'Premise ID';
+comment on column coss_dm.dm_ass_user_meter_di.amr is 'AMR flag';
+comment on column coss_dm.dm_ass_user_meter_di.hsic_category is 'Industry Classification Category'
+comment on column coss_dm.dm_ass_user_meter_di.hsic_code is 'Industry Classification Code'
+comment on column coss_dm.dm_ass_user_meter_di.coordinate_x is 'Coordinate X';
+comment on column coss_dm.dm_ass_user_meter_di.coordinate_y is 'Coordinate Y';
+comment on column coss_dm.dm_ass_user_meter_di.dm_update_time is 'Data Update Time';
+comment on column coss_dm.dm_ass_user_meter_di.dm_load_time is 'Data Loading Time';
 
 
 
