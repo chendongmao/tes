@@ -2,22 +2,21 @@ http://172.16.201.18:30080/gis/generateToken
 
 
 
-641100
-641200
-641300
-641998
-939998
-010010
-010020
-010030
-010040
-010050
-010060
-010070
-010080
-010090
-651100
-651200
+ALTER TABLE coss_dim.dim_tmu_dict_info ALTER COLUMN origin_code TYPE varchar(255);
+
+INSERT INTO coss_dim.dim_tmu_dict_info (code, origin_code, type, name_cn, name_tc, name_en)
+VALUES
+('WC_SI_000001', '641100,641200,641300,641998', 'WATER_CUTOFF_SIC', '餐馆业', '餐館業', 'RESTAURANTS'),
+('WC_SI_000002', '939998', 'WATER_CUTOFF_SIC', '医院和诊所业', '醫院和診所業', 'HOSPITALS & CLINICS'),
+('WC_SI_000003', '010010,010020,010030,010040,010050,010060,010070,010080,010090', 'WATER_CUTOFF_SIC', '住宅供水', '住宅供水', 'DOMESTIC SUPPLY'),
+('WC_SI_000004', '651100', 'WATER_CUTOFF_SIC', '旅馆', '旅館', 'HOTELS'),
+('WC_SI_000005', '651200', 'WATER_CUTOFF_SIC', '宿舍业', '宿舍業', 'BOARDING HOUSES');
+
+select * from coss_dim.dim_tmu_dict_info where type = 'WATER_CUTOFF_SIC'
+
+
+
+
 
 
 
