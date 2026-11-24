@@ -1,4 +1,14 @@
-select count(*) from coss_ods.ods_emis_psr_bills_di_year oeprdy 
+select equipment_number, loc_id, location, count(1)num   
+from coss_ods.ods_emis_psr_pumps_stg_df oeppd 
+group by 
+equipment_number, loc_id, location
+having num>1
+
+
+
+
+
+
 where ods_update_time >= '2026-11-24 15:57:40.869'
 -- 水表信息
 drop table if exists coss_dm.dm_ass_user_meter_di;
