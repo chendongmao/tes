@@ -1,3 +1,6 @@
+meter_status in ('Active', 'Reconditioned', 'Meter is registering')
+
+
 http://172.16.201.18:30080/gis/generateToken
 
 
