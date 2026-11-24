@@ -1,6 +1,5 @@
-select count(*) from coss_ods.ods_emis_psr_report_di_year oeprdy 
+select count(*) from coss_ods.ods_emis_psr_bills_di_year oeprdy 
 where ods_update_time >= '2026-11-24 15:57:40.869'
-
 -- 水表信息
 drop table if exists coss_dm.dm_ass_user_meter_di;
 create table if not exists coss_dm.dm_ass_user_meter_di (
