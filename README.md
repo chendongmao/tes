@@ -1,8 +1,5 @@
-select equipment_number, loc_id, location, count(1)num   
-from coss_ods.ods_emis_psr_pumps_stg_df oeppd 
-group by 
-equipment_number, loc_id, location
-having num>1
+https://docs.qq.com/sheet/DT2VkTVJZbGtVTHhR?scene=3781f8af13549c71683bf254MUx9w1&tab=19b6jr
+
 
 
 
