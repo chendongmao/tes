@@ -1,4 +1,11 @@
-https://10.66.110.21:6443/arcgis/rest/services/COSSMAP/UserMeter/MapServer/0/1
+The average values of the water quality parameters are calculated based on the available data for the respective regions and/or TPUs. Therefore, they may not necessarily be representative of the overall conditions of the entire region or TPU.
+
+水質參數的平均值乃根據相關地區及／或小規劃統計區的可用數據計算，因此未必能反映整個地區或小規劃統計區的整體情況。
+
+水质参数的平均值乃根据相关地区及／或小规划统计区的可用数据计算，因此未必能反映整个地区或小规划统计区的整体情况。
+
+
+
 
 
 
