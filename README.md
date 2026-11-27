@@ -1,3 +1,7 @@
+http://10.66.167.59:50900/documents/detail-new?workspaceIdNo=2092422654056173568&callback_url=http://192.168.121.34:8088/pems-order-business/sip/open-api/callback/receive&batch_number=LT751857484288794624&id=2126112483505434624&childTaskId=2126112502916673536
+
+
+
 insert into coss_dim.dim_tmu_dict_info (code, origin_code, type, name_cn, name_tc, name_en, dim_load_time, dim_update_time)
 values
 ('WC_SI_000001', '641100,641200,641300,641998', 'WATER_CUTOFF_SIC', '餐馆业', '餐館業', 'RESTAURANTS', '2026-11-23 15:27:24.334', '2026-11-23 15:27:24.334'),
