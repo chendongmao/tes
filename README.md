@@ -1,4 +1,14 @@
-The average values of the water quality parameters are calculated based on the available data for the respective regions and/or TPUs. Therefore, they may not necessarily be representative of the overall conditions of the entire region or TPU.
+insert into coss_dim.dim_tmu_dict_info (code, origin_code, type, name_cn, name_tc, name_en, dim_load_time, dim_update_time)
+values
+('WC_SI_000001', '641100,641200,641300,641998', 'WATER_CUTOFF_SIC', '餐馆业', '餐館業', 'RESTAURANTS', '2026-11-23 15:27:24.334', '2026-11-23 15:27:24.334'),
+('WC_SI_000002', '939998', 'WATER_CUTOFF_SIC', '医院和诊所业', '醫院和診所業', 'HOSPITALS & CLINICS', '2026-11-23 15:27:24.334', '2026-11-23 15:27:24.334'),
+('WC_SI_000003', '010010,010020,010030,010040,010050,010060,010070,010080,010090', 'WATER_CUTOFF_SIC', '住宅供水', '住宅供水', 'DOMESTIC SUPPLY', '2026-11-23 15:27:24.334', '2026-11-23 15:27:24.334'),
+('WC_SI_000004', '651100', 'WATER_CUTOFF_SIC', '旅馆', '旅館', 'HOTELS', '2026-11-23 15:27:24.334', '2026-11-23 15:27:24.334'),
+('WC_SI_000005', '651200', 'WATER_CUTOFF_SIC', '宿舍业', '宿舍業', 'BOARDING HOUSES', '2026-11-23 15:27:24.334', '2026-11-23 15:27:24.334');
+
+
+
+
 
 水質參數的平均值乃根據相關地區及／或小規劃統計區的可用數據計算，因此未必能反映整個地區或小規劃統計區的整體情況。
 
